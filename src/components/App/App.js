@@ -16,7 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+import ContestHome from '../ContestHome/ContestHome';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -86,10 +86,10 @@ class App extends Component {
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
+              // - else shows ContestHome at "/home"
               exact
               path="/home"
-              component={LandingPage}
+              component={ContestHome}
               authRedirect="/user"
             />
 

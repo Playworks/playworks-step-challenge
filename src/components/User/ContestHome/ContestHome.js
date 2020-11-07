@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import './LandingPage.css';
+import './ContestHome.css';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
 
-class LandingPage extends Component {
+class ContestHome extends Component {
   state = {
     heading: 'Class Component',
   };
@@ -71,4 +71,4 @@ class LandingPage extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(LandingPage);
+export default connect(mapStoreToProps)(ContestHome);
