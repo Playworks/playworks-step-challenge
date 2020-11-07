@@ -13,10 +13,12 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import ContestHome from '../ContestHome/ContestHome';
+import AboutPage from '../Templates/AboutPage/AboutPage';
+import ContestHome from '../User/ContestHome/ContestHome';
+import TeamHome from '../User/TeamHome/TeamHome';
+import SubmitPhotos from '../User/SubmitPhotos/SubmitPhotos';
+import SubmitSteps from '../User/SubmitSteps/SubmitSteps';
+import Rules from '../User/Rules/Rules';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -51,15 +53,29 @@ class App extends Component {
             <ProtectedRoute
               // logged in shows UserPage else shows LoginPage
               exact
-              path="/user"
-              component={UserPage}
+              path="/addphoto"
+              component={SubmitPhotos}
             />
 
             <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
               exact
-              path="/info"
-              component={InfoPage}
+              path="/addsteps"
+              component={SubmitSteps}
+            />
+
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/rules"
+              component={Rules}
+            />
+
+            <ProtectedRoute
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/team"
+              component={TeamHome}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
@@ -72,7 +88,7 @@ class App extends Component {
               exact
               path="/login"
               component={LoginPage}
-              authRedirect="/user"
+              authRedirect="/home"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -81,7 +97,7 @@ class App extends Component {
               exact
               path="/registration"
               component={RegisterPage}
-              authRedirect="/user"
+              authRedirect="/home"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -90,7 +106,6 @@ class App extends Component {
               exact
               path="/home"
               component={ContestHome}
-              authRedirect="/user"
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

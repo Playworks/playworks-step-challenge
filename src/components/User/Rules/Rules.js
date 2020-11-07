@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
 
-
-class Rules extends React.Component {
+class Rules extends Component {
+  state = {
+    heading: 'Class Component',
+  };
 
   render() {
     return (
       <div>
-        <p>Rules</p>
+        <h2>Rules</h2>
       </div>
-    )
+    );
   }
 }
-export default Rules;
+
+export default connect(mapStoreToProps)(Rules);

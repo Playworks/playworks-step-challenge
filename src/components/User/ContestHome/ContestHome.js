@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 import './ContestHome.css';
-
-// CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
 
 class ContestHome extends Component {
   state = {
@@ -19,8 +16,8 @@ class ContestHome extends Component {
   render() {
     return (
       <div className="container">
-        <h2>{this.state.heading}</h2>
-
+        <h2>CONTEST HOME</h2>
+{/* 
         <div className="grid">
           <div className="grid-col grid-col_8">
             <p>
@@ -65,7 +62,7 @@ class ContestHome extends Component {
               </button>
             </center>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
