@@ -32,13 +32,14 @@ CREATE TABLE "companies" (
 
 CREATE TABLE "teams" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (80) NOT NULL,
+    "name" VARCHAR (80) UNIQUE NOT NULL,
     "team_logo" TEXT,
     "companies_id" INT REFERENCES "companies"
 );
 
-CREATE TABLE "users" (
+CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR (80) UNIQUE NOT NULL,
     "email" VARCHAR (30) NOT NULL,
     "first_name" VARCHAR (20) NOT NULL,
     "last_name" VARCHAR (30) NOT NULL,
@@ -58,7 +59,7 @@ CREATE TABLE "challenges" (
 CREATE TABLE "contest_logs" (
     "id" SERIAL PRIMARY KEY,
     "teams_id" INT REFERENCES "teams",
-    "users_id" INT REFERENCES "users",
+    "user_id" INT REFERENCES "user",
     "challenges_id" INT REFERENCES "challenges",
     "contests_id" INT REFERENCES "contests",
     "companies_id" INT REFERENCES "companies",
