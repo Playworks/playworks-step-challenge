@@ -24,7 +24,7 @@ CREATE TABLE "contests" (
     "end_date" DATE NOT NULL
 );
 
-CREATE TABLE "companys" (
+CREATE TABLE "companies" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (80) NOT NULL,
     "contests_id" INT REFERENCES "contests"
@@ -34,11 +34,12 @@ CREATE TABLE "teams" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (80) NOT NULL,
     "team_logo" TEXT,
-    "companys_id" INT REFERENCES "companys"
+    "companies_id" INT REFERENCES "companies"
 );
 
 CREATE TABLE "users" (
     "id" SERIAL PRIMARY KEY,
+    "email" VARCHAR (30) NOT NULL,
     "first_name" VARCHAR (20) NOT NULL,
     "last_name" VARCHAR (30) NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
@@ -60,7 +61,7 @@ CREATE TABLE "contest_logs" (
     "users_id" INT REFERENCES "users",
     "challenges_id" INT REFERENCES "challenges",
     "contests_id" INT REFERENCES "contests",
-    "companys_id" INT REFERENCES "companys",
+    "companies_id" INT REFERENCES "companies",
     "date" DATE NOT NULL,
     "steps" INT NOT NULL,
     "image_path" TEXT

@@ -32,6 +32,7 @@ import CreateContest from '../Admin/CreateContest/CreateContest';
 import EditChallenges from '../Admin/EditChallenges/EditChallenges';
 import EditContests from '../Admin/EditContests/EditContests';
 import EditRules from '../Admin/EditRules/EditRules';
+import EditFAQ from '../Admin/EditFAQ/EditFAQ';
 import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
 
 class App extends Component {
@@ -108,40 +109,46 @@ class App extends Component {
               component={EditUserLogs}
             />
 
-            <ProtectedRoute
+            <Route
               exact
               path="/createchallenges"
               component={CreateChallenges}
             />
 
-            <ProtectedRoute
+            <Route
               exact
               path="/createcontest"
               component={CreateContest}
             />
 
-            <ProtectedRoute
+            <Route
               exact
               path="/editchallenges"
               component={EditChallenges}
             />
 
-            <ProtectedRoute
+            <Route
               exact
               path="/editcontests"
               component={EditContests}
             />
 
-            <ProtectedRoute
+            <Route
               exact
               path="/editrules"
               component={EditRules}
             />
 
-            <ProtectedRoute
+            <Route
               exact
               path="/adminhome"
               component={PlayworksAdminHome}
+            />
+
+            <Route
+              exact
+              path="/editfaq"
+              component={EditFAQ}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
@@ -165,7 +172,7 @@ class App extends Component {
               component={RegisterPage}
               authRedirect="/home"
             />
-            <ProtectedRoute
+            <Route
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows ContestHome at "/home"
