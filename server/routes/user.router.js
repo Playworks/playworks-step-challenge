@@ -18,6 +18,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
+  console.log(req.body);
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const email = req.body.email;
@@ -27,11 +28,14 @@ router.post('/register', (req, res, next) => {
 
   // Hard coding in image path as have not uploaded image file to aws yet.
   const queryText = `INSERT INTO "user" (first_name, last_name, email, username, password, image_path)
-    VALUES ($1, $2, $3, $4, $5, https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/1200px-A-Team-Logo.svg.png) RETURNING id`;
+    VALUES ($1, $2, $3, $4, $5, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/1200px-A-Team-Logo.svg.png') RETURNING id`;
   pool
     .query(queryText, [first_name, last_name, email, username, password])
     .then(() => res.sendStatus(201))
-    .catch(() => res.sendStatus(500));
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(501);
+    })
 });
 
 // Handles login form authenticate/login POST

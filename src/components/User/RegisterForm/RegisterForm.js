@@ -116,8 +116,6 @@ class RegisterForm extends Component {
             Photo:
             <input
               type="file"
-              name="photo"
-              value={this.state.photo}
               required
               onChange={this.photoSelectedHandler}
             />
