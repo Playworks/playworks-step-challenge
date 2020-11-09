@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 class RegisterForm extends Component {
@@ -26,6 +27,7 @@ class RegisterForm extends Component {
         photo: this.state.photo,
       },
     });
+    this.props.history.push('/createorjointeam');
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -129,4 +131,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(RegisterForm);
+export default connect(mapStoreToProps)(withRouter(RegisterForm));
