@@ -2,27 +2,32 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
+// import placeholder image
+import Placeholder from '../../../images/placeholder-square.png';
+// material ui
+import { Button, TextField, Typography } from '@material-ui/core';
 
 class CreateTeam extends Component {
-  state = {
-    heading: 'Create Team',
-  };
+
+
 
   render() {
     return (
       <div>
-        <h2>{this.state.heading}</h2>
+        <div className='createTeamForm'>
+        <Typography variant='h5'>Create a Team</Typography>
+        <TextField id="outlined-basic" label="Team name" variant="outlined"></TextField>
+        <img style={{marginTop: '1rem'}} src= { Placeholder } />
+        <Button variant='contained'>Upload a photo</Button>
         <center>
-          <button
-            type="button"
-            className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/home');
-            }}
-          >
-            Submit New Team
-          </button>
+          <Button variant='contained' 
+            color='primary'
+            style={{marginTop: '2rem'}} 
+            onClick={() => {this.props.history.push('/home')}}>
+            Submit
+          </Button>
         </center>
+        </div>
       </div>
     );
   }
