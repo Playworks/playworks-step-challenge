@@ -24,23 +24,18 @@ CREATE TABLE "contests" (
     "end_date" DATE NOT NULL
 );
 
-CREATE TABLE "companies" (
-    "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (80) NOT NULL,
-    "contests_id" INT REFERENCES "contests"
-);
 
 CREATE TABLE "teams" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (80) UNIQUE NOT NULL,
+    "name" VARCHAR (80) NOT NULL,
     "team_logo" TEXT,
-    "companies_id" INT REFERENCES "companies"
+    "contests_id" INT REFERENCES "contests"
 );
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "email" VARCHAR (30) NOT NULL,
+    "username" VARCHAR (80) NOT NULL,
+    "email" VARCHAR (30) UNIQUE NOT NULL,
     "first_name" VARCHAR (20) NOT NULL,
     "last_name" VARCHAR (30) NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
@@ -56,14 +51,25 @@ CREATE TABLE "challenges" (
     "date" DATE
 );
 
-CREATE TABLE "contest_logs" (
+CREATE TABLE "steps" (
     "id" SERIAL PRIMARY KEY,
-    "teams_id" INT REFERENCES "teams",
+    "user_id" INT REFERENCES "user",
+    "date" DATE NOT NULL,
+    "steps" INT NOT NULL
+);
+
+CREATE TABLE "photos" (
+    "id" SERIAL PRIMARY KEY,
     "user_id" INT REFERENCES "user",
     "challenges_id" INT REFERENCES "challenges",
-    "contests_id" INT REFERENCES "contests",
-    "companies_id" INT REFERENCES "companies",
-    "date" DATE NOT NULL,
-    "steps" INT NOT NULL,
+    "date" TIMESTAMP NOT NULL,
     "image_path" TEXT
 );
+
+-- Only enter below to drop tables in the correct order
+DROP TABLE "photos";
+DROP TABLE "steps";
+DROP TABLE "user";
+DROP TABLE "challenges";
+DROP TABLE "teams";
+DROP TABLE "contests";
