@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './Footer.css';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+class Footer extends Component {
+  state = {
+    heading: 'Footer',
+  };
 
-const Footer = () => <footer>&copy; Prime Digital Academy</footer>;
+  render() {
+    return (
+      <div>
+        <h2>{this.state.heading}</h2>
+      </div>
+    );
+  }
+}
 
-export default Footer;
+export default connect(mapStoreToProps)(Footer);
+
