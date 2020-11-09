@@ -3,8 +3,65 @@
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
-CREATE TABLE "user" (
+
+-- OLD SQL QUERY
+-- CREATE TABLE "user" (
+--     "id" SERIAL PRIMARY KEY,
+--     "username" VARCHAR (80) UNIQUE NOT NULL,
+--     "password" VARCHAR (1000) NOT NULL
+-- );
+
+-- TABLE NAME playworks_step_challenge
+CREATE TYPE admin_level AS ENUM (
+  'USER', 
+  'CAPTAIN', 
+  'ADMIN');
+  
+CREATE TABLE "contests" (
     "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
+    "name" VARCHAR (80) NOT NULL,
+    "start_date" DATE NOT NULL,
+    "end_date" DATE NOT NULL
+);
+
+CREATE TABLE "companys" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR (80) NOT NULL,
+    "contests_id" INT REFERENCES "contests"
+);
+
+CREATE TABLE "teams" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR (80) NOT NULL,
+    "team_logo" TEXT,
+    "companys_id" INT REFERENCES "companys"
+);
+
+CREATE TABLE "users" (
+    "id" SERIAL PRIMARY KEY,
+    "first_name" VARCHAR (20) NOT NULL,
+    "last_name" VARCHAR (30) NOT NULL,
+    "password" VARCHAR (1000) NOT NULL,
+    "image_path" TEXT,
+    "admin" admin_level,
+    "teams_id" INT REFERENCES "teams"
+);
+
+CREATE TABLE "challenges" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR (80) NOT NULL,
+    "description" VARCHAR (200) NOT NULL,
+    "date" DATE
+);
+
+CREATE TABLE "contest_logs" (
+    "id" SERIAL PRIMARY KEY,
+    "teams_id" INT REFERENCES "teams",
+    "users_id" INT REFERENCES "users",
+    "challenges_id" INT REFERENCES "challenges",
+    "contests_id" INT REFERENCES "contests",
+    "companys_id" INT REFERENCES "companys",
+    "date" DATE NOT NULL,
+    "steps" INT NOT NULL,
+    "image_path" TEXT
 );
