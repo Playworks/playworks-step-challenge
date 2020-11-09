@@ -23,12 +23,13 @@ router.post('/register', (req, res, next) => {
   const email = req.body.email;
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
-  const image = req.body.image;
+  const image = req.body.photo;
 
+  // Hard coding in image path as have not uploaded image file to aws yet.
   const queryText = `INSERT INTO "user" (first_name, last_name, email, username, password, image_path)
-    VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
+    VALUES ($1, $2, $3, $4, $5, https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/1200px-A-Team-Logo.svg.png) RETURNING id`;
   pool
-    .query(queryText, [first_name, last_name, email, username, password, image])
+    .query(queryText, [first_name, last_name, email, username, password])
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
 });

@@ -34,6 +34,14 @@ class RegisterForm extends Component {
     });
   };
 
+  // Function sets state of photo to selected file/image in photo input.
+  photoSelectedHandler = event => {
+    console.log(event.target.files[0]);
+    this.setState({
+      photo: event.target.files[0],
+    });
+  };
+
   render() {
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
@@ -107,11 +115,11 @@ class RegisterForm extends Component {
           <label htmlFor="photo">
             Photo:
             <input
-              type="text"
+              type="file"
               name="photo"
               value={this.state.photo}
               required
-              onChange={this.handleInputChangeFor('photo')}
+              onChange={this.photoSelectedHandler}
             />
           </label>
         </div>
