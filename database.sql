@@ -37,7 +37,7 @@ CREATE TABLE "teams" (
     "companies_id" INT REFERENCES "companies"
 );
 
-CREATE TABLE "users" (
+CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "email" VARCHAR (30) NOT NULL,
     "first_name" VARCHAR (20) NOT NULL,
