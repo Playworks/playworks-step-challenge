@@ -4,7 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
 // import placeholder image
 import Placeholder from '../../../images/placeholder-square.png';
-// material ui
+// import material ui
 import { Button, TextField, Typography } from '@material-ui/core';
 
 class CreateTeam extends Component {
