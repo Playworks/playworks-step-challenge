@@ -23,6 +23,15 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../User/RegisterPage/RegisterPage';
 
 import './App.css';
+import CreateOrJoinTeam from '../User/CreateOrJoinTeam/CreateOrJoinTeam';
+import CreateTeam from '../User/CreateTeam/CreateTeam';
+import JoinTeam from '../User/JoinTeam/JoinTeam';
+import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
+import CreateChallenges from '../Admin/CreateChallenges/CreateChallenges';
+import EditChallenges from '../Admin/EditChallenges/EditChallenges';
+import EditContests from '../Admin/EditContests/EditContests';
+import EditRules from '../Admin/EditRules/EditRules';
+import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
 
 class App extends Component {
   componentDidMount() {
@@ -50,32 +59,88 @@ class App extends Component {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-            <ProtectedRoute
-              // logged in shows UserPage else shows LoginPage
+            <Route
               exact
               path="/addphoto"
               component={SubmitPhotos}
             />
 
-            <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
+            <Route
               exact
               path="/addsteps"
               component={SubmitSteps}
             />
 
-            <ProtectedRoute
-              // logged in shows UserPage else shows LoginPage
+            <Route
               exact
               path="/rules"
               component={Rules}
             />
 
-            <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
+            <Route
               exact
               path="/team"
               component={TeamHome}
+            />
+
+            <Route
+              exact
+              path="/createorjointeam"
+              component={CreateOrJoinTeam}
+            />
+
+            <Route
+              exact
+              path="/createteam"
+              component={CreateTeam}
+            />
+
+            <Route
+              exact
+              path="/jointeam"
+              component={JoinTeam}
+            />
+
+            <Route
+              exact
+              path="/editlogs"
+              component={EditUserLogs}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/createchallenges"
+              component={CreateChallenges}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/createcontest"
+              component={CreateContest}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/editchallenges"
+              component={EditChallenges}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/editcontests"
+              component={EditContests}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/editrules"
+              component={EditRules}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/adminhome"
+              component={PlayworksAdminHome}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
