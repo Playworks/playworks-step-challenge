@@ -4,8 +4,12 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 class RegisterForm extends Component {
   state = {
+    first_name: '',
+    last_name: '',
+    email: '',
     username: '',
     password: '',
+    photo: ''
   };
 
   registerUser = (event) => {
@@ -14,8 +18,12 @@ class RegisterForm extends Component {
     this.props.dispatch({
       type: 'REGISTER',
       payload: {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        email: this.state.email,
         username: this.state.username,
         password: this.state.password,
+        photo: this.state.photo,
       },
     });
   }; // end registerUser
@@ -35,6 +43,42 @@ class RegisterForm extends Component {
             {this.props.store.errors.registrationMessage}
           </h3>
         )}
+        <div>
+          <label htmlFor="first_name">
+            First Name:
+            <input
+              type="text"
+              name="first_name"
+              value={this.state.first_name}
+              required
+              onChange={this.handleInputChangeFor('first_name')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="password">
+            Last Name:
+            <input
+              type="text"
+              name="last_name"
+              value={this.state.last_name}
+              required
+              onChange={this.handleInputChangeFor('last_name')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="email">
+            Email:
+            <input
+              type="text"
+              name="email"
+              value={this.state.email}
+              required
+              onChange={this.handleInputChangeFor('email')}
+            />
+          </label>
+        </div>
         <div>
           <label htmlFor="username">
             Username:
@@ -56,6 +100,18 @@ class RegisterForm extends Component {
               value={this.state.password}
               required
               onChange={this.handleInputChangeFor('password')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="photo">
+            Photo:
+            <input
+              type="text"
+              name="photo"
+              value={this.state.photo}
+              required
+              onChange={this.handleInputChangeFor('photo')}
             />
           </label>
         </div>
