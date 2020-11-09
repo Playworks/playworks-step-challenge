@@ -2,37 +2,35 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateOrJoinTeam.css';
+// material ui
+import { Typography } from '@material-ui/core';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 
 class CreateOrJoinTeam extends Component {
-  state = {
-    heading: 'Create Or Join Team',
-  };
+
+  createTeam = () => {
+    this.props.history.push('/createteam');
+  }
+
+  joinTeam = () => {
+    this.props.history.push('/jointeam');
+  }
 
   render() {
     return (
-      <div>
-        <h2>{this.state.heading}</h2>
-        <center>
-          <button
-            type="button"
-            className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/createteam');
-            }}
-          >
-            Create Team
-          </button>
+      <div style={{ marginTop: '5rem' }}>
+        <center onClick={this.createTeam}>
+        <GroupAddIcon 
+          style={{ width: 110, height: 110, display: 'block' }} 
+          fontSize='large' 
+          />
+        <Typography variant='h5'>Create Team</Typography>
         </center>
-        <center>
-          <button
-            type="button"
-            className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/jointeam');
-            }}
-          >
-            Join Team
-          </button>
+
+        <center style={{margin: '5rem'}} 
+          onClick={this.joinTeam}>
+        <i class="fas fa-users fa-5x" ></i>
+        <Typography variant='h5' style={{marginTop: 30}}>Join Team</Typography>
         </center>
       </div>
     );
