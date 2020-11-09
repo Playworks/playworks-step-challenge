@@ -23,7 +23,7 @@ class CreateTeam extends Component {
             color='primary'
             style={{marginTop: '2rem'}} 
             size= 'large'
-            onClick={() => {this.props.history.push('/home')}}>
+            onClick={() => {this.history.push('/home')}}>
             Submit
           </Button>
         </center>
