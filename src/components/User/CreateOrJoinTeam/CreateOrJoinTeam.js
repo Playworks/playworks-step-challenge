@@ -12,6 +12,28 @@ class CreateOrJoinTeam extends Component {
     return (
       <div>
         <h2>{this.state.heading}</h2>
+        <center>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {
+              this.props.history.push('/createteam');
+            }}
+          >
+            Create Team
+          </button>
+        </center>
+        <center>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {
+              this.props.history.push('/jointeam');
+            }}
+          >
+            Join Team
+          </button>
+        </center>
       </div>
     );
   }
