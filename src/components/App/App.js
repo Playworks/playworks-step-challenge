@@ -28,6 +28,7 @@ import CreateTeam from '../User/CreateTeam/CreateTeam';
 import JoinTeam from '../User/JoinTeam/JoinTeam';
 import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
 import CreateChallenges from '../Admin/CreateChallenges/CreateChallenges';
+import CreateContest from '../Admin/CreateContest/CreateContest';
 import EditChallenges from '../Admin/EditChallenges/EditChallenges';
 import EditContests from '../Admin/EditContests/EditContests';
 import EditRules from '../Admin/EditRules/EditRules';
