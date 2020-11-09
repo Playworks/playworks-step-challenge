@@ -4,7 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 class Rules extends Component {
   state = {
-    heading: 'Class Component',
+    heading: 'Rules',
   };
 
   render() {
