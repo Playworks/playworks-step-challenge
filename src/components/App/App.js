@@ -20,7 +20,7 @@ import SubmitPhotos from '../User/SubmitPhotos/SubmitPhotos';
 import SubmitSteps from '../User/SubmitSteps/SubmitSteps';
 import Rules from '../User/Rules/Rules';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import RegisterPage from '../User/RegisterPage/RegisterPage';
 
 import './App.css';
 
