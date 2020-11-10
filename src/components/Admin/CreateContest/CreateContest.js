@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateContest.css';
-import DatePicker from 'react-date-picker';
 
 class CreateContest extends Component {
     state = {
@@ -38,12 +37,11 @@ class CreateContest extends Component {
   render() {
     return (
       <div>
-        <h2>{this.state.heading}</h2>
         <form className="formPanel" onSubmit={this.createContest}>
         <h2>Create Contest</h2>
         <div>
           <label htmlFor="name">
-            Contest Name:
+            Company Name:
             <input
               type="text"
               name="name"
