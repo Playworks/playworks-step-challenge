@@ -3,3 +3,8 @@ footer {
   padding: 20px;
   text-align: center;
 }
+
+.footerIconGroup {
+  display: inline-block;
+  margin: 10px;
+}

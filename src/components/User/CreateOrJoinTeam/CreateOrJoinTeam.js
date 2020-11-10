@@ -27,7 +27,7 @@ class CreateOrJoinTeam extends Component {
         <Typography variant='h5'>Create Team</Typography>
         </center>
 
-        <center style={{margin: '5rem'}} 
+        <center style={{margin: '5rem', marginBottom: '10'}} 
           onClick={this.joinTeam}>
         <i class="fas fa-users fa-5x" ></i>
         <Typography variant='h5' style={{marginTop: 30}}>Join Team</Typography>
