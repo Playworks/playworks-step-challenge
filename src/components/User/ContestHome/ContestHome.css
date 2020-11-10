@@ -1,3 +1,34 @@
+thead {
+  background-color: #193859;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background: #E5E9EC
+}
+
+tbody {
+  background-color: white;
+}
+
+.topSteppers {
+  margin-top: 2rem;
+}
+
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  position: relative;
+}
+
+.stepperPaper {
+  padding: .25rem;
+  margin-right: .2rem;
+}
+
 /* --------------------------------------------------------------------------------
 Grid
 -------------------------------------------------------------------------------- */
