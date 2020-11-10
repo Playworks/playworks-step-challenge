@@ -15,7 +15,7 @@ class Challenges extends Component {
       <div className='challengeOfTheDay'>
         <Typography variant='h5'>Challenge of the Day</Typography>
         <Typography variant='subtitle1'>{this.state.name}</Typography>
-    <Typography variant='body2'>{this.state.description}</Typography>
+        <Typography variant='body2'>{this.state.description}</Typography>
       </div>
     );
   }

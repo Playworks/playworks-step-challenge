@@ -1,0 +1,16 @@
+.submitPhotoSection {
+    padding: 1rem;
+}
+
+.submitImage {
+    text-align: center;
+}
+
+.cancelSubmitBtnGroup{
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.selectImageBtn {
+    margin-top: .2rem;
+}
