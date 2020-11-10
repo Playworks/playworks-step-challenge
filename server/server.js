@@ -13,7 +13,7 @@ const userRouter = require('./routes/user.router');
 const challengesRouter = require('./routes/challenges.router');
 const photosRouter = require('./routes/photos.router');
 const stepsRouter = require('./routes/steps.router');
-const teamRouter = require('./routes/team.router');
+const teamRouter = require('./routes/teams.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
