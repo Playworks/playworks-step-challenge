@@ -46,7 +46,8 @@ class CreateTeam extends Component {
   }
 
   render() {
-    console.log('this is our state', this.state)
+    console.log('this is our state', this.state);
+    console.log('in createTeam js these are our props', this.props);
     return (
       <div>
         <div className='createTeamForm'>
