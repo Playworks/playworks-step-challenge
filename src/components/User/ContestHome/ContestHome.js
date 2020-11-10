@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './ContestHome.css';
-import { Paper, Typography } from '@material-ui/core';
+import { Card, Paper, Typography } from '@material-ui/core';
 // react multi carousel
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -131,7 +131,7 @@ class ContestHome extends Component {
                 <img className='avatar' src={item.image}/>
                 <Typography variant='body2'>{item.name}</Typography>
                 <Typography variant='body2'>{item.teamName}</Typography>
-                <Typography variant='body2'>{item.challengeTitle}</Typography>
+                <Typography variant='body2'>{item.steps}</Typography>
               </Paper>
             )}
           </Carousel>
@@ -142,16 +142,23 @@ class ContestHome extends Component {
           <Typography variant='body2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor pretium viverra suspendisse potenti nullam. Nisl nisi scelerisque eu ultrices.</Typography>
           <div className='imageFeed'>
           { this.state.images.map( ( item, i ) => 
-              <Paper className='stepperPaper'>
-                <img src={item.image}/>
-                <img className='avatarFeed' src={item.avatar}/>
-                <div className='feedInfo'>
-                  <Typography variant='body2'>{item.name}</Typography>
-                  <Typography variant='body2'>{item.teamName}</Typography>
-                  <Typography variant='body2'>{item.challengeTitle}</Typography>
+          <div>
+              <Card className='imageFeedCard'>
+                <div className='dailyChallengeImage'>
+                  <img src={item.image}/>
                 </div>
-              </Paper>
+                <div>
+                  <img className='avatarFeed' src={item.avatar}/>
+                  <div className='feedInfo'>
+                    <Typography variant='body2'>{item.name}</Typography>
+                    <Typography variant='body2'>{item.teamName}</Typography>
+                    <Typography variant='body2'>{item.challengeTitle}</Typography>
+                  </div>
+                </div>
+              </Card>
+            </div>
             )}
+            
           </div>
         </div>
       </div>
