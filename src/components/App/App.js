@@ -12,6 +12,8 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import AdminRoute from '../AdminRoute/AdminRoute';
+
 
 import AboutPage from '../Templates/AboutPage/AboutPage';
 import ContestHome from '../User/ContestHome/ContestHome';
@@ -139,7 +141,7 @@ class App extends Component {
               component={EditRules}
             />
 
-            <Route
+            <AdminRoute
               exact
               path="/adminhome"
               component={PlayworksAdminHome}
