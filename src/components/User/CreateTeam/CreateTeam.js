@@ -35,13 +35,13 @@ class CreateTeam extends Component {
       team_photo: this.state.team_photo
     }
     console.log('in createTeam function and this is what we are sending', objectToSend);
-    // this.props.dispatch({
-    //   type: 'CREATE_TEAM',
-    //   payload: {
-    //     team_name: this.state.team_name,
-    //     team_photo: this.state.team_photo
-    //   };
-    // });
+    this.props.dispatch({
+      type: 'CREATE_TEAM',
+      payload: {
+        team_name: this.state.team_name,
+        team_photo: this.state.team_photo
+      }
+    });
     // this.props.history.push('/home')
   }
 
