@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './Leaderboard.css';
+import { Typography } from '@material-ui/core';
 
 class Leaderboard extends Component {
   state = {
@@ -11,7 +12,33 @@ class Leaderboard extends Component {
   render() {
     return (
       <div>
-        <h2>{this.state.heading}</h2>
+        <Typography variant='h5'>Leaderboard</Typography>
+        <center>
+          <table>
+            <thead>
+              <th>Rank</th>
+              <th>Team Name</th>
+              <th>Steps</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Team Name</td>
+                <td>total</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Team Name</td>
+                <td>total</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Team Name</td>
+                <td>total</td>
+              </tr>
+            </tbody>
+          </table>
+        </center>
       </div>
     );
   }
