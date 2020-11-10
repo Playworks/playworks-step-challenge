@@ -2,12 +2,85 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './ContestHome.css';
+import { Paper, Typography } from '@material-ui/core';
+// react multi carousel
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 3
+  }
+};
 
 class ContestHome extends Component {
-  state = {
-    heading: 'Class Component',
-  };
 
+  state = {
+    topSteppers: [
+      {
+        image: 'https://avatars0.githubusercontent.com/u/32749419?s=400&u=dff1f0e1c8e5a6e2d6dd58ce4b1456f465ddad4d&v=4',
+        name: 'Arthur',
+        teamName: 'Kickin Chickens',
+        steps: 10000
+      },
+      {
+      image: 'https://avatars3.githubusercontent.com/u/65255337?s=400&u=813c5093318f0235870d08ecbd15ccb61a3aa5f7&v=4',
+      name: 'David',
+      teamName: 'Kickin Chickens',
+      steps: 10000
+      },
+      {
+      image: 'https://avatars1.githubusercontent.com/u/67034482?s=400&u=1623bbf91704fc5fc444fb013324a0ab9faf0ed3&v=4',
+      name: 'Brady',
+      teamName: 'Kickin Chickens',
+      steps: 10000
+    },
+    {
+      image: 'https://avatars1.githubusercontent.com/u/65906860?s=460&u=40b78eaf27468b6e20afc655a916e2b651bf1cfe&v=4',
+      name: 'Ashley',
+      teamName: 'Kickin Chickens',
+      steps: 10000
+    }
+    ],
+    images: [
+    {
+      avatar: 'https://avatars1.githubusercontent.com/u/65906860?s=460&u=40b78eaf27468b6e20afc655a916e2b651bf1cfe&v=4',
+      image:'https://www.abc.net.au/cm/rimage/12172884-3x4-xlarge.jpg?v=4', 
+      teamName: 'Kickin Chickens',
+      name: 'Kermit',
+      challengeTitle: 'Sloths'
+    },
+    {
+      avatar: 'https://avatars1.githubusercontent.com/u/67034482?s=400&u=1623bbf91704fc5fc444fb013324a0ab9faf0ed3&v=4',
+      image: 'https://news.uchicago.edu/sites/default/files/images/2019-06/sloth_family_tree.jpg', 
+      name: 'Deadly',
+      teamName: 'Kickin Chickens',
+      challengeTitle: 'Things that are cute'
+    },
+    {
+      avatar: 'https://avatars3.githubusercontent.com/u/65255337?s=400&u=813c5093318f0235870d08ecbd15ccb61a3aa5f7&v=4',
+      image: 'https://static01.nyt.com/images/2014/01/28/science/28SLOT_SPAN/28SLOT-articleLarge.jpg?quality=75&auto=webp&disable=upscale',
+      name: 'Gonzo',
+      teamName: 'Kickin Chickens',
+      challengeTitle: 'Things that are slow'
+    }
+  ]
+  };
+  
   onLogin = (event) => {
     this.props.history.push('/login');
   };
@@ -15,53 +88,72 @@ class ContestHome extends Component {
   render() {
     return (
       <div className="container">
-        <h2>CONTEST HOME</h2>
-{/* 
-        <div className="grid">
-          <div className="grid-col grid-col_8">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra
-              lacus ut ex molestie blandit. Etiam et turpis sit amet risus
-              mollis interdum. Suspendisse et justo vitae metus bibendum
-              fringilla sed sed justo. Aliquam sollicitudin dapibus lectus,
-              vitae consequat odio elementum eget. Praesent efficitur eros vitae
-              nunc interdum, eu interdum justo facilisis. Sed pulvinar nulla ac
-              dignissim efficitur. Quisque eget eros metus. Vestibulum bibendum
-              fringilla nibh a luctus. Duis a sapien metus.
-            </p>
-
-            <p>
-              Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-              id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-              consectetur placerat pharetra. Aenean gravida ex ut erat commodo,
-              ut finibus metus facilisis. Nullam eget lectus non urna rhoncus
-              accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-              euismod, augue at condimentum rhoncus, massa lorem semper lacus,
-              sed lobortis augue mi vel felis. Duis ultrices sapien at est
-              convallis congue.
-            </p>
-
-            <p>
-              Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-              Suspendisse posuere dapibus maximus. Aliquam vitae felis libero.
-              In vehicula sapien at semper ultrices. Vivamus sed feugiat libero.
-              Sed sagittis neque id diam euismod, ut egestas felis ultricies.
-              Nullam non fermentum mauris. Sed in enim ac turpis faucibus
-              pretium in sit amet nisi.
-            </p>
+        <div className='leaderboardTable'>
+        <Typography variant='h5'>Leaderboard</Typography>
+        <center>
+          <table>
+            <thead>
+              <th>Rank</th>
+              <th>Team Name</th>
+              <th>Steps</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Team Name</td>
+                <td>total</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Team Name</td>
+                <td>total</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Team Name</td>
+                <td>total</td>
+              </tr>
+            </tbody>
+          </table>
+        </center>
+        </div>
+        {/* react multi carousel */}
+        <div className='topSteppers'>
+          <Typography variant='h5'>Today's Top Steppers</Typography>
+          <Carousel responsive={responsive}
+          swipeable={true}
+          infinite={true}
+          autoPlaySpeed={4000}
+          autoPlay={this.props.deviceType !== "mobile" ? true : false}
+          removeArrowOnDeviceType={["tablet", "mobile"]}>
+          { this.state.topSteppers.map( ( item, i ) => 
+              <Paper className='stepperPaper'>
+                <img className='avatar' src={item.image}/>
+                <Typography variant='body2'>{item.name}</Typography>
+                <Typography variant='body2'>{item.teamName}</Typography>
+                <Typography variant='body2'>{item.challengeTitle}</Typography>
+              </Paper>
+            )}
+          </Carousel>
+        </div>
+        <div className='challengeOfTheDay'>
+          <Typography variant='h5'>Challenge of the Day</Typography>
+          <Typography variant='subtitle1'>Today's Challenge Title</Typography>
+          <Typography variant='body2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor pretium viverra suspendisse potenti nullam. Nisl nisi scelerisque eu ultrices.</Typography>
+          <div className='imageFeed'>
+          { this.state.images.map( ( item, i ) => 
+              <Paper className='stepperPaper'>
+                <img src={item.image}/>
+                <img className='avatarFeed' src={item.avatar}/>
+                <div className='feedInfo'>
+                  <Typography variant='body2'>{item.name}</Typography>
+                  <Typography variant='body2'>{item.teamName}</Typography>
+                  <Typography variant='body2'>{item.challengeTitle}</Typography>
+                </div>
+              </Paper>
+            )}
           </div>
-          <div className="grid-col grid-col_4">
-            <RegisterForm />
-
-            <center>
-              <h4>Already a Member?</h4>
-              <button className="btn btn_sizeSm" onClick={this.onLogin}>
-                Login
-              </button>
-            </center>
-          </div>
-        </div> */}
+        </div>
       </div>
     );
   }
