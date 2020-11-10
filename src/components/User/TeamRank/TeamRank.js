@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './TeamRank.css';
+import { Typography } from '@material-ui/core';
 
 class TeamRank extends Component {
   state = {
-    heading: 'Team Rank',
+    rank: 7,
+    stepCount: 3325,
   };
 
   render() {
     return (
       <div>
-        <h2>{this.state.heading}</h2>
+        <Typography variant='h6'>{this.state.stepCount} steps</Typography>
+        <Typography variant='h6'>Rank: {this.state.rank}</Typography>
       </div>
     );
   }
