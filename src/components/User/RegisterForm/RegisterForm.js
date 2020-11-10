@@ -13,6 +13,11 @@ class RegisterForm extends Component {
     photo: ''
   };
 
+  componentDidMount() {
+    // Dispatching fetch contest on this page load so that users have access contest for drop down.
+    this.props.dispatch({ type: 'FETCH_CONTEST'});
+  }
+
   registerUser = (event) => {
     event.preventDefault();
 
@@ -45,6 +50,7 @@ class RegisterForm extends Component {
   };
 
   render() {
+    console.log('in register form these are our props', this.props);
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
         <h2>Register User</h2>
@@ -118,7 +124,6 @@ class RegisterForm extends Component {
             Photo:
             <input
               type="file"
-              required
               onChange={this.photoSelectedHandler}
             />
           </label>
