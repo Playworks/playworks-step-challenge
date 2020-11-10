@@ -1,0 +1,16 @@
+.avatarFeed {
+    margin-left: 1rem;
+    object-fit: cover;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .feedInfo {
+    display: inline-block;
+    margin-left: 1.5rem;
+    margin-bottom: .25rem;
+  }
+

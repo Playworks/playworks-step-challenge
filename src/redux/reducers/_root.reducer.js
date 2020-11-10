@@ -15,6 +15,7 @@ const rootReducer = combineReducers({
   challenges, // will contain all challenges with id
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
+  challenges, // will contain all challenges
 });
 
 export default rootReducer;

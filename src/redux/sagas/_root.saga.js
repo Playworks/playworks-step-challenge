@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import challengesSaga from './challenges.saga';
 import contestSaga from './contest.saga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
