@@ -5,7 +5,6 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import teamSaga from './team.saga';
 import userSaga from './user.saga';
-import challengesSaga from './challenges.saga';
 
 
 // rootSaga is the primary saga.

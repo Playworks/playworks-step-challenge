@@ -25,7 +25,6 @@ class ContestHome extends Component {
         <TopSteppers />
         <ChallengeOfTheDay/>
         <AllChallengePhotos/>
-        <Challenges/>
       </div>
     );
   }
