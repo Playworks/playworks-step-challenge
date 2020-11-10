@@ -11,7 +11,7 @@ tbody {
   background-color: white;
 }
 
-.topSteppers {
+.topSteppers, .challengeOfTheDay {
   margin-top: 2rem;
 }
 
@@ -24,8 +24,24 @@ tbody {
   position: relative;
 }
 
+.avatarFeed {
+  margin-left: .5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  position: relative;
+}
+
+.feedInfo {
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
 .stepperPaper {
   padding: .25rem;
+  margin-bottom: .5rem;
   margin-right: .2rem;
 }
 
