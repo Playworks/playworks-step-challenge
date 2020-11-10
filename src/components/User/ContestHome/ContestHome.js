@@ -6,6 +6,7 @@ import { Paper, Typography } from '@material-ui/core';
 // react multi carousel
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Challenges from '../Challenges/Challenges';
 
 const responsive = {
   superLargeDesktop: {
@@ -138,7 +139,7 @@ class ContestHome extends Component {
         </div>
         <div className='challengeOfTheDay'>
           <Typography variant='h5'>Challenge of the Day</Typography>
-          <Typography variant='subtitle1'>Today's Challenge Title</Typography>
+          <Typography variant='subtitle1'><Challenges/></Typography>
           <Typography variant='body2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor pretium viverra suspendisse potenti nullam. Nisl nisi scelerisque eu ultrices.</Typography>
           <div className='imageFeed'>
           { this.state.images.map( ( item, i ) => 
