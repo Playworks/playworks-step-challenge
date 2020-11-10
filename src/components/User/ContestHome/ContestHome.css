@@ -24,6 +24,7 @@ tbody {
   position: relative;
 }
 
+
 .avatarFeed {
   margin-left: 1rem;
   object-fit: cover;
@@ -42,6 +43,10 @@ tbody {
 .stepperPaper {
   padding: .25rem;
   margin-right: .2rem;
+}
+
+.imageFeedCard {
+  margin-bottom: .5rem;
 }
 
 /* --------------------------------------------------------------------------------
