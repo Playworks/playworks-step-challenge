@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import challengesSaga from './challenges.saga';
 import contestSaga from './contest.saga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
@@ -20,5 +21,6 @@ export default function* rootSaga() {
     userSaga(),
     teamSaga(), // Listens for 'CREATE_TEAM'
     contestSaga(), // Listens for 'FETCH_CONTEST'
+    challengesSaga() // Listens for 'FETCH_CHALLENGES'
   ]);
 }

@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import contest from './contest.reducer';
+import challenges from './challenges.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   contest, // will contain all contests with id
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
+  challenges, // will contain all challenges
 });
 
 export default rootReducer;
