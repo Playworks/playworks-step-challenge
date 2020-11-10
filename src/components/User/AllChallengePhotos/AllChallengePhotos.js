@@ -33,11 +33,6 @@ class AllChallengePhotos extends Component {
 
   render() {
     return (
-      <div>
-          <div className='challengeOfTheDay'>
-          <Typography variant='h5'>Challenge of the Day</Typography>
-          <Typography variant='subtitle1'>Today's Challenge Title</Typography>
-          <Typography variant='body2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor pretium viverra suspendisse potenti nullam. Nisl nisi scelerisque eu ultrices.</Typography>
           <div className='imageFeed'>
             { this.state.images.map( ( item, i ) => 
             <div className='imageFeedCard'>
@@ -56,9 +51,7 @@ class AllChallengePhotos extends Component {
                 </Card>
               </div>
               )}
-            </div>
-        </div>
-      </div>
+          </div>
     );
   }
 }

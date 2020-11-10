@@ -1,17 +1,5 @@
-thead {
-  background-color: #193859;
-  color: white;
-}
 
-tr:nth-child(even) {
-  background: #E5E9EC
-}
-
-tbody {
-  background-color: white;
-}
-
-.topSteppers, .challengeOfTheDay {
+.topSteppers, .challengeOfTheDay, .teamStepCount {
   margin-top: 2rem;
 }
 
@@ -24,6 +12,10 @@ tbody {
   position: relative;
 }
 
+.stepperPaper {
+  padding: .25rem;
+  margin-right: .2rem;
+}
 
 .avatarFeed {
   margin-left: 1rem;
@@ -38,11 +30,6 @@ tbody {
 .feedInfo {
   display: inline-block;
   margin-left: 1.5rem;
-}
-
-.stepperPaper {
-  padding: .25rem;
-  margin-right: .2rem;
 }
 
 .imageFeedCard {

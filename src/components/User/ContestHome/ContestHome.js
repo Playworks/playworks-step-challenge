@@ -5,12 +5,9 @@ import './ContestHome.css';
 import Leaderboard from '../Leaderboard/Leaderboard';
 import TopSteppers from '../TopSteppers/TopSteppers';
 import AllChallengePhotos from '../AllChallengePhotos/AllChallengePhotos';
-
+import ChallengeOfTheDay from '../Challenges/Challenges'
 
 class ContestHome extends Component {
-
-  state = {
-  };
   
   onLogin = (event) => {
     this.props.history.push('/login');
@@ -21,7 +18,8 @@ class ContestHome extends Component {
       <div className="container">
         <Leaderboard />
         <TopSteppers />
-        <AllChallengePhotos />
+        <ChallengeOfTheDay/>
+        <AllChallengePhotos/>
       </div>
     );
   }
