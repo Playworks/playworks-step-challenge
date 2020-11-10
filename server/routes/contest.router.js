@@ -16,4 +16,22 @@ router.get('/', (req, res) => {
   });
 });
 
+// POST route for adding contest
+router.post('/', rejectUnauthenticated, (req, res) => {
+  console.log('REQ.BODY', req.body);
+  
+  const queryString = `
+      INSERT INTO "contests" ("name", "start_date", "end_date")
+      VALUES ($1, $2, $3);
+  `;
+  pool.query(queryString, [req.body.name, req.body.start_date, req.body.end_date,])
+      .then((results) => {
+          res.sendStatus(201);
+      })
+      .catch(err => {
+          console.error(`POST /songs failed`, err);
+          res.sendStatus(500);
+      });
+});
+
 module.exports = router;
