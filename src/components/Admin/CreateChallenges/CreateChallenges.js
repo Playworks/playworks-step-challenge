@@ -5,7 +5,9 @@ import './CreateChallenges.css';
 
 class CreateChallenges extends Component {
   state = {
-    heading: 'Create Challenges',
+    name: '',
+    description: '',
+    date: ''
   };
 
   render() {
