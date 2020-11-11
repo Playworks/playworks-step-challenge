@@ -7,15 +7,8 @@ function* createTeamSaga(action){
   console.log(response);
 };
 
-function* fetchTeamAndCaptainsSaga(){
-  console.log('in fetchTeamAndCaptainsSaga');
-  let response = yield axios.get(`/api/teams/search`);
-  console.log(response);
-}
-
 function* teamSaga() {
   yield takeLatest('CREATE_TEAM', createTeamSaga);
-  yield takeLatest('FETCH_TEAMS_AND_CAPTAINS', fetchTeamAndCaptainsSaga);
 };
 
 export default teamSaga;

@@ -19,10 +19,37 @@ router.get('/', (req, res) => {
   })
 });
 
-router.get('/search', (req, res) => {
-  console.log('in router.get /api/teams/search');
-  res.sendStatus(201);
+router.get('/searchforteams/:id', (req, res) => {
+  console.log('in router.get api/teams/searchforteams');
+  const queryText = `
+    SELECT "teams"."id" AS "teams_id", "teams"."name" FROM "teams"
+    WHERE "contests_id" = $1 ORDER BY "name" ASC;`;
+  pool.query(queryText, [req.params.id])
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(error => {
+    console.log('We have an error in GET /searchforteams/:id', error);
+    res.sendStatus(501);
+  });
 });
+
+router.get('/searchforcaptains/:id', (req, res) => {
+  console.log('in router.get api/teams/searchforcaptains');
+  const queryText = `
+    SELECT "user"."teams_id", CONCAT("first_name", ' ', "last_name") AS "name" from "user"
+    JOIN "teams"
+    ON "teams"."id" = "user"."teams_id"
+    WHERE "contests_id" = $1 AND "admin" = 'CAPTAIN' ORDER BY "name" ASC;`;
+  pool.query(queryText, [req.params.id])
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(error => {
+    console.log('We have an error in GET /searchforteams/:id', error);
+    res.sendStatus(501);
+  });
+})
 
 // Post route creates a team then updates users admin level to be captain
 router.post('/', (req, res) => {
