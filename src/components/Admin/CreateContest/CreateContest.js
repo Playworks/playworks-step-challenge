@@ -10,7 +10,8 @@ class CreateContest extends Component {
     state = {
         name: '',
         start_date: '',
-        end_date: ''
+        end_date: '',
+        image: ''
       };
     
       createContest = (event) => {
