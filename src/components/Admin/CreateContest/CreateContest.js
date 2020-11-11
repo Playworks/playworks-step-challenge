@@ -46,60 +46,62 @@ class CreateContest extends Component {
   render() {
     return (
       <div className="createContestFormPanel">
-        <Typography variant='h4'>Create Contest</Typography>
-        <TextField id="outlined-basic" 
-          label="Contest Name" 
-          variant="outlined" 
-          value={this.state.name}
-          required 
-          onChange={this.handleInputChangeFor('name')}>
-        </TextField>
-        <div className='startDate'>
-        <label htmlFor="start_date">
-          Start Date:
-          <input
-              type="date"
-              name="start_date"
-              value={this.state.start_date}
-              required
-              onChange={this.handleInputChangeFor('start_date')}
-          />
-        </label>
-      </div>
-        <div className='endDate'>
-        <label htmlFor="end_date">
-          End Date:
-          <input
-              type="date"
-              name="end_date"
-              value={this.state.end_date}
-              onChange={this.handleInputChangeFor('end_date')}
-          />
-        </label>
-      </div>
-        <div className='contestImage'>
-          { this.state.image === '' ? (
-            <img style={{marginTop: '1rem', width: '300px'}} src= { Placeholder } /> 
-            ) : ( 
-            <img style={{marginTop: '1rem', width: '300px'}} src= { this.state.image } /> 
-          )}
+        <center>
+          <Typography variant='h4'>Create Contest</Typography>
+          <TextField id="outlined-basic" 
+            label="Contest Name" 
+            variant="outlined" 
+            value={this.state.name}
+            required 
+            onChange={this.handleInputChangeFor('name')}>
+          </TextField>
+          <div className='startDate'>
+          <label htmlFor="start_date">
+            Start Date:
+            <input
+                type="date"
+                name="start_date"
+                value={this.state.start_date}
+                required
+                onChange={this.handleInputChangeFor('start_date')}
+            />
+          </label>
         </div>
-        <div className='chooseImageBtn'>
-          <Button 
-            variant='contained' 
-            color='default'
-            onClick={this.selectImage}>Choose Image
-          </Button>
+          <div className='endDate'>
+          <label htmlFor="end_date">
+            End Date:
+            <input
+                type="date"
+                name="end_date"
+                value={this.state.end_date}
+                onChange={this.handleInputChangeFor('end_date')}
+            />
+          </label>
         </div>
-        <div className='createContestBtn'>
+          <div className='contestImage'>
+            { this.state.image === '' ? (
+              <img style={{marginTop: '1rem', width: '300px'}} src= { Placeholder } /> 
+              ) : ( 
+              <img style={{marginTop: '1rem', width: '300px'}} src= { this.state.image } /> 
+            )}
+          </div>
+          <div className='chooseImageBtn'>
+            <Button 
+              variant='contained' 
+              color='default'
+              onClick={this.selectImage}>Choose Image
+            </Button>
+          </div>
+          <div className='createContestBtn'>
               <Button variant='contained' 
                 color='primary'
                 size= 'large'
                 style={{margin: '.5rem'}}
                 onClick={this.createContest}>
                 Create Contest
-              </Button>
-            </div>
+              </Button> 
+          </div>
+        </center>
       </div>
     );
   }
