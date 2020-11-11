@@ -29,13 +29,16 @@ import CreateOrJoinTeam from '../User/CreateOrJoinTeam/CreateOrJoinTeam';
 import CreateTeam from '../User/CreateTeam/CreateTeam';
 import JoinTeam from '../User/JoinTeam/JoinTeam';
 import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
-import Challenges from '../Admin/Challenges/Challenges';
+import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
+import Challenges from '../User/Challenges/Challenges';
+import CreateChallenges from '../Admin/CreateChallenges/CreateChallenges';
 import CreateContest from '../Admin/CreateContest/CreateContest';
 import EditChallenges from '../Admin/EditChallenges/EditChallenges';
 import EditContests from '../Admin/EditContests/EditContests';
 import EditRules from '../Admin/EditRules/EditRules';
 import EditFAQ from '../Admin/EditFAQ/EditFAQ';
 import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
+import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
 
 class App extends Component {
   componentDidMount() {
@@ -112,6 +115,12 @@ class App extends Component {
             />
 
             <Route
+            exact
+            path='/challenges'
+            component={AdminChallenges}
+            />
+
+            <Route
               exact
               path="/challenges"
               component={Challenges}
@@ -145,6 +154,12 @@ class App extends Component {
               exact
               path="/adminhome"
               component={PlayworksAdminHome}
+            />
+
+            <Route
+              exact
+              path="/contestdescription"
+              component={ContestDescriptionPage}
             />
 
             <Route
