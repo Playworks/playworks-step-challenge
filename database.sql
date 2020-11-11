@@ -41,7 +41,7 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL,
     "image_path" TEXT,
     "admin" admin_level,
-    "teams_id" INT REFERENCES "teams",
+    "teams_id" INT REFERENCES "teams"
 );
 
 CREATE TABLE "challenges" (
