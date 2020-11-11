@@ -1,0 +1,9 @@
+.rulesFaq {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pdf {
+    width: 50%;
+}

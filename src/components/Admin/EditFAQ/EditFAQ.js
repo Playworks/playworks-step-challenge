@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import { Grid } from "@material-ui/core";
 import './EditFAQ.css';
 
 class EditFAQ extends Component {
@@ -10,9 +11,14 @@ class EditFAQ extends Component {
 
   render() {
     return (
-      <div>
-        <h2>{this.state.heading}</h2>
-      </div>
+        <Grid container direction="column" alignItems="center" className="rulesFaq">
+        <Grid item>
+          <h2>FAQ</h2>
+        </Grid>
+        <Grid item>
+          <button>Upload PDF</button>
+        </Grid>
+      </Grid>
     );
   }
 }
