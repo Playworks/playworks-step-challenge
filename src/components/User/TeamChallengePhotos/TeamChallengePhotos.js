@@ -33,7 +33,7 @@ class TeamChallengePhotos extends Component {
       <div className='imageFeed'>
         { this.state.images.map( ( item, i ) => 
         <div className='imageFeedCard'>
-            <Card >
+            <Card style={{width: '300px'}}>
               <div className='dailyChallengeImage'>
                 <img key={i} src={item.image}/>
               </div>
