@@ -8,8 +8,7 @@ import Leaderboard from '../Leaderboard/Leaderboard';
 import TopSteppers from '../TopSteppers/TopSteppers';
 import AllChallengePhotos from '../AllChallengePhotos/AllChallengePhotos';
 import ChallengeOfTheDay from '../Challenges/Challenges'
-import { Button } from '@material-ui/core';
-
+import RulesFaqBtn from '../RulesFaqBtn/RulesFaqBtn';
 class ContestHome extends Component {
   
   onLogin = (event) => {
@@ -19,15 +18,11 @@ class ContestHome extends Component {
   render() {
     return (
       <div className="container">
-        <Leaderboard />
-        <TopSteppers />
+        <Leaderboard/>
+        <TopSteppers/>
         <ChallengeOfTheDay/>
         <AllChallengePhotos/>
-        <Button variant='contained' 
-            color='default'
-            size= 'large'>
-            Rules & FAQ
-        </Button>
+        <RulesFaqBtn/>
       </div>
     );
   }
