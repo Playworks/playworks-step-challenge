@@ -26,7 +26,6 @@ class Challenges extends Component {
                   challenge={challenge}
                 />
               )}
-
       </div>
     );
   }

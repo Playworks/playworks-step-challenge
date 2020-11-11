@@ -6,6 +6,11 @@ import './CreateContest.css';
 import Placeholder from '../../../images/placeholder-square.png';
 import { Button, TextField, Typography } from '@material-ui/core';
 
+import DatePicker from 'react-date-picker';
+// import placeholder image
+import Placeholder from '../../../images/placeholder-square.png';
+import { Button, TextField, Typography } from '@material-ui/core';
+
 class CreateContest extends Component {
     state = {
         name: '',
@@ -38,9 +43,13 @@ class CreateContest extends Component {
         });                
       };
 
+      selectImage = () => {
+        console.log('in selectImage')
+      }
+
   render() {
     return (
-<div className="createContestFormPanel">
+      <div className="createContestFormPanel">
         <center>
           <Typography variant='h4'>Create Contest</Typography>
           <TextField id="outlined-basic" 
