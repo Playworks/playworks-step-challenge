@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ContestHome from '../User/ContestHome/ContestHome';
 import LoginPage from '../LoginPage/LoginPage';
+import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -32,15 +33,16 @@ const AdminRoute = (props) => {
   if (store.user.admin === 'ADMIN') {
     // if the user is logged in (only logged in users have ids)
     // show the component that is protected
-    ComponentToShow = ComponentToProtect;
-  } else if (store.user.id) {
-    // if they are not logged in, check the loginMode on Redux State
-    // if the mode is 'login', show the LoginPage
-    ComponentToShow = ContestHome;
-  }
-    else {
-        ComponentToShow = LoginPage;
+    ComponentToShow = PlayworksAdminHome;
+  } else {
+    
+    if(store.user.id) {
+      ComponentToShow = ContestHome;
+    } else {
+      ComponentToShow = LoginPage;
     }
+   
+  }
 
   // redirect a logged in user if an authRedirect prop has been provided
   if (store.user.id && adminRedirect != null) {
