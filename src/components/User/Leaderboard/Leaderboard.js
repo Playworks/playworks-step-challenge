@@ -12,7 +12,7 @@ class Leaderboard extends Component {
   render() {
     return (
       <div>
-        <Typography variant='h5'>Leaderboard</Typography>
+        <Typography variant='h5'>{this.state.heading}</Typography>
         <center>
           <table>
             <thead>

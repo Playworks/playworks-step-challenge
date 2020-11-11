@@ -10,17 +10,12 @@ class SubmitSteps extends Component {
     date: '',
   };
 
-  handleChangeFor = ( event, propertyName ) => {
-    // logic for change
+  handleCancel = () => {
+    console.log('in handleCancel')
   }
 
-  submitSteps = () => {
-    // logic to submit steps
-    this.goHome();
-  }
-
-  goHome = () => {
-    this.history.push('/home')
+  handleSubmit = () => {
+    console.log('in handleSubmit')
   }
 
   render() {
@@ -35,21 +30,22 @@ class SubmitSteps extends Component {
               type="date" 
               value={this.state.date.split( 'T' )[0]} 
               id="date" 
-              name="date"
-              onChange={ ( event ) => this.handleChangeFor ( event, 'date' ) }>
+              name="date">
           </input>
         </div>      
         <div style={{marginTop: '2rem'}}>
           <Button variant='contained' 
             color='default'
             size= 'large'
-            onClick={() => {this.history.push('/home')}}>
+            style={{margin: '.5rem'}}
+            onClick={this.handleCancel}>
             Cancel
           </Button>    
           <Button variant='contained' 
             color='primary'
             size= 'large'
-            onClick={this.submitSteps}>
+            style={{margin: '.5rem'}}
+            onClick={this.handleSubmit}>
             Submit
           </Button>
         </div>
