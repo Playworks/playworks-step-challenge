@@ -74,7 +74,7 @@ class RegisterForm extends Component {
             type="text"
             onChange={this.handleInputChangeFor('first_name')}>
           </TextField>
-      </div>
+        </div>
         <div className='registerItem registerLastName'>
           <TextField 
             id="outlined-basic" 
