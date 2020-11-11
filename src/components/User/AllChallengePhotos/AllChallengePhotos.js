@@ -35,10 +35,10 @@ class AllChallengePhotos extends Component {
     return (
           <div className='imageFeed'>
             { this.state.images.map( ( item, i ) => 
-            <div className='imageFeedCard'>
+            <div key={i} className='imageFeedCard'>
                 <Card >
                   <div className='dailyChallengeImage'>
-                    <img key={i} src={item.image}/>
+                    <img src={item.image}/>
                   </div>
                   <Card>
                     <img className='avatarFeed' src={item.avatar}/>

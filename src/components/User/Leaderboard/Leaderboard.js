@@ -16,9 +16,11 @@ class Leaderboard extends Component {
         <center>
           <table>
             <thead>
-              <th>Rank</th>
-              <th>Team Name</th>
-              <th>Steps</th>
+              <tr>
+                <th>Rank</th>
+                <th>Team Name</th>
+                <th>Steps</th>
+              </tr>
             </thead>
             <tbody>
               <tr>

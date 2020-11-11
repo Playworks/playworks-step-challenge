@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateContest.css';
+
 import DatePicker from 'react-date-picker';
 // import placeholder image
 import Placeholder from '../../../images/placeholder-square.png';
