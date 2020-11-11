@@ -45,7 +45,6 @@ class SubmitPhotos extends Component {
           </div>
         </Card>
         <CancelSubmitBtnGroup />
-        
       </div>
     );
   }
