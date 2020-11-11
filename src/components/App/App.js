@@ -36,6 +36,7 @@ import EditContests from '../Admin/EditContests/EditContests';
 import EditRules from '../Admin/EditRules/EditRules';
 import EditFAQ from '../Admin/EditFAQ/EditFAQ';
 import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
+import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
 
 class App extends Component {
   componentDidMount() {
@@ -145,6 +146,12 @@ class App extends Component {
               exact
               path="/adminhome"
               component={PlayworksAdminHome}
+            />
+
+            <Route
+              exact
+              path="/contestdescription"
+              component={ContestDescriptionPage}
             />
 
             <Route
