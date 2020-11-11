@@ -13,7 +13,7 @@ const userRouter = require('./routes/user.router');
 const challengesRouter = require('./routes/challenges.router');
 const photosRouter = require('./routes/photos.router');
 const stepsRouter = require('./routes/steps.router');
-const teamRouter = require('./routes/team.router');
+const teamsRouter = require('./routes/teams.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,7 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/challenges', challengesRouter);
 app.use('/api/photos', photosRouter);
 app.use('/api/steps', stepsRouter);
-app.use('/api/team', teamRouter);
+app.use('/api/teams', teamsRouter);
 app.use('/api/contest', contestRouter);
 
 // Serve static files

@@ -21,6 +21,6 @@ export default function* rootSaga() {
     userSaga(),
     teamSaga(), // Listens for 'CREATE_TEAM'
     contestSaga(), // Listens for 'FETCH_CONTEST'
-    challengesSaga() // Listens for 'FETCH_CHALLENGES'
+    challengesSaga(), // Listens for 'FETCH_CHALLENGES'
   ]);
 }

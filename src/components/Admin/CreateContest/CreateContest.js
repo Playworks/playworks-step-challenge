@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateContest.css';
-import DatePicker from 'react-date-picker';
 // import placeholder image
 import Placeholder from '../../../images/placeholder-square.png';
 import { Button, TextField, Typography } from '@material-ui/core';
@@ -45,7 +44,7 @@ class CreateContest extends Component {
 
   render() {
     return (
-      <div className="createContestFormPanel">
+<div className="createContestFormPanel">
         <center>
           <Typography variant='h4'>Create Contest</Typography>
           <TextField id="outlined-basic" 
