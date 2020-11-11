@@ -13,13 +13,7 @@ class RegisterForm extends Component {
     username: '',
     password: '',
     photo: '',
-    contestId: '',
   };
-
-  componentDidMount() {
-    // Dispatching fetch contest on this page load so that users have access contest for drop down.
-    this.props.dispatch({ type: 'FETCH_CONTEST'});
-  }
 
   registerUser = (event) => {
     event.preventDefault();
@@ -33,7 +27,6 @@ class RegisterForm extends Component {
         username: this.state.username,
         password: this.state.password,
         photo: this.state.photo,
-        contestId: this.state.contestId
       },
     });
     this.props.history.push('/createorjointeam');
@@ -127,24 +120,14 @@ class RegisterForm extends Component {
           onChange={this.handleInputChangeFor('password')}>
         </TextField>
         </div>
-        <div className='registerItem registerSelectContest'>
-          <FormControl required variant='outlined' style={{minWidth: '60%'}}>
-            <InputLabel id="demo-simple-select-helper-label">Select Contest</InputLabel>
-            <Select
-              labelId="demo-simple-select-helper-label"
-              id="demo-simple-select-helper"
-              value={this.state.contestId}
-              onChange={this.handleInputChangeFor('contestId')}
-              >
-              {this.props.store.contest.map(contest => 
-              <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
-              )}
-            </Select>
-          </FormControl>
-        </div>
-        <div className='registerItem registerProfilePhoto' >
-          <InputLabel style={{marginTop: '1.5rem'}}>Upload Profile Image</InputLabel>
-          <Input className="registerItem" disableUnderline={true} style={{marginLeft: '3.5rem'}} type="file" onChange={this.photoSelectedHandler}></Input>
+        <div>
+          <label htmlFor="photo">
+            Photo:
+            <input
+              type="file"
+              onChange={this.photoSelectedHandler}
+            />
+          </label>
         </div>
         <div className="registerItem registerBtn">
           <Button 
