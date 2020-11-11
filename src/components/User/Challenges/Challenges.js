@@ -21,12 +21,11 @@ class Challenges extends Component {
     return (
       <div className='challengeOfTheDay'>
         {this.props.store.challenges.map((challenge, i) => 
-                <ChallengesItem
-                  key={challenge.id}
-                  challenge={challenge}
-                />
-              )}
-
+          <ChallengesItem
+            key={challenge.id}
+            challenge={challenge}
+          />
+        )}
       </div>
     );
   }

@@ -78,11 +78,12 @@ class CreateContest extends Component {
           </label>
         </div>
           <div className='contestImage'>
-            { this.state.image === '' ? (
-              <img style={{marginTop: '1rem', width: '300px'}} src= { Placeholder } /> 
-              ) : ( 
-              <img style={{marginTop: '1rem', width: '300px'}} src= { this.state.image } /> 
-            )}
+            <Typography variant='h6'>Contest Logo</Typography>
+              { this.state.image === '' ? (
+                <img style={{width: '300px'}} src= { Placeholder } /> 
+                ) : ( 
+                <img style={{width: '300px'}} src= { this.state.image } /> 
+              )}
           </div>
           <div className='chooseImageBtn'>
             <Button 
