@@ -74,16 +74,16 @@ VALUES ('Fab Four contest', '2020-11-15', '2020-11-20');
 INSERT INTO "contests" ("name", "start_date", "end_date")
 VALUES ('Some lame contest', '2020-11-20', '2020-10-29');
 -- Fake Teams
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The A-team', 'www.image.com/fakelogo', 1);
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The B-team', 'www.image.com/fakelogo', 1);
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The C-team', 'www.image.com/fakelogo', 2);
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The C-team', 'www.image.com/fakelogo', 3);
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The C-team', 'www.image.com/fakelogo', 3);
+INSERT INTO "teams" ("name", "team_logo")
+VALUES ('The A-team', 'www.image.com/fakelogo');
+INSERT INTO "teams" ("name", "team_logo")
+VALUES ('The B-team', 'www.image.com/fakelogo');
+INSERT INTO "teams" ("name", "team_logo")
+VALUES ('The C-team', 'www.image.com/fakelogo');
+INSERT INTO "teams" ("name", "team_logo")
+VALUES ('The C-team', 'www.image.com/fakelogo');
+INSERT INTO "teams" ("name", "team_logo")
+VALUES ('The C-team', 'www.image.com/fakelogo');
 -- Fake users
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "teams_id", "contests_id")
 VALUES ('spiderman', 'spidey@ateam.com', 'peter', 'parker', '12345', 'https://www.image.com/spiderman', 'ADMIN', NULL, 1);
