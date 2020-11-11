@@ -29,7 +29,8 @@ import CreateOrJoinTeam from '../User/CreateOrJoinTeam/CreateOrJoinTeam';
 import CreateTeam from '../User/CreateTeam/CreateTeam';
 import JoinTeam from '../User/JoinTeam/JoinTeam';
 import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
-import CreateChallenges from '../Admin/CreateChallenges/CreateChallenges';
+import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
+import Challenges from '../User/Challenges/Challenges';
 import CreateContest from '../Admin/CreateContest/CreateContest';
 import EditChallenges from '../Admin/EditChallenges/EditChallenges';
 import EditContests from '../Admin/EditContests/EditContests';
@@ -113,9 +114,15 @@ class App extends Component {
             />
 
             <Route
+            exact
+            path='/challenges'
+            component={AdminChallenges}
+            />
+
+            <Route
               exact
-              path="/createchallenges"
-              component={CreateChallenges}
+              path="/challenges"
+              component={Challenges}
             />
 
             <Route

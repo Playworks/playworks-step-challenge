@@ -7,6 +7,7 @@ import TeamStepCount from '../TeamStepCount/TeamStepCount';
 import { Typography } from '@material-ui/core';
 import ChallengeOfTheDay from '../Challenges/Challenges';
 import TeamChallengePhotos from '../TeamChallengePhotos/TeamChallengePhotos';
+import RulesFaqBtn from '../RulesFaqBtn/RulesFaqBtn';
 
 class TeamHome extends Component {
   state = {
@@ -23,6 +24,7 @@ class TeamHome extends Component {
         <TeamStepCount/>
         <ChallengeOfTheDay/>
         <TeamChallengePhotos/>
+        <RulesFaqBtn/>
       </div>
     );
   }
