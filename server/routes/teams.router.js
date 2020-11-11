@@ -19,17 +19,23 @@ router.get('/', (req, res) => {
   })
 });
 
+router.get('/search', (req, res) => {
+  console.log('in router.get /api/teams/search');
+  res.sendStatus(201);
+});
+
 // Post route creates a team then updates users admin level to be captain
 router.post('/', (req, res) => {
+  console.log('req.body', req.body);
   const team_name = req.body.team_name;
   const team_photo = req.body.team_photo;
   const user_id = req.user.id;
-  const contest_id = req.user.contests_id;
-  console.log('this is our info we need from client', team_name, team_photo, user_id, contest_id)
+  const contests_id = req.body.contests_id;
+  console.log('this is our info we need from client', team_name, team_photo, user_id, contests_id)
   let queryText = `
     INSERT INTO "teams" ("name", "team_logo", "contests_id") 
     VALUES ($1, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/1200px-A-Team-Logo.svg.png', $2) RETURNING "id";`
-  pool.query(queryText, [team_name, contest_id])
+  pool.query(queryText, [team_name, contests_id])
   // First Then
   .then(result => {
     const team_id = result.rows[0].id;

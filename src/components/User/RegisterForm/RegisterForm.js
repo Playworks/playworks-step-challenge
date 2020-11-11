@@ -13,13 +13,7 @@ class RegisterForm extends Component {
     username: '',
     password: '',
     photo: '',
-    contestId: '',
   };
-
-  componentDidMount() {
-    // Dispatching fetch contest on this page load so that users have access contest for drop down.
-    this.props.dispatch({ type: 'FETCH_CONTEST'});
-  }
 
   registerUser = (event) => {
     event.preventDefault();
@@ -33,7 +27,6 @@ class RegisterForm extends Component {
         username: this.state.username,
         password: this.state.password,
         photo: this.state.photo,
-        contestId: this.state.contestId
       },
     });
     this.props.history.push('/createorjointeam');
@@ -122,16 +115,6 @@ class RegisterForm extends Component {
               onChange={this.handleInputChangeFor('password')}
             />
           </label>
-        </div>
-        <div>
-          <InputLabel>
-            Select Contest
-          </InputLabel> 
-          <Select value={this.state.contestId} onChange={this.handleInputChangeFor('contestId')}>
-            {this.props.store.contest.map(contest => 
-            <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
-            )}
-          </Select>
         </div>
         <div>
           <label htmlFor="photo">
