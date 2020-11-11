@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import AllChallengePhotos from '../../User/AllChallengePhotos/AllChallengePhotos';
+import './ContestDescriptionPage.css';
 
 class ContestDescriptionPage extends Component {
   state = {
