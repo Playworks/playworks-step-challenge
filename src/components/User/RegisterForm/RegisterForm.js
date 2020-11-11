@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
+import { InputLabel, MenuItem, Select } from '@material-ui/core';
+
 class RegisterForm extends Component {
   state = {
     first_name: '',
@@ -10,7 +12,8 @@ class RegisterForm extends Component {
     email: '',
     username: '',
     password: '',
-    photo: ''
+    photo: '',
+    contestId: '',
   };
 
   componentDidMount() {
@@ -30,6 +33,7 @@ class RegisterForm extends Component {
         username: this.state.username,
         password: this.state.password,
         photo: this.state.photo,
+        contestId: this.state.contestId
       },
     });
     this.props.history.push('/createorjointeam');
@@ -50,7 +54,7 @@ class RegisterForm extends Component {
   };
 
   render() {
-    console.log('in register form these are our props', this.props);
+    console.log('this is state', this.state);
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
         <h2>Register User</h2>
@@ -118,6 +122,16 @@ class RegisterForm extends Component {
               onChange={this.handleInputChangeFor('password')}
             />
           </label>
+        </div>
+        <div>
+          <InputLabel>
+            Select Contest
+          </InputLabel> 
+          <Select value={this.state.contestId} onChange={this.handleInputChangeFor('contestId')}>
+            {this.props.store.contest.map(contest => 
+            <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
+            )}
+          </Select>
         </div>
         <div>
           <label htmlFor="photo">

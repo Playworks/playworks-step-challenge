@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* createTeamSaga(action){
   console.log('in Create Team Saga, this is action.payload', action.payload);
-  let response = yield axios.post(`/api/team`, action.payload);
+  let response = yield axios.post(`/api/teams`, action.payload);
   console.log(response);
 };
 

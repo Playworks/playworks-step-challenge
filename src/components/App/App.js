@@ -141,7 +141,7 @@ class App extends Component {
               component={EditRules}
             />
 
-            <AdminRoute
+            <Route
               exact
               path="/adminhome"
               component={PlayworksAdminHome}

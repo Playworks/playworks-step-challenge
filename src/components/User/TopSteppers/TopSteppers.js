@@ -69,8 +69,8 @@ class TopSteppers extends Component {
           autoPlay={this.props.deviceType !== "mobile" ? true : false}
           removeArrowOnDeviceType={["tablet", "mobile"]}>
           { this.state.topSteppers.map( ( item, i ) => 
-              <Paper className='stepperPaper'>
-                <img key={i} className='avatar' src={item.image}/>
+              <Paper key={i} className='stepperPaper'>
+                <img className='avatar' src={item.image}/>
                 <Typography variant='body2'>{item.name}</Typography>
                 <Typography variant='body2'>{item.teamName}</Typography>
                 <Typography variant='body2'>{item.steps}</Typography>

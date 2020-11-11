@@ -12,6 +12,7 @@ import challenges from './challenges.reducer';
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
   contest, // will contain all contests with id
+  challenges, // will contain all challenges with id
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   challenges, // will contain all challenges
