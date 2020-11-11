@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateContest.css';
+// import placeholder image
+import Placeholder from '../../../images/placeholder-square.png';
+import { Button, TextField, Typography } from '@material-ui/core';
 
 class CreateContest extends Component {
     state = {
@@ -36,22 +39,17 @@ class CreateContest extends Component {
 
   render() {
     return (
-      <div>
-        <form className="formPanel" onSubmit={this.createContest}>
-        <h2>Create Contest</h2>
-        <div>
-          <label htmlFor="name">
-            Company Name:
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              required
-              onChange={this.handleInputChangeFor('name')}
-            />
-          </label>
-        </div>
-        <div>
+<div className="createContestFormPanel">
+        <center>
+          <Typography variant='h4'>Create Contest</Typography>
+          <TextField id="outlined-basic" 
+            label="Contest Name" 
+            variant="outlined" 
+            value={this.state.name}
+            required 
+            onChange={this.handleInputChangeFor('name')}>
+          </TextField>
+          <div className='startDate'>
           <label htmlFor="start_date">
             Start Date:
             <input
@@ -63,7 +61,7 @@ class CreateContest extends Component {
             />
           </label>
         </div>
-        <div>
+          <div className='endDate'>
           <label htmlFor="end_date">
             End Date:
             <input
@@ -74,10 +72,30 @@ class CreateContest extends Component {
             />
           </label>
         </div>
-        <div>
-          <input className="btn" type="submit" name="submit" value="Create Contest" />
-        </div>
-      </form>
+          <div className='contestImage'>
+            { this.state.image === '' ? (
+              <img style={{marginTop: '1rem', width: '300px'}} src= { Placeholder } /> 
+              ) : ( 
+              <img style={{marginTop: '1rem', width: '300px'}} src= { this.state.image } /> 
+            )}
+          </div>
+          <div className='chooseImageBtn'>
+            <Button 
+              variant='contained' 
+              color='default'
+              onClick={this.selectImage}>Choose Image
+            </Button>
+          </div>
+          <div className='createContestBtn'>
+              <Button variant='contained' 
+                color='primary'
+                size= 'large'
+                style={{margin: '.5rem'}}
+                onClick={this.createContest}>
+                Create Contest
+              </Button> 
+          </div>
+        </center>
       </div>
     );
   }
