@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
 
@@ -14,9 +13,8 @@ class RegisterPage extends Component {
   render() {
     return (
       <div>
-        <RegisterForm />
-
         <center>
+          <RegisterForm />
           <button
             type="button"
             className="btn btn_asLink"
@@ -24,7 +22,7 @@ class RegisterPage extends Component {
               this.props.history.push('/login');
             }}
           >
-            Login
+            Already a member? Login
           </button>
         </center>
       </div>

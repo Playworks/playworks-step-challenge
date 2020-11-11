@@ -31,7 +31,6 @@ import JoinTeam from '../User/JoinTeam/JoinTeam';
 import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
 import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
 import Challenges from '../User/Challenges/Challenges';
-import CreateChallenges from '../Admin/CreateChallenges/CreateChallenges';
 import CreateContest from '../Admin/CreateContest/CreateContest';
 import EditChallenges from '../Admin/EditChallenges/EditChallenges';
 import EditContests from '../Admin/EditContests/EditContests';
