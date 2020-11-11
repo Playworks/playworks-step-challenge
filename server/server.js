@@ -3,7 +3,9 @@ require('dotenv').config();
 
 const app = express();
 const bodyParser = require('body-parser');
+const aws = require('aws-sdk');
 const sessionMiddleware = require('./modules/session-middleware');
+const multer = require('multer')
 
 const passport = require('./strategies/user.strategy');
 
@@ -14,6 +16,8 @@ const challengesRouter = require('./routes/challenges.router');
 const photosRouter = require('./routes/photos.router');
 const stepsRouter = require('./routes/steps.router');
 const teamsRouter = require('./routes/teams.router');
+const s3Router = require('./routes/s3.router');
+
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +37,13 @@ app.use('/api/photos', photosRouter);
 app.use('/api/steps', stepsRouter);
 app.use('/api/teams', teamsRouter);
 app.use('/api/contest', contestRouter);
+app.use('/', s3Router);
+// app.use('/', require('./routes/s3.router')({
+//   bucket: process.env.BUCKET_NAME,
+//   region: 'us-east-2',
+//   headers: {'Access-Control-Allow-Origin': '*'},
+//   ACL: 'private',
+// }));
 
 // Serve static files
 app.use(express.static('build'));
