@@ -29,7 +29,6 @@ CREATE TABLE "teams" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (80) NOT NULL,
     "team_logo" TEXT,
-    "contests_id" INT REFERENCES "contests"
 );
 
 CREATE TABLE "user" (
@@ -41,7 +40,8 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL,
     "image_path" TEXT,
     "admin" admin_level,
-    "teams_id" INT REFERENCES "teams"
+    "teams_id" INT REFERENCES "teams",
+    "contests_id" INT REFERENCES "contests"
 );
 
 CREATE TABLE "challenges" (
