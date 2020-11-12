@@ -6,9 +6,7 @@ import './CreateTeam.css';
 import Logo from '../../../images/PW-hor-logo.png';
 // import material ui
 import { 
-  Button, TextField, Typography,
-  InputLabel, MenuItem, Select
-} from '@material-ui/core';
+  Button, TextField, Typography } from '@material-ui/core';
 // import sweetalert
 import swal from 'sweetalert';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
@@ -112,15 +110,18 @@ class CreateTeam extends Component {
             id="outlined-basic" 
             label="Company Name" 
             variant="outlined"
+            style={{width: '100%'}}
             onChange={this.handleInputChangeFor('company_name')}
           />
           </div>
-          <DropzoneS3Uploader
-                onFinish={this.handleFinishedUpload}
-                s3Url={s3Url}
-                maxSize={1024 * 1024 * 5}
-                upload={uploadOptions}
-          />
+          <div className='dropzoneUploader'>
+            <DropzoneS3Uploader
+                  onFinish={this.handleFinishedUpload}
+                  s3Url={s3Url}
+                  maxSize={1024 * 1024 * 5}
+                  upload={uploadOptions}
+            />
+          </div>
           <center>
             <Button variant='contained' 
               color='primary'
@@ -129,6 +130,25 @@ class CreateTeam extends Component {
               Submit
             </Button>
           </center>
+        </div>
+        <div id='footer'>
+        <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {this.props.history.push('/createorjointeam')}}>
+            Go Back</button>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {this.props.history.push('/jointeam')}}>
+            Join Team</button>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
+            Log Out
+          </button>
+
         </div>
       </div>
     );
