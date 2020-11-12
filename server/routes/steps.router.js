@@ -67,8 +67,18 @@ router.get('/topsteppers', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  // POST route code here
-  console.log('steps router post');
+    
+  const queryString = `
+  INSERT INTO "steps" ("user_id", "date", "steps")
+      VALUES ($1, $2, $3);
+  `
+  pool.query(queryString, [req.user.id, req.body.date, req.body.steps])
+  .then(response => {    
+    res.send(response.rows);
+  })
+  .catch(error => {
+    res.status(500);
+  })
 });
 
 module.exports = router;
