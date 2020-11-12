@@ -18,7 +18,6 @@ class CreateTeam extends Component {
   state = {
     team_name: '',
     team_photo: '',
-    contests_id: '',
     company_name: '',
   }
 
@@ -49,9 +48,6 @@ class CreateTeam extends Component {
     else if(this.state.company_name === ''){
       swal(`Please enter company name`);
     }
-    else if(this.state.contests_id === ''){
-      swal(`Please select a contest`);
-    }
     else{
       swal({
         title: "Is the submitted info correct?",
@@ -67,7 +63,6 @@ class CreateTeam extends Component {
             payload: {
               team_name: this.state.team_name,
               team_photo: this.state.team_photo,
-              contests_id: this.state.contests_id,
               company_name: this.state.company_name,
             }
         });
@@ -78,7 +73,6 @@ class CreateTeam extends Component {
           this.setState({
             team_name: '',
             team_photo: '',
-            contests_id: '',
             company_name: '',
           });
           this.props.history.push('/home');
@@ -89,9 +83,6 @@ class CreateTeam extends Component {
   };
 
   render() {
-    console.log('this is our state', this.state);
-    console.log('in createTeam js these are our props', this.props);
-
     const uploadOptions = {
       server: 'http://localhost:5000',
       // signingUrlQueryParams: {uploadType: 'avatar'},
@@ -124,27 +115,12 @@ class CreateTeam extends Component {
             onChange={this.handleInputChangeFor('company_name')}
           />
           </div>
-          <div>
-            <InputLabel>
-              Select Contest
-            </InputLabel> 
-            <Select value={this.state.contests_id} onChange={this.handleInputChangeFor('contests_id')}>
-              {this.props.store.contest.map(contest => 
-              <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
-              )}
-            </Select>
-          </div>
           <DropzoneS3Uploader
                 onFinish={this.handleFinishedUpload}
                 s3Url={s3Url}
                 maxSize={1024 * 1024 * 5}
                 upload={uploadOptions}
           />
-          <Button 
-            variant='contained' 
-            onClick={() => this.photoInput.click()} >
-              Choose photo
-          </Button>
           <center>
             <Button variant='contained' 
               color='primary'

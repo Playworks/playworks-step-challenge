@@ -29,7 +29,6 @@ CREATE TABLE "teams" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (80) NOT NULL,
     "team_logo" TEXT,
-    "contests_id" INT REFERENCES "contests",
     "company_name" VARCHAR (120)
 );
 
@@ -42,6 +41,7 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL,
     "image_path" TEXT,
     "admin" admin_level,
+    "contests_id" INT REFERENCES "contests",
     "teams_id" INT REFERENCES "teams"
 );
 
@@ -75,31 +75,31 @@ VALUES ('Fab Four contest', '2020-11-15', '2020-11-20');
 INSERT INTO "contests" ("name", "start_date", "end_date")
 VALUES ('Some lame contest', '2020-11-20', '2020-10-29');
 -- Fake Teams
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The A-team', 'www.image.com/fakelogo', 1);
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The B-team', 'www.image.com/fakelogo', 1);
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The C-team', 'www.image.com/fakelogo', 2);
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The C-team', 'www.image.com/fakelogo', 3);
-INSERT INTO "teams" ("name", "team_logo", "contests_id")
-VALUES ('The C-team', 'www.image.com/fakelogo', 3);
+INSERT INTO "teams" ("name", "team_logo", "company_name")
+VALUES ('The A-team', 'www.image.com/fakelogo', 'company A');
+INSERT INTO "teams" ("name", "team_logo", "company_name")
+VALUES ('The B-team', 'www.image.com/fakelogo', 'company B');
+INSERT INTO "teams" ("name", "team_logo", "company_name")
+VALUES ('The C-team', 'www.image.com/fakelogo', 'company A');
+INSERT INTO "teams" ("name", "team_logo", "company_name")
+VALUES ('The C-team', 'www.image.com/fakelogo', 'company B');
+INSERT INTO "teams" ("name", "team_logo", "company_name")
+VALUES ('The C-team', 'www.image.com/fakelogo', 'company A');
 -- Fake users
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "teams_id")
-VALUES ('spiderman', 'spidey@ateam.com', 'peter', 'parker', '12345', 'https://www.image.com/spiderman', 'ADMIN', NULL);
+VALUES ('spiderman', 'spidey@ateam.com', 'peter', 'parker', '12345', 'https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png', 'ADMIN', NULL);
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "teams_id")
-VALUES ('superman', 'super@ateam.com', 'clark', 'kent', '12345', 'https://www.image.com/spiderman', 'ADMIN', NULL);
+VALUES ('superman', 'super@ateam.com', 'clark', 'kent', '12345', 'https://cdn.theatlantic.com/thumbor/', 'ADMIN', NULL);
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "teams_id")
-VALUES ('batman', 'batty@ateam.com', 'bruce', 'wayne', '12345', 'https://www.image.com/spiderman', 'USER', NULL);
+VALUES ('batman', 'batty@ateam.com', 'bruce', 'wayne', '12345', 'https://i.guim.co.uk/img/media/d561f480a83e4cd422286b0b46205d6c45dd6cdf/0_51_3504_2104/master/3504.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=dbb3c0ad9007b4f125dd04b9612ebb79', 'USER', NULL);
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "teams_id")
-VALUES ('wonder woman', 'ww@ateam.com', 'diana', 'prince', '12345', 'https://www.image.com/spiderman', 'CAPTAIN', NULL);
+VALUES ('wonder woman', 'ww@ateam.com', 'diana', 'prince', '12345', 'https://media.vanityfair.com/photos/5c4ddf0fba532c6650dedf67/2:3/w_887,h_1331,c_limit/wonder-woman-3-modern.jpg', 'CAPTAIN', NULL);
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "teams_id")
-VALUES ('aquaman', 'aquaman@ateam.com', 'arthur', 'curry', '12345', 'https://www.image.com/spiderman', 'CAPTAIN', NULL);
+VALUES ('aquaman', 'aquaman@ateam.com', 'arthur', 'curry', '12345', 'https://images.news18.com/ibnlive/uploads/2018/12/Aquaman.jpg', 'CAPTAIN', NULL);
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "teams_id")
-VALUES ('incredible hulk', 'hulk@ateam.com', 'bruce', 'banner', '12345', 'https://www.image.com/spiderman', 'USER', NULL);
+VALUES ('incredible hulk', 'hulk@ateam.com', 'bruce', 'banner', '12345', 'https://i.ytimg.com/vi/jolXso_OO-c/maxresdefault.jpg', 'USER', NULL);
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "teams_id")
-VALUES ('flash', 'flash@ateam.com', 'barry', 'allen', '12345', 'https://www.image.com/spiderman', 'USER', NULL);
+VALUES ('flash', 'flash@ateam.com', 'barry', 'allen', '12345', 'https://assets1.ignimgs.com/2020/04/28/the-flash-button-1588080415464.jpg', 'USER', NULL);
 -- Adding fake users to fake teams
 UPDATE "user"
 SET "teams_id" = 1
