@@ -141,13 +141,6 @@ class CreateTeam extends Component {
                 maxSize={1024 * 1024 * 5}
                 upload={uploadOptions}
           />
-          {/* <img style={{marginTop: '1rem'}} height='250' src= { Placeholder } />
-          <input
-            type='file'
-            style={{display: 'none'}}
-            ref={photoInput => this.photoInput = photoInput}
-            onChange={this.photoSelectedHandler} 
-          /> */}
           <Button 
             variant='contained' 
             onClick={() => this.photoInput.click()} >
