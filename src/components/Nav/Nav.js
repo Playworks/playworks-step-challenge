@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Logo from '../../images/PW-hor-logo.png'
+import MenuIcon from '@material-ui/icons/Menu';
+import { Button, Menu, MenuItem } from '@material-ui/core';
 
 const Nav = (props) => {
   let loginLinkData = {
@@ -16,24 +19,66 @@ const Nav = (props) => {
     loginLinkData.text = 'Home';
   }
 
+  const [ anchorEl, setAnchorEl ] = React.useState( null );
+
+  const handleClick = ( event ) => {
+    setAnchorEl( event.currentTarget );
+  };
+
+  const handleClose = () => {
+    setAnchorEl( null );
+  };
+
+
   return (
     <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
-      </Link>
-      <div className="nav-right">
-        <Link className="nav-link" to={loginLinkData.path}>
+      <div className="nav-title">
+        <Link to="/home">
+          <img src={Logo} />
+        </Link>
+      </div>
+
+        {/* Shows the hamburger menu if the user is logged in */}
+         { props.store.user.id == null ? ( null ) : (  
+          <div className='nav-right'>
+            <Button style={{ verticalAlign: 'baseline' }} aria-controls="simple-menu" aria-haspopup="true" onClick={ handleClick }>
+              <MenuIcon fontSize={ 'medium' } style={{ color: 'black' }}/>
+            </Button>
+            <Menu id="simple-menu"
+              anchorEl={ anchorEl }
+              keepMounted
+              open={ Boolean( anchorEl )}
+              onClose={ handleClose }>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/home">Home</Link></MenuItem>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/addphoto">Add Photo</Link></MenuItem>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/addsteps">Add Steps</Link></MenuItem>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/team">Team Page</Link></MenuItem>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/rules">Rules</Link></MenuItem>
+              <MenuItem onClick={() => props.dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
+            </Menu>
+          </div>
+         )} 
+
+      {/* <div className="nav-right">
+
+        <Link className="nav-link" to={loginLinkData.path}> */}
+
           {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
           and call this link 'Login / Register' if they are not */}
-          {loginLinkData.text}
-        </Link>
+          
+          {/* {loginLinkData.text} */}
+          {/* </Link>  */}
+
         {/* Show the link to the info page and the logout button if the user is logged in */}
-        {props.store.user.id && (
+        {/* {props.store.user.id && (
           <>
-            <Link className="nav-link" to="/rules">
-              Rules
-            </Link>
+  
             <Link className="nav-link" to="/addphoto">
               Add Photo
             </Link>
@@ -45,13 +90,10 @@ const Nav = (props) => {
             </Link>
             <LogOutButton className="nav-link" />
           </>
-        )}
-        {/* Always show this link since the about page is not protected */}
-        {/* <Link className="nav-link" to="/about">
-          About
-        </Link> */}
+        )} */}
       </div>
-    </div>
+    // </div>
+
   );
 };
 
