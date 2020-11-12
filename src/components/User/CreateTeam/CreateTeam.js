@@ -47,7 +47,7 @@ class CreateTeam extends Component {
         contests_id: this.state.contests_id
       }
     });
-    // this.props.history.push('/home')
+    this.props.history.push('/home')
   }
 
   render() {

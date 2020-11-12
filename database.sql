@@ -29,7 +29,8 @@ CREATE TABLE "teams" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (80) NOT NULL,
     "team_logo" TEXT,
-    "contests_id" INT REFERENCES "contests"
+    "contests_id" INT REFERENCES "contests",
+    "company_name" VARCHAR (120)
 );
 
 CREATE TABLE "user" (
@@ -63,7 +64,7 @@ CREATE TABLE "photos" (
     "user_id" INT REFERENCES "user",
     "challenges_id" INT REFERENCES "challenges",
     "date" TIMESTAMP NOT NULL,
-    "image_path" TEXT
+    "file_url" TEXT
 );
 
 -- Fake contests

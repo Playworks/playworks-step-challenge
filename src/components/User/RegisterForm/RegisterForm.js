@@ -121,13 +121,17 @@ class RegisterForm extends Component {
         </TextField>
         </div>
         <div>
-          <label htmlFor="photo">
-            Photo:
-            <input
-              type="file"
-              onChange={this.photoSelectedHandler}
-            />
-          </label>
+        <input
+            type='file'
+            style={{display: 'none'}}
+            ref={photoInput => this.photoInput = photoInput}
+            onChange={this.photoSelectedHandler} 
+          />
+          <Button 
+            variant='contained' 
+            onClick={() => this.photoInput.click()} >
+              Choose photo
+          </Button>
         </div>
         <div className="registerItem registerBtn">
           <Button 
