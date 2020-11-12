@@ -21,11 +21,6 @@ class CreateTeam extends Component {
     company_name: '',
   }
 
-  componentDidMount() {
-    // Dispatching fetch contest on this page load so that users have access contest for drop down.
-    this.props.dispatch({ type: 'FETCH_CONTEST'});
-  }
-
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
