@@ -9,7 +9,8 @@ import { Button, Card, Typography } from '@material-ui/core';
 import Placeholder from '../../../images/placeholder-square.png';
 import CancelSubmitBtnGroup from './BtnGroup/BtnGroup';
 import ChallengeOfTheDay from '../Challenges/Challenges'
-
+import Nav from '../../Nav/Nav.js';
+import Footer from '../../Footer/Footer.js';
 
 class SubmitPhotos extends Component {
 
@@ -27,6 +28,9 @@ class SubmitPhotos extends Component {
 
   render() {
     return (
+      <div>
+        <Nav />
+      
       <div className='submitPhotoSection'>
         {/* <Typography variant='h5'>Today's Challenge</Typography>
         <Typography variant='subtitle1'>{this.state.challenge.name}</Typography>
@@ -46,6 +50,8 @@ class SubmitPhotos extends Component {
           </div>
         </Card>
         <CancelSubmitBtnGroup />
+      </div>
+      <Footer />
       </div>
     );
   }

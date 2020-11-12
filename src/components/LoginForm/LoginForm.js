@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { Button, TextField } from '@material-ui/core';
+import './LoginForm.css';
 
 class LoginForm extends Component {
   state = {
@@ -33,38 +35,49 @@ class LoginForm extends Component {
   render() {
     return (
       <form className="formPanel" onSubmit={this.login}>
-        <h2>Login</h2>
+
         {this.props.store.errors.loginMessage && (
           <h3 className="alert" role="alert">
             {this.props.store.errors.loginMessage}
           </h3>
         )}
-        <div>
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
-              required
-              value={this.state.username}
-              onChange={this.handleInputChangeFor('username')}
-            />
-          </label>
+        <div className='loginItem loginUsername'>
+          <TextField 
+            id="outlined-basic" 
+            name="username"  
+            htmlFor="username" 
+            value={this.state.username}
+            label="Username" 
+            variant="outlined"
+            type="text"
+            required
+            onChange={this.handleInputChangeFor('username')}>
+          </TextField>
         </div>
-        <div>
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              name="password"
-              required
-              value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </label>
+        <div className='loginItem loginPassword'>
+          <TextField 
+            id="outlined-basic" 
+            required
+            name="password"  
+            htmlFor="password" 
+            value={this.state.password} 
+            label="Password" 
+            variant="outlined"
+            type="password"
+            onChange={this.handleInputChangeFor('password')}>
+          </TextField>
         </div>
-        <div>
-          <input className="btn" type="submit" name="submit" value="Log In" />
+        <div className="loginItem loginBtn">
+          <Button 
+            variant='contained'
+            style={{ color: 'white', marginTop: '1rem', fontSize: 18, background: '#054f95'}} 
+            color='primary'
+            className="btn" 
+            type="submit" 
+            name="submit" 
+            value="Log In">
+            Login
+          </Button>
         </div>
       </form>
     );

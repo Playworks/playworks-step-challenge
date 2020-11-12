@@ -20,7 +20,7 @@ class Challenges extends Component {
   render() {
     
     return (
-      <div>
+      <div className='challengeOfTheDay'>
         {this.props.store.challenges.map((challenge, i) => 
                 <ChallengesItem
                   key={challenge.id}

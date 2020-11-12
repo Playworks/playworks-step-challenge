@@ -5,13 +5,22 @@ import './CreateTeam.css';
 // import placeholder image
 import Placeholder from '../../../images/placeholder-square.png';
 // import material ui
-import { Button, TextField, Typography } from '@material-ui/core';
+import { 
+  Button, TextField, Typography,
+  InputLabel, MenuItem, Select
+} from '@material-ui/core';
 
 class CreateTeam extends Component {
 
   state = {
     team_name: '',
     team_photo: '',
+    contests_id: '',
+  }
+
+  componentDidMount() {
+    // Dispatching fetch contest on this page load so that users have access contest for drop down.
+    this.props.dispatch({ type: 'FETCH_CONTEST'});
   }
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -30,16 +39,12 @@ class CreateTeam extends Component {
 
   // Function dispatches info to create team to saga Listening for 'CREATE_TEAM'
   createTeam = () => {
-    const objectToSend = {
-      team_name: this.state.team_name,
-      team_photo: this.state.team_photo
-    }
-    console.log('in createTeam function and this is what we are sending', objectToSend);
     this.props.dispatch({
       type: 'CREATE_TEAM',
       payload: {
         team_name: this.state.team_name,
-        team_photo: this.state.team_photo
+        team_photo: this.state.team_photo,
+        contests_id: this.state.contests_id
       }
     });
     // this.props.history.push('/home')
@@ -58,6 +63,17 @@ class CreateTeam extends Component {
             variant="outlined"
             onChange={this.handleInputChangeFor('team_name')}
           />
+           <div>
+            <InputLabel>
+              Select Contest
+            </InputLabel> 
+            <Select value={this.state.contests_id} onChange={this.handleInputChangeFor('contests_id')}>
+              {this.props.store.contest.map(contest => 
+              <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
+              )}
+            </Select>
+          </div>
+
           <img style={{marginTop: '1rem'}} height='250' src= { Placeholder } />
           <input
             type='file'

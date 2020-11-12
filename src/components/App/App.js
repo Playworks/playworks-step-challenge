@@ -29,7 +29,8 @@ import CreateOrJoinTeam from '../User/CreateOrJoinTeam/CreateOrJoinTeam';
 import CreateTeam from '../User/CreateTeam/CreateTeam';
 import JoinTeam from '../User/JoinTeam/JoinTeam';
 import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
-import CreateChallenges from '../Admin/CreateChallenges/CreateChallenges';
+import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
+import Challenges from '../User/Challenges/Challenges';
 import CreateContest from '../Admin/CreateContest/CreateContest';
 import EditChallenges from '../Admin/EditChallenges/EditChallenges';
 import EditContests from '../Admin/EditContests/EditContests';
@@ -57,7 +58,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -123,9 +123,15 @@ class App extends Component {
             />
 
             <Route
+            exact
+            path='/challenges'
+            component={AdminChallenges}
+            />
+
+            <Route
               exact
-              path="/createchallenges"
-              component={CreateChallenges}
+              path="/challenges"
+              component={Challenges}
             />
 
             <Route
@@ -173,10 +179,16 @@ class App extends Component {
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
-            <ProtectedRoute
+            <AdminRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LoginPage at /login
+              exact
+              path="/login"
+              component={LoginPage}
+              authRedirect="/adminhome"
+            />
+            <ProtectedRoute
               exact
               path="/login"
               component={LoginPage}
@@ -190,7 +202,7 @@ class App extends Component {
               path="/registration"
               component={RegisterPage}
               authRedirect="/home"
-            />
+              />
             <Route
               // with authRedirect:
               // - if logged in, redirects to "/user"
@@ -203,7 +215,7 @@ class App extends Component {
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
     );

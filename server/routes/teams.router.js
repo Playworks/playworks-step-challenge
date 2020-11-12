@@ -19,17 +19,50 @@ router.get('/', (req, res) => {
   })
 });
 
+router.get('/searchforteams/:id', (req, res) => {
+  console.log('in router.get api/teams/searchforteams');
+  const queryText = `
+    SELECT "teams"."id" AS "teams_id", "teams"."name" FROM "teams"
+    WHERE "contests_id" = $1 ORDER BY "name" ASC;`;
+  pool.query(queryText, [req.params.id])
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(error => {
+    console.log('We have an error in GET /searchforteams/:id', error);
+    res.sendStatus(501);
+  });
+});
+
+router.get('/searchforcaptains/:id', (req, res) => {
+  console.log('in router.get api/teams/searchforcaptains');
+  const queryText = `
+    SELECT "user"."teams_id", CONCAT("first_name", ' ', "last_name") AS "name" from "user"
+    JOIN "teams"
+    ON "teams"."id" = "user"."teams_id"
+    WHERE "contests_id" = $1 AND "admin" = 'CAPTAIN' ORDER BY "name" ASC;`;
+  pool.query(queryText, [req.params.id])
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(error => {
+    console.log('We have an error in GET /searchforteams/:id', error);
+    res.sendStatus(501);
+  });
+})
+
 // Post route creates a team then updates users admin level to be captain
 router.post('/', (req, res) => {
+  console.log('req.body', req.body);
   const team_name = req.body.team_name;
   const team_photo = req.body.team_photo;
   const user_id = req.user.id;
-  const contest_id = req.user.contests_id;
-  console.log('this is our info we need from client', team_name, team_photo, user_id, contest_id)
+  const contests_id = req.body.contests_id;
+  console.log('this is our info we need from client', team_name, team_photo, user_id, contests_id)
   let queryText = `
     INSERT INTO "teams" ("name", "team_logo", "contests_id") 
     VALUES ($1, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/1200px-A-Team-Logo.svg.png', $2) RETURNING "id";`
-  pool.query(queryText, [team_name, contest_id])
+  pool.query(queryText, [team_name, contests_id])
   // First Then
   .then(result => {
     const team_id = result.rows[0].id;
