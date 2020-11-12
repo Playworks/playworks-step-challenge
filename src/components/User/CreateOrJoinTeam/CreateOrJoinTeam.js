@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateOrJoinTeam.css';
+import Logo from '../../../images/PW-Square-logo.png';
 // material ui
 import { Typography } from '@material-ui/core';
-import GroupAddIcon from '@material-ui/icons/GroupAdd';
+
+import CreateTeamLink from './CreateTeamLink';
+import JoinTeamLink from './JoinTeamLink';
 
 class CreateOrJoinTeam extends Component {
 
@@ -18,19 +21,25 @@ class CreateOrJoinTeam extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: '5rem' }}>
-        <center onClick={this.createTeam}>
-        <GroupAddIcon 
-          style={{ width: 110, height: 110, display: 'block' }} 
-          fontSize='large' 
-          />
-        <Typography variant='h5'>Create Team</Typography>
-        </center>
-
-        <center style={{margin: '5rem', marginBottom: '10'}} 
-          onClick={this.joinTeam}>
-        <i class="fas fa-users fa-5x" ></i>
-        <Typography variant='h5' style={{marginTop: 30}}>Join Team</Typography>
+      <div>
+        <center>
+          <div className='pwLogo'>
+            <img src={Logo}/>
+          </div>
+          <div onClick={this.createTeam}>
+            <CreateTeamLink/>
+          </div>
+          <div onClick={this.joinTeam}>
+            <JoinTeamLink/>
+          </div>
+          <div id='footer'>
+            <button
+              type="button"
+              className="btn btn_asLink"
+              onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
+              Log Out
+            </button>
+          </div>
         </center>
       </div>
     );
