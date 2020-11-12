@@ -1,0 +1,17 @@
+.pwLogo {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+.joinTeamLink {
+    margin-top: 3.5rem;
+    margin-bottom: 7rem;
+}
+
+.createTeamLink {
+    margin-top: 4rem;
+}
