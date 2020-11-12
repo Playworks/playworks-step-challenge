@@ -65,7 +65,15 @@ class CreateTeam extends Component {
             variant="outlined"
             onChange={this.handleInputChangeFor('team_name')}
           />
-           <div>
+          <div>
+          <TextField 
+            id="outlined-basic" 
+            label="Company Name" 
+            variant="outlined"
+            onChange={this.handleInputChangeFor('company_name')}
+          />
+          </div>
+          <div>
             <InputLabel>
               Select Contest
             </InputLabel> 
@@ -74,14 +82,6 @@ class CreateTeam extends Component {
               <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
               )}
             </Select>
-          </div>
-          <div>
-          <TextField 
-            id="outlined-basic" 
-            label="Company Name" 
-            variant="outlined"
-            onChange={this.handleInputChangeFor('company_name')}
-          />
           </div>
           <img style={{marginTop: '1rem'}} height='250' src= { Placeholder } />
           <input
