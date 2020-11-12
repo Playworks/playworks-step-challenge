@@ -68,12 +68,12 @@ class TopSteppers extends Component {
           autoPlaySpeed={4000}
           autoPlay={this.props.deviceType !== "mobile" ? true : false}
           removeArrowOnDeviceType={["tablet", "mobile"]}>
-          { this.state.topSteppers.map( ( item, i ) => 
+          { this.props.store.topSteppers.map( ( user, i ) => 
               <Paper key={i} className='stepperPaper'>
-                <img className='avatar' src={item.image}/>
-                <Typography variant='body2'>{item.name}</Typography>
-                <Typography variant='body2'>{item.teamName}</Typography>
-                <Typography variant='body2'>{item.steps}</Typography>
+                <img className='avatar' src={user.image_path}/>
+                <Typography variant='body2'>{user.username}</Typography>
+                <Typography variant='body2'>Of Team: {user.name}</Typography>
+                <Typography variant='body2'>{user.sum}</Typography>
               </Paper>
             )}
           </Carousel>
