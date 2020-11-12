@@ -113,7 +113,7 @@ class RegisterForm extends Component {
           name="password" 
           required 
           htmlFor="password" 
-          value={this.state.username} 
+          value={this.state.password} 
           label="Password" 
           variant="outlined"
           type="password"
