@@ -8,6 +8,8 @@ import { Typography } from '@material-ui/core';
 import ChallengeOfTheDay from '../Challenges/Challenges';
 import TeamChallengePhotos from '../TeamChallengePhotos/TeamChallengePhotos';
 import RulesFaqBtn from '../RulesFaqBtn/RulesFaqBtn';
+import Nav from '../../Nav/Nav.js';
+import Footer from '../../Footer/Footer.js';
 
 class TeamHome extends Component {
   state = {
@@ -19,12 +21,16 @@ class TeamHome extends Component {
   render() {
     return (
       <div>
+        <Nav />
+      <div>
         <Typography variant='h4'>{this.state.teamName}</Typography>
         <TeamRank/>
         <TeamStepCount/>
         <ChallengeOfTheDay/>
         <TeamChallengePhotos/>
         <RulesFaqBtn/>
+      </div>
+      <Footer />
       </div>
     );
   }

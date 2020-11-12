@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './SubmitSteps.css';
+import Nav from '../../Nav/Nav.js';
+import Footer from '../../Footer/Footer.js';
 // import material ui
 import { Button, TextField } from '@material-ui/core';
 
@@ -20,6 +22,7 @@ class SubmitSteps extends Component {
 
   render() {
     return (
+      <div><Nav />
       <div>
         <center>
         <TextField id="outlined-basic" label="Number of steps" variant="outlined"
@@ -50,6 +53,8 @@ class SubmitSteps extends Component {
           </Button>
         </div>
         </center>
+      </div>
+      <Footer />
       </div>
     );
   }

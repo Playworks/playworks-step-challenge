@@ -4,6 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './PlayworksAdminHome.css';
 import { Typography } from '@material-ui/core';
 import CreateContest from '../CreateContest/CreateContest';
+import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 
 class PlayworksAdminHome extends Component {
   state = {
@@ -13,6 +14,7 @@ class PlayworksAdminHome extends Component {
   render() {
     return (
       <div className='contestTable'>
+        <AdminNav />
         <Typography variant='h5'>{this.state.heading}</Typography>
         <center>
           <table>

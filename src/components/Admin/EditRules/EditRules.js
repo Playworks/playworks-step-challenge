@@ -5,6 +5,7 @@ import { Grid } from "@material-ui/core";
 import Placeholder from '../../../images/placeholder-vertical.jpg';
 import EditFAQ from '../EditFAQ/EditFAQ.js';
 import './EditRules.css';
+import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 
 class EditRules extends Component {
   state = {
@@ -13,6 +14,9 @@ class EditRules extends Component {
 
   render() {
     return (
+      <div>
+        <AdminNav />
+      
       <Grid container direction="column" alignItems="center" className="rulesFaq">
       <Grid item>
         <h2>Rules</h2>
@@ -24,7 +28,7 @@ class EditRules extends Component {
         <button>Delete</button> 
       </Grid>
       <EditFAQ />
-    </Grid>
+    </Grid></div>
     );
   }
 }

@@ -22,30 +22,31 @@ const AdminNav = (props) => {
         <h2 className="nav-title">Prime Solo Project</h2>
       </Link>
       <div className="nav-right">
+        {/*
         <Link className="nav-link" to={loginLinkData.path}>
-          {/* Show this link if they are logged in or not,
+           Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
-          and call this link 'Login / Register' if they are not */}
+          and call this link 'Login / Register' if they are not 
           {loginLinkData.text}
-        </Link>
+        </Link>*/}
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (
           <>
             <Link className="nav-link" to="/adminhome">
               Home
             </Link>
-            <Link className="nav-link" to="/createcontest">
+            {/* <Link className="nav-link" href="#createContest">
               Add Contest
-            </Link>
-            <Link className="nav-link" to="/editcontests">
-              Edit Challenges
+            </Link> */}
+            <Link className="nav-link" to="/editchallenges">
+              Add/Edit Challenges
             </Link>
             <Link className="nav-link" to="/editrules">
-              Edit Rules
+              Edit Rules/FAQ
             </Link>
-            <Link className="nav-link" to="/editfaq">
+            {/* <Link className="nav-link" to="/editfaq">
               Edit FAQ
-            </Link>
+            </Link> */}
             <LogOutButton className="nav-link" />
           </>
         )}

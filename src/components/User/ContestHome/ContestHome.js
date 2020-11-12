@@ -9,6 +9,8 @@ import TopSteppers from '../TopSteppers/TopSteppers';
 import AllChallengePhotos from '../AllChallengePhotos/AllChallengePhotos';
 import ChallengeOfTheDay from '../Challenges/Challenges'
 import RulesFaqBtn from '../RulesFaqBtn/RulesFaqBtn';
+import Nav from '../../Nav/Nav.js';
+import Footer from '../../Footer/Footer.js';
 class ContestHome extends Component {
   
   onLogin = (event) => {
@@ -17,12 +19,16 @@ class ContestHome extends Component {
 
   render() {
     return (
+      <div>
+        <Nav />
       <div className="container">
         <Leaderboard/>
         <TopSteppers/>
         <ChallengeOfTheDay/>
         <AllChallengePhotos/>
         <RulesFaqBtn/>
+      </div>
+      <Footer />
       </div>
     );
   }

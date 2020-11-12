@@ -4,6 +4,8 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import VerticalPlaceholder from '../../../images/placeholder-vertical.jpg';
 import FAQ from '../../User/FAQ/FAQ';
 import { Grid } from "@material-ui/core";
+import Nav from '../../Nav/Nav.js';
+import Footer from '../../Footer/Footer';
 
 
 class Rules extends Component {
@@ -14,6 +16,8 @@ class Rules extends Component {
   render() {
     return (
       <div>
+        <Nav />
+      <div>
         <Grid container direction="column" alignItems="center" className="rulesFaq">
           <Grid item>
             <h2>Rules</h2>
@@ -23,6 +27,8 @@ class Rules extends Component {
         </Grid>
           <FAQ />
         </Grid>
+      </div>
+      <Footer />
       </div>
     );
   }
