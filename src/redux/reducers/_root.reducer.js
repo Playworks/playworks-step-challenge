@@ -9,7 +9,7 @@ import challengePhotos from './challengephotos.reducer';
 import leaderBoard from './leaderboard.reducer';
 import topSteppers from './topsteppers.reducer';
 import teamDetails from './teamdetails.reducer';
-
+import teams from './teams.reducer';
 
 
 
@@ -25,6 +25,7 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   challenges, // will contain all challenges
+  teams, // currently will contain teams and captains for join team.js
   photos,
   dailyChallenges,
   challengePhotos,
