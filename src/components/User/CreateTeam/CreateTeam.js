@@ -52,16 +52,38 @@ class CreateTeam extends Component {
       swal(`Please select a contest`);
     }
     else{
-      this.props.dispatch({
-        type: 'CREATE_TEAM',
-        payload: {
-          team_name: this.state.team_name,
-          team_photo: this.state.team_photo,
-          contests_id: this.state.contests_id,
-          company_name: this.state.company_name,
+      swal({
+        title: "Is the submitted info correct?",
+        icon: "info",
+        buttons: {
+          cancel: "No",
+          yes: true,
         }
-      });
-      this.props.history.push('/home');
+      }).then(isCorrect => {
+        if(isCorrect){
+          this.props.dispatch({
+            type: 'CREATE_TEAM',
+            payload: {
+              team_name: this.state.team_name,
+              team_photo: this.state.team_photo,
+              contests_id: this.state.contests_id,
+              company_name: this.state.company_name,
+            }
+        });
+        swal({
+          title: "Your Team has been created!",
+          icon: "success"
+        }).then(() => {
+          this.setState({
+            team_name: '',
+            team_photo: '',
+            contests_id: '',
+            company_name: '',
+          });
+          this.props.history.push('/home');
+        })
+        }
+      })
     };
   };
 
