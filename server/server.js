@@ -1,12 +1,11 @@
 const express = require('express');
 require('dotenv').config();
 
+
 const app = express();
 const bodyParser = require('body-parser');
 const aws = require('aws-sdk');
 const sessionMiddleware = require('./modules/session-middleware');
-const multer = require('multer')
-
 const passport = require('./strategies/user.strategy');
 
 // Route includes
@@ -16,7 +15,9 @@ const challengesRouter = require('./routes/challenges.router');
 const photosRouter = require('./routes/photos.router');
 const stepsRouter = require('./routes/steps.router');
 const teamsRouter = require('./routes/teams.router');
-const s3Router = require('./routes/s3.router');
+const dailyChallengeRouter = require('./routes/dailychallenge.router');
+const challengePhotosRouter = require('./routes/challengephotos.router');
+const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
 
 // Body parser middleware
@@ -37,13 +38,16 @@ app.use('/api/photos', photosRouter);
 app.use('/api/steps', stepsRouter);
 app.use('/api/teams', teamsRouter);
 app.use('/api/contest', contestRouter);
-app.use('/', s3Router);
-// app.use('/', require('./routes/s3.router')({
-//   bucket: process.env.BUCKET_NAME,
-//   region: 'us-east-2',
-//   headers: {'Access-Control-Allow-Origin': '*'},
-//   ACL: 'private',
-// }));
+app.use('/api/dailychallenge', dailyChallengeRouter);
+app.use('/api/challengephotos', challengePhotosRouter);
+
+// app.use('/', s3Router);
+app.use('/s3', UploaderS3Router({
+  bucket: process.env.BUCKET_NAME,                // required
+  region: 'us-east-2',                            // optional
+  headers: {'Access-Control-Allow-Origin': '*'},  // optional
+  ACL: 'public-read',                             // this is the default - set to `public-read` to let anyone view uploads
+}));
 
 // Serve static files
 app.use(express.static('build'));

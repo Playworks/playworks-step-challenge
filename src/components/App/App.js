@@ -37,10 +37,20 @@ import EditRules from '../Admin/EditRules/EditRules';
 import EditFAQ from '../Admin/EditFAQ/EditFAQ';
 import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
 import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
+import moment from 'moment';
+
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
+    this.setDailyChallenge();
+  }
+
+  setDailyChallenge = () => {
+    this.props.dispatch({
+      type: 'FETCH_DAILY_CHALLENGE',
+      payload: moment(Date()).format().substring(0,10)
+    });
   }
 
   render() {

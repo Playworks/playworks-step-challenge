@@ -5,6 +5,8 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import teamSaga from './team.saga';
 import userSaga from './user.saga';
+import photosSaga from './photos.saga';
+
 
 
 // rootSaga is the primary saga.
@@ -22,5 +24,6 @@ export default function* rootSaga() {
     teamSaga(), // Listens for 'CREATE_TEAM'
     contestSaga(), // Listens for 'FETCH_CONTEST'
     challengesSaga(), // Listens for 'FETCH_CHALLENGES'
+    photosSaga(),
   ]);
 }

@@ -1,51 +1,30 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
 
-/*
-// selects all photos by team
-SELECT "photos"."image_path" FROM "user"
-JOIN "teams"
-ON "user"."teams_id" = "teams"."id"
-JOIN "photos"
-ON "user"."id" = "photos"."user_id"
-WHERE "teams"."id" = 1;
-
-// selects all photos by team
-// provides date, first and last name, and image path
-SELECT "photos"."image_path", "photos"."date", "user"."first_name", "user"."last_name" FROM "user"
-JOIN "teams"
-ON "user"."teams_id" = "teams"."id"
-JOIN "photos"
-ON "user"."id" = "photos"."user_id"
-WHERE "teams"."id" = 1;
-
-*/
 
 /**
  * GET route template
  */
 router.get('/', (req, res) => {
   // GET route code here
-  console.log('photos router get');
-  const queryString = `
-  SELECT * FROM "photos"
-  `
-  pool.query(queryString)
-  .then(response => {
-    res.send(response.rows);
-  })
-  .catch(error => {
-    res.status(500);
-  })
 });
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
-  console.log('photos router post');
+router.post('/', rejectUnauthenticated, (req, res) => {
+  
+  const queryString = `
+  INSERT INTO "photos" ("user_id", "challenges_id", "date", "file_url")
+  VALUES ($1, $2, $3, $4);
+`;
+pool.query(queryString, [req.user.id, req.body.challenges_id.id, req.body.date, req.body.fileUrl])
+  .then((results) => {
+      res.sendStatus(201);
+  })
+  .catch(err => {
+      console.error(`POST /photos failed`, err);
+      res.sendStatus(500);
+  });
 });
 
 module.exports = router;
