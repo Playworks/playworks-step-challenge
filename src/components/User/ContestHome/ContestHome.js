@@ -11,6 +11,10 @@ import ChallengeOfTheDay from '../Challenges/Challenges'
 import RulesFaqBtn from '../RulesFaqBtn/RulesFaqBtn';
 import Nav from '../../Nav/Nav.js';
 import Footer from '../../Footer/Footer.js';
+import { Button } from '@material-ui/core';
+import LogOutButton from '../../LogOutButton/LogOutButton';
+
+
 class ContestHome extends Component {
   
   onLogin = (event) => {
@@ -21,14 +25,13 @@ class ContestHome extends Component {
     return (
       <div>
         <Nav />
-      <div className="container">
-        <Leaderboard/>
-        <TopSteppers/>
-        <ChallengeOfTheDay/>
-        <AllChallengePhotos/>
-        <RulesFaqBtn/>
-      </div>
-      <Footer />
+        <div className="container">
+          <Leaderboard/>
+          <TopSteppers/>
+          <ChallengeOfTheDay/>
+          <AllChallengePhotos/>
+        </div>
+        <Footer />
       </div>
     );
   }

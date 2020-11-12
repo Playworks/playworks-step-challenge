@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
+import Logo from '../../../images/PW-hor-logo.png';
+import '../RegisterPage/RegisterPage.css';
 
 class RegisterPage extends Component {
   state = {
@@ -14,6 +16,7 @@ class RegisterPage extends Component {
     return (
       <div>
         <center>
+          <img className='logo' src= {Logo}/>
           <RegisterForm />
           <button
             type="button"
