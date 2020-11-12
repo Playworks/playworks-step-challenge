@@ -13,16 +13,17 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 class JoinTeam extends Component {
   state = {
-    contests_id: '',
     selected_team_id: '',
   };
 
+  // Need on load after register to send users contest id to server
+  componentDidMount(){
+  this.props.dispatch({type: 'FETCH_TEAMS_FOR_JOIN'});
+  this.props.dispatch({type: 'FETCH_CAPTAINS_FOR_JOIN'});
+  }
+
   // Component Array
   teamsAndCaptains = []
-
-  componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_CONTEST'});
-  }
 
   // Function sends Get request to server to get all teams by contest id and then push it into the global array
   fetchTeamsForSearch = (contests_id) => {
@@ -60,9 +61,6 @@ class JoinTeam extends Component {
   handleTeamsAndCaptainsSearchFunction = (event) => {
     // At the beginning of function empties array
     this.teamsAndCaptains = [];
-    this.setState({
-      contests_id: event.target.value
-    });
     // Runs both functions with agruement of our event.target.value
     this.fetchTeamsForSearch(event.target.value);
     this.fetchCaptainsForSearch(event.target.value);
@@ -76,26 +74,18 @@ class JoinTeam extends Component {
   };
 
   render() {
-    console.log('this is our state', this.state);
     return (
       <div className='teamForm'>
         <Typography variant='h5'>Join a Team</Typography>
         <center>
-          <InputLabel>
-            Select Contest
-          </InputLabel> 
-          <Select value={this.state.contests_id} onChange={this.handleTeamsAndCaptainsSearchFunction}>
-            {this.props.store.contest.map(contest => 
-            <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
-            )}
-          </Select>
 
           <Autocomplete
             id="combo-box-demo"
             options={this.teamsAndCaptains}
             getOptionLabel={(option) => option.name}
             style={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} onChange={this.handleInputChangeFor('selected_team_id')} label="Search for team or captain" variant="outlined" />}
+            onClick={this.handleInputChangeFor('selected_team_id')}
+            renderInput={(params) => <TextField {...params}  onChange={this.handleInputChangeFor('selected_team_id')} label="Search for team or captain" variant="outlined" />}
           />
           <img style={{marginTop: '1rem'}} src= { Placeholder } />
           <Button variant='contained' 

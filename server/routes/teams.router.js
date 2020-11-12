@@ -19,50 +19,53 @@ router.get('/', (req, res) => {
   })
 });
 
-router.get('/searchforteams/:id', (req, res) => {
+router.get('/searchforteams', (req, res) => {
   console.log('in router.get api/teams/searchforteams');
+  console.log('this is req.user.contests_id', req.user.contests_id);
   const queryText = `
     SELECT "teams"."id" AS "teams_id", "teams"."name" FROM "teams"
-    WHERE "contests_id" = $1 ORDER BY "name" ASC;`;
-  pool.query(queryText, [req.params.id])
+    JOIN "user"
+    ON "user"."teams_id" = "teams"."id"
+    WHERE "user"."contests_id" = $1 ORDER BY "name" ASC;`;
+  pool.query(queryText, [req.user.contests_id])
   .then(result => {
     res.send(result.rows);
   })
   .catch(error => {
-    console.log('We have an error in GET /searchforteams/:id', error);
+    console.log('We have an error in GET /searchforteams', error);
     res.sendStatus(501);
   });
 });
 
-router.get('/searchforcaptains/:id', (req, res) => {
+router.get('/searchforcaptains', (req, res) => {
   console.log('in router.get api/teams/searchforcaptains');
+  console.log('this is req.user.contests_id', req.user.contests_id);
   const queryText = `
-    SELECT "user"."teams_id", CONCAT("first_name", ' ', "last_name") AS "name" from "user"
-    JOIN "teams"
-    ON "teams"."id" = "user"."teams_id"
-    WHERE "contests_id" = $1 AND "admin" = 'CAPTAIN' ORDER BY "name" ASC;`;
-  pool.query(queryText, [req.params.id])
+    SELECT "user"."teams_id", CONCAT("first_name", ' ', "last_name") AS "name", "user"."image_path" FROM "user"
+    WHERE "user"."contests_id" = $1 AND "admin" = 'CAPTAIN' ORDER BY "name" ASC;`;
+  pool.query(queryText, [req.user.contests_id])
   .then(result => {
     res.send(result.rows);
   })
   .catch(error => {
-    console.log('We have an error in GET /searchforteams/:id', error);
+    console.log('We have an error in GET /searchforcaptains', error);
     res.sendStatus(501);
   });
 })
 
 // Post route creates a team then updates users admin level to be captain
 router.post('/', (req, res) => {
+  console.log('req.body', req.body);
+  console.log('req.user', req.user);
   const team_name = req.body.team_name;
   const team_photo = req.body.team_photo;
   const user_id = req.user.id;
-  const contests_id = req.body.contests_id;
   const company_name = req.body.company_name;
 
   let queryText = `
-    INSERT INTO "teams" ("name", "team_logo", "contests_id", "company_name") 
-    VALUES ($1, $2, $3, $4) RETURNING "id";`
-  pool.query(queryText, [team_name, team_photo, contests_id, company_name])
+    INSERT INTO "teams" ("name", "team_logo", "company_name") 
+    VALUES ($1, $2, $3) RETURNING "id";`;
+  pool.query(queryText, [team_name, team_photo, company_name])
   // First Then
   .then(result => {
     const team_id = result.rows[0].id;
