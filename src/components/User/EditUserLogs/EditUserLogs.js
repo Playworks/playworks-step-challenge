@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Grid, Typography } from "@material-ui/core";
 import './EditUserLogs.css';
+import Nav from '../../Nav/Nav.js'
 
 class EditUserLogs extends Component {
   state = {
-    username: 'Batman',
+    team: this.props.store.user.teams_id
   };
 
   render() {
     return (
+      <div>
+        <Nav />
       <Grid container direction="column" alignItems="center">
         <Grid item>
         <Typography variant='h5'>{this.state.username}<button>Delete User</button></Typography>
@@ -92,6 +95,7 @@ class EditUserLogs extends Component {
         </Grid>
         <Grid item><button>Cancel</button><button>Save</button></Grid>
       </Grid>
+      </div>
     );
   }
 }

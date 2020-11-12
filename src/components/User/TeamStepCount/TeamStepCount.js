@@ -17,18 +17,12 @@ class TeamStepCount extends Component {
                 <th>Steps</th>
               </thead>
               <tbody>
+                {this.props.store.teamDetails.map((user, i) =>
                 <tr>
-                  <td>Ada Lovelace</td>
-                  <td>800</td>
+                  <td>{user.username}</td>
+                  <td>{user.sum}</td>
                 </tr>
-                <tr>
-                  <td>Grace Hopper</td>
-                  <td>700</td>
-                </tr>
-                <tr>
-                  <td>Margaret Hamilton</td>
-                  <td>600</td>
-                </tr>
+                )}
               </tbody>
             </table>
           </center>

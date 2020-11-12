@@ -53,6 +53,7 @@ router.get('/searchforcaptains', (req, res) => {
   });
 })
 
+
 // Post route creates a team then updates users admin level to be captain
 router.post('/', (req, res) => {
   console.log('req.body', req.body);

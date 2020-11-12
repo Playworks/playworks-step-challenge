@@ -15,8 +15,20 @@ class TeamHome extends Component {
   state = {
     teamName: "Kickin' Chickens",
     steps: '3325',
-
   };
+
+  componentDidMount() {
+    this.getTeamDetails()
+  }
+
+  getTeamDetails = () => {
+    console.log('team number', this.props.store.user.teams_id);
+    
+    this.props.dispatch({
+      type: 'FETCH_TEAM_DETAILS',
+      payload: this.props.store.user.teams_id
+    })
+  }
 
   render() {
     return (

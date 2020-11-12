@@ -45,6 +45,8 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
       VALUES ($1, $2, $3)
     `, [req.user.id, req.body.date, 1000]);
 
+    console.log('this is working');
+    
     // Complete the transaction
     await connection.query('COMMIT');
 
