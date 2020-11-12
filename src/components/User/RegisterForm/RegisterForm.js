@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Button, FormControl, Input, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
-import './RegisterForm.css'
+import './RegisterForm.css';
+import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
+
 
 class RegisterForm extends Component {
   state = {
@@ -38,16 +40,24 @@ class RegisterForm extends Component {
     });
   };
 
-  // Function sets state of photo to selected file/image in photo input.
-  photoSelectedHandler = event => {
-    console.log(event.target.files[0]);
+  handleFinishedUpload = info => {
+    console.log('File uploaded with filename', info.filename)
+    console.log('Access it on s3 at', info.fileUrl)
     this.setState({
-      photo: event.target.files[0],
+      photo: info.fileUrl
     });
   };
 
   render() {
     console.log('this is state', this.state);
+
+    const uploadOptions = {
+      server: 'http://localhost:5000',
+      // signingUrlQueryParams: {uploadType: 'avatar'},
+  }
+
+    const s3Url = `http://playworks-step-challenge.s3.amazonaws.com`;
+
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
         {this.props.store.errors.registrationMessage && (
@@ -123,9 +133,11 @@ class RegisterForm extends Component {
         <div>
           <label htmlFor="photo">
             Photo:
-            <input
-              type="file"
-              onChange={this.photoSelectedHandler}
+            <DropzoneS3Uploader
+                onFinish={this.handleFinishedUpload}
+                s3Url={s3Url}
+                maxSize={1024 * 1024 * 5}
+                upload={uploadOptions}
             />
           </label>
         </div>

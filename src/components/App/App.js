@@ -23,7 +23,6 @@ import SubmitSteps from '../User/SubmitSteps/SubmitSteps';
 import Rules from '../User/Rules/Rules';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../User/RegisterPage/RegisterPage';
-
 import './App.css';
 import CreateOrJoinTeam from '../User/CreateOrJoinTeam/CreateOrJoinTeam';
 import CreateTeam from '../User/CreateTeam/CreateTeam';
@@ -38,10 +37,20 @@ import EditRules from '../Admin/EditRules/EditRules';
 import EditFAQ from '../Admin/EditFAQ/EditFAQ';
 import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
 import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
+import moment from 'moment';
+
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
+    this.setDailyChallenge();
+  }
+
+  setDailyChallenge = () => {
+    this.props.dispatch({
+      type: 'FETCH_DAILY_CHALLENGE',
+      payload: moment(Date()).format().substring(0,10)
+    });
   }
 
   render() {
