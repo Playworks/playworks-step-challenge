@@ -9,6 +9,8 @@ import {
   Button, TextField, Typography,
   InputLabel, MenuItem, Select
 } from '@material-ui/core';
+// import sweetalert
+import swal from 'sweetalert';
 
 class CreateTeam extends Component {
 
@@ -40,17 +42,28 @@ class CreateTeam extends Component {
 
   // Function dispatches info to create team to saga Listening for 'CREATE_TEAM'
   createTeam = () => {
-    this.props.dispatch({
-      type: 'CREATE_TEAM',
-      payload: {
-        team_name: this.state.team_name,
-        team_photo: this.state.team_photo,
-        contests_id: this.state.contests_id,
-        company_name: this.state.company_name,
-      }
-    });
-    this.props.history.push('/home')
-  }
+    if(this.state.team_name === ''){
+      swal(`Please enter a team name`);
+    }
+    else if(this.state.company_name === ''){
+      swal(`Please enter company name`);
+    }
+    else if(this.state.contests_id === ''){
+      swal(`Please select a contest`);
+    }
+    else{
+      this.props.dispatch({
+        type: 'CREATE_TEAM',
+        payload: {
+          team_name: this.state.team_name,
+          team_photo: this.state.team_photo,
+          contests_id: this.state.contests_id,
+          company_name: this.state.company_name,
+        }
+      });
+      this.props.history.push('/home');
+    };
+  };
 
   render() {
     console.log('this is our state', this.state);
