@@ -4,6 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
 // import placeholder image
 import Placeholder from '../../../images/placeholder-square.png';
+import Logo from '../../../images/PW-hor-logo.png';
 // import material ui
 import { 
   Button, TextField, Typography,
@@ -92,27 +93,36 @@ class CreateTeam extends Component {
     console.log('in createTeam js these are our props', this.props);
     return (
       <div>
-        <div className='createTeamForm'>
+        <img className='createPageLogo' src= {Logo}/>
+
+        <div className='teamForm'>
           <Typography variant='h5'>Create a Team</Typography>
-          <TextField 
-            id="outlined-basic" 
-            label="Team name" 
-            variant="outlined"
-            onChange={this.handleInputChangeFor('team_name')}
-          />
-          <div>
-          <TextField 
-            id="outlined-basic" 
-            label="Company Name" 
-            variant="outlined"
-            onChange={this.handleInputChangeFor('company_name')}
-          />
+
+          <div className='createTeamName'>
+            <TextField 
+              id="outlined-basic" 
+              label="Team name" 
+              variant="outlined"
+              style={{width: '100%'}}
+              onChange={this.handleInputChangeFor('team_name')}
+            />
           </div>
-          <div>
+
+          <div className='createPageCompanyName'>
+            <TextField 
+              id="outlined-basic" 
+              label="Company Name" 
+              variant="outlined"
+              style={{width: '100%'}}
+              onChange={this.handleInputChangeFor('company_name')}
+            />
+          </div>
+
+          <div className='createTeamPageSelectContest'>
             <InputLabel>
               Select Contest
             </InputLabel> 
-            <Select value={this.state.contests_id} onChange={this.handleInputChangeFor('contests_id')}>
+            <Select style={{width: '100%'}} value={this.state.contests_id} onChange={this.handleInputChangeFor('contests_id')}>
               {this.props.store.contest.map(contest => 
               <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
               )}
