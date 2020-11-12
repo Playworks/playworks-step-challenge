@@ -7,21 +7,42 @@ import Nav from '../../Nav/Nav.js';
 import Footer from '../../Footer/Footer.js';
 // import material ui
 import { Button, TextField } from '@material-ui/core';
+import moment from 'moment';
+
 
 class SubmitSteps extends Component {
+
   state = {
+    steps: '',
     date: '',
   };
 
-  handleCancel = () => {
-    console.log('in handleCancel')
-    this.props.history.push('/home');
-  }
+handleChangeFor = (propertyName) => (event) => {
+  this.setState({
+    [propertyName]: event.target.value,
+  });
+};
 
-  handleSubmit = () => {
-    console.log('in handleSubmit')
+submitSteps = (event) => {
+    event.preventDefault();
+    this.props.dispatch({
+        type: 'CREATE_STEPS',
+        payload: {
+          steps: this.state.steps,
+          date: this.state.date,
+        },
+      });
     this.props.history.push('/home');
-  }
+  };
+
+handleCancel = () => {
+    this.setState({
+        steps: '',
+        date: '',
+      });
+    this.props.history.push('/home');
+}
+
 
   render() {
     return (
@@ -29,14 +50,15 @@ class SubmitSteps extends Component {
       <div>
         <center>
         <TextField id="outlined-basic" label="Number of steps" variant="outlined"
-        onChange={ ( event ) => this.handleChangeFor ( event, 'steps' ) }></TextField>
+        onChange={this.handleChangeFor('steps')}></TextField>
         <div>
           <input 
               style={{display: 'block'}} 
               type="date" 
-              value={this.state.date.split( 'T' )[0]} 
+              value={this.state.date} 
               id="date" 
-              name="date">
+              name="date"
+              onChange={this.handleChangeFor('date')}>
           </input>
         </div>      
         <div style={{marginTop: '2rem'}}>
@@ -51,7 +73,7 @@ class SubmitSteps extends Component {
             color='primary'
             size= 'large'
             style={{margin: '.5rem'}}
-            onClick={this.handleSubmit}>
+            onClick={this.submitSteps}>
             Submit
           </Button>
         </div>
