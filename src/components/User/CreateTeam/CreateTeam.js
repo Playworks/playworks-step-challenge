@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
-// import placeholder image
 import Logo from '../../../images/PW-hor-logo.png';
 // import material ui
 import { 
