@@ -61,8 +61,8 @@ router.post('/', (req, res) => {
 
   let queryText = `
     INSERT INTO "teams" ("name", "team_logo", "contests_id", "company_name") 
-    VALUES ($1, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/1200px-A-Team-Logo.svg.png', $2, $3) RETURNING "id";`
-  pool.query(queryText, [team_name, contests_id, company_name])
+    VALUES ($1, $2, $3, $4) RETURNING "id";`
+  pool.query(queryText, [team_name, team_photo, contests_id, company_name])
   // First Then
   .then(result => {
     const team_id = result.rows[0].id;
