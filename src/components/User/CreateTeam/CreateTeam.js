@@ -94,7 +94,7 @@ class CreateTeam extends Component {
 
         <div className='teamForm'>
           <Typography variant='h5'>Create a Team</Typography>
-          
+          <center>
           <div className='createTeamName'>
             <TextField 
               id="outlined-basic" 
@@ -121,7 +121,6 @@ class CreateTeam extends Component {
                   upload={uploadOptions}
             />
           </div>
-          <center>
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
@@ -131,23 +130,24 @@ class CreateTeam extends Component {
           </center>
         </div>
         <div id='footer'>
-        <button
+          <button
             type="button"
             className="btn btn_asLink"
             onClick={() => {this.props.history.push('/createorjointeam')}}>
-            Go Back</button>
+            Go Back
+          </button>
           <button
             type="button"
             className="btn btn_asLink"
             onClick={() => {this.props.history.push('/jointeam')}}>
-            Join Team</button>
+            Join Team
+          </button>
           <button
             type="button"
             className="btn btn_asLink"
             onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
             Log Out
           </button>
-
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './JoinTeam.css';
 import axios from 'axios';
+import Logo from '../../../images/PW-hor-logo.png';
 // import placeholder image
 import Placeholder from '../../../images/placeholder-square.png';
 // import material ui
@@ -75,27 +76,51 @@ class JoinTeam extends Component {
 
   render() {
     return (
-      <div className='teamForm'>
-        <Typography variant='h5'>Join a Team</Typography>
-        <center>
-
-          <Autocomplete
-            id="combo-box-demo"
-            options={this.teamsAndCaptains}
-            getOptionLabel={(option) => option.name}
-            style={{ width: 300 }}
-            onClick={this.handleInputChangeFor('selected_team_id')}
-            renderInput={(params) => <TextField {...params}  onChange={this.handleInputChangeFor('selected_team_id')} label="Search for team or captain" variant="outlined" />}
-          />
-          <img style={{marginTop: '1rem'}} src= { Placeholder } />
-          <Button variant='contained' 
-            color='primary'
-            style={{marginTop: '2rem'}} 
-            size= 'large'
-            onClick={() => {this.props.history.push('/home')}}>
-            Join Team
-          </Button>
-        </center>
+      <div>
+        <img className='createPageLogo' src= {Logo}/>
+        <div className='teamForm'>
+          <Typography variant='h5'>Join a Team</Typography>
+          <center>
+            <div className='joinTeamSearch'>
+              <Autocomplete
+                id="combo-box-demo"
+                options={this.teamsAndCaptains}
+                getOptionLabel={(option) => option.name}
+                style={{ width: '100%' }}
+                onClick={this.handleInputChangeFor('selected_team_id')}
+                renderInput={(params) => <TextField {...params}  onChange={this.handleInputChangeFor('selected_team_id')} label="Search for team or captain" variant="outlined" />}
+              />
+            </div>
+            <img style={{marginTop: '1rem', width: '200px', display: 'block'}} src= { Placeholder } />
+            <Button variant='contained' 
+              color='primary'
+              style={{marginTop: '2rem'}} 
+              size= 'large'
+              onClick={() => {this.props.history.push('/home')}}>
+              Join Team
+            </Button>
+          </center>
+        </div>
+        <div id='footer'>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {this.props.history.push('/createorjointeam')}}>
+            Go Back
+          </button>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {this.props.history.push('/createteam')}}>
+            Create Team
+          </button>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
+            Log Out
+          </button>
+        </div>
       </div>
     );
   }
