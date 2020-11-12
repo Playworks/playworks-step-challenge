@@ -4,6 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './EditChallenges.css';
 import {Typography, Card, Button, Grid} from '@material-ui/core';
 import CreateContest from '../CreateContest/CreateContest';
+import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 
 class EditChallenges extends Component {
   state = {
@@ -12,6 +13,7 @@ class EditChallenges extends Component {
   render() {
     return (
       <div>
+        <AdminNav />
         <Grid container direction="row">
           <Grid item>
         <Card>

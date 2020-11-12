@@ -4,6 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './AdminChallenges.css';
 import ChallengesGrid from '../ChallengesGrid/ChallengesGrid';
 import CreateChallenges from '../CreateChallenges/CreateChallenges';
+import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 import { Typography } from '@material-ui/core';
 
 class AdminChallenges extends Component {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Grid } from "@material-ui/core";
 import './EditFAQ.css';
+import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 
 class EditFAQ extends Component {
   state = {

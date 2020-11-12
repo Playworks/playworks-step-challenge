@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './Challenges.css';
 import CreateChallenges from '../CreateChallenges/CreateChallenges';
+import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 import { Typography } from '@material-ui/core';
 
 class Challenges extends Component {

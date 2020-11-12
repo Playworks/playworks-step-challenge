@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateChallenges.css';
+import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 
 class CreateChallenges extends Component {
   state = {

@@ -5,6 +5,7 @@ import './CreateContest.css';
 // import placeholder image
 import Placeholder from '../../../images/placeholder-square.png';
 import { Button, TextField, Typography } from '@material-ui/core';
+import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 
 class CreateContest extends Component {
     state = {
@@ -44,7 +45,8 @@ class CreateContest extends Component {
 
   render() {
     return (
-<div className="createContestFormPanel">
+      <div id="createContest" className="createContestFormPanel">
+        
         <center>
           <Typography variant='h4'>Create Contest</Typography>
           <TextField id="outlined-basic" 
