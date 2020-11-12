@@ -9,14 +9,16 @@ import Placeholder from '../../../images/placeholder-square.png';
 import { Button, Typography, TextField, InputLabel, MenuItem, Select } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-// Global Array
-let teamsAndCaptains;
+
 
 class JoinTeam extends Component {
   state = {
     contests_id: '',
     selected_team_id: '',
   };
+
+  // Component Array
+  teamsAndCaptains = []
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_CONTEST'});
@@ -30,7 +32,7 @@ class JoinTeam extends Component {
     })
     .then(result => {
       for(let team of result.data){
-        teamsAndCaptains.push(team);
+        this.teamsAndCaptains.push(team);
       }
     })
     .catch(error => {
@@ -46,7 +48,7 @@ class JoinTeam extends Component {
     })
     .then(result => {
       for(let captain of result.data){
-        teamsAndCaptains.push(captain);
+        this.teamsAndCaptains.push(captain);
       }
     })
     .catch(error => {
@@ -57,14 +59,14 @@ class JoinTeam extends Component {
   // On change of select contests runs two functions that send get requests to get all teams / captains by contest is
   handleTeamsAndCaptainsSearchFunction = (event) => {
     // At the beginning of function empties array
-    teamsAndCaptains = [];
+    this.teamsAndCaptains = [];
     this.setState({
       contests_id: event.target.value
     });
     // Runs both functions with agruement of our event.target.value
     this.fetchTeamsForSearch(event.target.value);
     this.fetchCaptainsForSearch(event.target.value);
-    console.log('this is the array', teamsAndCaptains);
+    console.log('this is the array', this.teamsAndCaptains);
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -87,9 +89,10 @@ class JoinTeam extends Component {
             <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
             )}
           </Select>
+
           <Autocomplete
             id="combo-box-demo"
-            options={teamsAndCaptains}
+            options={this.teamsAndCaptains}
             getOptionLabel={(option) => option.name}
             style={{ width: 300 }}
             renderInput={(params) => <TextField {...params} onChange={this.handleInputChangeFor('selected_team_id')} label="Search for team or captain" variant="outlined" />}
