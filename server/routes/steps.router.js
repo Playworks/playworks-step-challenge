@@ -45,12 +45,12 @@ router.get('/topsteppers', (req, res) => {
   // GET route code here
   console.log('steps router get');
   const queryString = `
-  SELECT SUM("steps"."steps"), "user"."username", "teams"."name" FROM "user"
+  SELECT SUM("steps"."steps"), "user"."username", "teams"."name", "user"."image_path" FROM "user"
   JOIN "steps"
   ON "user"."id" = "steps"."user_id"
   JOIN "teams"
   ON "user"."teams_id" = "teams"."id"
-  GROUP BY "user"."username", "teams"."name"
+  GROUP BY "user"."username", "teams"."name", "user"."image_path"
   ORDER BY "sum" DESC
   LIMIT 20;
   `
