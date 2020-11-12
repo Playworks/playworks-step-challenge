@@ -4,6 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
 // import placeholder image
 import Placeholder from '../../../images/placeholder-square.png';
+import Logo from '../../../images/PW-hor-logo.png';
 // import material ui
 import { 
   Button, TextField, Typography,
@@ -11,7 +12,6 @@ import {
 } from '@material-ui/core';
 // import sweetalert
 import swal from 'sweetalert';
-import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 
 class CreateTeam extends Component {
 
@@ -33,11 +33,11 @@ class CreateTeam extends Component {
     });
   };
 
-  handleFinishedUpload = info => {
-    console.log('File uploaded with filename', info.filename)
-    console.log('Access it on s3 at', info.fileUrl)
+  // Function sets state of photo to selected file/image in photo input.
+  photoSelectedHandler = event => {
+    console.log(event.target.files[0]);
     this.setState({
-      team_photo: info.fileUrl
+      team_photo: event.target.files[0],
     });
   };
 
@@ -91,33 +91,32 @@ class CreateTeam extends Component {
   render() {
     console.log('this is our state', this.state);
     console.log('in createTeam js these are our props', this.props);
-
-    const uploadOptions = {
-      server: 'http://localhost:5000',
-      // signingUrlQueryParams: {uploadType: 'avatar'},
-    }
-
-    const s3Url = `http://playworks-step-challenge.s3.amazonaws.com`;
-
     return (
       <div>
-        <div className='createTeamForm'>
+        <img className='createPageLogo' src= {Logo}/>
+
+        <div className='teamForm'>
           <Typography variant='h5'>Create a Team</Typography>
-          <TextField 
-            id="outlined-basic" 
-            label="Team name" 
-            variant="outlined"
-            onChange={this.handleInputChangeFor('team_name')}
-          />
-          <div>
-          <TextField 
-            id="outlined-basic" 
-            label="Company Name" 
-            variant="outlined"
-            onChange={this.handleInputChangeFor('company_name')}
-          />
+
+          <div className='createTeamName'>
+            <TextField 
+              id="outlined-basic" 
+              label="Team name" 
+              variant="outlined"
+              onChange={this.handleInputChangeFor('team_name')}
+            />
           </div>
-          <div>
+
+          <div className='createPageCompanyName'>
+            <TextField 
+              id="outlined-basic" 
+              label="Company Name" 
+              variant="outlined"
+              onChange={this.handleInputChangeFor('company_name')}
+            />
+          </div>
+
+          <div className='createTeamPageSelectContest'>
             <InputLabel>
               Select Contest
             </InputLabel> 
@@ -127,11 +126,12 @@ class CreateTeam extends Component {
               )}
             </Select>
           </div>
-          <DropzoneS3Uploader
-                onFinish={this.handleFinishedUpload}
-                s3Url={s3Url}
-                maxSize={1024 * 1024 * 5}
-                upload={uploadOptions}
+          <img style={{marginTop: '1rem'}} height='250' src= { Placeholder } />
+          <input
+            type='file'
+            style={{display: 'none'}}
+            ref={photoInput => this.photoInput = photoInput}
+            onChange={this.photoSelectedHandler} 
           />
           <Button 
             variant='contained' 

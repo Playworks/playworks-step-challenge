@@ -1,4 +1,23 @@
 .teamForm {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.createPageLogo {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.createTeamName {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.createTeamPageSelectContest {
+    margin-top: 1rem;
 }
