@@ -8,6 +8,7 @@ import dailyChallenges from './dailychallenge.reducer';
 import challengePhotos from './challengephotos.reducer';
 import leaderBoard from './leaderboard.reducer';
 import topSteppers from './topsteppers.reducer';
+import teamDetails from './teamdetails.reducer';
 
 
 
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
   dailyChallenges,
   challengePhotos,
   leaderBoard,
-  topSteppers
+  topSteppers,
+  teamDetails
 });
 
 export default rootReducer;
