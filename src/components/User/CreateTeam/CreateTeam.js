@@ -49,7 +49,7 @@ class CreateTeam extends Component {
         company_name: this.state.company_name,
       }
     });
-    // this.props.history.push('/home')
+    this.props.history.push('/home')
   }
 
   render() {
