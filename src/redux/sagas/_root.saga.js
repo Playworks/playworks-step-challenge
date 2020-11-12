@@ -6,6 +6,8 @@ import registrationSaga from './registration.saga';
 import teamSaga from './team.saga';
 import userSaga from './user.saga';
 import photosSaga from './photos.saga';
+import teamLeaderBoardSaga from './leaderboard.saga';
+import topSteppersSaga from './topsteppers.saga';
 
 
 
@@ -25,5 +27,7 @@ export default function* rootSaga() {
     contestSaga(), // Listens for 'FETCH_CONTEST'
     challengesSaga(), // Listens for 'FETCH_CHALLENGES'
     photosSaga(),
+    teamLeaderBoardSaga(),
+    topSteppersSaga()
   ]);
 }

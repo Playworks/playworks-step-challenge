@@ -16,6 +16,21 @@ import LogOutButton from '../../LogOutButton/LogOutButton';
 
 
 class ContestHome extends Component {
+  componentDidMount() {
+    this.getLeaderBoard()
+    this.getTopSteppers()
+  }
+
+  getLeaderBoard = () => {
+    this.props.dispatch({
+      type: "FETCH_LEADER_BOARD"
+    })
+  }
+  getTopSteppers = () => {
+    this.props.dispatch({
+      type: "FETCH_TOP_STEPPERS"
+    })
+  }
   
   onLogin = (event) => {
     this.props.history.push('/login');

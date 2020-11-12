@@ -23,21 +23,13 @@ class Leaderboard extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Team Name</td>
-                <td>total</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Team Name</td>
-                <td>total</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Team Name</td>
-                <td>total</td>
-              </tr>
+              {this.props.store.leaderBoard.map((leaders, i) => 
+                <tr>
+                  <td>{i +1}</td>
+                  <td>{leaders.name}</td>
+                  <td>{leaders.sum}</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </center>
