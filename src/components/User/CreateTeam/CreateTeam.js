@@ -9,6 +9,8 @@ import {
   Button, TextField, Typography,
   InputLabel, MenuItem, Select
 } from '@material-ui/core';
+// import sweetalert
+import swal from 'sweetalert';
 
 class CreateTeam extends Component {
 
@@ -16,6 +18,7 @@ class CreateTeam extends Component {
     team_name: '',
     team_photo: '',
     contests_id: '',
+    company_name: '',
   }
 
   componentDidMount() {
@@ -39,16 +42,50 @@ class CreateTeam extends Component {
 
   // Function dispatches info to create team to saga Listening for 'CREATE_TEAM'
   createTeam = () => {
-    this.props.dispatch({
-      type: 'CREATE_TEAM',
-      payload: {
-        team_name: this.state.team_name,
-        team_photo: this.state.team_photo,
-        contests_id: this.state.contests_id
-      }
-    });
-    // this.props.history.push('/home')
-  }
+    if(this.state.team_name === ''){
+      swal(`Please enter a team name`);
+    }
+    else if(this.state.company_name === ''){
+      swal(`Please enter company name`);
+    }
+    else if(this.state.contests_id === ''){
+      swal(`Please select a contest`);
+    }
+    else{
+      swal({
+        title: "Is the submitted info correct?",
+        icon: "info",
+        buttons: {
+          cancel: "No",
+          yes: true,
+        }
+      }).then(isCorrect => {
+        if(isCorrect){
+          this.props.dispatch({
+            type: 'CREATE_TEAM',
+            payload: {
+              team_name: this.state.team_name,
+              team_photo: this.state.team_photo,
+              contests_id: this.state.contests_id,
+              company_name: this.state.company_name,
+            }
+        });
+        swal({
+          title: "Your Team has been created!",
+          icon: "success"
+        }).then(() => {
+          this.setState({
+            team_name: '',
+            team_photo: '',
+            contests_id: '',
+            company_name: '',
+          });
+          this.props.history.push('/home');
+        })
+        }
+      })
+    };
+  };
 
   render() {
     console.log('this is our state', this.state);
@@ -63,7 +100,15 @@ class CreateTeam extends Component {
             variant="outlined"
             onChange={this.handleInputChangeFor('team_name')}
           />
-           <div>
+          <div>
+          <TextField 
+            id="outlined-basic" 
+            label="Company Name" 
+            variant="outlined"
+            onChange={this.handleInputChangeFor('company_name')}
+          />
+          </div>
+          <div>
             <InputLabel>
               Select Contest
             </InputLabel> 
@@ -73,7 +118,6 @@ class CreateTeam extends Component {
               )}
             </Select>
           </div>
-
           <img style={{marginTop: '1rem'}} height='250' src= { Placeholder } />
           <input
             type='file'
