@@ -14,34 +14,16 @@ import Footer from '../../Footer/Footer.js';
 
 class SubmitPhotos extends Component {
 
-//   state = {
-//     image: '',
-//     challenge:
-//       {
-//       name: "Today's Challenge Title",
-//       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor pretium viverra suspendisse potenti nullam. Nisl nisi scelerisque eu ultrices.'
-//       }
-//   };
-
-
-  
-
   render() {
     return (
       <div>
         <Nav />
       
       <div className='submitPhotoSection'>
-        {/* <Typography variant='h5'>Today's Challenge</Typography>
-        <Typography variant='subtitle1'>{this.state.challenge.name}</Typography>
-        <Typography variant='body2'>{this.state.challenge.description}</Typography> */}
+
         <Card style={{width: '300px'}}>
           <div className='submitImage'>
-            {/* { this.state.image === '' ? (
-              <img style={{marginTop: '1rem', width: '300px'}} src= { Placeholder } /> 
-              ) : ( 
-              <img style={{marginTop: '1rem', width: '300px'}} src= { this.state.image } /> 
-            )} */}
+
             <ChallengeOfTheDay/>
 
           </div>
@@ -49,7 +31,6 @@ class SubmitPhotos extends Component {
           <ImageUpload/>
           </div>
         </Card>
-        <CancelSubmitBtnGroup />
       </div>
       <Footer />
       </div>

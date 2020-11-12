@@ -38,6 +38,7 @@ import EditFAQ from '../Admin/EditFAQ/EditFAQ';
 import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
 import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
 import moment from 'moment';
+import ImageUpload from '../User/SubmitPhotos/ImageUpload';
 
 
 class App extends Component {
@@ -137,6 +138,12 @@ class App extends Component {
               exact
               path="/createcontest"
               component={CreateContest}
+            />
+
+            <Route
+              exact
+              path="/imageupload"
+              component={ImageUpload}
             />
 
             <Route

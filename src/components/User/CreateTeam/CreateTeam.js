@@ -33,14 +33,6 @@ class CreateTeam extends Component {
     });
   };
 
-  // Function sets state of photo to selected file/image in photo input.
-  photoSelectedHandler = event => {
-    console.log(event.target.files[0]);
-    this.setState({
-      team_photo: event.target.files[0],
-    });
-  };
-
   handleFinishedUpload = info => {
     console.log('File uploaded with filename', info.filename)
     console.log('Access it on s3 at', info.fileUrl)
