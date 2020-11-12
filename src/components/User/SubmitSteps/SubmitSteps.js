@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import { withRouter } from 'react-router-dom';
 import './SubmitSteps.css';
 import Nav from '../../Nav/Nav.js';
 import Footer from '../../Footer/Footer.js';
@@ -14,10 +15,12 @@ class SubmitSteps extends Component {
 
   handleCancel = () => {
     console.log('in handleCancel')
+    this.props.history.push('/home');
   }
 
   handleSubmit = () => {
     console.log('in handleSubmit')
+    this.props.history.push('/home');
   }
 
   render() {
@@ -60,4 +63,4 @@ class SubmitSteps extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(SubmitSteps);
+export default connect(mapStoreToProps)(withRouter(SubmitSteps));
