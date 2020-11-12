@@ -1,4 +1,45 @@
 .teamForm {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.createPageLogo {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.createTeamName {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.createTeamPageSelectContest {
+    margin-top: 1rem;
+}
+
+.dropzoneUploader {
+    margin-top: 1rem;
+}
+
+.react-dropzone-s3-uploader {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#footer {
+    text-align: center;
+    position: fixed;
+    bottom: 3rem;
+    width: 100%;
+    display: inline-block;
+}
+
+.btn_asLink {
+    margin: 5px;
 }

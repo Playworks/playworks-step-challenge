@@ -74,109 +74,109 @@ class App extends Component {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-            <Route
+            <ProtectedRoute
               exact
               path="/addphoto"
               component={SubmitPhotos}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/addsteps"
               component={SubmitSteps}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/rules"
               component={Rules}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/team"
               component={TeamHome}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/createorjointeam"
               component={CreateOrJoinTeam}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/createteam"
               component={CreateTeam}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/jointeam"
               component={JoinTeam}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/editlogs"
               component={EditUserLogs}
             />
 
-            <Route
+            <AdminRoute
             exact
-            path='/challenges'
+            path='/adminchallenges'
             component={AdminChallenges}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/challenges"
               component={Challenges}
             />
 
-            <Route
+            <AdminRoute
               exact
               path="/createcontest"
               component={CreateContest}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/imageupload"
               component={ImageUpload}
             />
 
-            <Route
+            <AdminRoute
               exact
               path="/editchallenges"
               component={EditChallenges}
             />
 
-            <Route
+            <AdminRoute
               exact
               path="/editcontests"
               component={EditContests}
             />
 
-            <Route
+            <AdminRoute
               exact
               path="/editrules"
               component={EditRules}
             />
 
-            <Route
+            <AdminRoute
               exact
               path="/adminhome"
               component={PlayworksAdminHome}
             />
 
-            <Route
+            <AdminRoute
               exact
               path="/contestdescription"
               component={ContestDescriptionPage}
             />
 
-            <Route
+            <AdminRoute
               exact
               path="/editfaq"
               component={EditFAQ}
@@ -209,7 +209,7 @@ class App extends Component {
               component={RegisterPage}
               authRedirect="/home"
               />
-            <Route
+            <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows ContestHome at "/home"
