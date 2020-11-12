@@ -16,6 +16,7 @@ class CreateTeam extends Component {
     team_name: '',
     team_photo: '',
     contests_id: '',
+    company_name: '',
   }
 
   componentDidMount() {
@@ -44,10 +45,11 @@ class CreateTeam extends Component {
       payload: {
         team_name: this.state.team_name,
         team_photo: this.state.team_photo,
-        contests_id: this.state.contests_id
+        contests_id: this.state.contests_id,
+        company_name: this.state.company_name,
       }
     });
-    this.props.history.push('/home')
+    // this.props.history.push('/home')
   }
 
   render() {
@@ -73,7 +75,14 @@ class CreateTeam extends Component {
               )}
             </Select>
           </div>
-
+          <div>
+          <TextField 
+            id="outlined-basic" 
+            label="Company Name" 
+            variant="outlined"
+            onChange={this.handleInputChangeFor('company_name')}
+          />
+          </div>
           <img style={{marginTop: '1rem'}} height='250' src= { Placeholder } />
           <input
             type='file'

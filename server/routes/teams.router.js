@@ -53,16 +53,16 @@ router.get('/searchforcaptains/:id', (req, res) => {
 
 // Post route creates a team then updates users admin level to be captain
 router.post('/', (req, res) => {
-  console.log('req.body', req.body);
   const team_name = req.body.team_name;
   const team_photo = req.body.team_photo;
   const user_id = req.user.id;
   const contests_id = req.body.contests_id;
-  console.log('this is our info we need from client', team_name, team_photo, user_id, contests_id)
+  const company_name = req.body.company_name;
+
   let queryText = `
-    INSERT INTO "teams" ("name", "team_logo", "contests_id") 
-    VALUES ($1, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/1200px-A-Team-Logo.svg.png', $2) RETURNING "id";`
-  pool.query(queryText, [team_name, contests_id])
+    INSERT INTO "teams" ("name", "team_logo", "contests_id", "company_name") 
+    VALUES ($1, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A-Team-Logo.svg/1200px-A-Team-Logo.svg.png', $2, $3) RETURNING "id";`
+  pool.query(queryText, [team_name, contests_id, company_name])
   // First Then
   .then(result => {
     const team_id = result.rows[0].id;
