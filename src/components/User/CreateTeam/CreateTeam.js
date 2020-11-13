@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
-// import placeholder image
-import Placeholder from '../../../images/placeholder-square.png';
+
 // import material ui
-import { 
-  Button, TextField, Typography,
-  InputLabel, MenuItem, Select
-} from '@material-ui/core';
+import {Button, TextField, Typography} from '@material-ui/core';
 // import sweetalert
 import swal from 'sweetalert';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
