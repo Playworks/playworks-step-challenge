@@ -1,6 +1,6 @@
 
-.topSteppers, .challengeOfTheDay, .teamStepCount {
-  margin-top: 2rem;
+.topSteppers, .challengesContainer, .teamStepCount, .leaderBoard {
+  margin-top: 2.5rem;
 }
 
 .avatar {
@@ -15,16 +15,6 @@
 .stepperPaper {
   padding: .25rem;
   margin-right: .2rem;
-}
-
-.avatarFeed {
-  margin-left: 1rem;
-  object-fit: cover;
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  display: inline-block;
-  position: relative;
 }
 
 .btns {

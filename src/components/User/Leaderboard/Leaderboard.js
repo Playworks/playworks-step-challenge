@@ -11,15 +11,17 @@ class Leaderboard extends Component {
 
   render() {
     return (
-      <div>
-        <Typography variant='h5'>{this.state.heading}</Typography>
+      <div >
         <center>
-          <table>
+          <div className='leaderBoard'>
+            <Typography variant='h5'>{this.state.heading}</Typography>
+          </div>
+          <table style={{width: '90%'}}>
             <thead>
               <tr>
-                <th>Rank</th>
-                <th>Team Name</th>
-                <th>Steps</th>
+                <th><Typography variant='body1'>Rank</Typography></th>
+                <th><Typography variant='body1'>Team Name</Typography></th>
+                <th><Typography variant='body1'>Steps</Typography></th>
               </tr>
             </thead>
             <tbody>

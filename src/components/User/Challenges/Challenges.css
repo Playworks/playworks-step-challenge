@@ -1,0 +1,9 @@
+.challengeOfTheDay {
+    text-align: center;
+}
+
+
+.challengeOfTheDaySubtitleAndDescription {
+    display: inline-block; 
+    text-align: left;
+}
