@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
   })
   .catch((error) => {
     console.log('Error in /api/contest GET', error);
+    res.sendStatus(500);
   });
 });
 

@@ -33,7 +33,7 @@ router.get('/searchforteams', (req, res) => {
   })
   .catch(error => {
     console.log('We have an error in GET /searchforteams', error);
-    res.sendStatus(501);
+    res.sendStatus(500);
   });
 });
 
@@ -49,7 +49,7 @@ router.get('/searchforcaptains', (req, res) => {
   })
   .catch(error => {
     console.log('We have an error in GET /searchforcaptains', error);
-    res.sendStatus(501);
+    res.sendStatus(500);
   });
 })
 
@@ -80,13 +80,13 @@ router.post('/', (req, res) => {
     // Catch for second query
     .catch(error => {
       console.log('We have an error in second catch /api/teams', error);
-      res.sendStatus(501);
+      res.sendStatus(500);
     })
   })
   // Catch for first query
   .catch(error => {
     console.log('We have an error in first catch /api/teams', error);
-    res.sendStatus(501);
+    res.sendStatus(500);
   })
 });
 
@@ -94,13 +94,14 @@ router.post('/', (req, res) => {
 router.put('/join/:id', (req, res) => {
   const selected_team_id = req.body.selected_team_id;
   const user_id = req.params.id;
-  const queryText = `UPDATE "user" SET "teams_id" = $1 WHERE "id" = $2;`
+  const queryText = `UPDATE "user" SET "teams_id" = $1, "admin" = 'USER' WHERE "id" = $2;`
   pool.query(queryText, [selected_team_id, user_id])
   .then(result => {
     res.sendStatus(201);
   })
   .catch(error => {
     console.log('We have an error in /api/teams/join/:id', error);
+    res.sendStatus(500);
   });
 });
 
