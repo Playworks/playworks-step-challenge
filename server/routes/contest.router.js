@@ -6,13 +6,14 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT "contests"."id", "contests"."name" FROM "contests";`;
+  const queryText = `SELECT "contests"."id", "contests"."name", "contests"."start_date", "contests"."end_date" FROM "contests";`;
   pool.query(queryText)
   .then((result) => {
     res.send(result.rows);
   })
   .catch((error) => {
     console.log('Error in /api/contest GET', error);
+    res.sendStatus(500);
   });
 });
 

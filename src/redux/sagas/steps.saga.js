@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, all } from 'redux-saga/effects';
 import axios from 'axios';
 
 
@@ -10,10 +10,11 @@ function* createStepsSaga(action) {
         data: action.payload
     });
     console.log('Response', response);
-    yield put({
-        type: ('FETCH_LEADER_BOARD', 'FETCH_CHALLENGE_PHOTOS', 'FETCH_TOP_STEPPERS'),
-        payload: response.data
-    });
+    yield all([
+        put({ type: 'FETCH_LEADER_BOARD' }),
+        put({ type: 'FETCH_CHALLENGE_PHOTOS' }),
+        put({ type: 'FETCH_TOP_STEPPERS' }),
+    ]);
   };
 
 function* stepsSaga() {

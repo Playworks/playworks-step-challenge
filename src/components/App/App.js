@@ -32,6 +32,8 @@ import Challenges from '../User/Challenges/Challenges';
 import CreateContest from '../Admin/CreateContest/CreateContest';
 import AdminContests from '../Admin/AdminContests/AdminContests';
 import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
+import EditRules from '../Admin/EditRules/EditRules';
+import EditFAQ from '../Admin/EditFAQ/EditFAQ';
 import AdminRules from '../Admin/AdminRules/AdminRules';
 import AdminFAQ from '../Admin/AdminFAQ/AdminFAQ';
 import AdminHome from '../Admin/AdminHome/AdminHome';
@@ -196,6 +198,16 @@ class App extends Component {
               exact
               path="/adminfaq"
               component={AdminFAQ}
+            />
+            <AdminRoute
+              exact
+              path="/editfaq"
+              component={EditFAQ}
+            />
+            <AdminRoute
+              exact
+              path="/editrules"
+              component={EditRules}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

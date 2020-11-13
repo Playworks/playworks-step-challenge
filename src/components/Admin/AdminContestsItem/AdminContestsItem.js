@@ -2,32 +2,35 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Button, Grid, Typography } from '@material-ui/core';
+import moment from 'moment';
 
 class AdminContestsItem extends Component {
   state = {
     heading: 'AdminContestsItem',
   };
 
-  render() {
-    return (
-      // <div>
-      //   <Grid item xs={4}>
-      //       <Typography variant='h5'>{this.props.contest.name}</Typography>
-      //       <Typography variant='subtitle1'>{this.props.contest.date}</Typography>
-      //       <Typography variant='body2'>{this.props.contest.description}</Typography>
-      //       <Button>Edit Contest</Button>
-      //   </Grid>
+  // This function will be called with the Edit button
+  // and will set the reduxState for editing this contest
+  // and it's photos
+  setContestsPhotos = () => {
+    this.props.dispatch({
+      type: 'FETCH_CONTEST_PHOTOS'
+    });
+  }
 
-      // </div>
+  render() {
+    console.log('This Contest', this.props.contest);
+    
+    return (
       <tr>
         <td>
             {this.props.contest.name}
         </td>
         <td>
-            {this.props.contest.start_date}
+            {moment(this.props.contest.start_date).format('MMMM Do YYYY')}
         </td>
         <td>
-            {this.props.contest.end_date} 
+            {moment(this.props.contest.end_date).format('MMMM Do YYYY')} 
         </td>
         <td>
             <button>
