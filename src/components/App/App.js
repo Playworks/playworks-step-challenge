@@ -28,14 +28,13 @@ import CreateOrJoinTeam from '../User/CreateOrJoinTeam/CreateOrJoinTeam';
 import CreateTeam from '../User/CreateTeam/CreateTeam';
 import JoinTeam from '../User/JoinTeam/JoinTeam';
 import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
-import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
 import Challenges from '../User/Challenges/Challenges';
 import CreateContest from '../Admin/CreateContest/CreateContest';
-import EditChallenges from '../Admin/EditChallenges/EditChallenges';
-import EditContests from '../Admin/EditContests/EditContests';
-import EditRules from '../Admin/EditRules/EditRules';
-import EditFAQ from '../Admin/EditFAQ/EditFAQ';
-import PlayworksAdminHome from '../Admin/PlayworksAdminHome/PlayworksAdminHome';
+import AdminContests from '../Admin/AdminContests/AdminContests';
+import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
+import AdminRules from '../Admin/AdminRules/AdminRules';
+import AdminFAQ from '../Admin/AdminFAQ/AdminFAQ';
+import AdminHome from '../Admin/AdminHome/AdminHome';
 import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
 import moment from 'moment';
 import ImageUpload from '../User/SubmitPhotos/ImageUpload';
@@ -63,12 +62,6 @@ class App extends Component {
             <Redirect exact from="/" to="/home" />
 
             {/* Visiting localhost:3000/about will show the about page. */}
-            <Route
-              // shows AboutPage at all times (logged in or not)
-              exact
-              path="/about"
-              component={AboutPage}
-            />
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -122,22 +115,10 @@ class App extends Component {
               component={EditUserLogs}
             />
 
-            <AdminRoute
-            exact
-            path='/adminchallenges'
-            component={AdminChallenges}
-            />
-
             <ProtectedRoute
               exact
               path="/challenges"
               component={Challenges}
-            />
-
-            <AdminRoute
-              exact
-              path="/createcontest"
-              component={CreateContest}
             />
 
             <ProtectedRoute
@@ -146,54 +127,9 @@ class App extends Component {
               component={ImageUpload}
             />
 
-            <AdminRoute
-              exact
-              path="/editchallenges"
-              component={EditChallenges}
-            />
-
-            <AdminRoute
-              exact
-              path="/editcontests"
-              component={EditContests}
-            />
-
-            <AdminRoute
-              exact
-              path="/editrules"
-              component={EditRules}
-            />
-
-            <AdminRoute
-              exact
-              path="/adminhome"
-              component={PlayworksAdminHome}
-            />
-
-            <AdminRoute
-              exact
-              path="/contestdescription"
-              component={ContestDescriptionPage}
-            />
-
-            <AdminRoute
-              exact
-              path="/editfaq"
-              component={EditFAQ}
-            />
-
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
-            <AdminRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LoginPage at /login
-              exact
-              path="/login"
-              component={LoginPage}
-              authRedirect="/adminhome"
-            />
             <ProtectedRoute
               exact
               path="/login"
@@ -208,7 +144,7 @@ class App extends Component {
               path="/registration"
               component={RegisterPage}
               authRedirect="/home"
-              />
+            />
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
@@ -216,6 +152,50 @@ class App extends Component {
               exact
               path="/home"
               component={ContestHome}
+            />
+
+            {/* ADMIN ROUTES */}
+
+            <AdminRoute
+              exact
+              path="/createcontest"
+              component={CreateContest}
+            />
+
+            <AdminRoute
+              exact
+              path='/adminchallenges'
+              component={AdminChallenges}
+            />
+
+            <AdminRoute
+              exact
+              path="/admincontests"
+              component={AdminContests}
+            />
+
+            <AdminRoute
+              exact
+              path="/adminrules"
+              component={AdminRules}
+            />
+
+            <AdminRoute
+              exact
+              path="/adminhome"
+              component={AdminHome}
+            />
+
+            <AdminRoute
+              exact
+              path="/contestdescription"
+              component={ContestDescriptionPage}
+            />
+
+            <AdminRoute
+              exact
+              path="/adminfaq"
+              component={AdminFAQ}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

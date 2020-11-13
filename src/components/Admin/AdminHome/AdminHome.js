@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './PlayworksAdminHome.css';
+import './AdminHome.css';
 import { Typography } from '@material-ui/core';
 import CreateContest from '../CreateContest/CreateContest';
-import AdminNav from '../../Admin/AdminNav/AdminNav.js';
+import Nav from '../../Nav/Nav.js';
 
-class PlayworksAdminHome extends Component {
+class AdminHome extends Component {
   state = {
     heading: 'Contests',
   };
@@ -14,7 +14,7 @@ class PlayworksAdminHome extends Component {
   render() {
     return (
       <div className='contestTable'>
-        <AdminNav />
+        <Nav/>
         <Typography variant='h5'>{this.state.heading}</Typography>
         <center>
           <table>
@@ -56,4 +56,4 @@ class PlayworksAdminHome extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(PlayworksAdminHome);
+export default connect(mapStoreToProps)(AdminHome);
