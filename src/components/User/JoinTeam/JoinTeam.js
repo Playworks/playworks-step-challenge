@@ -7,6 +7,9 @@ import Logo from '../../../images/PW-hor-logo.png';
 import Placeholder from '../../../images/placeholder-square.png';
 // import material ui
 import { Button, Typography, InputLabel, MenuItem, Select, FormControl } from '@material-ui/core';
+// import sweetalert
+import swal from 'sweetalert';
+
 
 class JoinTeam extends Component {
   state = {
@@ -29,20 +32,41 @@ class JoinTeam extends Component {
     });
   };
 
+  // Function sends team id to server to update users teams_id in database a.k.a adds user to a team
+  // with sweet alert validation. 
   joinTeam = () => {
-    this.props.dispatch({
-      type: 'JOIN_TEAM',
-      payload: {
-        selected_team_id: this.state.selected_team_id,
-        user_id: this.props.store.user.id
-      }
-    });
-    this.props.history.push('/home')
-  }
+    if(this.state.selected_team_id === ''){
+      swal(`Please select a team to join`)
+    }
+    else{
+      swal({
+        title: "Is the selected team correct?",
+        icon: "info",
+        buttons: {
+          cancel: "No",
+          yes: true,
+        }
+      }).then(isCorrect => {
+        if(isCorrect){
+          this.props.dispatch({
+            type: 'JOIN_TEAM',
+            payload: {
+              selected_team_id: this.state.selected_team_id,
+              user_id: this.props.store.user.id
+            }
+          });
+          swal({
+            title: "You've successfully joined a team!'",
+            icon: "success"
+          }).then(() => {
+            this.props.history.push('/home');
+          })
+        };
+      });
+    };
+  };
 
   render() {
-    console.log('this is state', this.state)
-    console.log('this is props', this.props);
     return (
       <div>
         <img className='createPageLogo' src= {Logo}/>
@@ -91,6 +115,7 @@ class JoinTeam extends Component {
             </button>
           </div>
         </div>
+      </div>
     );
   }
 }

@@ -4,8 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
 import Logo from '../../../images/PW-hor-logo.png';
 // import material ui
-import { 
-  Button, TextField, Typography } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 // import sweetalert
 import swal from 'sweetalert';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
