@@ -34,6 +34,8 @@ class ContestHome extends Component {
   };
 
   render() {
+    console.log('this', this.props.history);
+    
     return (
       <div>
         <Nav />
