@@ -33,7 +33,7 @@ const Nav = (props) => {
     <div className="nav">
       <div className="nav-title">
         <Link to="/home">
-          <img src={Logo} />
+          <img className='nav-logo' src={Logo} />
         </Link>
       </div>
 
