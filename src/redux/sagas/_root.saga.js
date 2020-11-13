@@ -9,6 +9,10 @@ import photosSaga from './photos.saga';
 import teamLeaderBoardSaga from './leaderboard.saga';
 import topSteppersSaga from './topsteppers.saga';
 import stepsSaga from './steps.saga';
+import rulesSaga from './rules.saga';
+import faqSaga from './faq.saga';
+
+
 
 
 
@@ -31,6 +35,8 @@ export default function* rootSaga() {
     photosSaga(),
     teamLeaderBoardSaga(),
     topSteppersSaga(),
-    stepsSaga()
+    stepsSaga(),
+    rulesSaga(),
+    faqSaga()
   ]);
 }

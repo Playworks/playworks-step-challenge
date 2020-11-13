@@ -17,6 +17,7 @@ class AdminContests extends Component {
 
   componentDidMount() {
     this.setContests();
+
   }
 
   setContests = () => {
@@ -24,6 +25,7 @@ class AdminContests extends Component {
       type: 'FETCH_CONTEST'
     });
   }
+
 
   render() {
     return (

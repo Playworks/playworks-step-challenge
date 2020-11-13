@@ -9,6 +9,15 @@ class AdminContestsItem extends Component {
     heading: 'AdminContestsItem',
   };
 
+  // This function will be called with the Edit button
+  // and will set the reduxState for editing this contest
+  // and it's photos
+  setContestsPhotos = () => {
+    this.props.dispatch({
+      type: 'FETCH_CONTEST_PHOTOS'
+    });
+  }
+
   render() {
     console.log('This Contest', this.props.contest);
     
