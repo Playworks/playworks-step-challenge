@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Button, Grid, Typography } from '@material-ui/core';
+import moment from 'moment';
 
-class AdminChallengesItem extends Component {
+class ChallengesGridItem extends Component {
   state = {
-    heading: 'AdminChallengesItem',
+    heading: 'ChallengesGridItem',
   };
 
   render() {
@@ -13,7 +14,7 @@ class AdminChallengesItem extends Component {
       <div>
         <Grid item xs={4}>
             <Typography variant='h5'>{this.props.challenge.name}</Typography>
-            <Typography variant='subtitle1'>{this.props.challenge.date}</Typography>
+            <Typography variant='subtitle1'>{moment(this.props.challenge.date).format('MMMM Do YYYY')}</Typography>
             <Typography variant='body2'>{this.props.challenge.description}</Typography>
             <Button>Edit Challenge</Button>
         </Grid>
@@ -22,4 +23,4 @@ class AdminChallengesItem extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(AdminChallengesItem);
+export default connect(mapStoreToProps)(ChallengesGridItem);
