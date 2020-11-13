@@ -33,7 +33,7 @@ router.get('/searchforteams', (req, res) => {
   })
   .catch(error => {
     console.log('We have an error in GET /searchforteams', error);
-    res.sendStatus(501);
+    res.sendStatus(500);
   });
 });
 
@@ -49,7 +49,7 @@ router.get('/searchforcaptains', (req, res) => {
   })
   .catch(error => {
     console.log('We have an error in GET /searchforcaptains', error);
-    res.sendStatus(501);
+    res.sendStatus(500);
   });
 })
 
@@ -80,13 +80,13 @@ router.post('/', (req, res) => {
     // Catch for second query
     .catch(error => {
       console.log('We have an error in second catch /api/teams', error);
-      res.sendStatus(501);
+      res.sendStatus(500);
     })
   })
   // Catch for first query
   .catch(error => {
     console.log('We have an error in first catch /api/teams', error);
-    res.sendStatus(501);
+    res.sendStatus(500);
   })
 });
 
@@ -101,6 +101,7 @@ router.put('/join/:id', (req, res) => {
   })
   .catch(error => {
     console.log('We have an error in /api/teams/join/:id', error);
+    res.sendStatus(500);
   });
 });
 

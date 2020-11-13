@@ -69,6 +69,9 @@ class CreateTeam extends Component {
           this.props.history.push('/home');
         })
         }
+        else{
+          swal("Please correct any info that is incorrect");
+        }
       })
     };
   };
