@@ -12,6 +12,7 @@ import stepsSaga from './steps.saga';
 import rulesSaga from './rules.saga';
 import faqSaga from './faq.saga';
 import logsSaga from './logs.saga';
+import deleteUserSaga from './deleteUser.saga';
 
 
 
@@ -38,6 +39,7 @@ export default function* rootSaga() {
     rulesSaga(),
     faqSaga(),
     stepsSaga(),    
-    logsSaga()
+    logsSaga(),
+    deleteUserSaga()
   ]);
 }

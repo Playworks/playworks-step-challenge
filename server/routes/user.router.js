@@ -53,5 +53,38 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.delete('/delete', async(req, res) => {
+  console.log('req delete', req.body.id);
+  let connection;
+  try{
+    connection = await pool.connect();
+    // Begin transaction
+    await connection.query('BEGIN');
+    await connection.query(`
+      DELETE FROM "photos"
+      WHERE "user_id" = $1;
+    `, [req.body.id]);
+    await connection.query(`
+      DELETE FROM "steps"
+      WHERE "user_id" = $1;
+    `, [req.body.id]);
+    await connection.query(`
+      DELETE FROM "user"
+      WHERE "id" = $1;
+  `, [req.body.id]);
+    await connection.query('COMMIT');
+
+    res.sendStatus(201);
+  }
+  catch(err) {
+    await connection.query('ROLLBACK');
+    console.log('err', err);
+    res.sendStatus(500);
+  }
+  finally {
+    // release connection no matter what
+    connection.release();
+  }
+})
 
 module.exports = router;
