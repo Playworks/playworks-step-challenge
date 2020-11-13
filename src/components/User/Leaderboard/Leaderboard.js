@@ -16,7 +16,7 @@ class Leaderboard extends Component {
           <div className='leaderBoard'>
             <Typography variant='h5'>{this.state.heading}</Typography>
           </div>
-          <table style={{width: '90%'}}>
+          <table id='leaderboardTable'>
             <thead>
               <tr>
                 <th><Typography variant='body1'>Rank</Typography></th>

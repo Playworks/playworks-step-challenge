@@ -2,8 +2,8 @@
     text-align: center;
 }
 
-
 .challengeOfTheDaySubtitleAndDescription {
     display: inline-block; 
     text-align: left;
+    width: 300px;
 }
