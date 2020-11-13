@@ -94,7 +94,7 @@ router.post('/', (req, res) => {
 router.put('/join/:id', (req, res) => {
   const selected_team_id = req.body.selected_team_id;
   const user_id = req.params.id;
-  const queryText = `UPDATE "user" SET "teams_id" = $1 WHERE "id" = $2;`
+  const queryText = `UPDATE "user" SET "teams_id" = $1, "admin" = 'USER' WHERE "id" = $2;`
   pool.query(queryText, [selected_team_id, user_id])
   .then(result => {
     res.sendStatus(201);
