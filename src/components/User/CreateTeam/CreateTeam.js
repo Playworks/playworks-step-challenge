@@ -4,8 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
 import Logo from '../../../images/PW-hor-logo.png';
 // import material ui
-import { 
-  Button, TextField, Typography } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 // import sweetalert
 import swal from 'sweetalert';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
@@ -16,11 +15,6 @@ class CreateTeam extends Component {
     team_name: '',
     team_photo: '',
     company_name: '',
-  }
-
-  componentDidMount() {
-    // Dispatching fetch contest on this page load so that users have access contest for drop down.
-    this.props.dispatch({ type: 'FETCH_CONTEST'});
   }
 
   handleInputChangeFor = (propertyName) => (event) => {

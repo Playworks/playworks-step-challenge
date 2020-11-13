@@ -24,12 +24,12 @@ router.get('/teamleaderboard', (req, res) => {
   // GET route code here
   console.log('steps router get');
   const queryString = `
-  SELECT SUM("steps"."steps"), "teams"."name" FROM "user"
+  SELECT SUM("steps"."steps"), "teams"."name", "teams"."id" FROM "user"
   JOIN "teams"
   ON "user"."teams_id" = "teams"."id"
   JOIN "steps"
   ON "user"."id" = "steps"."user_id"
-  GROUP BY "teams"."name"
+  GROUP BY "teams"."name", "teams"."id"
   ORDER BY "sum" DESC;
   `
   pool.query(queryString)
