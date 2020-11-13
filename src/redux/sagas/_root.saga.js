@@ -8,6 +8,8 @@ import userSaga from './user.saga';
 import photosSaga from './photos.saga';
 import teamLeaderBoardSaga from './leaderboard.saga';
 import topSteppersSaga from './topsteppers.saga';
+import stepsSaga from './steps.saga';
+
 
 
 
@@ -28,6 +30,7 @@ export default function* rootSaga() {
     challengesSaga(), // Listens for 'FETCH_CHALLENGES'
     photosSaga(),
     teamLeaderBoardSaga(),
-    topSteppersSaga()
+    topSteppersSaga(),
+    stepsSaga()
   ]);
 }

@@ -32,7 +32,7 @@ function* createPhotosSaga(action) {
     });
     console.log('Response', response);
     yield put({
-        type: 'FETCH_PHOTOS',
+        type: ('FETCH_PHOTOS', 'FETCH_LEADER_BOARD', 'FETCH_CHALLENGE_PHOTOS', 'FETCH_TOP_STEPPERS'),
         payload: response.data
     });
   };

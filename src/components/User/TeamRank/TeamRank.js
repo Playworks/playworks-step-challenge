@@ -13,8 +13,15 @@ class TeamRank extends Component {
   render() {
     return (
       <div>
-        <Typography variant='h6'>{this.state.stepCount} steps</Typography>
-        <Typography variant='h6'>Rank: {this.state.rank}</Typography>
+        
+        {this.props.store.leaderBoard.map((team, i) =>
+          team.id === this.props.store.user.teams_id && (
+            <div>
+          <Typography variant='h6'>{team.sum} steps</Typography>
+          <Typography variant='h6'>Rank: {i +1}</Typography> 
+          </div> 
+          )
+          )}
       </div>
     );
   }
