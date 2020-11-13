@@ -61,7 +61,9 @@ class TopSteppers extends Component {
     return (
       <div>
         <div className='topSteppers'>
-          <Typography variant='h5'>Today's Top Steppers</Typography>
+          <div className='homePageHeadline'>
+            <Typography variant='h5'>Today's Top Steppers</Typography>
+          </div>
           <Carousel responsive={responsive}
           swipeable={true}
           infinite={true}
@@ -72,8 +74,8 @@ class TopSteppers extends Component {
               <Paper key={i} className='stepperPaper'>
                 <img className='avatar' src={user.image_path}/>
                 <Typography variant='body2'>{user.username}</Typography>
-                <Typography variant='body2'>Of Team: {user.name}</Typography>
-                <Typography variant='body2'>{user.sum}</Typography>
+                <Typography variant='body2'>{user.sum} steps</Typography>
+                <Typography variant='body2'>{user.name}</Typography>
               </Paper>
             )}
           </Carousel>
