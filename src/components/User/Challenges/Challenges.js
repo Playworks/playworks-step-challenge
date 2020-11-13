@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ChallengesItem from '../ChallengesItem/ChallengesItem';
+import { Typography } from '@material-ui/core';
 import './Challenges.css';
 
 class Challenges extends Component {
@@ -20,12 +21,17 @@ class Challenges extends Component {
   render() {
     
     return (
-      <div className='challengeOfTheDay'>
+      <div className='challengesContainer'>
+        <div className='homePageHeadline'>
+          <Typography variant='h5'>Challenge of the Day</Typography>
+        </div>
         {this.props.store.challenges.map((challenge, i) => 
-                <ChallengesItem
-                  key={challenge.id}
-                  challenge={challenge}
-                />
+          <div className='challengesItem'>
+            <ChallengesItem
+              key={challenge.id}
+              challenge={challenge}
+            />
+          </div>
               )}
       </div>
     );

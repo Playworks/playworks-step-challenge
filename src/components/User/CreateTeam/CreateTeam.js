@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateTeam.css';
-// import placeholder image
 import Logo from '../../../images/PW-hor-logo.png';
 // import material ui
-import { 
-  Button, TextField, Typography } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 // import sweetalert
 import swal from 'sweetalert';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
@@ -90,7 +88,7 @@ class CreateTeam extends Component {
 
         <div className='teamForm'>
           <Typography variant='h5'>Create a Team</Typography>
-          
+          <center>
           <div className='createTeamName'>
             <TextField 
               id="outlined-basic" 
@@ -117,7 +115,6 @@ class CreateTeam extends Component {
                   upload={uploadOptions}
             />
           </div>
-          <center>
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
@@ -127,23 +124,24 @@ class CreateTeam extends Component {
           </center>
         </div>
         <div id='footer'>
-        <button
+          <button
             type="button"
             className="btn btn_asLink"
             onClick={() => {this.props.history.push('/createorjointeam')}}>
-            Go Back</button>
+            Go Back
+          </button>
           <button
             type="button"
             className="btn btn_asLink"
             onClick={() => {this.props.history.push('/jointeam')}}>
-            Join Team</button>
+            Join Team
+          </button>
           <button
             type="button"
             className="btn btn_asLink"
             onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
             Log Out
           </button>
-
         </div>
       </div>
     );
