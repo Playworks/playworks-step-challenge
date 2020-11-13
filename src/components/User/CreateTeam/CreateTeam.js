@@ -48,6 +48,8 @@ class CreateTeam extends Component {
     else{
       swal({
         title: "Is the submitted info correct?",
+        text: `Team Name: ${this.state.team_name} 
+          Company Name: ${this.state.company_name}`,
         icon: "info",
         buttons: {
           cancel: "No",
