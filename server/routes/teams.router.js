@@ -23,10 +23,10 @@ router.get('/searchforteams', (req, res) => {
   console.log('in router.get api/teams/searchforteams');
   console.log('this is req.user.contests_id', req.user.contests_id);
   const queryText = `
-    SELECT "teams"."id" AS "teams_id", "teams"."name" FROM "teams"
+    SELECT "teams"."id" AS "teams_id", "teams"."name", "team_logo" AS "image_path" FROM "teams"
     JOIN "user"
     ON "user"."teams_id" = "teams"."id"
-    WHERE "user"."contests_id" = $1 ORDER BY "name" ASC;`;
+    WHERE "user"."contests_id" = $1 AND "admin" = 'CAPTAIN' ORDER BY "name" DESC;`;
   pool.query(queryText, [req.user.contests_id])
   .then(result => {
     res.send(result.rows);
@@ -52,6 +52,7 @@ router.get('/searchforcaptains', (req, res) => {
     res.sendStatus(501);
   });
 })
+
 
 // Post route creates a team then updates users admin level to be captain
 router.post('/', (req, res) => {
@@ -87,6 +88,20 @@ router.post('/', (req, res) => {
     console.log('We have an error in first catch /api/teams', error);
     res.sendStatus(501);
   })
+});
+
+// Updates user's team id in jointeam.js
+router.put('/join/:id', (req, res) => {
+  const selected_team_id = req.body.selected_team_id;
+  const user_id = req.params.id;
+  const queryText = `UPDATE "user" SET "teams_id" = $1 WHERE "id" = $2;`
+  pool.query(queryText, [selected_team_id, user_id])
+  .then(result => {
+    res.sendStatus(201);
+  })
+  .catch(error => {
+    console.log('We have an error in /api/teams/join/:id', error);
+  });
 });
 
 module.exports = router;
