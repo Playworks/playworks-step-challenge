@@ -4,7 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './AdminChallenges.css';
 import ChallengesGrid from '../ChallengesGrid/ChallengesGrid';
 import CreateChallenges from '../CreateChallenges/CreateChallenges';
-import AdminNav from '../../Admin/AdminNav/AdminNav.js';
+import Nav from '../../Nav/Nav.js';
 import { Typography } from '@material-ui/core';
 
 class AdminChallenges extends Component {
@@ -27,6 +27,7 @@ class AdminChallenges extends Component {
   render() {
     return (
         <div>
+          <Nav/>
             <Typography variant='h5'>{this.state.heading}</Typography>
             {this.props.store.challenges.map((challenge, i) => 
             <ChallengesGrid 

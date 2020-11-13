@@ -38,7 +38,30 @@ const Nav = (props) => {
       </div>
 
         {/* Shows the hamburger menu if the user is logged in */}
-         { props.store.user.id == null ? ( null ) : (  
+         { props.store.user.admin == 'ADMIN' ? 
+          <div className='nav-right'>
+            <Button style={{ verticalAlign: 'baseline' }} aria-controls="simple-menu" aria-haspopup="true" onClick={ handleClick }>
+              <MenuIcon fontSize={ 'medium' } style={{ color: 'black' }}/>
+            </Button>
+            <Menu id="simple-menu"
+              anchorEl={ anchorEl }
+              keepMounted
+              open={ Boolean( anchorEl )}
+              onClose={ handleClose }>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/adminhome">Home</Link></MenuItem>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/admincontests">Contests</Link></MenuItem>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/adminchallenges">Challenges</Link></MenuItem>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/adminrules">Rules</Link></MenuItem>
+              <MenuItem onClick={ handleClose }>
+              <Link className='nav-link' to="/adminfaq">FAQ</Link></MenuItem>
+              <MenuItem onClick={() => props.dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
+            </Menu>
+          </div>
+          : props.store.user.id == null ? ( null ) : (  
           <div className='nav-right'>
             <Button style={{ verticalAlign: 'baseline' }} aria-controls="simple-menu" aria-haspopup="true" onClick={ handleClick }>
               <MenuIcon fontSize={ 'medium' } style={{ color: 'black' }}/>
