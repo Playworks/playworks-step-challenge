@@ -8,6 +8,11 @@ import { Typography, Link } from '@material-ui/core';
 class TeamStepCount extends Component { 
   editLogs = (value) => {
     console.log('this button works', value);
+    let userLogsToGet = value
+    this.props.dispatch({
+      type: 'FETCH_LOGS',
+      payload: userLogsToGet
+    })
     this.props.history.push('/editlogs')
   }
 
