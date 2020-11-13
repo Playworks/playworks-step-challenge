@@ -12,30 +12,27 @@ import Nav from '../../Nav/Nav.js';
 import Footer from '../../Footer/Footer.js';
 
 class TeamHome extends Component {
-  state = {
-    teamName: "Kickin' Chickens",
-    steps: '3325',
-  };
-
   componentDidMount() {
     this.getTeamDetails()
   }
 
+
   getTeamDetails = () => {
     console.log('team number', this.props.store.user.teams_id);
-    
     this.props.dispatch({
       type: 'FETCH_TEAM_DETAILS',
       payload: this.props.store.user.teams_id
     })
   }
 
+
   render() {
+    
     return (
       <div>
         <Nav />
       <div>
-        <Typography variant='h4'>{this.state.teamName}</Typography>
+        <Typography variant='h4'>{this.props.store.teamDetails[0] && this.props.store.teamDetails[0].name}</Typography>
         <TeamRank/>
         <TeamStepCount/>
         <ChallengeOfTheDay/>

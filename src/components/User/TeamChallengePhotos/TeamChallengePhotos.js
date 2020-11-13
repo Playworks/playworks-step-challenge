@@ -28,20 +28,33 @@ class TeamChallengePhotos extends Component {
     ]
   };
 
+  componentDidMount() {
+    this.getTeamPhotos();
+  }
+
+  getTeamPhotos = () => {
+    console.log('team number', this.props.store.user.teams_id);
+    
+    this.props.dispatch({
+      type: 'FETCH_TEAM_PHOTOS',
+      payload: this.props.store.user.teams_id
+    })
+  }
+
   render() {
     return (
       <div className='imageFeed'>
-        { this.state.images.map( ( item, i ) => 
+        { this.props.store.teamPhotos.map( ( photo, i ) => 
         <div className='imageFeedCard'>
             <Card style={{width: '300px'}}>
               <div className='dailyChallengeImage'>
-                <img key={i} src={item.image}/>
+                <img key={i} src={photo.file_url}/>
               </div>
               <Card>
-                <img className='avatarFeed' src={item.avatar}/>
+                <img className='avatarFeed' src={photo.image_path}/>
                 <div className='feedInfo'>
-                  <Typography variant='body2'>{item.name}</Typography>
-                  <Typography variant='body2'>{item.challengeTitle}</Typography>
+                  <Typography variant='body2'>{photo.description}</Typography>
+                  <Typography variant='body2'>{photo.name}</Typography>
                 </div>
               </Card>
             </Card>

@@ -44,11 +44,28 @@ function* fetchTeamDetailsSaga(action){
   })
 }
 
+function* fetchTeamPhotosSaga(action){
+  console.log('in fetchTeamDetailsSaga');
+  let response = yield axios({
+    method: 'GET',
+    url: `/api/teamDetails/photos/${action.payload}`,
+    params: {
+      id: action.payload
+    }
+  })
+  console.log('this is response from server teams', response);
+  yield put({
+    type: 'SET_TEAM_PHOTOS',
+    payload: response.data
+  })
+}
+
 function* teamSaga() {
   yield takeLatest('CREATE_TEAM', createTeamSaga);
   yield takeLatest('FETCH_TEAMS_FOR_JOIN', fetchTeamsForJoinSaga);
   yield takeLatest('FETCH_CAPTAINS_FOR_JOIN', fetchCaptainsForJoinSaga);
   yield takeLatest('FETCH_TEAM_DETAILS', fetchTeamDetailsSaga);
+  yield takeLatest('FETCH_TEAM_PHOTOS', fetchTeamPhotosSaga);
   yield takeLatest('JOIN_TEAM', joinTeamSaga);
 };
 

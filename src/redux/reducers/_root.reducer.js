@@ -9,6 +9,7 @@ import challengePhotos from './challengephotos.reducer';
 import leaderBoard from './leaderboard.reducer';
 import topSteppers from './topsteppers.reducer';
 import teamDetails from './teamdetails.reducer';
+import teamPhotos from './teamphotos.reducer';
 import teams from './teams.reducer';
 
 
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
   challengePhotos,
   leaderBoard,
   topSteppers,
-  teamDetails
+  teamDetails,
+  teamPhotos
 });
 
 export default rootReducer;
