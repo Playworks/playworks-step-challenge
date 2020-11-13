@@ -10,6 +10,7 @@ import teamLeaderBoardSaga from './leaderboard.saga';
 import topSteppersSaga from './topsteppers.saga';
 import stepsSaga from './steps.saga';
 import logsSaga from './logs.saga';
+import deleteUserSaga from './deleteUser.saga';
 
 
 
@@ -33,6 +34,7 @@ export default function* rootSaga() {
     teamLeaderBoardSaga(),
     topSteppersSaga(),
     stepsSaga(),    
-    logsSaga()
+    logsSaga(),
+    deleteUserSaga()
   ]);
 }
