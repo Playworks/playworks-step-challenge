@@ -11,8 +11,7 @@ import topSteppersSaga from './topsteppers.saga';
 import stepsSaga from './steps.saga';
 import rulesSaga from './rules.saga';
 import faqSaga from './faq.saga';
-
-
+import logsSaga from './logs.saga';
 
 
 
@@ -37,6 +36,8 @@ export default function* rootSaga() {
     topSteppersSaga(),
     stepsSaga(),
     rulesSaga(),
-    faqSaga()
+    faqSaga(),
+    stepsSaga(),    
+    logsSaga()
   ]);
 }

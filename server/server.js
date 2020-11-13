@@ -20,6 +20,7 @@ const faqRouter = require('./routes/faq.router');
 const dailyChallengeRouter = require('./routes/dailychallenge.router');
 const challengePhotosRouter = require('./routes/challengephotos.router');
 const teamDetailsRouter = require('./routes/teamdetails.router');
+const logsRouter = require('./routes/logs.router');
 const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
 
@@ -46,7 +47,7 @@ app.use('/api/challengephotos', challengePhotosRouter);
 app.use('/api/teamDetails', teamDetailsRouter);
 app.use('/api/rules', rulesRouter);
 app.use('/api/faq', faqRouter);
-
+app.use('/api/logs', logsRouter);
 
 
 app.use('/s3', UploaderS3Router({

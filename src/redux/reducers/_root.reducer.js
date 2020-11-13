@@ -13,7 +13,7 @@ import teamPhotos from './teamphotos.reducer';
 import teams from './teams.reducer';
 import rules from './rules.reducer';
 import faq from './faq.reducer';
-
+import userLogs from './logs.reducer';
 
 
 
@@ -39,7 +39,9 @@ const rootReducer = combineReducers({
   teamDetails,
   teamPhotos,
   rules,
-  faq
+  faq,
+  userLogs
+
 });
 
 export default rootReducer;
