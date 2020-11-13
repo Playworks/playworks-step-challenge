@@ -18,79 +18,22 @@ class EditUserLogs extends Component {
         <Nav />
       <Grid container direction="column" alignItems="center">
         <Grid item>
-        <Typography variant='h5'>{this.state.username}<button>Delete User</button></Typography>
+        <Typography variant='h5'>{this.props.store.userLogs[0] && this.props.store.userLogs[0].username}<button>Delete User</button></Typography>
           <center>
             <table>
               <thead>
                 <th>Time Submitted</th>
                 <th>Steps</th>
+                <th>Edit?</th>
               </thead>
               <tbody>
+                {this.props.store.userLogs.map(log =>
                 <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
+                  <td>{log.date}</td>
+                  <td>{log.steps}</td>
                   <td><button>Edit</button></td>
                 </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
-                <tr>
-                  <td>00:00 dd/mm</td>
-                  <td>900</td>
-                  <td><button>Edit</button></td>
-                </tr>
+                  )}
               </tbody>
             </table>
           </center>
