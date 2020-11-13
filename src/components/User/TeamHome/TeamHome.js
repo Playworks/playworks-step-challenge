@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './TeamHome.css';
@@ -10,6 +11,7 @@ import TeamChallengePhotos from '../TeamChallengePhotos/TeamChallengePhotos';
 import RulesFaqBtn from '../RulesFaqBtn/RulesFaqBtn';
 import Nav from '../../Nav/Nav.js';
 import Footer from '../../Footer/Footer.js';
+import TeamName from '../../User/TeamName/TeamName.js';
 
 class TeamHome extends Component {
   componentDidMount() {
@@ -27,12 +29,13 @@ class TeamHome extends Component {
 
 
   render() {
+    console.log('team home', this.props.history);
     
     return (
       <div>
         <Nav />
       <div>
-        <Typography variant='h4'>{this.props.store.teamDetails[0] && this.props.store.teamDetails[0].name}</Typography>
+        <TeamName />
         <TeamRank/>
         <TeamStepCount/>
         <ChallengeOfTheDay/>

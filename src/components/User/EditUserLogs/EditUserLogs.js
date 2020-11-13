@@ -11,6 +11,8 @@ class EditUserLogs extends Component {
   };
 
   render() {
+    console.log('this.prop', this.props.history);
+    
     return (
       <div>
         <Nav />
