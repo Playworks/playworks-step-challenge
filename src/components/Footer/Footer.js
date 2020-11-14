@@ -13,23 +13,23 @@ class Footer extends Component {
 
   render() {
     return (
-      <div>
+      <div className='footerContainer'>
         <center>
         <div className='footerIconGroup' onClick={() => {this.props.history.push('/home')}}>
-          <HomeIcon fontSize='large' />
-          <Typography variant='body1'>Home</Typography>
+          <HomeIcon/>
+          <Typography variant='body2'>Home</Typography>
         </div>
         <div className='footerIconGroup' onClick={() => {this.props.history.push('/addphoto')}}>
-          <AddAPhotoIcon fontSize='large'/>
-          <Typography variant='body1'>Add Photo</Typography>
+          <AddAPhotoIcon/>
+          <Typography variant='body2'>Add Photo</Typography>
         </div>
         <div className='footerIconGroup' onClick={() => {this.props.history.push('/addsteps')}}>
-          <DirectionsWalkIcon fontSize='large'/>
-          <Typography variant='body1'>Add Steps</Typography>
+          <DirectionsWalkIcon/>
+          <Typography variant='body2'>Add Steps</Typography>
         </div>
         <div className='footerIconGroup' onClick={() => {this.props.history.push('/team')}}>
-          <SupervisedUserCircleIcon fontSize='large'/>
-          <Typography variant='body1'>Team Home</Typography>
+          <SupervisedUserCircleIcon/>
+          <Typography variant='body2'>Team Home</Typography>
         </div>
         </center>
       </div>

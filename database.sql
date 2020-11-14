@@ -67,6 +67,16 @@ CREATE TABLE "photos" (
     "file_url" TEXT
 );
 
+CREATE TABLE "rules" (
+    "id" SERIAL PRIMARY KEY,
+    "file_url" TEXT
+);
+
+CREATE TABLE "faq" (
+    "id" SERIAL PRIMARY KEY,
+    "file_url" TEXT
+);  
+
 -- Fake contests
 INSERT INTO "contests" ("name", "start_date", "end_date")
 VALUES ('A-Team contest', '2020-11-10', '2020-11-15');
