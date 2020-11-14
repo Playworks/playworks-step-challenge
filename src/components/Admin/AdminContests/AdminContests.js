@@ -7,6 +7,9 @@ import CreateContest from '../CreateContest/CreateContest';
 import AdminContestsItem from '../AdminContestsItem/AdminContestsItem';
 import Nav from '../../Nav/Nav.js';
 import { Typography } from '@material-ui/core';
+import axios from 'axios';
+import FileSaver from 'file-saver';
+import saveAs from 'file-saver';
 
 class AdminContests extends Component {
   state = {
@@ -26,6 +29,21 @@ class AdminContests extends Component {
     });
   }
 
+  fetchDataDownloadCsv = () => {
+    axios({
+      method: 'POST',
+      url: '/api/admin',
+      data: {
+        contests_id: 2
+      }
+    }).then(result => {
+      console.log(result.data);
+      const csvfile = new File([result.data], 'result.csv', {type: "text/plain;charset=utf-8"});
+      saveAs(csvfile);
+    }).catch(error => {
+      console.log('we have an error in fetchDataDownloadCSV', error);
+    })
+  };
 
   render() {
     return (
@@ -33,6 +51,7 @@ class AdminContests extends Component {
             <Nav/>
             <Typography variant='h5'>{this.state.heading}</Typography>
             <div>
+              <button onClick={this.fetchDataDownloadCsv}> Test CSV download</button>
                 <center>
                     <table>
                     <thead>

@@ -8,7 +8,6 @@ const Papa = require('PapaParse');
 
 router.post('/', (req, res) => {
   const contests_id = req.body.contests_id;
-  const contests_name = req.body.contests_name;
   console.log('this is contests_id', contests_id)
   const queryText = `
     SELECT "user"."first_name" AS "First Name", "user"."last_name" AS "Last Name", "user"."email" AS "Email", "teams"."company_name" AS "Company Name" FROM "user"
