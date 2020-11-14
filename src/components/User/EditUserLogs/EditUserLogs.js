@@ -5,6 +5,7 @@ import { Grid, Typography } from "@material-ui/core";
 import './EditUserLogs.css';
 import Nav from '../../Nav/Nav.js';
 import swal from 'sweetalert';
+import ContentEditable from 'react-contenteditable';
 
 class EditUserLogs extends Component {
   state = {
@@ -60,7 +61,11 @@ class EditUserLogs extends Component {
                 {this.props.store.userLogs.map(log =>
                 <tr>
                   <td>{log.date}</td>
-                  <td>{log.steps}</td>
+                  <td>
+                  <ContentEditable 
+                  html={log.steps}
+                  />
+                  </td>
                   <td><button>Edit</button></td>
                 </tr>
                   )}
