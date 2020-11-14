@@ -40,7 +40,7 @@ const rootReducer = combineReducers({
   teamDetails,
   teamPhotos,
   userLogs,
-  currentPerson
+  currentPerson,
   rules,
   faq,
   userLogs
