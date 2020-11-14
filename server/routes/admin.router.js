@@ -10,9 +10,17 @@ router.post('/', (req, res) => {
   const contests_id = req.body.contests_id;
   console.log('this is contests_id', contests_id)
   const queryText = `
-    SELECT "user"."first_name" AS "First Name", "user"."last_name" AS "Last Name", "user"."email" AS "Email", "teams"."company_name" AS "Company Name" FROM "user"
+    SELECT 
+    "user"."first_name" AS "First Name", 
+    "user"."last_name" AS "Last Name", 
+    "user"."email" AS "Email", 
+    "teams"."company_name" AS "Company Name", 
+    "contests"."name" AS "Contest Name" 
+    FROM "user"
     JOIN "teams"
     ON "user"."teams_id" = "teams"."id"
+    JOIN "contests"
+    ON "user"."contests_id" = "contests"."id"
     WHERE "user"."contests_id" = $1;`;
   pool.query(queryText, [contests_id])
   .then(result => {
