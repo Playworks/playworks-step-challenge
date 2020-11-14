@@ -18,6 +18,7 @@ const teamsRouter = require('./routes/teams.router');
 const dailyChallengeRouter = require('./routes/dailychallenge.router');
 const challengePhotosRouter = require('./routes/challengephotos.router');
 const teamDetailsRouter = require('./routes/teamdetails.router');
+const adminRouter = require('./routes/admin.router');
 const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
 
@@ -33,6 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
+app.use('/api/admin', adminRouter);
 app.use('/api/user', userRouter);
 app.use('/api/challenges', challengesRouter);
 app.use('/api/photos', photosRouter);
