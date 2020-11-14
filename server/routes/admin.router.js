@@ -17,11 +17,7 @@ router.post('/', (req, res) => {
   pool.query(queryText, [contests_id])
   .then(result => {
     console.log('this is result.rows', result.rows);
-    let dataToExport = [];
-    for(data of result.rows){
-      dataToExport.push(data)
-    }
-    let csv = Papa.unparse(dataToExport)
+    let csv = Papa.unparse(result.rows)
     console.log('this is dataToExport', csv);
     res.send(csv);
   })
