@@ -8,7 +8,6 @@ import AdminContestsItem from '../AdminContestsItem/AdminContestsItem';
 import Nav from '../../Nav/Nav.js';
 import { Typography } from '@material-ui/core';
 import axios from 'axios';
-import FileSaver from 'file-saver';
 import saveAs from 'file-saver';
 
 class AdminContests extends Component {
@@ -29,6 +28,8 @@ class AdminContests extends Component {
     });
   }
 
+  // Test function sends hard coded contests_id and csv is generated with papaparse server side
+  // result.data is raw data in csv format. saves file as csv
   fetchDataDownloadCsv = () => {
     axios({
       method: 'POST',
