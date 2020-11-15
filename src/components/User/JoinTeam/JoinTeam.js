@@ -69,32 +69,23 @@ class JoinTeam extends Component {
   render() {
     return (
       <div>
-        <div className='createPageLogoDiv'>
-          <img className='createPageLogo' src= {Logo}/>
-        </div>
-
+        <img className='createPageLogo' src= {Logo}/>
         <div className='teamForm'>
-        <center>
-          <Typography variant='h5'>Join a Team</Typography>
-          
-            <div className='createTeamName'>
-              <FormControl>
-                <InputLabel style={{paddingLeft:14}}>
-                  Select team by name or captain
-                </InputLabel> 
-                <Select value={this.state.selected_team_id} 
-                  variant='outlined' 
-                  style={{width:300}} 
-                  onChange={this.handleInputChangeFor('selected_team_id')}>
-                  {this.props.store.teams.map((team, i) => 
-                  <MenuItem key={i} value={team.teams_id}>{team.name}</MenuItem>
-                  )}
-                </Select>
-              </FormControl>
-            </div>
-          <div className='joinTeamImageDiv'>
-            <img className='joinTeamImage' src= { Placeholder } />
+        <Typography variant='h5'>Join a Team</Typography>
+          <center>
+          <div>
+            <FormControl>
+              <InputLabel style={{paddingLeft:14}}>
+                Select team by name or captain
+              </InputLabel> 
+              <Select value={this.state.selected_team_id} variant='outlined' style={{width:300}} onChange={this.handleInputChangeFor('selected_team_id')}>
+                {this.props.store.teams.map((team, i) => 
+                <MenuItem key={i} value={team.teams_id}>{team.name}</MenuItem>
+                )}
+              </Select>
+            </FormControl>
           </div>
+            <img style={{marginTop: '1rem'}} src= { Placeholder } />
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
@@ -103,8 +94,7 @@ class JoinTeam extends Component {
               Join Team
             </Button>
           </center>
-        </div>
-        <div className='createTeamfooter'>
+          <div id='footer'>
             <button
               type="button"
               className="btn btn_asLink"
@@ -124,6 +114,7 @@ class JoinTeam extends Component {
               Log Out
             </button>
           </div>
+        </div>
       </div>
     );
   }

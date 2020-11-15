@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateOrJoinTeam.css';
 import Logo from '../../../images/PW-Square-logo.png';
+// material ui
+import { Typography } from '@material-ui/core';
 
 import CreateTeamLink from './CreateTeamLink';
 import JoinTeamLink from './JoinTeamLink';
@@ -21,7 +23,9 @@ class CreateOrJoinTeam extends Component {
     return (
       <div>
         <center>
-          <img className='createJoinLogo' src={Logo}/>
+          <div className='pwLogo'>
+            <img src={Logo}/>
+          </div>
           <div onClick={this.createTeam}>
             <CreateTeamLink/>
           </div>

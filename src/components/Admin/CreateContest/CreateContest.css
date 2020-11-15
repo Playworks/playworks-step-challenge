@@ -1,20 +1,9 @@
 .createContestFormPanel {
     box-sizing: border-box;
-    width: 50%;
+    width: 400px;
     max-width: 100%;
     padding: 25px;
-    margin: 1rem auto 20px;
+    margin: 0 auto 20px;
+    /* background-color: #efefef; */
     border-radius: 3px;
-}
-
-.adminContestNameInput {
-    margin-top: 10px;
-}
-
-.adminCreateContestStartEndDates {
-    margin-top: 1rem;
-}
-
-.createContestBtn {
-    margin-top: 2rem;
 }

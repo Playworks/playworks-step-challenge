@@ -2,16 +2,3 @@
     text-align: center;
     margin-top: 1rem;
 }
-
-.stepperPaper {
-    width: 90%;
-}
-
-.topSteppersAvatar{
-    object-fit: cover;
-    border-radius: 50%;
-    height: 70px;
-    width: 70px;
-    display: inline-block;
-    position: relative;
-  }

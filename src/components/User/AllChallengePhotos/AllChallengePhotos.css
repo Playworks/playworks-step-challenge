@@ -4,7 +4,7 @@
 
 .dailyChallengeImageContainer {
     width: 300px;
-    height: 300px;
+    height: 250px;
     position: relative;
     overflow: hidden;
 }
@@ -50,5 +50,4 @@
 .feedDescription {
    display: inline-block;
    margin-left: 10px;
-   margin-bottom: 5px;
 }

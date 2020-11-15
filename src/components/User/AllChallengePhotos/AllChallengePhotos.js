@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './AllChallengePhotos.css';
-import { Card } from '@material-ui/core';
-import AllChallengeFeedInfo from './AllChallengeFeedInfo';
+import { Card, Grid, FormControlLabel, Radio, Typography } from '@material-ui/core';
 
 class AllChallengePhotos extends Component {
 
@@ -27,12 +26,30 @@ class AllChallengePhotos extends Component {
                   <img className='dailyChallengeImage' src={photo.file_url} />
                 </div>
                 <Card>
-                  <AllChallengeFeedInfo key={i} photo={photo}/>
+                <div className='feedInfo'>
+                  <Grid container spacing={1}>
+                    <Grid container item xs={12} spacing={3}>
+                      <Grid item xs={3}>
+                      <div className='feedAvatarDiv'>
+                            <img className='feedAvatar' src={photo.image_path}/>
+                          </div>
+                      </Grid>
+                      <Grid item xs={9}>
+                        <div className='feedDescription'>
+                          <Typography variant='body2'>{photo.username}</Typography>
+                          <Typography variant='body2'>TEAM NAME HERE</Typography>
+                          <Typography variant='body2'>{photo.name}</Typography>
+                        </div>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </div>
                 </Card>
               </Card>
             </div>
           )}
         </div>
+
     );
   }
 }

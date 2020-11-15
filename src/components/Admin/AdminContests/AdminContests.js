@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './AdminContests.css';
-import AdminCreateContest from '../CreateContest/CreateContest';
-import AdminContestTable from './AdminContestTable';
+import ContestsGrid from '../ContestsGrid/ContestsGrid';
+import CreateContest from '../CreateContest/CreateContest';
+import AdminContestsItem from '../AdminContestsItem/AdminContestsItem';
 import Nav from '../../Nav/Nav.js';
 import { Typography } from '@material-ui/core';
 import axios from 'axios';
@@ -48,18 +49,37 @@ class AdminContests extends Component {
   render() {
     return (
         <div>
-          <Nav/>
-          <center>
-            <div className='adminContestHeader'>
-              <Typography variant='h4'>{this.state.heading}</Typography>
+            <Nav/>
+            <Typography variant='h5'>{this.state.heading}</Typography>
+            <div>
+              <button onClick={this.fetchDataDownloadCsv}> Test CSV download</button>
+                <center>
+                    <table>
+                    <thead>
+                        <tr>
+                        <th>Contest</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.store.contest.map((item, i) => 
+                        <AdminContestsItem
+                            key={item.id}
+                            contest={item}
+                        />
+                        )}
+                    </tbody>
+                    </table>
+                </center>
             </div>
-            <AdminContestTable/>
-          
-          <div className='csvDiv'>
-            <button onClick={this.fetchDataDownloadCsv}> Test CSV download</button>
-          </div>
-          <AdminCreateContest/>
-          </center>
+            {/* {this.props.store.contest.map((item, i) => 
+                <ContestsGrid 
+                key={item.id}
+                contest={item} />
+                )} */}
+                <CreateContest/>
         </div>
     );
   }

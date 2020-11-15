@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './ContestDescriptionPage.css';
-import Nav from '../../Nav/Nav.js';
-import { Typography } from '@material-ui/core';
 
 class ContestDescriptionPage extends Component {
   state = {
@@ -34,19 +32,13 @@ class ContestDescriptionPage extends Component {
 
   render() {
     return (
-      <div >
-        <Nav/>
-        <center>
-          <div className='adminContestDescriptionHeader'>
-            <Typography variant='h4'>CONTEST NAME Replace Meeeeee</Typography>
-          </div>
-          <table className='adminContestDescriptionTable'>
-            <thead>
-              <tr>
-                <th><Typography variant='h6'>Team Name</Typography></th>
-                <th><Typography variant='h6'>Team Captain</Typography></th>
-              </tr>
-            </thead>
+      <div>
+        <h2>Contest Name</h2>
+          <table style={{width: "300px"}}>
+            <tr>
+              <th>Team Name</th>
+              <th>Team Captain</th>
+            </tr>
             <tr>
               <td>Team Name</td>
               <td>Name</td>
@@ -80,31 +72,15 @@ class ContestDescriptionPage extends Component {
               <td>Name</td>
             </tr>
           </table>
-
-          <div className='csvDiv'>
-            <div className='exportToCsvLink'>
-              <a href="/csv">Export Contest To CSV</a>
-            </div>
-            <div className='closeContestBtn'>
-              <button>Close Contest</button>
-            </div>
-          </div>
-
-          <div className='adminContestImagesContainer'>
-            <div className='adminContestImagesHeader'>
-              <Typography variant='h5'>Contest Images</Typography>
-            </div>
-
-            <div className='adminContestImagesFeed'>
-              <ul style={{ listStyleType: "none", display: "inline-flex", flexDirection: "row", overflow: "scroll"}}>
-                {this.state.images.map(sloths => 
-                  <li><img style={{height: "10em", width: "auto"}} src={sloths.image}/><p><img style={{height: "50px"}} src={sloths.avatar}/></p><div style={{display: "flex", flexDirection: "column"}}><p>{sloths.name}</p><p>{sloths.teamName}</p><p>{sloths.challengeTitle}</p></div><button>Delete</button></li>
-                )}
-              </ul>
-            </div>
-
-          </div>
-        </center>
+            <a href="/csv">Export Contest To CSV</a>
+            <button>Close Contest</button>
+          <br></br>
+        <h2>Contest Images</h2>
+          <ul style={{ listStyleType: "none", display: "inline-flex", flexDirection: "row", overflow: "scroll"}}>
+            {this.state.images.map(sloths => 
+              <li><img style={{height: "10em", width: "auto"}} src={sloths.image}/><p><img style={{height: "50px"}} src={sloths.avatar}/></p><div style={{display: "flex", flexDirection: "column"}}><p>{sloths.name}</p><p>{sloths.teamName}</p><p>{sloths.challengeTitle}</p></div><button>Delete</button></li>
+            )}
+          </ul>
       </div>
     );
   }

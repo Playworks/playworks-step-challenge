@@ -4,13 +4,14 @@
     width: 80%;
 }
 
-.createPageLogoDiv {
-    text-align: center;
-}
-
 .createPageLogo {
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    justify-content: center;
+    display: block;
     width: 300px;
 }
 
@@ -33,16 +34,13 @@
     padding: 20px;
 }
 
-.createTeamfooter {
-    background-color: #F3F3F3;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    position:fixed;
-    bottom:0;
-    width:100%;
+#footer {
     text-align: center;
+    position: fixed;
+    bottom: 3rem;
+    width: 100%;
+    display: inline-block;
 }
-
 
 .btn_asLink {
     margin: 5px;
