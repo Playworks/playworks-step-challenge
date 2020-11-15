@@ -34,4 +34,39 @@ router.post('/', (req, res) => {
   // POST route code here
 });
 
+router.put('/', (req, res) => {
+  console.log('req body id', req.body.id);
+  console.log('req body steps', req.body.steps);
+  let updatedSteps = req.body.steps;
+  let stepIdToUpdate = req.body.id;
+  let queryString =`
+    UPDATE "steps"
+    SET "steps" = $1
+    WHERE "id" = $2;
+  `;
+  pool.query(queryString, [updatedSteps, stepIdToUpdate])
+  .then(response => {
+    res.sendStatus(200)
+  })
+  .catch(err => {
+    res.sendStatus(500)
+  })
+})
+
+router.delete('/', (req, res) => {
+  console.log('req', req.body.id);
+  let stepLogToDelete = req.body.id;
+  let queryString = `
+    DELETE FROM "steps"
+    WHERE "id" = $1;
+  `;
+  pool.query(queryString, [stepLogToDelete])
+  .then(response => {
+    res.sendStatus(200)
+  })
+  .catch(err => {
+    res.sendStatus(500)
+  })
+})
+
 module.exports = router;

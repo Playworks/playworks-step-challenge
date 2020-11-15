@@ -1,16 +1,54 @@
-.avatarFeed {
-    margin-left: 1rem;
-    object-fit: cover;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    display: inline-block;
-    position: relative;
-  }
-  
-  .feedInfo {
-    display: inline-block;
-    margin-left: 1.5rem;
-    margin-bottom: .25rem;
-  }
+.imageFeed, .imageFeedCard  {
+  display: inline-block;
+}
+
+.dailyChallengeImageContainer {
+  width: 300px;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dailyChallengeImage {
+  overflow: hidden;
+  max-width: 100%; 
+  position: absolute;  
+  top: 0;  
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  margin: auto;
+}
+
+.imageFeedCard {
+  text-align: left;
+  margin: 5px;
+}
+
+.imageFeed {
+  text-align: center;
+}
+
+.feedInfo {
+  text-align: left;
+  margin-top: 5px;
+}
+
+.feedAvatarDiv {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.feedAvatar {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+}
+
+.feedDescription {
+ display: inline-block;
+ margin-left: 10px;
+}
 

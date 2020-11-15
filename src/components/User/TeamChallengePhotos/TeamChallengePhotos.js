@@ -47,11 +47,11 @@ class TeamChallengePhotos extends Component {
         { this.props.store.teamPhotos.map( ( photo, i ) => 
         <div className='imageFeedCard'>
             <Card style={{width: '300px'}}>
-              <div className='dailyChallengeImage'>
-                <img key={i} src={photo.file_url}/>
+              <div className='dailyChallengeImageContainer'>
+                <img className='dailyChallengeImage' key={i} src={photo.file_url}/>
               </div>
               <Card>
-                <img className='avatarFeed' src={photo.image_path}/>
+                <img className='feedAvatar' src={photo.image_path}/>
                 <div className='feedInfo'>
                   <Typography variant='body2'>{photo.description}</Typography>
                   <Typography variant='body2'>{photo.name}</Typography>
