@@ -19,11 +19,13 @@ class AdminHome extends Component {
         <center>
           <table>
             <thead>
-              <th>Contest</th>
-              <th>Company</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th></th>
+              <tr>
+                <th>Contest</th>
+                <th>Company</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th></th>
+              </tr>
             </thead>
             <tbody>
               <tr>

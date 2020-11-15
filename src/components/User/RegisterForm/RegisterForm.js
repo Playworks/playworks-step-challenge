@@ -56,7 +56,7 @@ class RegisterForm extends Component {
   };
 
   render() {
-    console.log('this is state', this.state);
+    console.log('this is props', this.props);
 
     const uploadOptions = {
       server: 'http://localhost:5000',
