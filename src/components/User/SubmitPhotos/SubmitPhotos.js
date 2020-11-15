@@ -16,7 +16,7 @@ class SubmitPhotos extends Component {
       <div>
         <Nav />      
         <div className='submitPhotoSection'>
-          <Card style={{width: '300px'}}>
+          <Card style={{width: '300px', marginLeft: 'auto', marginRight: 'auto'}}>
             <div className='submitImage'>
               <ChallengeOfTheDay/>
             </div>

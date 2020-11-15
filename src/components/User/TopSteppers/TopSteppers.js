@@ -9,53 +9,28 @@ import 'react-multi-carousel/lib/styles.css';
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3
+    items: 4
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2
+    items: 4
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 3
+  },
+  smallMobile: {
+    breakpoint: { max: 290, min: 0 },
+    items: 2
   }
 };
 
 class TopSteppers extends Component {
-  state = {
-    topSteppers: [
-      {
-        image: 'https://avatars0.githubusercontent.com/u/32749419?s=400&u=dff1f0e1c8e5a6e2d6dd58ce4b1456f465ddad4d&v=4',
-        name: 'Arthur',
-        teamName: 'Kickin Chickens',
-        steps: 10000
-      },
-      {
-      image: 'https://avatars3.githubusercontent.com/u/65255337?s=400&u=813c5093318f0235870d08ecbd15ccb61a3aa5f7&v=4',
-      name: 'David',
-      teamName: 'Kickin Chickens',
-      steps: 10000
-      },
-      {
-      image: 'https://avatars1.githubusercontent.com/u/67034482?s=400&u=1623bbf91704fc5fc444fb013324a0ab9faf0ed3&v=4',
-      name: 'Brady',
-      teamName: 'Kickin Chickens',
-      steps: 10000
-    },
-    {
-      image: 'https://avatars1.githubusercontent.com/u/65906860?s=460&u=40b78eaf27468b6e20afc655a916e2b651bf1cfe&v=4',
-      name: 'Ashley',
-      teamName: 'Kickin Chickens',
-      steps: 10000
-    }
-    ]
-  };
 
   render() {
     return (
@@ -64,21 +39,24 @@ class TopSteppers extends Component {
           <div className='homePageHeadline'>
             <Typography variant='h5'>Today's Top Steppers</Typography>
           </div>
-          <Carousel responsive={responsive}
-          swipeable={true}
-          infinite={true}
-          autoPlaySpeed={4000}
-          autoPlay={this.props.deviceType !== "mobile" ? true : false}
-          removeArrowOnDeviceType={["tablet", "mobile"]}>
-          { this.props.store.topSteppers.map( ( user, i ) => 
+          <Carousel 
+            responsive={responsive}
+            swipeable={true}
+            infinite={true}
+            autoPlaySpeed={5000}
+            autoPlay={this.props.deviceType !== "mobile" ? true : false}
+            removeArrowOnDeviceType={["tablet", "mobile", "smallMobile"]}>
+            { this.props.store.topSteppers.map( ( user, i ) => 
               <Paper key={i} className='stepperPaper'>
-                <img className='avatar' src={user.image_path}/>
+                <img className='topSteppersAvatar' src={user.image_path}/>
                 <Typography variant='body2'>{user.username}</Typography>
                 <Typography variant='body2'>{user.sum} steps</Typography>
                 <Typography variant='body2'>{user.name}</Typography>
               </Paper>
+       
             )}
           </Carousel>
+
         </div>
       </div>
     );
