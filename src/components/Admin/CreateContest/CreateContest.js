@@ -44,10 +44,10 @@ class CreateContest extends Component {
 
   render() {
     return (
-      <div className="createContestFormPanel">
-        
-        <center>
-          <Typography variant='h5'>Create Contest</Typography>
+      <div className='adminCreateContestContainer'>
+          <div className='adminCreateContestHeader'>
+            <Typography variant='h5'>Create Contest</Typography>
+          </div>
           <div className='adminContestNameInput'>
             <TextField id="outlined-basic" 
               style={{width: '100%'}}
@@ -96,7 +96,6 @@ class CreateContest extends Component {
           </div>
 
           <div className='contestImage'>
-            <Typography variant='h6'>Contest Logo</Typography>
               { this.state.image === '' ? (
                 <img style={{width: '300px'}} src= { Placeholder } /> 
                 ) : ( 
@@ -105,9 +104,10 @@ class CreateContest extends Component {
           </div>
           <div className='chooseImageBtn'>
             <Button 
+              style={{marginTop:'5px'}}
               variant='contained' 
               color='default'
-              onClick={this.selectImage}>Choose Image
+              onClick={this.selectImage}>Choose Contest Logo
             </Button>
           </div>
           <div className='createContestBtn'>
@@ -119,7 +119,6 @@ class CreateContest extends Component {
                 Create Contest
               </Button> 
           </div>
-        </center>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './AdminContests.css';
-import CreateContest from '../CreateContest/CreateContest';
+import AdminCreateContest from '../CreateContest/CreateContest';
 import AdminContestTable from './AdminContestTable';
 import Nav from '../../Nav/Nav.js';
 import { Typography } from '@material-ui/core';
@@ -54,11 +54,12 @@ class AdminContests extends Component {
               <Typography variant='h4'>{this.state.heading}</Typography>
             </div>
             <AdminContestTable/>
-          </center>
+          
           <div className='csvDiv'>
             <button onClick={this.fetchDataDownloadCsv}> Test CSV download</button>
           </div>
-          <CreateContest/>
+          <AdminCreateContest/>
+          </center>
         </div>
     );
   }

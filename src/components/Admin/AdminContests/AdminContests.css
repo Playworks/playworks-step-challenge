@@ -1,10 +1,10 @@
 
-.adminContestTable, .csvDiv, .adminContestHeader {
+.adminContestTable, .csvDiv, .adminContestHeader, .adminCreateContestContainer {
     width: 90%;
     border-collapse: collapse;
 }
 
-.adminContestHeader {
+.adminContestHeader, .adminCreateContestHeader {
     text-align: left;
     margin-top: 2rem;
 }
@@ -18,3 +18,4 @@
     text-align: right;
     margin-top: 10px;
 }
+
