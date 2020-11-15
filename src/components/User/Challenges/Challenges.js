@@ -21,8 +21,8 @@ class Challenges extends Component {
   render() {
     
     return (
-      <div>
-        <div className='challengeOfTheDayHeadline'>
+      <div className='challengesContainer'>
+        <div className='homePageHeadline'>
           <Typography variant='h5'>Challenge of the Day</Typography>
         </div>
         {this.props.store.challenges.map((challenge, i) => 

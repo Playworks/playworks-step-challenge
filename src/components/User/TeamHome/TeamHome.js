@@ -34,14 +34,15 @@ class TeamHome extends Component {
     return (
       <div>
         <Nav />
-        <div className='container'>
-          <TeamName />
-          <TeamRank/>
-          <TeamStepCount/>
-          <ChallengeOfTheDay/>
-          <TeamChallengePhotos/>
-        </div>
-        <Footer />
+      <div>
+        <TeamName />
+        <TeamRank/>
+        <TeamStepCount/>
+        <ChallengeOfTheDay/>
+        <TeamChallengePhotos/>
+        <RulesFaqBtn/>
+      </div>
+      <Footer />
       </div>
     );
   }

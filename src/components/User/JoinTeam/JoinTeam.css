@@ -1,25 +1,3 @@
-.joinTeamSearch, .joinTeamImageDiv {
+.joinTeamSearch {
     margin-top: .5rem;
-}
-
-.joinTeamImageDiv {
-    text-align: center;
-}
-
-.joinTeamImage {
-    width: 300px;
-}
-
-.joinTeamHeaderDiv {
-    width: 300px;
-}
-
-.createTeamfooter {
-    background-color: #F3F3F3;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    position:fixed;
-    bottom:0;
-    width:100%;
-    text-align: center;
 }

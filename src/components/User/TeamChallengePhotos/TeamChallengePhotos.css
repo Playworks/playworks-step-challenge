@@ -1,9 +1,3 @@
-.approveDenyImageBtns {
-  text-align: center;
-  margin-top: .5rem;
-  margin-bottom: 1rem;
-}
-
 .imageFeed, .imageFeedCard  {
   display: inline-block;
 }
