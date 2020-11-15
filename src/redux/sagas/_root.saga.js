@@ -37,8 +37,7 @@ export default function* rootSaga() {
     topSteppersSaga(),
     stepsSaga(),
     rulesSaga(),
-    faqSaga(),
-    stepsSaga(),    
+    faqSaga(),   
     logsSaga(),
     deleteUserSaga()
   ]);
