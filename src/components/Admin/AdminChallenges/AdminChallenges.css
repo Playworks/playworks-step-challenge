@@ -1,0 +1,17 @@
+.adminChallengesContainer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.adminChallengesHeader {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.adminChallengesGridItem {
+    display: inline-block;
+    padding: 10px;
+}
+

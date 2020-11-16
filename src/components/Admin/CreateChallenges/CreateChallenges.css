@@ -1,0 +1,21 @@
+.adminCreateChallengeHeader {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.adminCreateChallengeContainer {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.adminCreateChallengeContainer {
+    width: 90%;
+}
+
+.adminChallengeDescriptionInput, .adminCreateChallengeDate {
+    margin-top: 1rem;
+}
+
+.addChallengeBtn {
+    margin-bottom: 2rem;
+}

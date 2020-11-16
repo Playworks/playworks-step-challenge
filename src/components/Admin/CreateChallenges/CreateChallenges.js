@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateChallenges.css';
 import AdminNav from '../../Admin/AdminNav/AdminNav.js';
+import { Button, TextField, Typography } from '@material-ui/core';
 
 class CreateChallenges extends Component {
   state = {
@@ -41,49 +42,58 @@ class CreateChallenges extends Component {
 
   render() {
     return (
-      <div>
-      <h2>{this.state.heading}</h2>
-      <form className="formPanel" onSubmit={this.createChallenges}>
-      <h2>Add Challenge</h2>
-      <div>
-        <label htmlFor="name">
-          Challenge Name:
-          <input
+      <div className='adminCreateChallengeContainer'>
+        <div className='adminCreateChallengeHeader'>
+          <Typography variant='h5'>Add Challenge</Typography>
+        </div>
+        <div className='adminChallengeNameInput'>
+          <TextField id='outlined-basic'
+            style={{width: '80%'}}
             type="text"
-            name="name"
+            label='Challenge Name'
+            variant='outlined'
             value={this.state.name}
             required
             onChange={this.handleInputChangeFor('name')}
-          />
-        </label>
-      </div>
-      <div>
-      <label htmlFor="name">
-          Description:
-          <textarea
+          >
+          </TextField>
+        </div>
+        <div className='adminChallengeDescriptionInput'>
+          <TextField id='outlined-basic'
+            style={{width: '80%'}}
             type="text"
-            name="description"
+            label='Description'
+            variant='outlined'
             value={this.state.description}
             required
             onChange={this.handleInputChangeFor('description')}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="end_date">
-          Challenge Date:
-          <input
-              type="date"
-              name="date"
-              value={this.state.date}
-              onChange={this.handleInputChangeFor('date')}
-          />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Add Challenge" />
-      </div>
-    </form>
+          >
+          </TextField>
+        </div>
+
+        <div className='adminCreateChallengeDate'>
+          <div className='challengeDate'>
+            <label htmlFor="challenge_date">
+              Challenge Date:
+              <input
+                  style={{display: 'block', color: 'rgb(118, 118, 118)', padding: '10px', marginLeft: 'auto',
+                  marginRight: 'auto'}} 
+                  type="date"
+                  name="challenge_date"
+                  value={this.state.date}
+                  onChange={this.handleInputChangeFor('date')}
+              />
+            </label>
+          </div>
+        </div>
+        <div className='addChallengeBtn'>
+          <Button 
+            style={{marginTop:'5px'}}
+            variant='contained' 
+            color='default'
+            onClick={this.createChallenges}>Add Challenge
+          </Button>
+        </div>
     </div>
     );
   }
