@@ -9,6 +9,7 @@ class AdminContestTable extends Component {
   render() {
     return (
         <div>
+          
         <table className='adminContestTable'>
           <thead>
               <tr>
