@@ -47,7 +47,7 @@ class CreateChallenges extends Component {
       <h2>Add Challenge</h2>
       <div>
         <label htmlFor="name">
-          Contest Name:
+          Challenge Name:
           <input
             type="text"
             name="name"
