@@ -109,7 +109,7 @@ class EditUserLogs extends Component {
         <Nav />
       <Grid container direction="column" alignItems="center">
         <Grid item>
-        <Typography variant='h5'>{this.props.store.userLogs[0] && this.props.store.userLogs[0].username}<button onClick={()=> this.deleteTeammate()}>Delete User</button></Typography>
+        <Typography variant='h5'>{this.props.store.userLogs[0] && this.props.store.userLogs[0].first_name} {this.props.store.userLogs[0] && this.props.store.userLogs[0].last_name}<button onClick={()=> this.deleteTeammate()}>Delete User</button></Typography>
           <center>
             <table>
               <thead>

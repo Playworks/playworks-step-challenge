@@ -11,7 +11,7 @@ router.get('/:id', (req, res) => {
   let userLogToGet = req.params.id;
   console.log('user log to get', userLogToGet);
   let queryString = `
-    SELECT "user"."username", "steps"."date", "steps"."steps", "steps"."id" FROM "steps"
+    SELECT "user"."username", "user"."first_name", "user"."last_name", "steps"."date", "steps"."steps", "steps"."id" FROM "steps"
     JOIN "user"
     ON "steps"."user_id" = "user"."id"
     WHERE "user"."id" = $1;
