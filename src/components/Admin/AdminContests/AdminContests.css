@@ -1,0 +1,21 @@
+
+.adminContestTable, .csvDiv, .adminContestHeader, .adminCreateContestContainer {
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.adminContestHeader, .adminCreateContestHeader {
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.adminContestTable td, .adminContestTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+.csvDiv {
+    text-align: right;
+    margin-top: 10px;
+}
+

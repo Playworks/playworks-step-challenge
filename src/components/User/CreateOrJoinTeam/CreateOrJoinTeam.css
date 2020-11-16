@@ -1,9 +1,9 @@
-.pwLogo {
+.createJoinLogo {
     margin-top: 2rem;
     margin-bottom: 3rem;
     flex-direction: column;
     justify-content: center;
-    width: 250px;
+    height: 180px;
 }
 
 .joinTeamLink {
@@ -11,12 +11,7 @@
     margin-bottom: 7rem;
 }
 
-.createTeamLink {
-    margin-top: 4rem;
-}
-
 #createJoinFooter {
-    position: fixed;
     bottom: 3rem;
     width: 100%;
 } 
