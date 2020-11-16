@@ -88,38 +88,40 @@ class CreateTeam extends Component {
 
     return (
       <div>
-
-        <img className='createPageLogo' src= {Logo}/>
+        <div className='createPageLogoDiv'>
+          <img className='createPageLogo' src= {Logo}/>
+        </div>
 
         <div className='teamForm'>
-          <Typography variant='h5'>Create a Team</Typography>
+
           <center>
-          <div className='createTeamName'>
-            <TextField 
-              id="outlined-basic" 
-              label="Team name" 
-              variant="outlined"
-              style={{width: '100%'}}
-              onChange={this.handleInputChangeFor('team_name')}
-            />
-          </div>
-          <div>
-          <TextField 
-            id="outlined-basic" 
-            label="Company Name" 
-            variant="outlined"
-            style={{width: '100%'}}
-            onChange={this.handleInputChangeFor('company_name')}
-          />
-          </div>
-          <div className='dropzoneUploader'>
-            <DropzoneS3Uploader
-                  onFinish={this.handleFinishedUpload}
-                  s3Url={s3Url}
-                  maxSize={1024 * 1024 * 5}
-                  upload={uploadOptions}
-            />
-          </div>
+          <Typography variant='h5'>Create a Team</Typography>
+            <div className='createTeamName'>
+              <TextField 
+                id="outlined-basic" 
+                label="Team name" 
+                variant="outlined"
+                style={{width:300}} 
+                onChange={this.handleInputChangeFor('team_name')}
+              />
+            </div>
+            <div>
+              <TextField 
+                id="outlined-basic" 
+                label="Company Name" 
+                variant="outlined"
+                style={{width:300}} 
+                onChange={this.handleInputChangeFor('company_name')}
+              />
+            </div>
+            <div className='dropzoneUploader'>
+              <DropzoneS3Uploader
+                onFinish={this.handleFinishedUpload}
+                s3Url={s3Url}
+                maxSize={1024 * 1024 * 5}
+                upload={uploadOptions}
+              />
+            </div>
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
@@ -128,7 +130,8 @@ class CreateTeam extends Component {
             </Button>
           </center>
         </div>
-        <div id='footer'>
+
+        <div className='createTeamfooter'>
           <button
             type="button"
             className="btn btn_asLink"
