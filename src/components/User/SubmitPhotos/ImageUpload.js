@@ -66,8 +66,6 @@ class ImageUpload extends Component {
                     upload={uploadOptions}
                     className="previewImage"
                 >
-                    {/* <img src={this.state.fileUrl}>
-                    </img> */}
                 </DropzoneS3Uploader>
                 <div className='cancelSubmitBtnGroup'>
                     <Button variant='contained' 
