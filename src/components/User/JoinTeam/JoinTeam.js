@@ -14,6 +14,7 @@ import swal from 'sweetalert';
 class JoinTeam extends Component {
   state = {
     selected_team_id: '',
+    selected_team_image: ''
   };
 
   // Need on load after register to send users contest id to server
@@ -56,7 +57,7 @@ class JoinTeam extends Component {
             }
           });
           swal({
-            title: "You've successfully joined a team!'",
+            title: "You've successfully joined a team!",
             icon: "success"
           }).then(() => {
             this.props.history.push('/home');
@@ -66,7 +67,20 @@ class JoinTeam extends Component {
     };
   };
 
+  setPhoto = () => {
+    let array = this.props.store.teamsOnly;
+    for(let i = 0; i < array.length; i++){
+      if(this.state.selected_team_id === array[i].teams_id)
+      this.setState({
+        selected_team_image: array[i].image_path
+      });
+      return
+    }
+  }
+
   render() {
+    console.log('this is props', this.props);
+    console.log('this is state', this.state);
     return (
       <div>
         <img className='createPageLogo' src= {Logo}/>
@@ -84,8 +98,9 @@ class JoinTeam extends Component {
                 )}
               </Select>
             </FormControl>
+            <button onClick={this.setPhoto}> Test Button </button>
           </div>
-            <img style={{marginTop: '1rem'}} src= { Placeholder } />
+            <img style={{marginTop: '1rem'}} src= {this.state.selected_team_image} />
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
