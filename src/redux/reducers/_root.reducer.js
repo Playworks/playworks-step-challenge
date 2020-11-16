@@ -16,6 +16,7 @@ import faq from './faq.reducer';
 import userLogs from './logs.reducer';
 import currentPerson from './current.person.reducer';
 import currentContest from './current.contest.reducer';
+import teamsOnly from './teamsOnly.reducer';
 
 
 
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   challenges, // will contain all challenges
   teams, // currently will contain teams and captains for join team.js
+  teamsOnly, // currently only holds Teams for join team.js
   photos,
   dailyChallenges,
   challengePhotos,

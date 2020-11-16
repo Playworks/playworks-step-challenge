@@ -19,6 +19,10 @@ function* fetchTeamsForJoinSaga(){
     type: 'SET_TEAMS_SEARCH',
     payload: response.data
   });
+  yield put({
+    type: 'SET_TEAMS_ONLY',
+    payload: response.data
+  });
 }
 
 function* joinTeamSaga(action){

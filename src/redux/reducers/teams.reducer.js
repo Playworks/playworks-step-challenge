@@ -3,7 +3,6 @@
 const teamsReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_CAPTAINS_SEARCH':
-      console.log('in teamsreducer', action.payload);
       return action.payload;
     case 'SET_TEAMS_SEARCH':
       let teamsAndCaptains = [...state];

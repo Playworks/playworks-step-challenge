@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './JoinTeam.css';
 import Logo from '../../../images/PW-hor-logo.png';
-// import placeholder image
-import Placeholder from '../../../images/placeholder-square.png';
+
 // import material ui
 import { Button, Typography, InputLabel, MenuItem, Select, FormControl } from '@material-ui/core';
 // import sweetalert
@@ -14,29 +13,53 @@ import swal from 'sweetalert';
 class JoinTeam extends Component {
   state = {
     selected_team_id: '',
+    selected_team_image: ''
   };
+
+  // Array scoped for this component
+  teamsOnlyArray = [];
 
   // Need on load after register to send users contest id to server
   componentDidMount(){
     this.fetchData();
   }
 
+  // function sends two dispatches with async await to fetch captains and teams for join to 
+  // list all teams and captains to select from
   fetchData = async () => {
     await this.props.dispatch({type: 'FETCH_CAPTAINS_FOR_JOIN'});
     await this.props.dispatch({type: 'FETCH_TEAMS_FOR_JOIN'});
   }
 
-  handleInputChangeFor = (propertyName) => (event) => {
-    this.setState({
-      [propertyName]: event.target.value,
-    });
-  };
+  // function empties compontent array teamsOnlyArray, sets state of selected_team_id to the value,
+  // then runs this.setPhoto function
+  handleInputChangeForTeamSelect = async (event) => {
+    this.teamsOnlyArray = [];
+    await this.setState({
+      selected_team_id: event.target.value
+    })
+    await this.setPhoto();
+  }
+
+  // scoped locally sets teamsOnlyArray to array from store and iterates through the loop
+  // if the id is === to selected_team_id state then it sets state of selected_team_image to image path at that index
+  setPhoto = () => {
+    this.teamsOnlyArray = this.props.store.teamsOnly;
+    for(let i = 0; i < this.teamsOnlyArray.length; i++){
+      if(this.teamsOnlyArray[i].teams_id === this.state.selected_team_id){
+        this.setState({
+          selected_team_image: this.teamsOnlyArray[i].image_path
+        });
+        return;
+      }
+    }
+  }
 
   // Function sends team id to server to update users teams_id in database a.k.a adds user to a team
   // with sweet alert validation. 
   joinTeam = () => {
     if(this.state.selected_team_id === ''){
-      swal(`Please select a team to join`)
+      swal(`Please select a team to join`);
     }
     else{
       swal({
@@ -56,12 +79,15 @@ class JoinTeam extends Component {
             }
           });
           swal({
-            title: "You've successfully joined a team!'",
+            title: "You've successfully joined a team!",
             icon: "success"
           }).then(() => {
             this.props.history.push('/home');
           })
-        };
+        }
+        else{
+          swal(`Pick a team to start steppin'!`)
+        }
       });
     };
   };
@@ -74,9 +100,9 @@ class JoinTeam extends Component {
         </div>
 
         <div className='teamForm'>
+
         <center>
           <Typography variant='h5'>Join a Team</Typography>
-          
             <div className='createTeamName'>
               <FormControl>
                 <InputLabel style={{paddingLeft:14}}>
@@ -85,7 +111,7 @@ class JoinTeam extends Component {
                 <Select value={this.state.selected_team_id} 
                   variant='outlined' 
                   style={{width:300}} 
-                  onChange={this.handleInputChangeFor('selected_team_id')}>
+                  onChange={this.handleInputChangeForTeamSelect}>
                   {this.props.store.teams.map((team, i) => 
                   <MenuItem key={i} value={team.teams_id}>{team.name}</MenuItem>
                   )}
@@ -93,7 +119,7 @@ class JoinTeam extends Component {
               </FormControl>
             </div>
           <div className='joinTeamImageDiv'>
-            <img className='joinTeamImage' src= { Placeholder } />
+            <img className='joinTeamImage' src= {this.state.selected_team_image} />
           </div>
             <Button variant='contained' 
               color='primary'
