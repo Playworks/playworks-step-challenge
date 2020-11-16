@@ -172,20 +172,15 @@ class App extends Component {
 
             <AdminRoute
               exact
-              path="/admincontests"
-              component={AdminContests}
-            />
-
-            <AdminRoute
-              exact
               path="/adminrules"
               component={AdminRules}
             />
 
+            {/* adminContests page serves as adminHome page */}
             <AdminRoute
               exact
               path="/adminhome"
-              component={AdminHome}
+              component={AdminContests}
             />
 
             <AdminRoute

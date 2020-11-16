@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './TeamStepCount.css';
 import { Typography, Link } from '@material-ui/core';
 
 class TeamStepCount extends Component {
@@ -30,18 +29,18 @@ class TeamStepCount extends Component {
   }
 
   render() {
-    console.log('history', this.props);
+    console.log('this.props', this.props);
     
     return (
       <div className='teamStepCount'>
-        <Typography variant='h5'>Team Step Count</Typography>
           <center>
-            <table>
+          <Typography variant='h5'>Team Step Count</Typography>
+            <table id='leaderboardTable'>
               <thead>
-                <th>Name</th>
-                <th>Steps</th>
+                <th><Typography variant='body1'>Name</Typography></th>
+                <th><Typography variant='body1'>Steps</Typography></th>
                 {this.props.store.user.admin === "CAPTAIN" &&
-                <th>Edit</th>
+                <th><Typography variant='body1'>Edit</Typography></th>
                 }
               </thead>
               <tbody>

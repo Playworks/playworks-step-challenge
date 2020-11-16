@@ -12,9 +12,9 @@ class ContestsGridItem extends Component {
     return (
         <div>
             <Grid item xs={4}>
-                <Typography variant='h5'>{this.props.contest.name}</Typography>
-                <Typography variant='subtitle1'>{this.props.contest.date}</Typography>
-                <Typography variant='body2'>{this.props.contest.description}</Typography>
+                <Typography variant='h5'>Oops</Typography>
+                <Typography variant='subtitle1'>messed</Typography>
+                <Typography variant='body2'>this up</Typography>
                 <Button>Edit Contest</Button>
             </Grid>
         </div>

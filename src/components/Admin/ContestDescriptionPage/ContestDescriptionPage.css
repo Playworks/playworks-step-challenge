@@ -1,0 +1,17 @@
+.adminContestDescriptionHeader, .adminContestDescriptionTable, .adminContestImagesHeader {
+    text-align: left;
+    margin-top: 2rem;
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.adminContestDescriptionTable td, .adminContestDescriptionTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .exportToCsvLink, .closeContestBtn {
+        display: inline-block;
+        margin: 10px;
+  }

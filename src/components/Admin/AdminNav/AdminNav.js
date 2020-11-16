@@ -19,7 +19,7 @@ const AdminNav = (props) => {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">Playworks Step Challenge</h2>
       </Link>
       <div className="nav-right">
         {/*

@@ -5,12 +5,16 @@ import { Grid } from "@material-ui/core";
 import './AdminFAQ.css';
 import Nav from '../../Nav/Nav.js';
 import { Button } from '@material-ui/core';
+import { Document, Page, pdfjs } from 'react-pdf';
+
 
 
 class AdminFAQ extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_FAQ' });
+    pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
   }
 
   render() {
@@ -26,7 +30,10 @@ class AdminFAQ extends Component {
           </Grid>
           <Grid item className="pdf">
             {this.props.store.faq.map((item, i) => 
-                <img src={item.file_url} key={i}/>
+                // <img src={item.file_url} key={i}/>
+                <Document file={item.file_url} key={i}> 
+                  <Page pageNumber={1} />
+                </Document>
                   )}
           </Grid>
           <Button variant='contained' 

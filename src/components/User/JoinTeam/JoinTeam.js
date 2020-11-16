@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './JoinTeam.css';
 import Logo from '../../../images/PW-hor-logo.png';
-// import placeholder image
-import Placeholder from '../../../images/placeholder-square.png';
+
 // import material ui
 import { Button, Typography, InputLabel, MenuItem, Select, FormControl } from '@material-ui/core';
 // import sweetalert
@@ -17,27 +16,50 @@ class JoinTeam extends Component {
     selected_team_image: ''
   };
 
+  // Array scoped for this component
+  teamsOnlyArray = [];
+
   // Need on load after register to send users contest id to server
   componentDidMount(){
     this.fetchData();
   }
 
+  // function sends two dispatches with async await to fetch captains and teams for join to 
+  // list all teams and captains to select from
   fetchData = async () => {
     await this.props.dispatch({type: 'FETCH_CAPTAINS_FOR_JOIN'});
     await this.props.dispatch({type: 'FETCH_TEAMS_FOR_JOIN'});
   }
 
-  handleInputChangeFor = (propertyName) => (event) => {
-    this.setState({
-      [propertyName]: event.target.value,
-    });
-  };
+  // function empties compontent array teamsOnlyArray, sets state of selected_team_id to the value,
+  // then runs this.setPhoto function
+  handleInputChangeForTeamSelect = async (event) => {
+    this.teamsOnlyArray = [];
+    await this.setState({
+      selected_team_id: event.target.value
+    })
+    await this.setPhoto();
+  }
+
+  // scoped locally sets teamsOnlyArray to array from store and iterates through the loop
+  // if the id is === to selected_team_id state then it sets state of selected_team_image to image path at that index
+  setPhoto = () => {
+    this.teamsOnlyArray = this.props.store.teamsOnly;
+    for(let i = 0; i < this.teamsOnlyArray.length; i++){
+      if(this.teamsOnlyArray[i].teams_id === this.state.selected_team_id){
+        this.setState({
+          selected_team_image: this.teamsOnlyArray[i].image_path
+        });
+        return;
+      }
+    }
+  }
 
   // Function sends team id to server to update users teams_id in database a.k.a adds user to a team
   // with sweet alert validation. 
   joinTeam = () => {
     if(this.state.selected_team_id === ''){
-      swal(`Please select a team to join`)
+      swal(`Please select a team to join`);
     }
     else{
       swal({
@@ -62,45 +84,43 @@ class JoinTeam extends Component {
           }).then(() => {
             this.props.history.push('/home');
           })
-        };
+        }
+        else{
+          swal(`Pick a team to start steppin'!`)
+        }
       });
     };
   };
 
-  setPhoto = () => {
-    let array = this.props.store.teamsOnly;
-    for(let i = 0; i < array.length; i++){
-      if(this.state.selected_team_id === array[i].teams_id)
-      this.setState({
-        selected_team_image: array[i].image_path
-      });
-      return
-    }
-  }
-
   render() {
-    console.log('this is props', this.props);
-    console.log('this is state', this.state);
     return (
       <div>
-        <img className='createPageLogo' src= {Logo}/>
+        <div className='createPageLogoDiv'>
+          <img className='createPageLogo' src= {Logo}/>
+        </div>
+
         <div className='teamForm'>
-        <Typography variant='h5'>Join a Team</Typography>
-          <center>
-          <div>
-            <FormControl>
-              <InputLabel style={{paddingLeft:14}}>
-                Select team by name or captain
-              </InputLabel> 
-              <Select value={this.state.selected_team_id} variant='outlined' style={{width:300}} onChange={this.handleInputChangeFor('selected_team_id')}>
-                {this.props.store.teams.map((team, i) => 
-                <MenuItem key={i} value={team.teams_id}>{team.name}</MenuItem>
-                )}
-              </Select>
-            </FormControl>
-            <button onClick={this.setPhoto}> Test Button </button>
+
+        <center>
+          <Typography variant='h5'>Join a Team</Typography>
+            <div className='createTeamName'>
+              <FormControl>
+                <InputLabel style={{paddingLeft:14}}>
+                  Select team by name or captain
+                </InputLabel> 
+                <Select value={this.state.selected_team_id} 
+                  variant='outlined' 
+                  style={{width:300}} 
+                  onChange={this.handleInputChangeForTeamSelect}>
+                  {this.props.store.teams.map((team, i) => 
+                  <MenuItem key={i} value={team.teams_id}>{team.name}</MenuItem>
+                  )}
+                </Select>
+              </FormControl>
+            </div>
+          <div className='joinTeamImageDiv'>
+            <img className='joinTeamImage' src= {this.state.selected_team_image} />
           </div>
-            <img style={{marginTop: '1rem'}} src= {this.state.selected_team_image} />
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
@@ -109,7 +129,8 @@ class JoinTeam extends Component {
               Join Team
             </Button>
           </center>
-          <div id='footer'>
+        </div>
+        <div className='createTeamfooter'>
             <button
               type="button"
               className="btn btn_asLink"
@@ -129,7 +150,6 @@ class JoinTeam extends Component {
               Log Out
             </button>
           </div>
-        </div>
       </div>
     );
   }
