@@ -5,12 +5,14 @@ import { Grid } from "@material-ui/core";
 import './AdminRules.css';
 import Nav from '../../Nav/Nav.js';
 import { Button } from '@material-ui/core';
+import { Document, Page, pdfjs } from 'react-pdf';
 
 
 class AdminRules extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_RULES' });
+    pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   }
 
   render() {
@@ -25,8 +27,13 @@ class AdminRules extends Component {
             <h2>Rules</h2>
           </Grid>
           <Grid item className="pdf">
-            {this.props.store.rules.map((rule, i) => 
+            {/* {this.props.store.rules.map((rule, i) => 
                 <img src={rule.file_url} key={i}/>
+                  )} */}
+              {this.props.store.rules.map((rule, i) => 
+                <Document file={rule.file_url} key={i}> 
+                  <Page pageNumber={1} />
+                </Document>
                   )}
           </Grid>
           <Button variant='contained' 
