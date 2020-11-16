@@ -11,7 +11,6 @@ function TeamName(props) {
 
   return (
       <Typography variant='h4'>{props.store.teamDetails[0] && props.store.teamDetails[0].name}</Typography>
-
   );
 }
 

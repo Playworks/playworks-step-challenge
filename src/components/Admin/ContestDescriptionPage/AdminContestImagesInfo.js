@@ -1,0 +1,40 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
+import { Button, Grid, Typography } from '@material-ui/core';
+
+
+class AdminContestImagesInfo extends Component {
+
+  render() {
+    return (
+        <div className='adminContestImageFeedInfo'>
+            <Grid container spacing={1}>
+                <Grid container item xs={12} spacing={3}>
+                    <Grid item xs={3}>
+                        <div className='feedAvatarDiv'>
+                            <img className='feedAvatar' src={this.props.photo.avatar}/>
+                        </div>
+                    </Grid>
+                    <Grid item xs={9}>
+                        <div className='feedDescription'>
+                            <Typography variant='body2'>{this.props.photo.name}</Typography>
+                            <Typography variant='body2'>{this.props.photo.teamName} </Typography>
+                            <Typography variant='body2'>{this.props.photo.challengeTitle}</Typography>
+                        </div>
+                    </Grid>
+                </Grid>
+                <Grid container item xs={12} spacing={3}>
+                    <Grid item xs={12}>
+                    <div className='adminDeletePhotoBtn'>
+                            <Button variant="contained" color="secondary">Delete</Button>
+                        </div>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </div>
+    );
+  }
+}
+
+export default connect(mapStoreToProps)(AdminContestImagesInfo);
