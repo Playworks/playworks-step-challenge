@@ -1,6 +1,7 @@
 .teamHomePageContainer {
     margin-left: 10px;
     margin-top: 1rem;
+    width: 90%;
 }
 
 .teamRank {
@@ -10,3 +11,11 @@
 .teamStepCount {
     margin-bottom: 2rem;
 }
+
+.teamHomeHeader {
+    margin-left: 15px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
