@@ -21,11 +21,11 @@ class LoginForm extends Component {
         payload: {
           username: this.state.username,
           password: this.state.password,
-        },
-        
-      });
+        },        
+      });      
       this.props.history.push('/home');
-    } else {
+    } 
+    else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   }; // end login
