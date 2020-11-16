@@ -13,6 +13,7 @@ import rulesSaga from './rules.saga';
 import faqSaga from './faq.saga';
 import logsSaga from './logs.saga';
 import deleteUserSaga from './deleteUser.saga';
+import adminSaga from './admin.saga';
 
 
 
@@ -39,6 +40,7 @@ export default function* rootSaga() {
     rulesSaga(),
     faqSaga(),   
     logsSaga(),
-    deleteUserSaga()
+    deleteUserSaga(),
+    adminSaga()
   ]);
 }

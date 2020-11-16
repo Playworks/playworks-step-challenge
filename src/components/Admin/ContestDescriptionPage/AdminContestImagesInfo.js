@@ -13,14 +13,14 @@ class AdminContestImagesInfo extends Component {
                 <Grid container item xs={12} spacing={3}>
                     <Grid item xs={3}>
                         <div className='feedAvatarDiv'>
-                            <img className='feedAvatar' src={this.props.photo.avatar}/>
+                            <img className='feedAvatar' src={this.props.avatar}/>
                         </div>
                     </Grid>
                     <Grid item xs={9}>
                         <div className='feedDescription'>
-                            <Typography variant='body2'>{this.props.photo.name}</Typography>
-                            <Typography variant='body2'>{this.props.photo.teamName} </Typography>
-                            <Typography variant='body2'>{this.props.photo.challengeTitle}</Typography>
+                            <Typography variant='body2'>{this.props.firstName} {this.props.lastName}</Typography>
+                            <Typography variant='body2'>{this.props.companyName} </Typography>
+                            <Typography variant='body2'>{this.props.challenge}</Typography>
                         </div>
                     </Grid>
                 </Grid>

@@ -15,47 +15,24 @@ class ContestDescriptionPage extends Component {
         <Nav/>
         <center>
           <div className='adminContestDescriptionHeader'>
-            <Typography variant='h4'>CONTEST NAME Replace Meeeeee</Typography>
+            <Typography variant='h4'></Typography>
           </div>
           <table className='adminContestDescriptionTable'>
             <thead>
               <tr>
                 <th><Typography variant='h6'>Team Name</Typography></th>
                 <th><Typography variant='h6'>Team Captain</Typography></th>
+                <th><Typography variant='h6'>Company</Typography></th>
               </tr>
             </thead>
-            <tr>
-              <td>Team Name</td>
-              <td>Name</td>
-            </tr>
-            <tr>
-              <td>Team Name</td>
-              <td>Name</td>
-            </tr>
-            <tr>
-              <td>Team Name</td>
-              <td>Name</td>
-            </tr>
-            <tr>
-              <td>Team Name</td>
-              <td>Name</td>
-            </tr>
-            <tr>
-              <td>Team Name</td>
-              <td>Name</td>
-            </tr>
-            <tr>
-              <td>Team Name</td>
-              <td>Name</td>
-            </tr>
-            <tr>
-              <td>Team Name</td>
-              <td>Name</td>
-            </tr>
-            <tr>
-              <td>Team Name</td>
-              <td>Name</td>
-            </tr>
+            {this.props.store.adminContest.map(contest => 
+              <tr>
+              <td>{contest.name}</td>
+              <td>{contest.first_name} {contest.last_name}</td>
+              <td>{contest.company_name}</td>
+              </tr>
+              )}
+            
           </table>
 
           <div className='csvDiv'>
