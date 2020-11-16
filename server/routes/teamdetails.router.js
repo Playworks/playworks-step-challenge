@@ -14,7 +14,7 @@ router.get('/:id', (req, res) => {
     let teamId = req.params.id;
     console.log('team id', teamId);
     const queryText = `
-    SELECT SUM("steps"."steps"), "user"."username", "user"."id", "teams"."name" FROM "user"
+    SELECT SUM("steps"."steps"), "user"."username", "user"."first_name", "user"."last_name", "user"."id", "teams"."name" FROM "user"
     JOIN "steps"
     ON "user"."id" = "steps"."user_id"
     JOIN "teams"
@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
     `;
     pool.query(queryText, [teamId])
     .then(result => {
-      console.log('result', result.rows);
+      console.log('result team details', result.rows);
       res.send(result.rows);
     })
     .catch(error => {
@@ -38,7 +38,6 @@ router.get('/:id', (req, res) => {
   // but it goes a level deeper by selecting by team :id int
   router.get('/photos/:id', (req, res) => {
     let teamId = req.params.id;
-    
     const queryString = `
     SELECT "photos".id, "photos".file_url, challenges.name, challenges.description, "user".username, "user".image_path, "teams"."id" FROM "user"
     JOIN "photos" ON "photos"."user_id" = "user"."id"
