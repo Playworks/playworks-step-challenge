@@ -26,16 +26,20 @@ class AdminChallenges extends Component {
 
   render() {
     return (
-        <div>
-          <Nav/>
-            <Typography variant='h5'>{this.state.heading}</Typography>
-            {this.props.store.challenges.map((challenge, i) => 
+      <div>
+        <Nav/>
+        <div className='adminChallengesContainer'>
+          <div className='adminChallengesHeader'>
+            <Typography variant='h4'>{this.state.heading}</Typography>
+          </div>
+          {this.props.store.challenges.map((challenge, i) => 
             <ChallengesGrid 
               key={challenge.id}
               challenge={challenge} />
               )}
-            <CreateChallenges/>
+          <CreateChallenges/>
         </div>
+      </div>
     );
   }
 }
