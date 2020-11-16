@@ -16,8 +16,14 @@ class ContestHome extends Component {
   componentDidMount() {
     this.getLeaderBoard()
     this.getTopSteppers()
+    this.checkAdmin()
   }
 
+  checkAdmin = () => {
+    if (this.props.store.user.admin === 'ADMIN') {
+      this.props.history.push('/adminhome')
+    }
+  }
   getLeaderBoard = () => {
     this.props.dispatch({
       type: "FETCH_LEADER_BOARD"
