@@ -46,7 +46,7 @@ class TeamStepCount extends Component {
               <tbody>
                 {this.props.store.teamDetails.map((user, i) =>
                 <tr>
-                  <td>{user.username}</td>
+                  <td>{user.first_name} {user.last_name}</td>
                   <td>{user.sum}</td>
                   {this.props.store.user.admin === "CAPTAIN" &&
                   <th><button onClick={() => this.editLogsAndSetCurrentTeammate(user.id)}>Edit Logs</button></th>
