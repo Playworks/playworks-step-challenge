@@ -8,14 +8,17 @@ class AdminContestsItem extends Component {
   editContestAndSetCurrentContest = (value) => {
     this.editContest(value);
     this.setCurrent(value);
+    this.setContestsPhotos(value);
   }
 
   // This function will be called with the Edit button
   // and will set the reduxState for editing this contest
   // and it's photos
-  setContestsPhotos = () => {
+  setContestsPhotos = (value) => {
+    let contestPhotos = value;
     this.props.dispatch({
-      type: 'FETCH_CONTEST_PHOTOS'
+      type: 'FETCH_CONTEST_PHOTOS',
+      payload: contestPhotos
     });
   }
 

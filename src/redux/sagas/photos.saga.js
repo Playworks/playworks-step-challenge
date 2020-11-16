@@ -23,6 +23,7 @@ function* fetchChallengePhotosSaga(action){
     });
   };
 
+
 function* createPhotosSaga(action) {
     console.log('ACTION PAYLOAD', action.payload);    
     let response = yield axios({
@@ -40,6 +41,7 @@ function* createPhotosSaga(action) {
 function* photosSaga() {
     yield takeLatest('CREATE_PHOTOS', createPhotosSaga);
     yield takeLatest('FETCH_PHOTOS', fetchPhotosSaga);
+    yield takeLatest('FETCH__ADMIN_PHOTOS', fetchPhotosSaga);
     yield takeLatest('FETCH_CHALLENGE_PHOTOS', fetchChallengePhotosSaga);
 };
 

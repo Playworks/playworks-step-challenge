@@ -11,18 +11,6 @@ function* fetchContestSaga(){
   });
 };
 
-function* fetchContestDetailsSaga(action) {
-  console.log('action payload', action.payload);
-  let contest = action.payload;
-  let response = yield axios({
-    method: 'GET',
-    url: `/api/contestDetails/${contest}`,
-    data: {
-      id: contest
-    }
-  })
-}
-
 function* createContestSaga(action) {
   let response = yield axios({
       method: 'POST',
@@ -38,7 +26,6 @@ function* createContestSaga(action) {
 
 function* contestSaga() {
   yield takeLatest('FETCH_CONTEST', fetchContestSaga);
-  yield takeLatest('FETCH_CONTEST_DETAILS', fetchContestDetailsSaga);
   yield takeLatest('CREATE_CONTEST', createContestSaga);
 };
 

@@ -5,39 +5,7 @@ import { Card, Typography } from '@material-ui/core';
 import AdminContestImagesInfo from './AdminContestImagesInfo';
 
 class AdminContestImages extends Component {
-    state = {
-        images: [
-          {
-            avatar: 'https://avatars1.githubusercontent.com/u/65906860?s=460&u=40b78eaf27468b6e20afc655a916e2b651bf1cfe&v=4',
-            image:'https://www.abc.net.au/cm/rimage/12172884-3x4-xlarge.jpg?v=4', 
-            teamName: 'Kickin Chickens',
-            name: 'Kermit',
-            challengeTitle: 'Sloths'
-          },
-          {
-            avatar: 'https://avatars1.githubusercontent.com/u/67034482?s=400&u=1623bbf91704fc5fc444fb013324a0ab9faf0ed3&v=4',
-            image: 'https://news.uchicago.edu/sites/default/files/images/2019-06/sloth_family_tree.jpg', 
-            name: 'Deadly',
-            teamName: 'Kickin Chickens',
-            challengeTitle: 'Things that are cute'
-          },
-          {
-            avatar: 'https://avatars3.githubusercontent.com/u/65255337?s=400&u=813c5093318f0235870d08ecbd15ccb61a3aa5f7&v=4',
-            image: 'https://static01.nyt.com/images/2014/01/28/science/28SLOT_SPAN/28SLOT-articleLarge.jpg?quality=75&auto=webp&disable=upscale',
-            name: 'Gonzo',
-            teamName: 'Kickin Chickens',
-            challengeTitle: 'Things that are slow'
-          }, 
-          {
-            avatar: 'https://avatars3.githubusercontent.com/u/65255337?s=400&u=813c5093318f0235870d08ecbd15ccb61a3aa5f7&v=4',
-            image: 'https://static01.nyt.com/images/2014/01/28/science/28SLOT_SPAN/28SLOT-articleLarge.jpg?quality=75&auto=webp&disable=upscale',
-            name: 'Gonzo',
-            teamName: 'Kickin Chickens',
-            challengeTitle: 'Things that are slow but also are very cute'
-          }
-        ]
-      };
-
+ 
   render() {
     return (
         <div className='adminContestImagesContainer'>
@@ -45,15 +13,21 @@ class AdminContestImages extends Component {
                 <Typography variant='h5'>Contest Images</Typography>
             </div>
             <div className='adminContestImagesFeed'>
-              { this.state.images.map( ( photo, i ) => 
+              { this.props.store.adminPhotos.map( ( photo, i ) => 
                 <div className='imageFeedCard' key={i}>
                 <Card style={{width: '300px'}}>
                     <div className='dailyChallengeImageContainer'>
-                        <img className='dailyChallengeImage' src={photo.image} />
+                        <img className='dailyChallengeImage' src={photo.file_url} />
                     </div>
-                    <Card>
-                        <AdminContestImagesInfo key={i} photo={photo}/>
-                    </Card>
+                     <Card>
+                        <AdminContestImagesInfo key={i}
+                        id={photo.id}
+                        challenge={photo.name}
+                        avatar={photo.image_path} 
+                        firstName={photo.first_name}
+                        lastName={photo.last_name} 
+                        companyName={photo.company_name}/> 
+                    </Card> 
                 </Card>
                 </div>
                 )}

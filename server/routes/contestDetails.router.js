@@ -11,16 +11,15 @@ router.get('/:id', (req, res) => {
   console.log('req', req.params.id);
   let contestToGet = req.params.id;
   
-  // query gets team captain's full name and team name
+  // query gets team captain's full name, team name and company name
   let queryText = `
-    SELECT * FROM "user"
-    JOIN "contests"
-    ON "user"."contests_id" = "contests"."id"
-    JOIN "teams"
-    ON "user"."teams_id" = "teams"."id"
-    JOIN "photos"
-    ON "photos"."user_id" = "user"."id"
-    WHERE "user"."contests_id" = $1;
+  SELECT "user"."first_name", "user"."last_name", "teams"."name", "teams"."company_name" FROM "user"
+  JOIN "contests"
+  ON "user"."contests_id" = "contests"."id"
+  JOIN "teams"
+  ON "user"."teams_id" = "teams"."id"
+  WHERE "user"."contests_id" = $1
+  AND "user"."admin" = 'CAPTAIN';
   `;
   pool.query(queryText, [contestToGet])
   .then(response => {
