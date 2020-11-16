@@ -12,3 +12,13 @@
 .selectImageBtn {
     margin-top: .2rem;
 }
+
+.previewImage img{
+    width: 100%;
+}
+
+.previewImage {
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+}

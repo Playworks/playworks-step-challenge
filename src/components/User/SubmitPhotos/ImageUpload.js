@@ -12,7 +12,7 @@ class ImageUpload extends Component {
     state = {
         fileUrl: '',
         date: '',
-        challenges_id: ''
+        challenges_id: '',
       };
 
     handleFinishedUpload = info => {
@@ -21,7 +21,7 @@ class ImageUpload extends Component {
         this.setState({
             fileUrl: info.fileUrl,
             date: moment(Date()).format(),
-            challenges_id: this.props.store.dailyChallenges[0]
+            challenges_id: this.props.store.dailyChallenges[0],
           });
       }
 
@@ -64,7 +64,9 @@ class ImageUpload extends Component {
                     s3Url={s3Url}
                     maxSize={1024 * 1024 * 5}
                     upload={uploadOptions}
-                />
+                    className="previewImage"
+                >
+                </DropzoneS3Uploader>
                 <div className='cancelSubmitBtnGroup'>
                     <Button variant='contained' 
                         color='default'
