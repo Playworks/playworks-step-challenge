@@ -17,7 +17,7 @@ class ContestDescriptionPage extends Component {
       method: 'POST',
       url: '/api/admin',
       data: {
-        contests_id: 2
+        contests_id: this.props.store.currentContest
       }
     }).then(result => {
       console.log(result.data);
@@ -29,7 +29,6 @@ class ContestDescriptionPage extends Component {
   };
 
   render() {
-    console.log('this is david', this.props);
     return (
       <div >
         <Nav/>
@@ -57,7 +56,7 @@ class ContestDescriptionPage extends Component {
 
           <div className='csvDiv'>
             <div className='exportToCsvLink'>
-              <a href="/csv">Export Contest To CSV</a>
+              <button onClick={this.fetchDataDownloadCsv}>Export Data To CSV</button>
             </div>
             <div className='closeContestBtn'>
               <button>Close Contest</button>
