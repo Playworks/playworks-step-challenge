@@ -4,7 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Grid } from "@material-ui/core";
 import './AdminRules.css';
 import Nav from '../../Nav/Nav.js';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import {Document, Page, pdfjs} from 'react-pdf';
 import { MobilePDFReader } from 'react-read-pdf';
 
@@ -24,7 +24,9 @@ class AdminRules extends Component {
         <Nav />
         <Grid container direction="column" alignItems="center" className="rulesFaq">
           <Grid item>
-            <h2>Rules</h2>
+            <div className='adminRulesAndFaqHeader'>
+              <Typography variant='h5'>Rules</Typography>
+            </div>
           </Grid>
               {this.props.store.rules.map((rule, i) => 
                 <Document file={rule.file_url} key={i}> 
@@ -33,13 +35,15 @@ class AdminRules extends Component {
                   </Page>
                 </Document>
                   )}
-          <Button variant='contained' 
-              color='primary'
-              size= 'large'
-              style={{margin: '.5rem'}}
-              onClick={()=>this.props.history.push('/editrules')}>
-              Edit Rules
-          </Button>
+          <div className='adminRulesAndFaqBtn'>
+            <Button variant='contained' 
+                color='primary'
+                size= 'large'
+                style={{margin: '.5rem'}}
+                onClick={()=>this.props.history.push('/editrules')}>
+                Edit Rules
+            </Button>
+          </div>
         </Grid>
       </div>
     );
