@@ -1,0 +1,5 @@
+.react-pdf__Page__canvas {
+    display: inline-block;
+    max-width: 400px;
+    max-height: 600px;
+}

@@ -28,14 +28,11 @@ class AdminFAQ extends Component {
           <Grid item>
             <h2>FAQ</h2>
           </Grid>
-          <Grid item className="pdf">
             {this.props.store.faq.map((item, i) => 
-                // <img src={item.file_url} key={i}/>
                 <Document file={item.file_url} key={i}> 
                   <Page pageNumber={1} />
                 </Document>
                   )}
-          </Grid>
           <Button variant='contained' 
               color='primary'
               size= 'large'
