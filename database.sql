@@ -30,7 +30,6 @@ CREATE TABLE "teams" (
     "name" VARCHAR (80) NOT NULL,
     "team_logo" TEXT,
     "company_name" VARCHAR (120),
-    "approved" BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "user" (
@@ -65,7 +64,8 @@ CREATE TABLE "photos" (
     "user_id" INT REFERENCES "user",
     "challenges_id" INT REFERENCES "challenges",
     "date" TIMESTAMP NOT NULL,
-    "file_url" TEXT
+    "file_url" TEXT,
+    "approved" BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "rules" (

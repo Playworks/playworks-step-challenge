@@ -41,7 +41,6 @@ class AdminContestsItem extends Component {
 
   render() {
     console.log('This Contest', this.props.contest);
-    
     return (
       <tr>
         <td>
