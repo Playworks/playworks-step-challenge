@@ -3,14 +3,13 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+// gets challenges ordered by date
 router.get('/', (req, res) => {
   // GET route code here
   console.log('challenges router get');
   const queryString = `
   SELECT * FROM "challenges"
+  ORDER BY "date" ASC;
   `
   pool.query(queryString)
   .then(response => {
@@ -86,5 +85,27 @@ router.put('/description', (req, res) => {
     res.sendStatus(500);
   })
 })
+
+router.put('/date', (req, res) => {
+  console.log('req put challenges id', req.body.id);
+  console.log('req put challenges description', req.body.date);
+  let idToUpdate = req.body.id;
+  let newDate = req.body.date;
+  const queryString = `
+    UPDATE "challenges"
+    SET "date" = $1
+    WHERE "id" = $2;
+  `;
+  pool.query(queryString, [newDate, idToUpdate])
+  .then(response => {
+    console.log('Change challenge date', response);
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.log('error challenge put', error);
+    res.sendStatus(500);
+  })
+})
+
 
 module.exports = router;

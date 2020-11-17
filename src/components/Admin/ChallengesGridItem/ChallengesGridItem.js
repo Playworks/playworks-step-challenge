@@ -5,7 +5,7 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
 import ContentEditable from 'react-contenteditable';
 import axios from 'axios';
-
+import ChallengeDateItem from './ChallengeDateItem'
 
 
 class ChallengesGridItem extends Component {
@@ -41,6 +41,25 @@ class ChallengesGridItem extends Component {
     }
   }
 
+  changeDate = (event) => {
+    console.log('date change', event.target.value);               
+    console.log('challenge to change', this.props.challenge.id);
+     axios({
+      method: 'PUT',
+      url: 'api/challenges/date',
+      data: {
+        id: this.props.challenge.id,
+        date: event.target.value
+      }
+    })
+  };
+
+  fetchChallenges = () => {
+    this.props.dispatch({
+      type: 'FETCH_CHALLENGES'
+    })
+  }
+
   render() {
     return (
       <div className='adminChallengesGridItem'>
@@ -57,7 +76,12 @@ class ChallengesGridItem extends Component {
                 onChange={this.editChallenge}
               />
             </Typography>
-            <Typography variant='subtitle1'>{moment(this.props.challenge.date).format('MMMM Do YYYY')}</Typography>
+            <ChallengeDateItem
+            id={this.props.challenge.id} 
+            date={this.props.challenge.date}
+            changeDate={this.changeDate}
+            fetch={this.fetchChallenges}
+            /> 
             <Typography variant='body2'>
               <ContentEditable
               // snuck some extra data in to help identify selected item
