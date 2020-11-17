@@ -4,6 +4,18 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('made it to delete this is params', req.params.id);
+  const queryText = `DELETE FROM "contests" WHERE "id" = $1;`;
+  pool.query(queryText, [req.params.id])
+  .then(result => {
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.log('We have an error in /api/contest/:id DELETE', error);
+    res.sendStatus(500);
+  });
+});
 
 router.get('/', (req, res) => {
   const queryText = `SELECT "contests"."id", "contests"."name", "contests"."start_date", "contests"."end_date" FROM "contests";`;
