@@ -90,13 +90,11 @@ handleCancel = () => {
                 Submit
               </Button>
             </div>
-            
           </center>
         </div>
-        <div className='submitStepsFooter'>
+        <div className='footer'>
           <Footer />
         </div>
-        
       </div>
     );
   }

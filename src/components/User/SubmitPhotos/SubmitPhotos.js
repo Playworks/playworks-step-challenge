@@ -25,7 +25,9 @@ class SubmitPhotos extends Component {
             </div>
           </Card>
         </div>
-        <Footer />
+        <div className='footer'>
+          <Footer />
+        </div>
       </div>
     );
   }
