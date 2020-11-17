@@ -7,15 +7,8 @@ import {
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AdminRoute from '../AdminRoute/AdminRoute';
-
-
-import AboutPage from '../Templates/AboutPage/AboutPage';
 import ContestHome from '../User/ContestHome/ContestHome';
 import TeamHome from '../User/TeamHome/TeamHome';
 import SubmitPhotos from '../User/SubmitPhotos/SubmitPhotos';
@@ -36,7 +29,6 @@ import EditRules from '../Admin/EditRules/EditRules';
 import EditFAQ from '../Admin/EditFAQ/EditFAQ';
 import AdminRules from '../Admin/AdminRules/AdminRules';
 import AdminFAQ from '../Admin/AdminFAQ/AdminFAQ';
-import AdminHome from '../Admin/AdminHome/AdminHome';
 import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
 import moment from 'moment';
 import ImageUpload from '../User/SubmitPhotos/ImageUpload';

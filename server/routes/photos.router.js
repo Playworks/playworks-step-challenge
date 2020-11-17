@@ -26,6 +26,46 @@ router.get('/', (req, res) => {
         })
   });
 
+  // router.delete('/:id', rejectUnauthenticated, async (req, res) => {
+  //   console.log('req.user.id', req.body);
+    
+  //   let connection;
+  //   try {
+  //     connection = await pool.connect();
+  
+  //     // Begin the transaction
+  //     await connection.query('BEGIN');
+  
+  //     // Add photo information to photos table
+  //     await connection.query(`
+  //       DELETE FROM "photos" WHERE "id" = $1;
+  //     `, [req.params.id]);
+  
+  //     // Subtract 1000 steps to steps table and tie them to user
+  //     await connection.query(`
+  //       DELETE FROM "steps" WHERE "user_id" = $1 AND "steps" = $2;
+  //     `, [req.body.photo_user_id, 1000]);
+  
+  //     console.log('this is working', req.user.id, Date());
+      
+  //     // Complete the transaction
+  //     await connection.query('COMMIT');
+  
+  //     res.sendStatus(201);
+  //   }
+  //   catch (err) {
+  //     // Cancel the transaction, if it fails.
+  //     await connection.query('ROLLBACK');
+  
+  //     console.log(err);
+  //     res.statusCode(500);
+  //   }
+  //   finally {
+  //     // release the connection NO MATTER WHAT
+  //     connection.release();
+  //   }
+  // });
+
   // PUT route for approving photo
 router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log('EDITING photo with id of', req.params.id);

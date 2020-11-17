@@ -11,6 +11,10 @@ class TeamFeedInfo extends Component {
       type: 'DELETE_PHOTOS',
       payload: value
     })
+    this.props.dispatch({
+      type: 'SUBTRACT_STEPS',
+      payload: value
+    })
   }
 
   approveImage = (value) => {
@@ -46,7 +50,7 @@ class TeamFeedInfo extends Component {
                 {this.props.store.user.admin === "CAPTAIN" && this.props.photo.approved === false ?
                   <div className='approveDenyImageBtns'>
                     <Button style={{marginRight: '40px'}} variant="contained" color="primary" onClick={() => this.approveImage(this.props.photo.id)}>Approve</Button>
-                    <Button variant="contained" color="secondary" onClick={() => this.denyImage(this.props.photo.id)}>Deny</Button>
+                    <Button variant="contained" color="secondary" onClick={() => this.denyImage(this.props.photo)}>Deny</Button>
                   </div> : null
                   }
               </Grid>

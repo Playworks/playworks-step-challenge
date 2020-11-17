@@ -42,7 +42,8 @@ function* createPhotosSaga(action) {
 function* denyPhotosSaga(action){    
     let response = yield axios({
         method: 'DELETE',
-        url: `/api/photos/${action.payload}`,
+        url: `/api/photos/${action.payload.id}`,
+        data: action.payload
     });
     console.log('DELETEPHOTOS', response.data);      
     yield put({

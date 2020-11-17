@@ -8,6 +8,7 @@ import swal from 'sweetalert';
 import ContentEditable from 'react-contenteditable';
 import axios from 'axios';
 import currentPerson from '../../../redux/reducers/current.person.reducer';
+import moment from 'moment';
 
 class EditUserLogs extends Component {
   state = {
@@ -127,6 +128,8 @@ class EditUserLogs extends Component {
             <tbody>
             {this.props.store.userLogs.map(log =>
                 <tr>
+
+                  <td>{moment(log.date).format('MMMM Do YYYY')}</td>
                   <td>{log.date.split( 'T' )[0]}</td>
                   <td>
                     <ContentEditable
@@ -136,6 +139,7 @@ class EditUserLogs extends Component {
                     onChange={this.changeStepLog}
                     />
                   </td>
+
                   <td>
                     <button onClick={(event) => this.deleteLog(log.id)}>Delete log</button>
                   </td>
