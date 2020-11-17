@@ -5,7 +5,8 @@ import { Grid } from "@material-ui/core";
 import './AdminRules.css';
 import Nav from '../../Nav/Nav.js';
 import { Button } from '@material-ui/core';
-import { Document, Page, pdfjs } from 'react-pdf';
+import {Document, Page, pdfjs} from 'react-pdf';
+import { MobilePDFReader } from 'react-read-pdf';
 
 
 class AdminRules extends Component {
@@ -21,21 +22,17 @@ class AdminRules extends Component {
     return (
       <div>
         <Nav />
-      
         <Grid container direction="column" alignItems="center" className="rulesFaq">
           <Grid item>
             <h2>Rules</h2>
           </Grid>
-          <Grid item className="pdf">
-            {/* {this.props.store.rules.map((rule, i) => 
-                <img src={rule.file_url} key={i}/>
-                  )} */}
               {this.props.store.rules.map((rule, i) => 
                 <Document file={rule.file_url} key={i}> 
-                  <Page pageNumber={1} />
+                  <Page pageNumber={1}> 
+
+                  </Page>
                 </Document>
                   )}
-          </Grid>
           <Button variant='contained' 
               color='primary'
               size= 'large'

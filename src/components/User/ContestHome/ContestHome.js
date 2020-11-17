@@ -24,6 +24,7 @@ class ContestHome extends Component {
       this.props.history.push('/adminhome')
     }
   }
+  
   getLeaderBoard = () => {
     this.props.dispatch({
       type: "FETCH_LEADER_BOARD"
