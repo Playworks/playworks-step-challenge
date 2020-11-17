@@ -4,7 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Grid } from "@material-ui/core";
 import './AdminFAQ.css';
 import Nav from '../../Nav/Nav.js';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { Document, Page, pdfjs } from 'react-pdf';
 
 
@@ -26,20 +26,24 @@ class AdminFAQ extends Component {
       
         <Grid container direction="column" alignItems="center" className="rulesFaq">
           <Grid item>
-            <h2>FAQ</h2>
+          <div className='adminRulesAndFaqHeader'>
+              <Typography variant='h5'>FAQ</Typography>
+            </div>
           </Grid>
             {this.props.store.faq.map((item, i) => 
                 <Document file={item.file_url} key={i}> 
                   <Page pageNumber={1} />
                 </Document>
                   )}
-          <Button variant='contained' 
-              color='primary'
-              size= 'large'
-              style={{margin: '.5rem'}}
-              onClick={()=>this.props.history.push('/editFAQ')}>
-              Edit FAQ
-          </Button>
+          <div className='adminRulesAndFaqBtn'>
+            <Button variant='contained' 
+                color='primary'
+                size= 'large'
+                style={{margin: '.5rem'}}
+                onClick={()=>this.props.history.push('/editFAQ')}>
+                Edit FAQ
+            </Button>
+          </div>
         </Grid>
       </div>
     );

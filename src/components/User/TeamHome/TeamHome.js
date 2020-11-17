@@ -34,7 +34,7 @@ class TeamHome extends Component {
     return (
       <div>
         <Nav />
-        <div className='teamHomePageContainer'>
+        <div className='teamPhotoContainer'>
           <div className='teamHomeHeader'>
             <TeamName />
             <TeamRank/>
