@@ -26,8 +26,8 @@ function ChallengeDateItem(props) {
                   name="challenge_date"
                 //   value={props.date}
                   onChange={props.changeDate}
-                  onBlur={() => doBoth()}
               />
+              <button onClick={() => doBoth()}  >Done</button>
               </>}
     </>
   );

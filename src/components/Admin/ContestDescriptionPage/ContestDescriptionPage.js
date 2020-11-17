@@ -8,8 +8,8 @@ import { Typography } from '@material-ui/core';
 import axios from 'axios';
 import saveAs from 'file-saver';
 
+
 class ContestDescriptionPage extends Component {
-  
   // Test function sends hard coded contests_id and csv is generated with papaparse server side
   // result.data is raw data in csv format. saves file as csv
   fetchDataDownloadCsv = () => {
@@ -28,13 +28,21 @@ class ContestDescriptionPage extends Component {
     })
   };
 
+  // uses currentContest to find by index of contest in contest array
+  // to show name of current contest
+  current = () => {
+    return this.props.store.currentContest - 1;
+  }
+
   render() {
+    console.log('current', this.props.store.currentContest);
+    
     return (
       <div >
         <Nav/>
         <center>
           <div className='adminContestDescriptionHeader'>
-            <Typography variant='h4'></Typography>
+          <Typography variant='h4'>{this.props.store.contest[this.current()] && this.props.store.contest[this.current()].name}</Typography>
           </div>
           <table className='adminContestDescriptionTable'>
             <thead>
