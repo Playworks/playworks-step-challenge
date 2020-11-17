@@ -4,6 +4,7 @@
 const teamPhotos = (state = [], action) => {
     switch (action.type) {
       case 'SET_TEAM_PHOTOS':
+        console.log('TEAM PHOTOS PAYLOAD', action.payload);
         return action.payload;
       default:
         return state;

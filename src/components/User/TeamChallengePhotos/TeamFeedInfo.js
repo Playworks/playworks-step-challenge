@@ -5,7 +5,25 @@ import { Button, Grid, Typography } from '@material-ui/core';
 
 class TeamFeedInfo extends Component {
 
+  denyImage = (value) => {
+    console.log('this button works', value);
+    this.props.dispatch({
+      type: 'DELETE_PHOTOS',
+      payload: value
+    })
+  }
+
+  approveImage = (value) => {
+    console.log('this button works', value);
+    this.props.dispatch({
+      type: 'APPROVE_PHOTOS',
+      payload: value
+    })
+  }
+
   render() {
+    console.log('THIS PHOTOS PROPS', this.props.photo);
+    
     return (
       <div>
         <div className='feedInfo'>
@@ -25,11 +43,11 @@ class TeamFeedInfo extends Component {
             </Grid>
             <Grid container item xs={12} spacing={3}>
               <Grid item xs={12}>
-                {this.props.store.user.admin === "CAPTAIN" && 
+                {this.props.store.user.admin === "CAPTAIN" && this.props.photo.approved === false ?
                   <div className='approveDenyImageBtns'>
-                    <Button style={{marginRight: '40px'}} variant="contained" color="primary">Approve</Button>
-                    <Button variant="contained" color="secondary">Deny</Button>
-                  </div>
+                    <Button style={{marginRight: '40px'}} variant="contained" color="primary" onClick={() => this.approveImage(this.props.photo.id)}>Approve</Button>
+                    <Button variant="contained" color="secondary" onClick={() => this.denyImage(this.props.photo.id)}>Deny</Button>
+                  </div> : null
                   }
               </Grid>
             </Grid>

@@ -29,7 +29,7 @@ class TeamChallengePhotos extends Component {
                 <img className='dailyChallengeImage' key={i} src={photo.file_url}/>
               </div>
               <Card>
-                <TeamFeedInfo key={i} photo={photo}/>
+                <TeamFeedInfo key={i} photo={photo} getPhotos={()=>this.getTeamPhotos}/>
               </Card>
             </Card>
           </div>
