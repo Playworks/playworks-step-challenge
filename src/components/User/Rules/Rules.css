@@ -7,3 +7,13 @@
 .pdf {
     width: 50%;
 }
+
+.userRulesHeader {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.userFaqHeader {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
