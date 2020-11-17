@@ -17,6 +17,7 @@ class ContestHome extends Component {
     this.getLeaderBoard()
     this.getTopSteppers()
     this.checkAdmin()
+    this.getUserInfo()
   }
 
   checkAdmin = () => {
@@ -33,6 +34,12 @@ class ContestHome extends Component {
   getTopSteppers = () => {
     this.props.dispatch({
       type: "FETCH_TOP_STEPPERS"
+    })
+  }
+
+  getUserInfo = () => {
+    this.props.dispatch({
+      type: 'FETCH_USER'
     })
   }
   
