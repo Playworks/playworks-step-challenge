@@ -3,3 +3,12 @@
     max-width: 400px;
     max-height: 600px;
 }
+
+.adminRulesAndFaqHeader, .adminRulesAndFaqBtn {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.adminRulesAndFaqS3Uploader {
+    margin-top: 3rem;
+}

@@ -1,0 +1,26 @@
+.editUserLogsContainer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.editUserBackandDeleteBtn {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.editUserBackBtn, .editUserSaveBtn {
+    display: inline-block;
+    margin: 5px;
+}
+
+.editUserLogHeader {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.editUserStepstd {
+    padding: 5px;
+    border: 1px solid black !important;
+    border-radius: 10%;
+}

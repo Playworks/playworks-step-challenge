@@ -13,12 +13,16 @@ router.get('/', (req, res) => {
     ORDER BY "photos".id DESC;
     `;
     pool.query(queryString, [req.user.contests_id])
-    .then(response => {    
+    .then(response => {  
+      console.log('RESPONSE', response.rows);
+        
       res.send(response.rows);
     })
     .catch(error => {
       res.status(500);
     })
   });
+
+  
 
   module.exports = router;

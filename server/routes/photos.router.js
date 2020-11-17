@@ -11,21 +11,38 @@ router.get('/', (req, res) => {
   // GET route code here
 });
 
-router.post('/', rejectUnauthenticated, async (req, res) => {
-  
-//   const queryString = `
-//   INSERT INTO "photos" ("user_id", "challenges_id", "date", "file_url")
-//   VALUES ($1, $2, $3, $4);
-// `;
-// pool.query(queryString, [req.user.id, req.body.challenges_id.id, req.body.date, req.body.fileUrl])
-//   .then((results) => {
-//       res.sendStatus(201);
-//   })
-//   .catch(err => {
-//       console.error(`POST /photos failed`, err);
-//       res.sendStatus(500);
-//   });
+  // DELETE route for removing a photo
+  router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('Delete photo with url of', req.params.id);
+    const queryString = 'DELETE FROM "photos" WHERE "id" = $1;'
+    pool.query(queryString, [req.params.id])
+        .then(response => {
+            console.log("Deleted!");
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            console.log("Error in DELETE", err);
+            res.sendStatus(500);
+        })
+  });
 
+  // PUT route for approving photo
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('EDITING photo with id of', req.params.id);
+  const queryString = 'UPDATE "photos" SET "approved" = ($1) WHERE "id" = $2;'
+  pool.query(queryString, ['TRUE', req.params.id])
+      .then(response => {
+          console.log("Updated!");
+          res.sendStatus(200);
+      })
+      .catch(err => {
+          console.log("Error in PUT", err);
+          res.sendStatus(500);
+      })
+});
+  
+
+router.post('/', rejectUnauthenticated, async (req, res) => {
   let connection;
   try {
     connection = await pool.connect();

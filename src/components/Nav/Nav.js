@@ -49,9 +49,7 @@ const Nav = (props) => {
               open={ Boolean( anchorEl )}
               onClose={ handleClose }>
               <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/adminhome">Home</Link></MenuItem>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/admincontests">Contests</Link></MenuItem>
+              <Link className='nav-link' to="/adminhome">Contests</Link></MenuItem>
               <MenuItem onClick={ handleClose }>
               <Link className='nav-link' to="/adminchallenges">Challenges</Link></MenuItem>
               <MenuItem onClick={ handleClose }>
