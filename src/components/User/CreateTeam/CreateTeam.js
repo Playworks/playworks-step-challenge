@@ -31,8 +31,8 @@ class CreateTeam extends Component {
     });
   };
 
-  // Function dispatches info to create team to saga Listening for 'CREATE_TEAM'
-  createTeam = () => {
+  // Function is a confirmation function mainly for validation if everything is met and isCorrect then will run joinTeam function
+  confirmationCreate = () => {
     if(this.state.team_name === ''){
       swal(`Please enter a team name`);
     }
@@ -51,25 +51,13 @@ class CreateTeam extends Component {
         }
       }).then(isCorrect => {
         if(isCorrect){
-          this.props.dispatch({
-            type: 'CREATE_TEAM',
-            payload: {
-              team_name: this.state.team_name,
-              team_photo: this.state.team_photo,
-              company_name: this.state.company_name,
-            }
-        });
-        swal({
-          title: "Your Team has been created!",
-          icon: "success"
-        }).then(() => {
-          this.setState({
-            team_name: '',
-            team_photo: '',
-            company_name: '',
-          });
-          this.props.history.push('/home');
-        })
+          this.createTeam();
+          swal({
+            title: "Your Team has been created!",
+            icon: "success"
+          }).then(() => {
+            this.props.history.push('/home');
+          })
         }
         else{
           swal("Please correct any info that is incorrect");
@@ -77,6 +65,18 @@ class CreateTeam extends Component {
       })
     };
   };
+
+  // Function sends dispatch to saga and communicates with server for a POST / Create team.
+  createTeam = () => {
+    this.props.dispatch({
+      type: 'CREATE_TEAM',
+      payload: {
+        team_name: this.state.team_name,
+        team_photo: this.state.team_photo,
+        company_name: this.state.company_name,
+      }
+  });
+  }
 
   render() {
     const uploadOptions = {
@@ -126,7 +126,7 @@ class CreateTeam extends Component {
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
-              onClick={this.createTeam}>
+              onClick={this.confirmationCreate}>
               Submit
             </Button>
           </center>

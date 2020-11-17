@@ -55,9 +55,8 @@ class JoinTeam extends Component {
     }
   }
 
-  // Function sends team id to server to update users teams_id in database a.k.a adds user to a team
-  // with sweet alert validation. 
-  joinTeam = () => {
+  // Function is a confirmation function mainly for validation if everything is met and isCorrect then will run joinTeam function
+  confirmationJoin = () => {
     if(this.state.selected_team_id === ''){
       swal(`Please select a team to join`);
     }
@@ -71,13 +70,7 @@ class JoinTeam extends Component {
         }
       }).then(isCorrect => {
         if(isCorrect){
-          this.props.dispatch({
-            type: 'JOIN_TEAM',
-            payload: {
-              selected_team_id: this.state.selected_team_id,
-              user_id: this.props.store.user.id
-            }
-          });
+          this.joinTeam();
           swal({
             title: "You've successfully joined a team!",
             icon: "success"
@@ -91,6 +84,17 @@ class JoinTeam extends Component {
       });
     };
   };
+
+  // Function sends dispatch to saga and communicates with server for a PUT / Join team.
+  joinTeam = () => {
+    this.props.dispatch({
+      type: 'JOIN_TEAM',
+      payload: {
+        selected_team_id: this.state.selected_team_id,
+        user_id: this.props.store.user.id
+      }
+    });
+  }
 
   render() {
     return (
@@ -125,7 +129,7 @@ class JoinTeam extends Component {
               color='primary'
               style={{marginTop: '2rem'}} 
               size= 'large'
-              onClick={this.joinTeam}>
+              onClick={this.confirmationJoin}>
               Join Team
             </Button>
           </center>

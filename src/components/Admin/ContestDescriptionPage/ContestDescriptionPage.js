@@ -7,6 +7,8 @@ import AdminContestImages from './AdminContestImages';
 import { Typography } from '@material-ui/core';
 import axios from 'axios';
 import saveAs from 'file-saver';
+// import sweetalert
+import swal from 'sweetalert';
 
 
 class ContestDescriptionPage extends Component {
@@ -28,11 +30,50 @@ class ContestDescriptionPage extends Component {
     })
   };
 
+
+  // Created a function that is a validation function that takes in the argument which is the contests id
+  // if willDelete is true will run closeContest and pass contest id as arguement.
+  confirmationClose = (id) => {
+    swal({
+      title: "Are you sure you want to close this contest?",
+      text: "Once deleted it cannot be recovered.",
+      icons: "warning",
+      buttons: true,
+      dangerMode: true
+    })
+    .then(willDelete => {
+      if(willDelete){
+        swal("Contest Successfully deleted!",{
+          icon: "success",
+        });
+        this.closeContest(id)
+      }
+      else {
+        swal("You're in luck, it wasn't deleted!");
+      }
+    });
+  };
+
+  // Function sends a delete request to server upon success pushes user to adminhome
+  closeContest = (id) => {
+    console.log('this is id arg', id);
+    axios({
+      method: 'DELETE',
+      url: `/api/contest/${id}`
+    }).then(result => {
+      console.log('we did it', result);
+      this.props.history.push('/adminhome');
+    }).catch(error => {
+      console.log('uh oh', error);
+    });
+  };
+
   // uses currentContest to find by index of contest in contest array
   // to show name of current contest
   current = () => {
     return this.props.store.currentContest - 1;
   }
+
 
   render() {
     console.log('current', this.props.store.currentContest);
@@ -67,7 +108,7 @@ class ContestDescriptionPage extends Component {
               <button onClick={this.fetchDataDownloadCsv}>Export Data To CSV</button>
             </div>
             <div className='closeContestBtn'>
-              <button>Close Contest</button>
+              <button onClick={() => this.confirmationClose(this.props.store.currentContest)}>Close Contest</button>
             </div>
           </div>
 
