@@ -26,7 +26,7 @@ class Challenges extends Component {
           <Typography variant='h5'>Challenge of the Day</Typography>
         </div>
         {this.props.store.challenges.map((challenge, i) => 
-          <div className='challengesItem'>
+          <div className='challengesItem' key={i}>
             <ChallengesItem
               key={challenge.id}
               challenge={challenge}

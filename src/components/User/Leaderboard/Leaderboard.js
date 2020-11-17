@@ -26,7 +26,7 @@ class Leaderboard extends Component {
             </thead>
             <tbody>
               {this.props.store.leaderBoard.map((leaders, i) => 
-                <tr>
+                <tr key={i}>
                   <td>{i +1}</td>
                   <td>{leaders.name}</td>
                   <td>{leaders.sum}</td>
