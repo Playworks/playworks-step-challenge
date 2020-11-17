@@ -126,7 +126,7 @@ class CreateTeam extends Component {
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
-              onClick={this.createTeam}>
+              onClick={this.confirmationCreate}>
               Submit
             </Button>
           </center>
