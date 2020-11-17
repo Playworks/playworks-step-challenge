@@ -24,9 +24,7 @@ router.post('/', (req, res) => {
     WHERE "user"."contests_id" = $1;`;
   pool.query(queryText, [contests_id])
   .then(result => {
-    console.log('this is result.rows', result.rows);
     let csv = Papa.unparse(result.rows)
-    console.log('this is dataToExport', csv);
     res.send(csv);
   })
   .catch(error => {
