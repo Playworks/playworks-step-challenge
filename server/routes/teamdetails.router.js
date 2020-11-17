@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
   router.get('/photos/:id', (req, res) => {
     let teamId = req.params.id;
     const queryString = `
-    SELECT "photos"."id", "photos".file_url, "photos".approved, challenges.name, challenges.description, "user".username, "user".image_path, "teams"."id" AS "teams_id" FROM "user"
+    SELECT "photos"."id", "photos".file_url, "photos".approved, "photos"."date", "photos"."user_id" AS "photo_user_id", challenges.name, challenges.description, "user".username, "user".image_path, "teams"."id" AS "teams_id" FROM "user"
     JOIN "photos" ON "photos"."user_id" = "user"."id"
     JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
     JOIN "teams" ON "user"."teams_id" = "teams"."id"

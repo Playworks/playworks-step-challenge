@@ -10,9 +10,10 @@ import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import { Typography } from '@material-ui/core';
 
 class Footer extends Component {
-
+  
   render() {
     return (
+
       <div className='footerContainer'>
         <center>
         <div className='footerIconGroup' onClick={() => {this.props.history.push('/home')}}>
@@ -33,6 +34,7 @@ class Footer extends Component {
         </div>
         </center>
       </div>
+      
     );
   }
 }

@@ -6,8 +6,10 @@ import './EditUserLogs.css';
 import Nav from '../../Nav/Nav.js';
 import swal from 'sweetalert';
 import axios from 'axios';
+import Footer from '../../Footer/Footer.js';
 import currentPerson from '../../../redux/reducers/current.person.reducer';
 import EditUserSteps from './EditUserSteps.js';
+import moment from 'moment';
 
 class EditUserLogs extends Component {
   state = {
@@ -141,6 +143,9 @@ class EditUserLogs extends Component {
         </div>
         <div className='editUserBackandDeleteBtn'>
           <Button variant="contained" color="secondary" onClick={()=> this.deleteTeammate()}>Delete User</Button>
+        </div>
+        <div className='footer'>
+          <Footer />
         </div>
       </div>
     );

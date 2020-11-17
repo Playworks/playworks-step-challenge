@@ -43,7 +43,9 @@ class TeamHome extends Component {
           <ChallengeOfTheDay/>
           <TeamChallengePhotos/>
         </div>
-        <Footer />
+        <div className='footer'>
+         <Footer />
+        </div>
       </div>
     );
   }

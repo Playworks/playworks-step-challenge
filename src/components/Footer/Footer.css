@@ -12,3 +12,11 @@
     margin: 5px;
   }
 }
+
+.footer {
+  background-color: #F3F3F3;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  text-align: center;
+}
