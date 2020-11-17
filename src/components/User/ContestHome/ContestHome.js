@@ -13,6 +13,11 @@ import Footer from '../../Footer/Footer.js';
 
 
 class ContestHome extends Component {
+
+  state = {
+    showBanner: 'true'
+  }
+
   componentDidMount() {
     this.getLeaderBoard()
     this.getTopSteppers()
@@ -44,7 +49,7 @@ class ContestHome extends Component {
     console.log('this', this.props.history);
     
     return (
-      <div>
+      <div >
         <Nav />
         <div className="container">
           <Leaderboard/>
@@ -52,7 +57,9 @@ class ContestHome extends Component {
           <ChallengeOfTheDay/>
           <AllChallengePhotos/>
         </div>
-        <Footer />
+        <div className='footer'>
+          <Footer/>
+        </div>
       </div>
     );
   }

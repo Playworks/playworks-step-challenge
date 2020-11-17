@@ -7,6 +7,7 @@ import Nav from '../../Nav/Nav.js';
 import swal from 'sweetalert';
 import ContentEditable from 'react-contenteditable';
 import axios from 'axios';
+import Footer from '../../Footer/Footer.js';
 import currentPerson from '../../../redux/reducers/current.person.reducer';
 
 class EditUserLogs extends Component {
@@ -154,6 +155,9 @@ class EditUserLogs extends Component {
         </div>
         <div className='editUserBackandDeleteBtn'>
           <Button variant="contained" color="secondary" onClick={()=> this.deleteTeammate()}>Delete User</Button>
+        </div>
+        <div className='footer'>
+          <Footer />
         </div>
       </div>
     );
