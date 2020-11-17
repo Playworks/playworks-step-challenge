@@ -29,7 +29,8 @@ CREATE TABLE "teams" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (80) NOT NULL,
     "team_logo" TEXT,
-    "company_name" VARCHAR (120)
+    "company_name" VARCHAR (120),
+    "approved" BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "user" (
