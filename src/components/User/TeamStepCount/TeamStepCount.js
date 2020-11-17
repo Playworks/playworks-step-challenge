@@ -44,6 +44,7 @@ class TeamStepCount extends Component {
                 }
               </thead>
               <tbody>
+                
                 {this.props.store.teamDetails.map((user, i) =>
                 <tr>
                   <td>{user.first_name} {user.last_name}</td>
