@@ -4,10 +4,6 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Typography } from '@material-ui/core';
 
 class TeamRank extends Component {
-  state = {
-    rank: 7,
-    stepCount: 3325,
-  };
 
   render() {
     return (

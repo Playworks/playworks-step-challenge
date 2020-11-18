@@ -5,13 +5,14 @@ import { Button, Typography } from "@material-ui/core";
 import './EditUserLogs.css';
 import Nav from '../../Nav/Nav.js';
 import swal from 'sweetalert';
-import ContentEditable from 'react-contenteditable';
 import axios from 'axios';
 import Footer from '../../Footer/Footer.js';
 import currentPerson from '../../../redux/reducers/current.person.reducer';
+import EditUserSteps from './EditUserSteps.js';
 import moment from 'moment';
 
 class EditUserLogs extends Component {
+
   state = {
     team: this.props.store.user.teams_id
   };
@@ -36,27 +37,23 @@ class EditUserLogs extends Component {
                 type: 'DELETE_USER',
                 payload: this.props.store.currentPerson
               })
-              
         )
       } else {
         swal("Keep on stepping!");
       }
-      this.props.history.push('/team')
-    })
+    });
   };
 
-  // allows captain to correct the logs of a teammate
-  changeStepLog = (event) => {
-    // number that user has changed the step log to
-    console.log('change steps button', Number(event.target.value));
-    // "steps"."id" of steps database table
-    console.log('change steps button', event._dispatchInstances.pendingProps.data);
-    axios({
+  // pulls id and steps from child editUserSteps to update step logs
+  saveStepLogChanges = (logId, updatedSteps) => {
+    console.log('data', logId);
+    console.log('steps', updatedSteps);
+      axios({
       method: 'PUT',
       url: '/api/logs/',
       data: {
-        id: event._dispatchInstances.pendingProps.data,
-        steps: Number(event.target.value)
+        id: logId,
+        steps: updatedSteps
       }
     })
   }
@@ -102,9 +99,10 @@ class EditUserLogs extends Component {
       }
     })
   }
-  // sends captain to the contest home to refresh data tables
-  toContestHome = () => {
-    this.props.history.push('/home');
+ 
+  // Function pushes user back to previous page.
+  goBack = () => {
+    this.props.history.goBack();
   }
   
   render() {
@@ -128,33 +126,21 @@ class EditUserLogs extends Component {
             </thead>
             <tbody>
             {this.props.store.userLogs.map(log =>
-                <tr>
-
-                  <td>{moment(log.date).format('MMMM Do YYYY')}</td>
-                  <td>{log.date.split( 'T' )[0]}</td>
-                  <td>
-                    <ContentEditable
-                    className='editUserStepstd'
-                    data={log.id}
-                    html={String(log.steps)}
-                    onChange={this.changeStepLog}
-                    />
-                  </td>
-
-                  <td>
-                    <button onClick={(event) => this.deleteLog(log.id)}>Delete log</button>
-                  </td>
-                </tr>
+                  <EditUserSteps
+                  date={log.date.split( 'T' )[0]}
+                  data={log.id}
+                  steps={log.steps}
+                  changeStepLog={this.changeStepLog}
+                  delete={this.deleteLog}
+                  save={this.saveStepLogChanges}
+                  />
                   )}
               </tbody>
           </table>
         </center>
         <div className='editUserBackandDeleteBtn'>
           <div className='editUserBackBtn'>
-            <Button variant="contained" color="default" onClick={() => this.toContestHome()}>Back</Button> 
-          </div>
-          <div className='editUserSaveBtn'>
-            <Button variant="contained" color="primary" onClick={()=> this.toContestHome()}>Save</Button>
+            <Button variant="contained" color="default" onClick={this.goBack}>Back</Button> 
           </div>
         </div>
         <div className='editUserBackandDeleteBtn'>
