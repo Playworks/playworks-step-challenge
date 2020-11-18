@@ -74,7 +74,7 @@ VALUES
 ('Team David', 'https://playworks-step-challenge.s3.us-east-2.amazonaws.com/0cbf17aa-f6d8-4e45-aaea-55554c862a3f_ScreenShot2020-11-17at1.55.40PM.png', 'Prime Digital'),
 ('A-Team', 'https://playworks-step-challenge.s3.us-east-2.amazonaws.com/9c60e7ec-e699-460c-b189-d97cec860470_1200px-A-Team-Logo.svg.png', 'Prime Digital');
 
---
+-- passwords for all users including admin is 123
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "contests_id", "teams_id")
 VALUES
 ('davidgould', 'davidgould@gmail.com', 'David', 'Gould', '$2a$10$3gqpioSzewoKOvSJhKh86O6am4X.H/T0isyOzU8/l6yTG7iZcHLAK', 'http://playworks-step-challenge.s3.amazonaws.com/48370ad3-7e80-4ddf-8b11-02a4fe7cd2bf_carjake.png', 'CAPTAIN', 1, 1),
