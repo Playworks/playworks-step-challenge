@@ -12,9 +12,11 @@ import EditUserSteps from './EditUserSteps.js';
 import moment from 'moment';
 
 class EditUserLogs extends Component {
+
   state = {
     team: this.props.store.user.teams_id
   };
+
   // allows captain to delete teammates
   deleteTeammate = () => {
     console.log('delete teammate button works', this.props.store.currentPerson);
@@ -35,14 +37,13 @@ class EditUserLogs extends Component {
                 type: 'DELETE_USER',
                 payload: this.props.store.currentPerson
               })
-              
         )
       } else {
         swal("Keep on stepping!");
       }
-      this.props.history.push('/team')
-    })
+    });
   };
+
   // pulls id and steps from child editUserSteps to update step logs
   saveStepLogChanges = (logId, updatedSteps) => {
     console.log('data', logId);
@@ -98,9 +99,10 @@ class EditUserLogs extends Component {
       }
     })
   }
-  // sends captain to the contest home to refresh data tables
-  toContestHome = () => {
-    this.props.history.push('/home');
+ 
+  // Function pushes user back to previous page.
+  goBack = () => {
+    this.props.history.goBack();
   }
   
   render() {
@@ -138,7 +140,7 @@ class EditUserLogs extends Component {
         </center>
         <div className='editUserBackandDeleteBtn'>
           <div className='editUserBackBtn'>
-            <Button variant="contained" color="default" onClick={() => this.toContestHome()}>Back</Button> 
+            <Button variant="contained" color="default" onClick={this.goBack}>Back</Button> 
           </div>
         </div>
         <div className='editUserBackandDeleteBtn'>
