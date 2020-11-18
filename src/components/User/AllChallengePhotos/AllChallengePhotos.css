@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.horizontalDailyChallengeImage {
+.landscape {
     position: relative;
     display: inline-block;
     height: 100%;
@@ -22,7 +22,7 @@
     margin: auto;
 }
 
-.verticalDailyChallengeImage {
+.portrait {
     overflow: hidden;
     max-width: 100%; 
     position: absolute;  
