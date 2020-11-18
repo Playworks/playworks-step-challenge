@@ -51,7 +51,6 @@ class ImageUpload extends Component {
         
 
         const uploadOptions = {
-            server: 'http://localhost:5000',
             // signingUrlQueryParams: {uploadType: 'avatar'},
         }
 

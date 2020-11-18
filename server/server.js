@@ -60,7 +60,7 @@ app.use('/api/subtractsteps', subtractSteps);
 
 
 app.use('/s3', UploaderS3Router({
-  bucket: process.env.BUCKET_NAME,                // required
+  bucket: process.env.S3_BUCKET,                // required
   region: 'us-east-2',                            // optional
   headers: {'Access-Control-Allow-Origin': '*'},  // optional
   ACL: 'public-read',                             // this is the default - set to `public-read` to let anyone view uploads

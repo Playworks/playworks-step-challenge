@@ -59,7 +59,7 @@ class RegisterForm extends Component {
     console.log('this is props', this.props);
 
     const uploadOptions = {
-      server: 'http://localhost:5000',
+      server: 'https://aqueous-earth-68221.herokuapp.com/',
       // signingUrlQueryParams: {uploadType: 'avatar'},
   }
 
