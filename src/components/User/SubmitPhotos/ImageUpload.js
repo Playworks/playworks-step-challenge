@@ -51,7 +51,6 @@ class ImageUpload extends Component {
         
 
         const uploadOptions = {
-            server: 'https://aqueous-earth-68221.herokuapp.com/',
             // signingUrlQueryParams: {uploadType: 'avatar'},
         }
 
