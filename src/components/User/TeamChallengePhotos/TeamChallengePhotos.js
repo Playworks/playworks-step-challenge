@@ -20,7 +20,6 @@ class TeamChallengePhotos extends Component {
   }
 
   render() {
-    console.log('this is props', this.props);
     return (
       <div className='imageFeed'>
         { this.props.store.teamPhotos.map( ( photo, i ) => 
