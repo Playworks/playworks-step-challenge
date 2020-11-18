@@ -110,8 +110,7 @@ class EditUserLogs extends Component {
           <center>
           <div className='editUserLogHeader'>
             <Typography variant='h4'>
-              {this.props.store.userLogs[0] && this.props.store.userLogs[0].first_name} 
-              {this.props.store.userLogs[0] && this.props.store.userLogs[0].last_name}
+              {this.props.store.userLogs[0] && this.props.store.userLogs[0].first_name} {this.props.store.userLogs[0] && this.props.store.userLogs[0].last_name}
             </Typography>
           </div>
           <table id='leaderboardTable'>
