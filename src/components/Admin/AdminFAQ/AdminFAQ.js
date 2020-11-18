@@ -26,7 +26,6 @@ class AdminFAQ extends Component {
           <div className='adminRulesAndFaqHeader'>
               <Typography variant='h5'>FAQ</Typography>
             </div>
-          </Grid>
             {this.props.store.faq.map((item, i) => 
                 <Document file={item.file_url} key={i}> 
                   <Page pageNumber={1} />
