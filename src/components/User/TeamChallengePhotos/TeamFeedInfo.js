@@ -15,6 +15,11 @@ class TeamFeedInfo extends Component {
       type: 'SUBTRACT_STEPS',
       payload: value
     })
+    setTimeout(this.props.getPhotos(), 1000);
+    this.props.dispatch({
+      type: 'FETCH_TEAM_DETAILS',
+      payload: this.props.store.user.teams_id
+    })
   }
 
   approveImage = (value) => {
