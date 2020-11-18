@@ -15,7 +15,8 @@ import TeamName from '../../User/TeamName/TeamName.js';
 
 class TeamHome extends Component {
   componentDidMount() {
-    this.getTeamDetails()
+    this.getTeamDetails();
+    this.getLeaderBoard();
   }
 
 
@@ -27,6 +28,12 @@ class TeamHome extends Component {
     })
   }
 
+  getLeaderBoard = () => {
+    this.props.dispatch({
+      type: 'FETCH_LEADER_BOARD',
+      payload: this.props.store.user.teams_id
+    })
+  }
 
   render() {
     console.log('team home', this.props.history);
@@ -37,7 +44,7 @@ class TeamHome extends Component {
         <div className='teamPhotoContainer'>
           <div className='teamHomeHeader'>
             <TeamName />
-            <TeamRank/>
+            <TeamRank getTeamDetails={this.getTeamDetails}/>
           </div>
           <TeamStepCount/>
           <ChallengeOfTheDay/>
