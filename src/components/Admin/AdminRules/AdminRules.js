@@ -22,12 +22,19 @@ class AdminRules extends Component {
     return (
       <div>
         <Nav />
-        <Grid container direction="column" alignItems="center" className="rulesFaq">
-          <Grid item>
+        <center>
             <div className='adminRulesAndFaqHeader'>
               <Typography variant='h5'>Rules</Typography>
             </div>
-          </Grid>
+            <div className='adminRulesFaqBtn'>
+              <Button variant='contained' 
+                  color='primary'
+                  size= 'large'
+                  style={{margin: '.5rem', color: 'white', background: '#054f95'}}
+                  onClick={()=>this.props.history.push('/editrules')}>
+                  Edit Rules
+              </Button>
+            </div>
               {this.props.store.rules.map((rule, i) => 
                 <Document file={rule.file_url} key={i}> 
                   <Page pageNumber={1}> 
@@ -35,16 +42,7 @@ class AdminRules extends Component {
                   </Page>
                 </Document>
                   )}
-          <div className='adminRulesAndFaqBtn'>
-            <Button variant='contained' 
-                color='primary'
-                size= 'large'
-                style={{margin: '.5rem'}}
-                onClick={()=>this.props.history.push('/editrules')}>
-                Edit Rules
-            </Button>
-          </div>
-        </Grid>
+        </center>
       </div>
     );
   }

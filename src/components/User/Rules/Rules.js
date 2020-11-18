@@ -26,7 +26,7 @@ class Rules extends Component {
       <div>
         <Grid container direction="column" alignItems="center" className="rulesFaq">
           <Grid item>
-          <div className='userRulesHeader'>
+            <div className='userRulesHeader'>
               <Typography variant='h4'>Rules</Typography>
             </div>
           </Grid>
@@ -40,8 +40,8 @@ class Rules extends Component {
           <FAQ />
         </Grid>
       </div>
-      <Footer />
-      </div>
+        <Footer />
+    </div>
     );
   }
 }

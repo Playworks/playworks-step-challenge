@@ -88,7 +88,7 @@ class CreateChallenges extends Component {
         </div>
         <div className='addChallengeBtn'>
           <Button 
-            style={{marginTop:'5px'}}
+            style={{marginTop: '5px', margin: '.5rem', color: 'white', background: '#054f95'}}
             variant='contained' 
             color='default'
             onClick={this.createChallenges}>Add Challenge
