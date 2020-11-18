@@ -124,6 +124,7 @@ class EditUserLogs extends Component {
                 <th><Typography variant='body1'>Time Submitted</Typography></th>
                 <th><Typography variant='body1'>Steps</Typography></th>
                 <th><Typography variant='body1'></Typography></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -154,7 +155,9 @@ class EditUserLogs extends Component {
             <Button variant="contained" color="default" onClick={() => this.toContestHome()}>Back</Button> 
           </div>
           <div className='editUserSaveBtn'>
-            <Button variant="contained" color="primary" onClick={()=> this.toContestHome()}>Save</Button>
+            <Button variant="contained" 
+              style={{color: 'white', background: '#054f95'}}
+              onClick={()=> this.toContestHome()}>Save</Button>
           </div>
         </div>
         <div className='editUserBackandDeleteBtn'>
