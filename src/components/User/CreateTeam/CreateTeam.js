@@ -77,6 +77,7 @@ class CreateTeam extends Component {
       }
   });
   }
+  
 
   render() {
     const uploadOptions = {
