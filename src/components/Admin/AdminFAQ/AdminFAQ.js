@@ -34,7 +34,7 @@ class AdminFAQ extends Component {
                 <Document file={item.file_url} key={i}> 
                   <Page pageNumber={1} />
                 </Document>
-                  )}
+            )}
           <div className='adminRulesAndFaqBtn'>
             <Button variant='contained' 
                 color='primary'
