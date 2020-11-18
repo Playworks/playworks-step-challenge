@@ -3,14 +3,6 @@ const pool = require('../modules/pool');
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
 
-
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
-  // GET route code here
-});
-
   // DELETE route for removing a photo
   router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('Delete photo with url of', req.params.id);
@@ -25,46 +17,6 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         })
   });
-
-  // router.delete('/:id', rejectUnauthenticated, async (req, res) => {
-  //   console.log('req.user.id', req.body);
-    
-  //   let connection;
-  //   try {
-  //     connection = await pool.connect();
-  
-  //     // Begin the transaction
-  //     await connection.query('BEGIN');
-  
-  //     // Add photo information to photos table
-  //     await connection.query(`
-  //       DELETE FROM "photos" WHERE "id" = $1;
-  //     `, [req.params.id]);
-  
-  //     // Subtract 1000 steps to steps table and tie them to user
-  //     await connection.query(`
-  //       DELETE FROM "steps" WHERE "user_id" = $1 AND "steps" = $2;
-  //     `, [req.body.photo_user_id, 1000]);
-  
-  //     console.log('this is working', req.user.id, Date());
-      
-  //     // Complete the transaction
-  //     await connection.query('COMMIT');
-  
-  //     res.sendStatus(201);
-  //   }
-  //   catch (err) {
-  //     // Cancel the transaction, if it fails.
-  //     await connection.query('ROLLBACK');
-  
-  //     console.log(err);
-  //     res.statusCode(500);
-  //   }
-  //   finally {
-  //     // release the connection NO MATTER WHAT
-  //     connection.release();
-  //   }
-  // });
 
   // PUT route for approving photo
 router.put('/:id', rejectUnauthenticated, (req, res) => {
@@ -81,7 +33,6 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
       })
 });
   
-
 router.post('/', rejectUnauthenticated, async (req, res) => {
   let connection;
   try {
@@ -121,6 +72,5 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     connection.release();
   }
 });
-
 
 module.exports = router;

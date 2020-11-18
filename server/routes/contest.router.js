@@ -1,7 +1,6 @@
 const express = require('express');
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
-
 const router = express.Router();
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
@@ -17,7 +16,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   });
 });
 
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT "contests"."id", "contests"."name", "contests"."start_date", "contests"."end_date" FROM "contests";`;
   pool.query(queryText)
   .then((result) => {

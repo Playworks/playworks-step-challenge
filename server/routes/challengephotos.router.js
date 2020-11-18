@@ -1,9 +1,9 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-
-router.get('/', (req, res) => {    
+router.get('/', rejectUnauthenticated, (req, res) => {    
     const queryString = `
       SELECT "photos"."id", 
       "photos"."file_url" AS "photos_file_url", 
@@ -23,14 +23,11 @@ router.get('/', (req, res) => {
     pool.query(queryString, [req.user.contests_id])
     .then(response => {  
       console.log('RESPONSE', response.rows);
-        
       res.send(response.rows);
     })
     .catch(error => {
       res.status(500);
     })
   });
-
-  
 
   module.exports = router;
