@@ -54,7 +54,7 @@ class ImageUpload extends Component {
             // signingUrlQueryParams: {uploadType: 'avatar'},
         }
 
-        const s3Url = `http://playworks-step-challenge.s3.amazonaws.com`;
+        const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
 
         return (
             <div>
