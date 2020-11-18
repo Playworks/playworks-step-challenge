@@ -128,25 +128,20 @@ class EditUserLogs extends Component {
             <tbody>
             {this.props.store.userLogs.map(log =>
                   <EditUserSteps
-                  date={log.date.split( 'T' )[0]}
-                  data={log.id}
-                  steps={log.steps}
-                  changeStepLog={this.changeStepLog}
-                  delete={this.deleteLog}
-                  save={this.saveStepLogChanges}
-                  />
+                    date={log.date.split( 'T' )[0]}
+                    data={log.id}
+                    steps={log.steps}
+                    changeStepLog={this.changeStepLog}
+                    delete={this.deleteLog}
+                    save={this.saveStepLogChanges}
+                    />
                   )}
               </tbody>
           </table>
         </center>
         <div className='editUserBackandDeleteBtn'>
           <div className='editUserBackBtn'>
-
-            <Button variant="contained" color="default" onClick={this.goBack}>Back</Button> 
-          </div>
-          <div className='editUserSaveBtn'>
-            <Button variant="contained" 
-              style={{color: 'white', background: '#054f95'}}>Save</Button>
+            <Button variant="contained" style={{color: 'white', background: '#054f95'}} onClick={this.goBack}>Finished Editing</Button> 
           </div>
         </div>
         <div className='editUserBackandDeleteBtn'>
