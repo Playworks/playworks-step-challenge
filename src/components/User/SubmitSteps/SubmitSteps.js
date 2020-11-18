@@ -88,7 +88,7 @@ handleCancel = () => {
                   <Typography variant='h5'>Submit Steps</Typography>
                 </div>
                 <div className='submitStepsInput'>
-                  <TextField id="outlined-basic" label="Number of steps" variant="outlined"
+                  <TextField id="outlined-basic" type="number" label="Number of steps" variant="outlined"
                     onChange={this.handleChangeFor('steps')}></TextField>
                 </div>
                 <div className='dateInputField'>
