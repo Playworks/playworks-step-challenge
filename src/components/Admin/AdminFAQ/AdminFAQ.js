@@ -24,9 +24,16 @@ class AdminFAQ extends Component {
         <Nav />
         <center>
           <div className='adminRulesAndFaqHeader'>
-            <Typography variant='h5'>FAQ</Typography>
-          </div>
-          <div className='adminRulesFaqBtn'>
+              <Typography variant='h5'>FAQ</Typography>
+            </div>
+          </Grid>
+            {this.props.store.faq.map((item, i) => 
+                <Document file={item.file_url} key={i}> 
+                  <Page pageNumber={1} />
+                </Document>
+            )}
+          <div className='adminRulesAndFaqBtn'>
+
             <Button variant='contained' 
                 color='primary'
                 size= 'large'

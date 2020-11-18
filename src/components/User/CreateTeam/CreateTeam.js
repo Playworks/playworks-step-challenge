@@ -80,7 +80,7 @@ class CreateTeam extends Component {
 
   render() {
     const uploadOptions = {
-      server: 'http://localhost:5000',
+      server: 'https://aqueous-earth-68221.herokuapp.com/',
       // signingUrlQueryParams: {uploadType: 'avatar'},
     }
 
