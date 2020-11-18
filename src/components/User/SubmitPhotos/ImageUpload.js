@@ -44,7 +44,7 @@ class ImageUpload extends Component {
             date: '',
             challenges_id: ''
           });
-        this.props.history.push('/home');
+          this.props.history.goBack();
     }
 
     render() {
