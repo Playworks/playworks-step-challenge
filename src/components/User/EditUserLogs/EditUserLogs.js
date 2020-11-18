@@ -122,6 +122,7 @@ class EditUserLogs extends Component {
                 <th><Typography variant='body1'>Time Submitted</Typography></th>
                 <th><Typography variant='body1'>Steps</Typography></th>
                 <th><Typography variant='body1'></Typography></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -140,7 +141,12 @@ class EditUserLogs extends Component {
         </center>
         <div className='editUserBackandDeleteBtn'>
           <div className='editUserBackBtn'>
+
             <Button variant="contained" color="default" onClick={this.goBack}>Back</Button> 
+          </div>
+          <div className='editUserSaveBtn'>
+            <Button variant="contained" 
+              style={{color: 'white', background: '#054f95'}}>Save</Button>
           </div>
         </div>
         <div className='editUserBackandDeleteBtn'>

@@ -78,7 +78,7 @@ class ImageUpload extends Component {
                     <Button variant='contained' 
                         color='primary'
                         size= 'large'
-                        style={{margin: '.5rem'}}
+                        style={{margin: '.5rem', color: 'white', background: '#054f95'}} 
                         onClick={this.submitPhoto}>
                         Submit
                     </Button>
