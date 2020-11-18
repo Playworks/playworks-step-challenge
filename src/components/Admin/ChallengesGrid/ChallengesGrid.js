@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ChallengesGridItem from '../ChallengesGridItem/ChallengesGridItem';
 import { Card } from '@material-ui/core';
-
 import './ChallengesGrid.css';
 
 class ChallengesGrid extends Component {
-
   render() {
     return (
       <div className='challengesGrid'>

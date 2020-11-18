@@ -44,7 +44,7 @@ class ImageUpload extends Component {
             date: '',
             challenges_id: ''
           });
-        this.props.history.push('/home');
+          this.props.history.goBack();
     }
 
     render() {
@@ -78,7 +78,7 @@ class ImageUpload extends Component {
                     <Button variant='contained' 
                         color='primary'
                         size= 'large'
-                        style={{margin: '.5rem'}}
+                        style={{margin: '.5rem', color: 'white', background: '#054f95'}} 
                         onClick={this.submitPhoto}>
                         Submit
                     </Button>

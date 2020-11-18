@@ -10,7 +10,7 @@ class LoginPage extends Component {
     return (
       <div className='centered'>
         <center>
-          <img className='loginLogo' src= {Logo}/>
+          <img className='loginLogo' alt='playWorksLoginLogo' src= {Logo}/>
           <LoginForm />
           <div>
             <button

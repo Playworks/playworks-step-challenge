@@ -100,7 +100,7 @@ class JoinTeam extends Component {
     return (
       <div>
         <div className='createPageLogoDiv'>
-          <img className='createPageLogo' src= {Logo}/>
+          <img className='createPageLogo' alt='playWorksLogo' src= {Logo}/>
         </div>
 
         <div className='teamForm'>
@@ -123,7 +123,7 @@ class JoinTeam extends Component {
               </FormControl>
             </div>
           <div className='joinTeamImageDiv'>
-            <img className='joinTeamImage' src= {this.state.selected_team_image} />
+            <img className='joinTeamImage' alt='joinTeamImage' src= {this.state.selected_team_image} />
           </div>
             <Button variant='contained' 
               color='primary'

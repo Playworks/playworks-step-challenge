@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import './SubmitSteps.css';
 import Nav from '../../Nav/Nav.js';
 import Footer from '../../Footer/Footer.js';
@@ -9,7 +9,7 @@ import Footer from '../../Footer/Footer.js';
 import { Button, Card, TextField, Typography } from '@material-ui/core';
 
 import moment from 'moment';
-
+import swal from 'sweetalert';
 
 class SubmitSteps extends Component {
 
@@ -24,6 +24,38 @@ handleChangeFor = (propertyName) => (event) => {
   });
 };
 
+confirmationSubmitSteps = (event) => {
+  if(this.state.steps === ''){
+    swal(`Please enter steps`);
+  }
+  else if(this.state.date === ''){
+    swal(`Please select a date`);
+  }
+  else{
+    swal({
+      title: "Is the submitted information correct?",
+      icon: "info",
+      buttons: {
+        cancel: "No",
+        yes: true,
+      }
+    }).then(isCorrect => {
+      if(isCorrect){
+        this.submitSteps(event);
+        swal({
+          title: "You're steps have been logged!",
+          icon: "success"
+        }).then(() => {
+          this.props.history.goBack();
+        })
+      }
+      else{
+        swal(`No steps were logged`)
+      }
+    })
+  }
+}
+
 submitSteps = (event) => {
     event.preventDefault();
     this.props.dispatch({
@@ -33,7 +65,6 @@ submitSteps = (event) => {
           date: this.state.date,
         },
       });
-    this.props.history.push('/home');
   };
 
 handleCancel = () => {
@@ -41,9 +72,8 @@ handleCancel = () => {
         steps: '',
         date: '',
       });
-    this.props.history.push('/home');
+    this.props.history.goBack();
 }
-
 
   render() {
     return (
@@ -58,7 +88,7 @@ handleCancel = () => {
                   <Typography variant='h5'>Submit Steps</Typography>
                 </div>
                 <div className='submitStepsInput'>
-                  <TextField id="outlined-basic" label="Number of steps" variant="outlined"
+                  <TextField id="outlined-basic" type="number" label="Number of steps" variant="outlined"
                     onChange={this.handleChangeFor('steps')}></TextField>
                 </div>
                 <div className='dateInputField'>
@@ -85,8 +115,8 @@ handleCancel = () => {
               <Button variant='contained' 
                 color='primary'
                 size= 'large'
-                style={{margin: '.5rem'}}
-                onClick={this.submitSteps}>
+                style={{margin: '.5rem', color: 'white', background: '#054f95'}}
+                onClick={this.confirmationSubmitSteps}>
                 Submit
               </Button>
             </div>
