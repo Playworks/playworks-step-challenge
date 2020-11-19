@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ContestHome from '../User/ContestHome/ContestHome';
 import LoginPage from '../LoginPage/LoginPage';
-import AdminHome from '../Admin/AdminHome/AdminHome';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // A Custom Wrapper Component -- This will keep our code DRY.

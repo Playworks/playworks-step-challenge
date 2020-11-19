@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateChallenges.css';
-import AdminNav from '../../Admin/AdminNav/AdminNav.js';
 import { Button, TextField, Typography } from '@material-ui/core';
 
 class CreateChallenges extends Component {

@@ -16,7 +16,7 @@ class RegisterPage extends Component {
     return (
       <div>
         <center>
-          <img className='registerLogo' src= {Logo}/>
+          <img className='registerLogo' src= {Logo} alt=""/>
           <RegisterForm />
           <button
             type="button"

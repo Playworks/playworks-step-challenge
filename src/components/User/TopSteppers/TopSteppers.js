@@ -48,7 +48,7 @@ class TopSteppers extends Component {
             removeArrowOnDeviceType={["tablet", "mobile", "smallMobile"]}>
             { this.props.store.topSteppers.map( ( user, i ) => 
               <Paper key={i} className='stepperPaper'>
-                <img className='topSteppersAvatar' src={user.image_path}/>
+                <img className='topSteppersAvatar' src={user.image_path} alt=""/>
                 <Typography variant='body2'>{user.username}</Typography>
                 <Typography variant='body2'>{user.sum} steps</Typography>
                 <Typography variant='body2'>{user.name}</Typography>

@@ -21,7 +21,7 @@ class CreateOrJoinTeam extends Component {
     return (
       <div>
         <center>
-          <img className='createJoinLogo' src={Logo}/>
+          <img className='createJoinLogo' src={Logo} alt=""/>
           <div onClick={this.createTeam}>
             <CreateTeamLink/>
           </div>
