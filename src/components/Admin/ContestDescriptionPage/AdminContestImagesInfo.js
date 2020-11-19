@@ -13,7 +13,7 @@ class AdminContestImagesInfo extends Component {
                 <Grid container item xs={12} spacing={3}>
                     <Grid item xs={3}>
                         <div className='feedAvatarDiv'>
-                            <img className='feedAvatar' src={this.props.avatar}/>
+                            <img className='feedAvatar' src={this.props.avatar} alt=""/>
                         </div>
                     </Grid>
                     <Grid item xs={9}>

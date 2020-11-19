@@ -24,7 +24,7 @@ class AllChallengePhotos extends Component {
             <div className='imageFeedCard' key={i}>
               <Card style={{width: '300px'}}>
                 <div className='dailyChallengeImageContainer'>
-                  <img className='dailyChallengeImage' src={photo.photos_file_url} />
+                  <img className='dailyChallengeImage' src={photo.photos_file_url} alt="" />
                 </div>
                 <Card>
                   <AllChallengeFeedInfo key={i} photo={photo}/>

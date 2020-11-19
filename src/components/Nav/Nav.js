@@ -33,12 +33,12 @@ const Nav = (props) => {
     <div className="nav">
       <div className="nav-title">
         <Link to="/home">
-          <img className='nav-logo' src={Logo} />
+          <img className='nav-logo' src={Logo} alt="" />
         </Link>
       </div>
 
         {/* Shows the hamburger menu if the user is logged in */}
-         { props.store.user.admin == 'ADMIN' ? 
+         { props.store.user.admin === 'ADMIN' ? 
           <div className='nav-right'>
             <Button style={{ verticalAlign: 'baseline' }} aria-controls="simple-menu" aria-haspopup="true" onClick={ handleClick }>
               <MenuIcon fontSize={ 'medium' } style={{ color: 'black' }}/>

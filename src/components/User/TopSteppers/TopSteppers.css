@@ -15,3 +15,8 @@
     display: inline-block;
     position: relative;
   }
+
+.react-multi-carousel-track, ul {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
