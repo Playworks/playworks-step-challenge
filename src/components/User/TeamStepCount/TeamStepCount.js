@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { Typography, Link } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 class TeamStepCount extends Component {
   editLogsAndSetCurrentTeammate = (value) => {

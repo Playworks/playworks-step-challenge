@@ -45,7 +45,7 @@ class TeamFeedInfo extends Component {
             <Grid container item xs={12} spacing={3}>
                 <Grid item xs={3}>
                     <div className='feedAvatarDiv'>
-                    <img className='feedAvatar' src={this.props.photo.image_path}/>
+                    <img className='feedAvatar' src={this.props.photo.image_path} alt=""/>
                     </div>
                 </Grid>
                 <Grid item xs={9}>

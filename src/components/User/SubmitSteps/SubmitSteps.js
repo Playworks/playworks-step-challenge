@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './SubmitSteps.css';
 import Nav from '../../Nav/Nav.js';
 import Footer from '../../Footer/Footer.js';
 // import material ui
 import { Button, Card, TextField, Typography } from '@material-ui/core';
-
-import moment from 'moment';
 import swal from 'sweetalert';
 
 class SubmitSteps extends Component {

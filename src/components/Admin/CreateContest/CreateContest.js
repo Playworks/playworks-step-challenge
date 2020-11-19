@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './CreateContest.css';
 // import placeholder image
-import Placeholder from '../../../images/placeholder-square.png';
 import { Button, TextField, Typography } from '@material-ui/core';
 
 class CreateContest extends Component {
