@@ -44,68 +44,29 @@ router.post('/', (req, res) => {
   })
 });
 
-router.put('/name', (req, res) => {
-  console.log('req put challenges id', req.body.id);
-  console.log('req put challenges name', req.body.name);
-  let idToUpdate = req.body.id;
-  let newName = req.body.name;
-  const queryString = `
-    UPDATE "challenges"
-    SET "name" = $1
-    WHERE "id" = $2;
+router.put('/', (req, res) => {
+  console.log('req', req.body);
+  let name = req.body.name;
+  let description = req.body.description;
+  let date = req.body.date;
+  let id = req.body.id;
+  let queryString = `
+  UPDATE "challenges"
+  SET
+  "name" = $1,
+  "description" = $2,
+  "date" = $3
+  WHERE "id" = $4;
   `;
-  pool.query(queryString, [newName, idToUpdate])
+  pool.query(queryString, [name, description, date, id])
   .then(response => {
-    console.log('Change challenge description', response);
-    res.sendStatus(200);
+    res.sendStatus(200)
   })
   .catch(error => {
-    console.log('error challenge put', error);
-    res.sendStatus(500);
+    res.status(500).send(error)
   })
 })
 
-router.put('/description', (req, res) => {
-  console.log('req put challenges id', req.body.id);
-  console.log('req put challenges description', req.body.description);
-  let idToUpdate = req.body.id;
-  let newDescription = req.body.description;
-  const queryString = `
-    UPDATE "challenges"
-    SET "description" = $1
-    WHERE "id" = $2;
-  `;
-  pool.query(queryString, [newDescription, idToUpdate])
-  .then(response => {
-    console.log('Change challenge description', response);
-    res.sendStatus(200);
-  })
-  .catch(error => {
-    console.log('error challenge put', error);
-    res.sendStatus(500);
-  })
-})
-
-router.put('/date', (req, res) => {
-  console.log('req put challenges id', req.body.id);
-  console.log('req put challenges description', req.body.date);
-  let idToUpdate = req.body.id;
-  let newDate = req.body.date;
-  const queryString = `
-    UPDATE "challenges"
-    SET "date" = $1
-    WHERE "id" = $2;
-  `;
-  pool.query(queryString, [newDate, idToUpdate])
-  .then(response => {
-    console.log('Change challenge date', response);
-    res.sendStatus(200);
-  })
-  .catch(error => {
-    console.log('error challenge put', error);
-    res.sendStatus(500);
-  })
-})
 
 
 module.exports = router;

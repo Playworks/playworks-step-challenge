@@ -14,7 +14,7 @@ import moment from 'moment';
 class EditUserLogs extends Component {
 
   state = {
-    team: this.props.store.user.teams_id
+    steps: 0
   };
 
   // allows captain to delete teammates
@@ -45,15 +45,16 @@ class EditUserLogs extends Component {
   };
 
   // pulls id and steps from child editUserSteps to update step logs
-  saveStepLogChanges = (logId, updatedSteps) => {
+  saveStepLogChanges = (logId) => {
     console.log('data', logId);
-    console.log('steps', updatedSteps);
+    console.log('state steps', this.state.steps);
+    let newSteps = this.state.steps;
       axios({
       method: 'PUT',
       url: '/api/logs/',
       data: {
         id: logId,
-        steps: updatedSteps
+        steps: newSteps
       }
     })
   }
@@ -75,7 +76,13 @@ class EditUserLogs extends Component {
         })
         .then(
           // deletes the selected log
-          this.completeTheLogDelete(value),
+          axios({
+            method: 'DELETE',
+            url:'/api/logs/',
+            data: {
+              id: value
+            }
+          }),
           // refreshed the log table
           this.props.dispatch({
             type: 'FETCH_LOGS',
@@ -87,22 +94,25 @@ class EditUserLogs extends Component {
       }
     })
   }
-  // This function is embedded in the deleteLog sweet alert to allow
-  // the user to cancel the log deletion
-  completeTheLogDelete = (value) => {
-    let stepLogId = value;
-    axios({
-      method: 'DELETE',
-      url:'/api/logs/',
-      data: {
-        id: stepLogId
-      }
-    })
-  }
- 
   // Function pushes user back to previous page.
   goBack = () => {
+    this.props.dispatch({
+      type: 'FETCH_TEAM_DETAILS',
+      payload: this.props.store.user.teams_id
+    })
+    this.props.dispatch({
+      type: 'FETCH_LEADER_BOARD',
+      payload: this.props.store.user.teams_id
+    })
     this.props.history.goBack();
+  }
+
+  // sets local state to changed step log
+  edit = (event) => {
+    console.log('is', event.target.value);
+    this.setState({
+      steps: event.target.value
+    })
   }
   
   render() {
@@ -112,8 +122,7 @@ class EditUserLogs extends Component {
           <center>
           <div className='editUserLogHeader'>
             <Typography variant='h4'>
-              {this.props.store.userLogs[0] && this.props.store.userLogs[0].first_name} 
-              {this.props.store.userLogs[0] && this.props.store.userLogs[0].last_name}
+              {this.props.store.userLogs[0] && this.props.store.userLogs[0].first_name} {this.props.store.userLogs[0] && this.props.store.userLogs[0].last_name}
             </Typography>
           </div>
           <table id='leaderboardTable'>
