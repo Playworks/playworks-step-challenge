@@ -28,11 +28,14 @@ class TeamFeedInfo extends Component {
       type: 'APPROVE_PHOTOS',
       payload: value
     })
+    setTimeout(this.props.getPhotos(), 1000);
+    this.props.dispatch({
+      type: 'FETCH_TEAM_DETAILS',
+      payload: this.props.store.user.teams_id
+    })
   }
 
   render() {
-    console.log('THIS PHOTOS PROPS', this.props.photo);
-    
     return (
       <div>
         <div className='feedInfo'>

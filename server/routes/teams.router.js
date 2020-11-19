@@ -1,15 +1,11 @@
 const express = require('express');
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
-
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  // GET route code here
+router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('teams router get');
-  const queryString = `
-  SELECT * FROM "teams"
-  `
+  const queryString = `SELECT * FROM "teams";`;
   pool.query(queryString)
   .then(response => {
     res.send(response.rows);
@@ -19,7 +15,7 @@ router.get('/', (req, res) => {
   })
 });
 
-router.get('/searchforteams', (req, res) => {
+router.get('/searchforteams', rejectUnauthenticated, (req, res) => {
   console.log('in router.get api/teams/searchforteams');
   console.log('this is req.user.contests_id', req.user.contests_id);
   const queryText = `
@@ -37,7 +33,7 @@ router.get('/searchforteams', (req, res) => {
   });
 });
 
-router.get('/searchforcaptains', (req, res) => {
+router.get('/searchforcaptains', rejectUnauthenticated, (req, res) => {
   console.log('in router.get api/teams/searchforcaptains');
   console.log('this is req.user.contests_id', req.user.contests_id);
   const queryText = `
@@ -55,7 +51,7 @@ router.get('/searchforcaptains', (req, res) => {
 
 
 // Post route creates a team then updates users admin level to be captain
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('req.body', req.body);
   console.log('req.user', req.user);
   const team_name = req.body.team_name;
@@ -91,7 +87,7 @@ router.post('/', (req, res) => {
 });
 
 // Updates user's team id in jointeam.js
-router.put('/join/:id', (req, res) => {
+router.put('/join/:id', rejectUnauthenticated, (req, res) => {
   const selected_team_id = req.body.selected_team_id;
   const user_id = req.params.id;
   const queryText = `UPDATE "user" SET "teams_id" = $1, "admin" = 'USER' WHERE "id" = $2;`

@@ -1,11 +1,10 @@
-const { response } = require('express');
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 // gets challenges ordered by date
-router.get('/', (req, res) => {
-  // GET route code here
+router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('challenges router get');
   const queryString = `
   SELECT * FROM "challenges"
@@ -20,11 +19,7 @@ router.get('/', (req, res) => {
   })
 });
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
+router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('challenges router post', req.body);
   let name = req.body.name;
   let description = req.body.description;
@@ -44,20 +39,20 @@ router.post('/', (req, res) => {
   })
 });
 
-router.put('/', (req, res) => {
+router.put('/', rejectUnauthenticated, (req, res) => {
   console.log('req', req.body);
   let name = req.body.name;
   let description = req.body.description;
   let date = req.body.date;
   let id = req.body.id;
   let queryString = `
-  UPDATE "challenges"
-  SET
-  "name" = $1,
-  "description" = $2,
-  "date" = $3
-  WHERE "id" = $4;
-  `;
+    UPDATE "challenges"
+    SET
+    "name" = $1,
+    "description" = $2,
+    "date" = $3
+    WHERE "id" = $4;
+    `;
   pool.query(queryString, [name, description, date, id])
   .then(response => {
     res.sendStatus(200)
@@ -66,7 +61,5 @@ router.put('/', (req, res) => {
     res.status(500).send(error)
   })
 })
-
-
 
 module.exports = router;
