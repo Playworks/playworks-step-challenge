@@ -37,21 +37,22 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     let teamId = req.params.id;
     const queryString = `
       SELECT "photos"."id", 
-      "photos".file_url, 
-      "photos".approved, 
+      "photos"."file_url", 
+      "photos"."approved", 
       "photos"."date", 
       "photos"."user_id" AS "photo_user_id", 
-      challenges.name, challenges.description, 
-      "user".username, 
-      "user".image_path, 
+      "challenges"."name", 
+      "challenges"."description", 
+      CONCAT("user"."first_name", ' ', "user"."last_name") AS "username", 
+      "user"."image_path", 
       "teams"."id" AS "teams_id" 
       FROM "user"
       JOIN "photos" ON "photos"."user_id" = "user"."id"
       JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
       JOIN "teams" ON "user"."teams_id" = "teams"."id"
       WHERE "teams"."id" = $1
-      GROUP BY "photos"."id", "photos"."file_url", challenges.name, challenges.description, "user".username, "user".image_path, "teams"."id"
-      ORDER BY "photos"."approved" = 'TRUE', "photos"."date" DESC;`;
+      GROUP BY "photos"."id", "photos"."file_url", "challenges"."name", "challenges"."description", "user"."first_name","user"."last_name", "user"."image_path", "teams"."id"
+      ORDER BY "photos"."approved" = 'TRUE' , "photos"."date" DESC;`;
     pool.query(queryString, [teamId])
     .then(response => {
       console.log('TEAM PHOTOS', response.rows);
@@ -66,20 +67,20 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     let teamId = req.params.id;
     const queryString = `
       SELECT "photos"."id", 
-      "photos".file_url, 
-      "photos".approved, 
+      "photos"."file_url", 
+      "photos"."approved", 
       "photos"."date", 
       "photos"."user_id" AS "photo_user_id", 
-      challenges.name, challenges.description, 
-      "user".username, 
-      "user".image_path, 
+      "challenges"."name", "challenges"."description", 
+      CONCAT("user"."first_name", ' ', "user"."last_name") AS "username",
+      "user"."image_path", 
       "teams"."id" AS "teams_id" 
       FROM "user"
       JOIN "photos" ON "photos"."user_id" = "user"."id"
       JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
       JOIN "teams" ON "user"."teams_id" = "teams"."id"
       WHERE "teams"."id" = $1 AND "photos"."approved" = 'TRUE'
-      GROUP BY "photos"."id", "photos"."file_url", challenges.name, challenges.description, "user".username, "user".image_path, "teams"."id"
+      GROUP BY "photos"."id", "photos"."file_url", "challenges"."name", "challenges"."description", "user"."image_path", "user"."first_name", "user"."last_name", "teams"."id"
       ORDER BY "photos"."approved" = 'TRUE', "photos"."date" DESC;`;
     pool.query(queryString, [teamId])
     .then(response => {

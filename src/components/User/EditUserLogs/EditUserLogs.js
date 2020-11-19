@@ -27,15 +27,16 @@ class EditUserLogs extends Component {
     })
     .then((willDelete) => {
       if(willDelete) {
+        this.props.dispatch({
+          type: 'DELETE_USER',
+          payload: this.props.store.currentPerson
+        });
         swal("Teammate deleted", {
           icon: "success"
         })
-        .then(
-          this.props.dispatch({
-                type: 'DELETE_USER',
-                payload: this.props.store.currentPerson
-              })
-        )
+        .then(() => {
+          this.goBack();
+        })
       } else {
         swal("Keep on stepping!");
       }
@@ -94,14 +95,14 @@ class EditUserLogs extends Component {
   }
   // Function pushes user back to previous page.
   goBack = () => {
-    this.props.dispatch({
-      type: 'FETCH_TEAM_DETAILS',
-      payload: this.props.store.user.teams_id
-    })
-    this.props.dispatch({
-      type: 'FETCH_LEADER_BOARD',
-      payload: this.props.store.user.teams_id
-    })
+    // this.props.dispatch({
+    //   type: 'FETCH_TEAM_DETAILS',
+    //   payload: this.props.store.user.teams_id
+    // })
+    // this.props.dispatch({
+    //   type: 'FETCH_LEADER_BOARD',
+    //   payload: this.props.store.user.teams_id
+    // })
     this.props.history.push('/team');
   }
 
