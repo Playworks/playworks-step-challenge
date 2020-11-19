@@ -5,7 +5,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const Papa = require('papaparse');
 
-
 router.post('/', (req, res) => {
   const contests_id = req.body.contests_id;
   console.log('this is contests_id', contests_id)
