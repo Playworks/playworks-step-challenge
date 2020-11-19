@@ -4,6 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ChallengeDateItem from './ChallengeDateItem';
 import ChallengeTitleItem from './ChallengeTitleItem';
 import ChallengeDescriptionItem from './ChallengeDescriptionItem';
+import '../ChallengesGrid/ChallengesGrid.css';
 import { Typography, Button } from "@material-ui/core";
 
 // function component that holds child component that provide
@@ -44,33 +45,47 @@ function ChallengeDataBox(props) {
   }
   return (
     <div>
-        <Typography variant="h5">
-        <ChallengeTitleItem 
-        title={props.challenge.name}
-        status={editable}
-        isTitle={isTitle}
-        />
-        </Typography>
-        <ChallengeDateItem 
-        date={props.challenge.date}
-        status={editable}
-        isDate={isDate}
-        />    
-        <Typography variant="body2">
+        <Typography className={editable ? null : 'editAdminChallengeField' } variant="h5">
+          <ChallengeTitleItem 
+          title={props.challenge.name}
+          status={editable}
+          isTitle={isTitle}
+          />
+        </Typography >
+
+        <div className={editable ? null : 'adminEditChallengeDate'}>
+          <ChallengeDateItem 
+          date={props.challenge.date}
+          status={editable}
+          isDate={isDate}
+          />    
+        </div>
+
+        <Typography className={editable ? null : 'editAdminChallengeField' } variant="body2">
         <ChallengeDescriptionItem 
         description={props.challenge.description}
         status={editable}
         isDescription={isDescription}
         />
         </Typography>
-        {editable && 
-        <Button onClick={() => isEditable(!editable)}>Edit</Button>
-        }   
+
+        <div className='adminEditChallengeBtn'>
+          {editable && 
+          <Button variant='contained' 
+            color='default'
+            size= 'large'
+            onClick={() => isEditable(!editable)}>Edit
+          </Button>
+          }   
+        </div>
         {!editable &&
-        <>
-        <Button onClick={() => save()}>Save</Button>
-        <Button onClick={() => cancel()}>Cancel</Button>
-        </>
+        <div className='adminEditChallengeSaveCancelBtnGroup'>
+          <Button variant='contained' color='default' size= 'large'
+            onClick={() => cancel()}>Cancel</Button>
+          <Button variant='contained' color='primary' size= 'large'
+            style={{color: 'white', background: '#054f95', marginLeft: '30px'}} 
+            onClick={() => save()}>Save</Button>
+        </div>
         }
     </div>
   );
