@@ -22,7 +22,7 @@ function ChallengeDateItem(props) {
             onChange={edit}
             disabled={props.status}
           />
-          <Typography variant='body2'>Currently set date: {moment(props.date).format('MMMM Do YYYY')}</Typography>
+          <Typography style={{textAlign: 'center'}} variant='body2'>Currently set date: {moment(props.date).format('MMMM Do YYYY')}</Typography>
           </>}
     </div>
   );
