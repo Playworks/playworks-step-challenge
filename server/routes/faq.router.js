@@ -3,10 +3,6 @@ const pool = require('../modules/pool');
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
 
-
-/**
- * GET route template
- */
 router.get('/', rejectUnauthenticated, (req, res) => {
     
     const queryString = `
@@ -38,6 +34,5 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
     });
 });
-
 
 module.exports = router;

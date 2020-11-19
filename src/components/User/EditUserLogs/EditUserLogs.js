@@ -29,15 +29,16 @@ class EditUserLogs extends Component {
     })
     .then((willDelete) => {
       if(willDelete) {
+        this.props.dispatch({
+          type: 'DELETE_USER',
+          payload: this.props.store.currentPerson
+        });
         swal("Teammate deleted", {
           icon: "success"
         })
-        .then(
-          this.props.dispatch({
-                type: 'DELETE_USER',
-                payload: this.props.store.currentPerson
-              })
-        )
+        .then(() => {
+          this.goBack();
+        })
       } else {
         swal("Keep on stepping!");
       }
@@ -104,7 +105,7 @@ class EditUserLogs extends Component {
       type: 'FETCH_LEADER_BOARD',
       payload: this.props.store.user.teams_id
     })
-    this.props.history.goBack();
+    this.props.history.push('/team');
   }
 
   // sets local state to changed step log

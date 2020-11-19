@@ -1,13 +1,9 @@
-const { response } = require('express');
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-/**
- * GET route template
- */
-router.get('/:id', (req, res) => {
-  // GET route code here
+router.get('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req photos admin', req.params.id);
   let contestToFind = req.params.id;
   let queryText = `
@@ -30,13 +26,6 @@ router.get('/:id', (req, res) => {
   .catch(error => {
       res.sendStatus(500)
   })
-});
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
 });
 
 module.exports = router;
