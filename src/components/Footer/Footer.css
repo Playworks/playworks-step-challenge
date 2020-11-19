@@ -9,6 +9,12 @@
   }
 }
 
+@media only screen and (max-width: 289px) {
+  .footerIconGroup {
+    display: none;
+  }
+}
+
 .footer {
   background-color: #F3F3F3;
   position:fixed;
