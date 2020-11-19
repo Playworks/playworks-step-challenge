@@ -36,6 +36,7 @@ class EditUserLogs extends Component {
         })
         .then(() => {
           this.goBack();
+
         })
       } else {
         swal("Keep on stepping!");
@@ -95,14 +96,14 @@ class EditUserLogs extends Component {
   }
   // Function pushes user back to previous page.
   goBack = () => {
-    this.props.dispatch({
-      type: 'FETCH_TEAM_DETAILS',
-      payload: this.props.store.user.teams_id
-    })
-    this.props.dispatch({
-      type: 'FETCH_LEADER_BOARD',
-      payload: this.props.store.user.teams_id
-    })
+    // this.props.dispatch({
+    //   type: 'FETCH_TEAM_DETAILS',
+    //   payload: this.props.store.user.teams_id
+    // })
+    // this.props.dispatch({
+    //   type: 'FETCH_LEADER_BOARD',
+    //   payload: this.props.store.user.teams_id
+    // })
     this.props.history.push('/team');
   }
 

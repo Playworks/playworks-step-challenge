@@ -11,12 +11,6 @@ function* deleteUser(action){
             id: userToDelete
         }
     })
-    yield all([
-      put({ type: 'FETCH_LEADER_BOARD'}),
-      put({ type: 'FETCH_PHOTOS'}),
-      put({ type: 'FETCH_CHALLENGE_PHOTOS'}),
-      put({ type: 'FETCH_TOP_STEPPERS'})
-    ])
 };
 
 function* deleteUserSaga() {
