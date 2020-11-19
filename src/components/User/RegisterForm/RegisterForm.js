@@ -59,11 +59,10 @@ class RegisterForm extends Component {
     console.log('this is props', this.props);
 
     const uploadOptions = {
-      server: 'https://aqueous-earth-68221.herokuapp.com/',
       // signingUrlQueryParams: {uploadType: 'avatar'},
   }
 
-    const s3Url = `http://playworks-step-challenge.s3.amazonaws.com`;
+    const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
 
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
