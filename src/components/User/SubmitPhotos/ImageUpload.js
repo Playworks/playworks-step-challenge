@@ -6,6 +6,8 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './BtnGroup/BtnGroup.css';
 import { Button } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
+import swal from 'sweetalert';
+
 
 class ImageUpload extends Component {
 
@@ -24,6 +26,14 @@ class ImageUpload extends Component {
             challenges_id: this.props.store.dailyChallenges[0],
           });
       }
+
+      confirmationSubmitPhoto = (event) => {
+        if(this.state.fileUrl === ''){
+          swal(`Please select a photo to upload`);
+        } else {
+            this.submitPhoto(event);
+        }
+    }
 
     submitPhoto = (event) => {
         event.preventDefault();
@@ -79,7 +89,7 @@ class ImageUpload extends Component {
                         color='primary'
                         size= 'large'
                         style={{margin: '.5rem', color: 'white', background: '#054f95'}} 
-                        onClick={this.submitPhoto}>
+                        onClick={this.confirmationSubmitPhoto}>
                         Submit
                     </Button>
                 </div>
