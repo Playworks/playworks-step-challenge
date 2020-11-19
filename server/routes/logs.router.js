@@ -1,9 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-router.get('/:id', rejectUnauthenticated, (req, res) => {
+/**
+ * GET route template
+ */
+router.get('/:id', (req, res) => {
   // GET route code here
   console.log('user id to get', req.params.id);
   let userLogToGet = req.params.id;
@@ -27,7 +29,14 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
   })
 });
 
-router.put('/', rejectUnauthenticated, (req, res) => {
+/**
+ * POST route template
+ */
+router.post('/', (req, res) => {
+  // POST route code here
+});
+
+router.put('/', (req, res) => {
   console.log('req body id', req.body.id);
   console.log('req body steps', req.body.steps);
   let updatedSteps = req.body.steps;
@@ -46,7 +55,7 @@ router.put('/', rejectUnauthenticated, (req, res) => {
   })
 })
 
-router.delete('/', rejectUnauthenticated, (req, res) => {
+router.delete('/', (req, res) => {
   console.log('req', req.body.id);
   let stepLogToDelete = req.body.id;
   let queryString = `

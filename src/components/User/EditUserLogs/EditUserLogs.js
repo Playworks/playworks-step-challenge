@@ -7,7 +7,9 @@ import Nav from '../../Nav/Nav.js';
 import swal from 'sweetalert';
 import axios from 'axios';
 import Footer from '../../Footer/Footer.js';
+import currentPerson from '../../../redux/reducers/current.person.reducer';
 import EditUserSteps from './EditUserSteps.js';
+import moment from 'moment';
 
 class EditUserLogs extends Component {
 
@@ -27,16 +29,15 @@ class EditUserLogs extends Component {
     })
     .then((willDelete) => {
       if(willDelete) {
-        this.props.dispatch({
-          type: 'DELETE_USER',
-          payload: this.props.store.currentPerson
-        });
         swal("Teammate deleted", {
           icon: "success"
         })
-        .then(() => {
-          this.goBack();
-        })
+        .then(
+          this.props.dispatch({
+                type: 'DELETE_USER',
+                payload: this.props.store.currentPerson
+              })
+        )
       } else {
         swal("Keep on stepping!");
       }
@@ -103,7 +104,7 @@ class EditUserLogs extends Component {
       type: 'FETCH_LEADER_BOARD',
       payload: this.props.store.user.teams_id
     })
-    this.props.history.push('/team');
+    this.props.history.goBack();
   }
 
   // sets local state to changed step log
@@ -136,20 +137,26 @@ class EditUserLogs extends Component {
             <tbody>
             {this.props.store.userLogs.map(log =>
                   <EditUserSteps
-                    date={log.date.split( 'T' )[0]}
-                    data={log.id}
-                    steps={log.steps}
-                    changeStepLog={this.changeStepLog}
-                    delete={this.deleteLog}
-                    save={this.saveStepLogChanges}
-                    />
+                  date={log.date.split( 'T' )[0]}
+                  data={log.id}
+                  steps={log.steps}
+                  changeStepLog={this.changeStepLog}
+                  edit={this.edit}
+                  delete={this.deleteLog}
+                  save={this.saveStepLogChanges}
+                  />
                   )}
               </tbody>
           </table>
         </center>
         <div className='editUserBackandDeleteBtn'>
           <div className='editUserBackBtn'>
-            <Button variant="contained" style={{color: 'white', background: '#054f95'}} onClick={this.goBack}>Finished Editing</Button> 
+
+            <Button variant="contained" color="default" onClick={this.goBack}>Back</Button> 
+          </div>
+          <div className='editUserSaveBtn'>
+            <Button variant="contained" 
+              style={{color: 'white', background: '#054f95'}}>Save</Button>
           </div>
         </div>
         <div className='editUserBackandDeleteBtn'>
