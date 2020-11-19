@@ -21,7 +21,7 @@ function EditUserSteps(props) {
             className={status ? null : "editUserStepstd"}
             data={props.data}
             html={String(steps)}
-            onChange={edit}
+            onChange={props.edit}
             disabled={status}
             />
         </td>
