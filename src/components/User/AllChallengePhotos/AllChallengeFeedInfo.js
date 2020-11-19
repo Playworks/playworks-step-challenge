@@ -13,7 +13,7 @@ class AllChallengeFeedInfo extends Component {
             <Grid container item xs={12} spacing={3}>
                 <Grid item xs={3}>
                 <div className='feedAvatarDiv'>
-                    <img className='feedAvatar' src={this.props.photo.user_image_path}/>
+                    <img className='feedAvatar' src={this.props.photo.user_image_path} alt=""/>
                 </div>
                 </Grid>
                 <Grid item xs={9}>

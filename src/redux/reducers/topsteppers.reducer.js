@@ -1,5 +1,4 @@
-// Reducer listens for SET_LEADER_BOARD and returns that payload expected to be all the top teams ordered by steps
-// and that will be accessed via redux.
+// Reducer listens for SET_TOP_STEPPERS
 
 const topSteppers = (state = [], action) => {
     switch (action.type) {

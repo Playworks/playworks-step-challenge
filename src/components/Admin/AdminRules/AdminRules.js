@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { Grid } from "@material-ui/core";
 import './AdminRules.css';
 import Nav from '../../Nav/Nav.js';
 import { Button, Typography } from '@material-ui/core';
 import {Document, Page, pdfjs} from 'react-pdf';
-import { MobilePDFReader } from 'react-read-pdf';
 
 
 class AdminRules extends Component {

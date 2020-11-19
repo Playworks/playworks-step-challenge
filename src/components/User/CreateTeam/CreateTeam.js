@@ -89,7 +89,7 @@ class CreateTeam extends Component {
     return (
       <div>
         <div className='createPageLogoDiv'>
-          <img className='createPageLogo' src= {Logo}/>
+          <img className='createPageLogo' src= {Logo} alt=""/>
         </div>
 
         <div className='teamForm'>

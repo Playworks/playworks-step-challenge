@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
@@ -17,13 +18,13 @@ function EditUserSteps(props) {
     <tr>
         <td>{props.date}</td>
         <td>
-            <ContentEditable
-            className={status ? null : "editUserStepstd"}
-            data={props.data}
-            html={String(steps)}
-            onChange={props.edit}
-            disabled={status}
-            />
+        <ContentEditable
+        className='editUserStepstd'
+        data={props.data}
+        html={String(props.steps)}
+        onChange={props.edit}
+        disabled={status}
+        />
         </td>
         <td>
             {!status && <button onClick={() => props.save(props.data)}>Save</button>}
