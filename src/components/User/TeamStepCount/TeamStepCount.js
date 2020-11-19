@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { Typography, Link } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 class TeamStepCount extends Component {
   editLogsAndSetCurrentTeammate = (value) => {
@@ -37,16 +37,18 @@ class TeamStepCount extends Component {
           <Typography variant='h5'>Team Step Count</Typography>
             <table id='leaderboardTable'>
               <thead>
-                <th><Typography variant='body1'>Name</Typography></th>
-                <th><Typography variant='body1'>Steps</Typography></th>
-                {this.props.store.user.admin === "CAPTAIN" &&
-                <th><Typography variant='body1'>Edit</Typography></th>
+                <tr>
+                  <th><Typography variant='body1'>Name</Typography></th>
+                  <th><Typography variant='body1'>Steps</Typography></th>
+                  {this.props.store.user.admin === "CAPTAIN" &&
+                  <th><Typography variant='body1'>Edit</Typography></th>
                 }
+                </tr>
               </thead>
               <tbody>
                 
                 {this.props.store.teamDetails.map((user, i) =>
-                <tr>
+                <tr key={i}>
                   <td>{user.first_name} {user.last_name}</td>
                   <td>{user.sum}</td>
                   {this.props.store.user.admin === "CAPTAIN" &&

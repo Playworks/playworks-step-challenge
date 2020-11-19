@@ -7,9 +7,7 @@ import Nav from '../../Nav/Nav.js';
 import swal from 'sweetalert';
 import axios from 'axios';
 import Footer from '../../Footer/Footer.js';
-import currentPerson from '../../../redux/reducers/current.person.reducer';
 import EditUserSteps from './EditUserSteps.js';
-import moment from 'moment';
 
 class EditUserLogs extends Component {
 

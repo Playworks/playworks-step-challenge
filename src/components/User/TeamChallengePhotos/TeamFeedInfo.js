@@ -37,7 +37,10 @@ class TeamFeedInfo extends Component {
       type: 'SUBTRACT_STEPS',
       payload: value
     })
-    setTimeout(this.props.getPhotos(), 1000);
+    setTimeout(this.props.dispatch({
+      type: 'FETCH_CAPTAIN_TEAM_PHOTOS',
+      payload: this.props.store.user.teams_id
+    }), 1000);
     this.props.dispatch({
       type: 'FETCH_TEAM_DETAILS',
       payload: this.props.store.user.teams_id
@@ -50,11 +53,17 @@ class TeamFeedInfo extends Component {
       type: 'APPROVE_PHOTOS',
       payload: value
     })
+    setTimeout(this.props.dispatch({
+      type: 'FETCH_CAPTAIN_TEAM_PHOTOS',
+      payload: this.props.store.user.teams_id
+    }), 1000);
+    this.props.dispatch({
+      type: 'FETCH_TEAM_DETAILS',
+      payload: this.props.store.user.teams_id
+    })
   }
 
   render() {
-    console.log('THIS PHOTOS PROPS', this.props.photo);
-    
     return (
       <div>
         <div className='feedInfo'>
@@ -63,6 +72,7 @@ class TeamFeedInfo extends Component {
                 <Grid item xs={3}>
                     <div className='teamFeedAvatarDiv'>
                     <img className='feedAvatar' src={this.props.photo.image_path}/>
+
                     </div>
                 </Grid>
                 <Grid item xs={9}>
