@@ -11,8 +11,8 @@ class TeamRank extends Component {
         {this.props.store.leaderBoard.map((team, i) =>
           team.id === this.props.store.user.teams_id && (
             <div key={i} className='teamRank'>
-              <Typography variant='h6'>{team.sum} steps</Typography>
-              <Typography variant='h6'>Rank: {i +1}</Typography> 
+              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h6'>{team.sum} steps</Typography>
+              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h6'>Rank: {i +1}</Typography> 
             </div> 
           )
           )}

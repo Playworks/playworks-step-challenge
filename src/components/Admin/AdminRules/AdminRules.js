@@ -22,7 +22,7 @@ class AdminRules extends Component {
         <Nav />
         <center>
             <div className='adminRulesAndFaqHeader'>
-              <Typography variant='h5'>Rules</Typography>
+              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Rules</Typography>
             </div>
             <div className='adminRulesFaqBtn'>
               <Button variant='contained' 

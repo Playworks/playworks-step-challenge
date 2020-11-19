@@ -23,7 +23,7 @@ class Challenges extends Component {
     return (
       <div>
         <div className='challengeOfTheDayHeadline'>
-          <Typography variant='h5'>Challenge of the Day</Typography>
+          <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Challenge of the Day</Typography>
         </div>
         {this.props.store.challenges.map((challenge, i) => 
           <div className='challengesItem' key={i}>

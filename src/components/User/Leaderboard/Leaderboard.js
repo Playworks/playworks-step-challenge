@@ -14,7 +14,7 @@ class Leaderboard extends Component {
       <div >
         <center>
           <div className='leaderBoard'>
-            <Typography variant='h5'>{this.state.heading}</Typography>
+            <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>{this.state.heading}</Typography>
           </div>
           <table id='leaderboardTable'>
             <thead>

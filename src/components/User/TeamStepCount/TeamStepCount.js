@@ -34,7 +34,9 @@ class TeamStepCount extends Component {
     return (
       <div className='teamStepCount'>
           <center>
-          <Typography variant='h5'>Team Step Count</Typography>
+            <div className='teamStepCountHeader'>
+              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Team Step Count</Typography>
+            </div>
             <table id='leaderboardTable'>
               <thead>
                 <tr>

@@ -24,7 +24,7 @@ class AdminFAQ extends Component {
         <Nav />
         <center>
           <div className='adminRulesAndFaqHeader'>
-              <Typography variant='h5'>FAQ</Typography>
+              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>FAQ</Typography>
             </div>
             {this.props.store.faq.map((item, i) => 
                 <Document file={item.file_url} key={i}> 

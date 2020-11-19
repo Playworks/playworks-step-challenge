@@ -34,7 +34,7 @@ class AdminContests extends Component {
           <Nav/>
           <center>
             <div className='adminContestHeader'>
-              <Typography variant='h4'>{this.state.heading}</Typography>
+              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h4'>{this.state.heading}</Typography>
             </div>
             <AdminContestTable/>
           
