@@ -45,9 +45,10 @@ class LoginForm extends Component {
             {this.props.store.errors.loginMessage}
           </h3>
         )}
-        <div className='loginItem loginUsername'>
+        <div className='loginItem'>
           <TextField 
             id="outlined-basic" 
+            style={{width: '90%'}}
             name="username"  
             htmlFor="username" 
             value={this.state.username}
@@ -62,6 +63,7 @@ class LoginForm extends Component {
           <TextField 
             id="outlined-basic" 
             required
+            style={{width: '90%'}}
             name="password"  
             htmlFor="password" 
             value={this.state.password} 

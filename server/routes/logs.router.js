@@ -12,7 +12,9 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     SELECT "user"."username", "user"."first_name", "user"."last_name", "steps"."date", "steps"."steps", "steps"."id" FROM "steps"
     JOIN "user"
     ON "steps"."user_id" = "user"."id"
-    WHERE "user"."id" = $1;
+    WHERE "user"."id" = $1
+    AND "steps"."steps" > 0
+    ;
   `;
   pool.query(queryString, [userLogToGet])
   .then(response => {

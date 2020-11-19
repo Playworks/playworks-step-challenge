@@ -61,29 +61,31 @@ class JoinTeam extends Component {
       swal(`Please select a team to join`);
     }
     else{
-      swal({
-        title: "Is the selected team correct?",
-        icon: "info",
-        buttons: {
-          cancel: "No",
-          yes: true,
-        }
-      }).then(isCorrect => {
-        if(isCorrect){
+      // swal({
+      //   title: "Is the selected team correct?",
+      //   icon: "info",
+      //   buttons: {
+      //     cancel: "No",
+      //     yes: true,
+      //   }
+      // }).then(isCorrect => {
+      //   if(isCorrect){
           this.joinTeam();
           swal({
-            title: "You've successfully joined a team!",
+            title: "Let's get stepping!",
             icon: "success"
-          }).then(() => {
+          })
+            .then(() => {
             this.props.history.push('/home');
           })
         }
-        else{
-          swal(`Pick a team to start steppin'!`)
-        }
-      });
-    };
-  };
+        // else{
+        //   swal(`Pick a team to start steppin'!`)
+        // }
+      }
+  //     );
+  //   };
+  // };
 
   // Function sends dispatch to saga and communicates with server for a PUT / Join team.
   joinTeam = () => {
@@ -123,7 +125,9 @@ class JoinTeam extends Component {
               </FormControl>
             </div>
           <div className='joinTeamImageDiv'>
-            <img className='joinTeamImage' alt='joinTeamImage' src= {this.state.selected_team_image} />
+                  {this.state.selected_team_image === '' ? ('') : (
+                    <img className='joinTeamImage' alt='joinTeamImage' src= {this.state.selected_team_image} />) }
+            
           </div>
             <Button variant='contained' 
               color='primary'

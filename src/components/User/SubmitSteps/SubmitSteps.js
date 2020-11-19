@@ -34,6 +34,8 @@ confirmationSubmitSteps = (event) => {
   else{
     swal({
       title: "Is the submitted information correct?",
+      text: `Steps: ${this.state.steps} 
+          Date: ${this.state.date.split( 'T' )[0]}`,
       icon: "info",
       buttons: {
         cancel: "No",
