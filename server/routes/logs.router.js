@@ -14,6 +14,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     ON "steps"."user_id" = "user"."id"
     WHERE "user"."id" = $1
     AND "steps"."steps" > 0
+    ORDER BY "steps"."date" DESC
     ;
   `;
   pool.query(queryString, [userLogToGet])
