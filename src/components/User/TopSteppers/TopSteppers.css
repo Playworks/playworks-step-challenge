@@ -1,6 +1,7 @@
 .homePageHeadline {
     text-align: center;
     margin-top: 1rem;
+    margin-bottom: .25rem;
 }
 
 .stepperPaper {
@@ -15,3 +16,8 @@
     display: inline-block;
     position: relative;
   }
+
+.react-multi-carousel-track, ul {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}

@@ -2,3 +2,23 @@
     margin-left: 2rem;
     display: inline-block;
 }
+
+.editAdminChallengeField {
+    padding: 5px;
+    border: 1px solid black !important;
+    border-radius: 5px;
+}
+
+.adminEditChallengeDate {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.adminEditChallengeBtn {
+    text-align: right;
+}
+
+.adminEditChallengeSaveCancelBtnGroup {
+    margin-top: 1rem;
+    text-align: center;
+}

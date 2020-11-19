@@ -19,7 +19,8 @@ class AllChallengePhotos extends Component {
 
   render() {
     return (
-        <div className='imageFeed'>
+      <div className='imageFeedContainer'>
+        <div>
         { this.props.store.challengePhotos.map( ( photo, i ) => 
             <div className='imageFeedCard' key={i}>
               <Card style={{width: '300px'}}>
@@ -32,6 +33,7 @@ class AllChallengePhotos extends Component {
               </Card>
             </div>
           )}
+        </div>
         </div>
     );
   }

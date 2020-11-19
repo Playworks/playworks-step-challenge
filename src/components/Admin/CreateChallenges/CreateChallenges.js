@@ -43,7 +43,7 @@ class CreateChallenges extends Component {
     return (
       <div className='adminCreateChallengeContainer'>
         <div className='adminCreateChallengeHeader'>
-          <Typography variant='h5'>Add Challenge</Typography>
+          <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Add Challenge</Typography>
         </div>
         <div className='adminChallengeNameInput'>
           <TextField id='outlined-basic'

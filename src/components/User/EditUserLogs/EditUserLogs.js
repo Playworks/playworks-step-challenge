@@ -95,14 +95,14 @@ class EditUserLogs extends Component {
   }
   // Function pushes user back to previous page.
   goBack = () => {
-    this.props.dispatch({
-      type: 'FETCH_TEAM_DETAILS',
-      payload: this.props.store.user.teams_id
-    })
-    this.props.dispatch({
-      type: 'FETCH_LEADER_BOARD',
-      payload: this.props.store.user.teams_id
-    })
+    // this.props.dispatch({
+    //   type: 'FETCH_TEAM_DETAILS',
+    //   payload: this.props.store.user.teams_id
+    // })
+    // this.props.dispatch({
+    //   type: 'FETCH_LEADER_BOARD',
+    //   payload: this.props.store.user.teams_id
+    // })
     this.props.history.push('/team');
   }
 
@@ -136,13 +136,14 @@ class EditUserLogs extends Component {
             <tbody>
             {this.props.store.userLogs.map(log =>
                   <EditUserSteps
-                    date={log.date.split( 'T' )[0]}
-                    data={log.id}
-                    steps={log.steps}
-                    changeStepLog={this.changeStepLog}
-                    delete={this.deleteLog}
-                    save={this.saveStepLogChanges}
-                    />
+                  date={log.date.split( 'T' )[0]}
+                  data={log.id}
+                  steps={log.steps}
+                  changeStepLog={this.changeStepLog}
+                  edit={this.edit}
+                  delete={this.deleteLog}
+                  save={this.saveStepLogChanges}
+                  />
                   )}
               </tbody>
           </table>

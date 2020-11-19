@@ -51,7 +51,7 @@
     margin-bottom: .5rem;
 }
 
-.imageFeed {
+.imageFeedContainer {
     text-align: center;
 }
 
@@ -78,6 +78,6 @@
 
 .feedDescription {
    display: inline-block;
-   margin-left: 1rem;
+   margin-left: 2rem;
    margin-bottom: 5px;
 }

@@ -45,7 +45,7 @@ class CreateContest extends Component {
     return (
       <div className='adminCreateContestContainer'>
           <div className='adminCreateContestHeader'>
-            <Typography variant='h5'>Create Contest</Typography>
+            <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Create Contest</Typography>
           </div>
           <div className='adminContestNameInput'>
             <TextField id="outlined-basic" 

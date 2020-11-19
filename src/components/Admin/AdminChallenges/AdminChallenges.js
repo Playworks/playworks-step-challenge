@@ -30,7 +30,7 @@ class AdminChallenges extends Component {
         <Nav/>
         <div className='adminChallengesContainer'>
           <div className='adminChallengesHeader'>
-            <Typography variant='h4'>{this.state.heading}</Typography>
+            <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h4'>{this.state.heading}</Typography>
           </div>
           {this.props.store.challenges.map((challenge, i) => 
             <ChallengesGrid 

@@ -37,7 +37,7 @@ class TopSteppers extends Component {
       <div>
         <div className='topSteppers'>
           <div className='homePageHeadline'>
-            <Typography variant='h5'>Today's Top Steppers</Typography>
+            <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Today's Top Steppers</Typography>
           </div>
           <Carousel 
             responsive={responsive}
