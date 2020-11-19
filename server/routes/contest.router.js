@@ -16,7 +16,8 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   });
 });
 
-router.get('/', rejectUnauthenticated, (req, res) => {
+// Cannot use rejectUnauthenticated here due to on registration uses this end point to get all contests. 
+router.get('/', (req, res) => {
   const queryText = `SELECT "contests"."id", "contests"."name", "contests"."start_date", "contests"."end_date" FROM "contests";`;
   pool.query(queryText)
   .then((result) => {

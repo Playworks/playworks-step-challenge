@@ -53,7 +53,7 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
-router.delete('/delete', async(req, res) => {
+router.delete('/delete', rejectUnauthenticated, async(req, res) => {
   console.log('req delete', req.body.id);
   let connection;
   try{

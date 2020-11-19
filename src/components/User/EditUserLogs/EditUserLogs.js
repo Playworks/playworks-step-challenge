@@ -29,15 +29,16 @@ class EditUserLogs extends Component {
     })
     .then((willDelete) => {
       if(willDelete) {
+        this.props.dispatch({
+          type: 'DELETE_USER',
+          payload: this.props.store.currentPerson
+        });
         swal("Teammate deleted", {
           icon: "success"
         })
-        .then(
-          this.props.dispatch({
-                type: 'DELETE_USER',
-                payload: this.props.store.currentPerson
-              })
-        )
+        .then(() => {
+          this.goBack();
+        })
       } else {
         swal("Keep on stepping!");
       }
@@ -102,7 +103,7 @@ class EditUserLogs extends Component {
  
   // Function pushes user back to previous page.
   goBack = () => {
-    this.props.history.goBack();
+    this.props.history.push('/team');
   }
   
   render() {
