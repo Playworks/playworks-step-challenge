@@ -33,7 +33,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
   // does the exact same as the challengephotos router GET
   // but it goes a level deeper by selecting by team :id int
-  router.get('/photos/:id', rejectUnauthenticated, (req, res) => {
+  router.get('/captain/photos/:id', rejectUnauthenticated, (req, res) => {
     let teamId = req.params.id;
     const queryString = `
       SELECT "photos"."id", 
@@ -51,7 +51,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
       JOIN "teams" ON "user"."teams_id" = "teams"."id"
       WHERE "teams"."id" = $1
       GROUP BY "photos"."id", "photos"."file_url", challenges.name, challenges.description, "user".username, "user".image_path, "teams"."id"
-      ORDER BY "photos"."approved" = 'FALSE' DESC;`;
+      ORDER BY "photos"."approved" = 'TRUE', "photos"."date" DESC;`;
     pool.query(queryString, [teamId])
     .then(response => {
       console.log('TEAM PHOTOS', response.rows);
@@ -61,5 +61,35 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
       res.status(500);
     })
   });
+
+  router.get('/user/photos/:id', rejectUnauthenticated, (req, res) => {
+    let teamId = req.params.id;
+    const queryString = `
+      SELECT "photos"."id", 
+      "photos".file_url, 
+      "photos".approved, 
+      "photos"."date", 
+      "photos"."user_id" AS "photo_user_id", 
+      challenges.name, challenges.description, 
+      "user".username, 
+      "user".image_path, 
+      "teams"."id" AS "teams_id" 
+      FROM "user"
+      JOIN "photos" ON "photos"."user_id" = "user"."id"
+      JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
+      JOIN "teams" ON "user"."teams_id" = "teams"."id"
+      WHERE "teams"."id" = $1 AND "photos"."approved" = 'TRUE'
+      GROUP BY "photos"."id", "photos"."file_url", challenges.name, challenges.description, "user".username, "user".image_path, "teams"."id"
+      ORDER BY "photos"."approved" = 'TRUE', "photos"."date" DESC;`;
+    pool.query(queryString, [teamId])
+    .then(response => {
+      console.log('TEAM PHOTOS', response.rows);
+      res.send(response.rows);
+    })
+    .catch(error => {
+      res.status(500);
+    })
+  });
+
 
 module.exports = router;
