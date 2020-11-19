@@ -36,7 +36,6 @@ class EditUserLogs extends Component {
         })
         .then(() => {
           this.goBack();
-
         })
       } else {
         swal("Keep on stepping!");
@@ -137,13 +136,14 @@ class EditUserLogs extends Component {
             <tbody>
             {this.props.store.userLogs.map(log =>
                   <EditUserSteps
-                    date={log.date.split( 'T' )[0]}
-                    data={log.id}
-                    steps={log.steps}
-                    changeStepLog={this.changeStepLog}
-                    delete={this.deleteLog}
-                    save={this.saveStepLogChanges}
-                    />
+                  date={log.date.split( 'T' )[0]}
+                  data={log.id}
+                  steps={log.steps}
+                  changeStepLog={this.changeStepLog}
+                  edit={this.edit}
+                  delete={this.deleteLog}
+                  save={this.saveStepLogChanges}
+                  />
                   )}
               </tbody>
           </table>
