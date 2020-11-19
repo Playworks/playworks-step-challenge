@@ -74,6 +74,7 @@ class RegisterForm extends Component {
         <div className='registerItem registerFirstName'>
           <TextField 
             id="outlined-basic" 
+            style={{width: '90%'}}
             name="first_name" 
             required 
             htmlFor="first_name" 
@@ -88,6 +89,7 @@ class RegisterForm extends Component {
           <TextField 
             id="outlined-basic" 
             name="last_name" 
+            style={{width: '90%'}}
             required 
             htmlFor="last_name" 
             value={this.state.last_name} 
@@ -100,6 +102,7 @@ class RegisterForm extends Component {
         <div className='registerItem registerEmail'>
           <TextField 
             id="outlined-basic" 
+            style={{width: '90%'}}
             name="email" 
             required 
             htmlFor="email" 
@@ -114,6 +117,7 @@ class RegisterForm extends Component {
           <TextField 
             id="outlined-basic" 
             name="username" 
+            style={{width: '90%'}}
             required 
             htmlFor="username" 
             value={this.state.username} 
@@ -128,6 +132,7 @@ class RegisterForm extends Component {
           id="outlined-basic" 
           name="password" 
           required 
+          style={{width: '90%'}}
           htmlFor="password" 
           value={this.state.password} 
           label="Password" 
@@ -137,11 +142,14 @@ class RegisterForm extends Component {
         </TextField>
         </div>
         <div className='registerItem'>
-          <FormControl>
+          <FormControl style={{width: '90%'}}>
             <InputLabel style={{paddingLeft:14}}>
               Select Contest
             </InputLabel> 
-            <Select value={this.state.contests_id} variant='outlined' style={{width:195}} onChange={this.handleInputChangeFor('contests_id')}>
+            <Select 
+              value={this.state.contests_id} 
+              variant='outlined' 
+              onChange={this.handleInputChangeFor('contests_id')}>
               {this.props.store.contest.map(contest => 
               <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
               )}

@@ -8,7 +8,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import { Typography } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
 
 class Footer extends Component {
   
@@ -19,19 +18,27 @@ class Footer extends Component {
         <center>
           <div className='footerIconGroup' onClick={() => {this.props.history.push('/home')}}>
             <HomeIcon/>
-            <Typography variant='body2'>Home</Typography>
+            <div className='footerCaption'>
+              <Typography variant='caption'>Home</Typography>
+            </div>
           </div>
           <div className='footerIconGroup' onClick={() => {this.props.history.push('/addphoto')}}>
             <AddAPhotoIcon/>
-            <Typography variant='body2'>Add Photo</Typography>
+            <div className='footerCaption'>
+              <Typography variant='caption'>Add Photo</Typography>
+            </div>
           </div>
           <div className='footerIconGroup' onClick={() => {this.props.history.push('/addsteps')}}>
             <DirectionsWalkIcon/>
-            <Typography variant='body2'>Add Steps</Typography>
+            <div className='footerCaption'>
+              <Typography variant='caption'>Add Steps</Typography>
+            </div>
           </div>
           <div className='footerIconGroup' onClick={() => {this.props.history.push('/team')}}>
             <SupervisedUserCircleIcon/>
-            <Typography variant='body2'>Team Home</Typography>
+            <div className='footerCaption'>
+              <Typography variant='caption'>Team Home</Typography>
+            </div>
           </div>
         </center>
       </div>
