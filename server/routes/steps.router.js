@@ -41,16 +41,15 @@ router.get('/teamleaderboard', rejectUnauthenticated, (req, res) => {
 router.get('/topsteppers', rejectUnauthenticated, (req, res) => {
   console.log('steps router user contests id', req.user.contests_id);
   const queryString = `
-    SELECT SUM("steps"."steps"), "user"."username", "teams"."name", "user"."image_path" FROM "user"
+    SELECT SUM("steps"."steps"), CONCAT("user"."first_name", ' ', "user"."last_name") AS "username", "teams"."name", "user"."image_path" FROM "user"
     JOIN "steps"
     ON "user"."id" = "steps"."user_id"
     JOIN "teams"
     ON "user"."teams_id" = "teams"."id"
     WHERE "user"."contests_id" = $1
-    GROUP BY "user"."username", "teams"."name", "user"."image_path"
+    GROUP BY "user"."first_name", "user"."last_name", "teams"."name", "user"."image_path"
     ORDER BY "sum" DESC
-    LIMIT 20;
-    `;
+    LIMIT 20;`;
   pool.query(queryString, [req.user.contests_id])
   .then(response => {
     res.send(response.rows);
