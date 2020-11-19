@@ -36,8 +36,6 @@ class TeamFeedInfo extends Component {
   }
 
   render() {
-    console.log('THIS PHOTOS PROPS', this.props.photo);
-    
     return (
       <div>
         <div className='feedInfo'>

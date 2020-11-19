@@ -10,7 +10,7 @@ class TeamRank extends Component {
       <div className='teamRankDiv'>
         {this.props.store.leaderBoard.map((team, i) =>
           team.id === this.props.store.user.teams_id && (
-            <div className='teamRank'>
+            <div key={i} className='teamRank'>
               <Typography variant='h6'>{team.sum} steps</Typography>
               <Typography variant='h6'>Rank: {i +1}</Typography> 
             </div> 
