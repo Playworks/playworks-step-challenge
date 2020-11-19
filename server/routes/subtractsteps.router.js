@@ -1,16 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-    
+router.post('/', rejectUnauthenticated, (req, res) => {
   const queryString = `
-  INSERT INTO "steps" ("user_id", "date", "steps")
-      VALUES ($1, $2, $3);
-  `
+    INSERT INTO "steps" ("user_id", "date", "steps")
+    VALUES ($1, $2, $3);`;
   pool.query(queryString, [req.body.photo_user_id, req.body.date, (-1000)])
   .then(response => {    
     res.send(response.rows);
