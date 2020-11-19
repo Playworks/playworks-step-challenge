@@ -10,7 +10,8 @@ function TeamName(props) {
   
 
   return (
-      <Typography variant='h4'>{props.store.teamDetails[0] && props.store.teamDetails[0].name}</Typography>
+      <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} 
+        variant='h4'>{props.store.teamDetails[0] && props.store.teamDetails[0].name}</Typography>
   );
 }
 

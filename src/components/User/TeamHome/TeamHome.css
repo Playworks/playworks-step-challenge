@@ -2,6 +2,13 @@
     margin-left: 5px;
 }
 
+.teamStepCountHeader {
+    margin-bottom: .25rem;
+}
+
+.teamStepCount {
+    margin-top: 1.5rem;
+}
 
 .teamHomeHeader {
     margin-top: 1rem;

@@ -29,5 +29,5 @@
 }
 
 .footerCaption {
-  display: block;
+  display: flex;
 }

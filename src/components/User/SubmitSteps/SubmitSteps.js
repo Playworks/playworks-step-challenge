@@ -85,7 +85,7 @@ handleCancel = () => {
             <div className='submitStepsSection'>
               <Card style={{width: '300px', marginLeft: 'auto', marginRight: 'auto'}}>
                 <div className='submitStepsHeadline'>
-                  <Typography variant='h5'>Submit Steps</Typography>
+                  <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Submit Steps</Typography>
                 </div>
                 <div className='submitStepsInput'>
                   <TextField id="outlined-basic" type="number" label="Number of steps" variant="outlined"
