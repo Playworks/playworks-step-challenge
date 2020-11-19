@@ -27,16 +27,15 @@ class EditUserLogs extends Component {
     })
     .then((willDelete) => {
       if(willDelete) {
-        this.props.dispatch({
-          type: 'DELETE_USER',
-          payload: this.props.store.currentPerson
-        });
         swal("Teammate deleted", {
           icon: "success"
         })
-        .then(() => {
-          this.goBack();
-        })
+        .then(
+          this.props.dispatch({
+                type: 'DELETE_USER',
+                payload: this.props.store.currentPerson
+              })
+        )
       } else {
         swal("Keep on stepping!");
       }
@@ -136,13 +135,14 @@ class EditUserLogs extends Component {
             <tbody>
             {this.props.store.userLogs.map(log =>
                   <EditUserSteps
-                    date={log.date.split( 'T' )[0]}
-                    data={log.id}
-                    steps={log.steps}
-                    changeStepLog={this.changeStepLog}
-                    delete={this.deleteLog}
-                    save={this.saveStepLogChanges}
-                    />
+                  date={log.date.split( 'T' )[0]}
+                  data={log.id}
+                  steps={log.steps}
+                  changeStepLog={this.changeStepLog}
+                  edit={this.edit}
+                  delete={this.deleteLog}
+                  save={this.saveStepLogChanges}
+                  />
                   )}
               </tbody>
           </table>
