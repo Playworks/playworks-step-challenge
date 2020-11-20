@@ -29,16 +29,16 @@ import adminPhotos from './adminPhotos.reducer';
 // Lets make a bigger object for our store, with the objects from our reducers.
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
-  contest, // will contain all contests with id
-  challenges, // will contain all challenges with id
+  contest, // Listens for 'SET_CONTEST'
+  challenges, // Listens for 'SET_CHALLENGES'
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  teams, // currently will contain teams and captains for join team.js
-  teamsOnly, // currently only holds Teams for join team.js
-  photos,
-  dailyChallenges,
-  challengePhotos,
-  leaderBoard,
+  teams, // Listens for 'SET_CAPTAINS_SEARCH' and/or 'SET_TEAMS_SEARCH'
+  teamsOnly, // Listens for 'SET_TEAMS_ONLY'
+  photos, // Listens for 'SET_PHOTOS'
+  dailyChallenges, // Listens for 'SET_DAILY_CHALLENGE'
+  challengePhotos, // Listens for 'SET_CHALLENGE_PHOTOS'
+  leaderBoard, // Listens for 'SET_LEADER_BOARD'
   topSteppers,
   teamDetails,
   teamPhotos,
