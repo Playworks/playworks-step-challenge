@@ -7,10 +7,11 @@ import AdminContestImagesInfo from './AdminContestImagesInfo';
 class AdminContestImages extends Component {
  
   render() {
+    console.log('in AdminContestImages.js', this.props);
     return (
         <div className='adminContestImagesContainer'>
             <div className='adminContestImagesHeader'>
-                <Typography variant='h5'>Contest Images</Typography>
+                <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Contest Images</Typography>
             </div>
             <div className='adminContestImagesFeed'>
               { this.props.store.adminPhotos.map( ( photo, i ) => 
@@ -20,8 +21,9 @@ class AdminContestImages extends Component {
                         <img className='dailyChallengeImage' src={photo.file_url} alt="" />
                     </div>
                      <Card>
-                        <AdminContestImagesInfo key={i}
-                        id={photo.id}
+                        <AdminContestImagesInfo
+                        contest_id={photo.contest_id}
+                        photo_id={photo.id}
                         challenge={photo.name}
                         avatar={photo.image_path} 
                         firstName={photo.first_name}
