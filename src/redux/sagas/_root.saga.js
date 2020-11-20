@@ -15,9 +15,6 @@ import logsSaga from './logs.saga';
 import deleteUserSaga from './deleteUser.saga';
 import adminSaga from './admin.saga';
 
-
-
-
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -30,17 +27,17 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    teamSaga(), // Listens for 'CREATE_TEAM'
-    contestSaga(), // Listens for 'FETCH_CONTEST'
-    challengesSaga(), // Listens for 'FETCH_CHALLENGES'
-    photosSaga(),
-    teamLeaderBoardSaga(),
-    topSteppersSaga(),
-    stepsSaga(),
-    rulesSaga(),
-    faqSaga(),   
-    logsSaga(),
-    deleteUserSaga(),
-    adminSaga()
+    teamSaga(), // Listens for 'CREATE_TEAM', 'FETCH_TEAMS_FOR_JOIN', 'FETCH_CAPTAINS_FOR_JOIN', 'FETCH_TEAM_DETAILS', 'FETCH_CAPTAIN_TEAM_PHOTOS', 'FETCH_USER_TEAM_PHOTOS', 'JOIN_TEAM'
+    contestSaga(), // Listens for 'FETCH_CONTEST', 'CREATE_CONTEST'
+    challengesSaga(), // Listens for 'FETCH_CHALLENGES', 'CREATE_CHALLENGES', 'FETCH_DAILY_CHALLENGE', 'UPDATE_CHALLENGE'
+    photosSaga(), // Listens for 'CREATE_PHOTOS', 'FETCH_PHOTOS', 'FETCH__ADMIN_PHOTOS', 'FETCH_CHALLENGE_PHOTOS', 'DELETE_PHOTOS', 'APPROVE_PHOTOS'
+    teamLeaderBoardSaga(), // Listens for 'FETCH_LEADER_BOARD'
+    topSteppersSaga(), // Listens for 'FETCH_TOP_STEPPERS'
+    stepsSaga(), // Listens for 'CREATE_STEPS', 'SUBTRACT_STEPS'
+    rulesSaga(), // Listens for 'CREATE_RULES', 'FETCH_RULES'
+    faqSaga(), // Listens for 'CREATE_FAQ', 'FETCH_FAQ'
+    logsSaga(), // Listens for 'FETCH_LOGS'
+    deleteUserSaga(), // Listens for 'DELETE_USER'
+    adminSaga() // Listens for 'FETCH_CONTEST_DETAILS', 'FETCH_CONTEST_PHOTOS', 'ADMIN_DELETE_PHOTO'
   ]);
 }

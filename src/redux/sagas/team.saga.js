@@ -1,10 +1,12 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+// Function sends team creation data via post request. 
 function* createTeamSaga(action){
   yield axios.post(`/api/teams`, action.payload);
 };
 
+// Function sends get request to get data for join team component, puts data into reducer listening for 'SET_CAPTAINS_SEARCH'
 function* fetchCaptainsForJoinSaga(){
   let response = yield axios.get('/api/teams/searchforcaptains')
   yield put({
@@ -13,6 +15,7 @@ function* fetchCaptainsForJoinSaga(){
   });
 }
 
+// Function gets all teams by contest id and puts that data into two different reducers. 
 function* fetchTeamsForJoinSaga(){
   let response = yield axios.get('/api/teams/searchforteams')
   yield put({
@@ -25,13 +28,15 @@ function* fetchTeamsForJoinSaga(){
   });
 }
 
+// Function sends put request to update users team id.
 function* joinTeamSaga(action){
-  console.log('in joinTeamSaga this is action.payload', action.payload)
+  // console.log('in joinTeamSaga this is action.payload', action.payload)
   const user_id = action.payload.user_id;
   const selected_team_id = {selected_team_id: action.payload.selected_team_id};
   yield axios.put(`/api/teams/join/${user_id}`, selected_team_id);
 }
 
+// function sends get request to get users in order of steps taken via team id
 function* fetchTeamDetailsSaga(action){
   console.log('in fetchTeamDetailsSaga');
   let response = yield axios({
@@ -48,6 +53,7 @@ function* fetchTeamDetailsSaga(action){
   })
 }
 
+// functions gets all photos for captain level which have both status' of true/false for approved column
 function* fetchTeamCaptainPhotosSaga(action){
   console.log('in fetchTeamDetailsSaga');
   let response = yield axios({
@@ -61,6 +67,7 @@ function* fetchTeamCaptainPhotosSaga(action){
   })
 }
 
+// function gets all the photos for user level which is only approved photos.
 function* fetchUserTeamPhotosSaga(action){
   let response = yield axios({
     method: 'GET',

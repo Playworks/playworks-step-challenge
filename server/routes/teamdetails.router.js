@@ -5,7 +5,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 // gets users in order of steps taken
 // by using the provided team :id int
-// provided my teamDetailsSaga
+// communicates with fetchTeamDetailsSaga
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in router.get api/teams/teamDetails');
     console.log('req.user.id', req.params.id);
@@ -31,66 +31,67 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     });
   })
 
-  // does the exact same as the challengephotos router GET
-  // but it goes a level deeper by selecting by team :id int
-  router.get('/captain/photos/:id', rejectUnauthenticated, (req, res) => {
-    let teamId = req.params.id;
-    const queryString = `
-      SELECT "photos"."id", 
-      "photos"."file_url", 
-      "photos"."approved", 
-      "photos"."date", 
-      "photos"."user_id" AS "photo_user_id", 
-      "challenges"."name", 
-      "challenges"."description", 
-      CONCAT("user"."first_name", ' ', "user"."last_name") AS "username", 
-      "user"."image_path", 
-      "teams"."id" AS "teams_id" 
-      FROM "user"
-      JOIN "photos" ON "photos"."user_id" = "user"."id"
-      JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
-      JOIN "teams" ON "user"."teams_id" = "teams"."id"
-      WHERE "teams"."id" = $1
-      GROUP BY "photos"."id", "photos"."file_url", "challenges"."name", "challenges"."description", "user"."first_name","user"."last_name", "user"."image_path", "teams"."id"
-      ORDER BY "photos"."approved" = 'TRUE' , "photos"."date" DESC;`;
-    pool.query(queryString, [teamId])
-    .then(response => {
-      console.log('TEAM PHOTOS', response.rows);
-      res.send(response.rows);
-    })
-    .catch(error => {
-      res.status(500);
-    })
-  });
+// get route communicates with fetchTeamCaptainPhotosSaga
+// main filter here is shows both false/true for approved column
+router.get('/captain/photos/:id', rejectUnauthenticated, (req, res) => {
+  let teamId = req.params.id;
+  const queryString = `
+    SELECT "photos"."id", 
+    "photos"."file_url", 
+    "photos"."approved", 
+    "photos"."date", 
+    "photos"."user_id" AS "photo_user_id", 
+    "challenges"."name", 
+    "challenges"."description", 
+    CONCAT("user"."first_name", ' ', "user"."last_name") AS "username", 
+    "user"."image_path", 
+    "teams"."id" AS "teams_id" 
+    FROM "user"
+    JOIN "photos" ON "photos"."user_id" = "user"."id"
+    JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
+    JOIN "teams" ON "user"."teams_id" = "teams"."id"
+    WHERE "teams"."id" = $1
+    GROUP BY "photos"."id", "photos"."file_url", "challenges"."name", "challenges"."description", "user"."first_name","user"."last_name", "user"."image_path", "teams"."id"
+    ORDER BY "photos"."approved" = 'TRUE' , "photos"."date" DESC;`;
+  pool.query(queryString, [teamId])
+  .then(response => {
+    console.log('TEAM PHOTOS', response.rows);
+    res.send(response.rows);
+  })
+  .catch(error => {
+    res.status(500);
+  })
+});
 
-  router.get('/user/photos/:id', rejectUnauthenticated, (req, res) => {
-    let teamId = req.params.id;
-    const queryString = `
-      SELECT "photos"."id", 
-      "photos"."file_url", 
-      "photos"."approved", 
-      "photos"."date", 
-      "photos"."user_id" AS "photo_user_id", 
-      "challenges"."name", "challenges"."description", 
-      CONCAT("user"."first_name", ' ', "user"."last_name") AS "username",
-      "user"."image_path", 
-      "teams"."id" AS "teams_id" 
-      FROM "user"
-      JOIN "photos" ON "photos"."user_id" = "user"."id"
-      JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
-      JOIN "teams" ON "user"."teams_id" = "teams"."id"
-      WHERE "teams"."id" = $1 AND "photos"."approved" = 'TRUE'
-      GROUP BY "photos"."id", "photos"."file_url", "challenges"."name", "challenges"."description", "user"."image_path", "user"."first_name", "user"."last_name", "teams"."id"
-      ORDER BY "photos"."approved" = 'TRUE', "photos"."date" DESC;`;
-    pool.query(queryString, [teamId])
-    .then(response => {
-      console.log('TEAM PHOTOS', response.rows);
-      res.send(response.rows);
-    })
-    .catch(error => {
-      res.status(500);
-    })
-  });
+// get route gets photos for user levels that only shows approved photos
+router.get('/user/photos/:id', rejectUnauthenticated, (req, res) => {
+  let teamId = req.params.id;
+  const queryString = `
+    SELECT "photos"."id", 
+    "photos"."file_url", 
+    "photos"."approved", 
+    "photos"."date", 
+    "photos"."user_id" AS "photo_user_id", 
+    "challenges"."name", "challenges"."description", 
+    CONCAT("user"."first_name", ' ', "user"."last_name") AS "username",
+    "user"."image_path", 
+    "teams"."id" AS "teams_id" 
+    FROM "user"
+    JOIN "photos" ON "photos"."user_id" = "user"."id"
+    JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
+    JOIN "teams" ON "user"."teams_id" = "teams"."id"
+    WHERE "teams"."id" = $1 AND "photos"."approved" = 'TRUE'
+    GROUP BY "photos"."id", "photos"."file_url", "challenges"."name", "challenges"."description", "user"."image_path", "user"."first_name", "user"."last_name", "teams"."id"
+    ORDER BY "photos"."approved" = 'TRUE', "photos"."date" DESC;`;
+  pool.query(queryString, [teamId])
+  .then(response => {
+    console.log('TEAM PHOTOS', response.rows);
+    res.send(response.rows);
+  })
+  .catch(error => {
+    res.status(500);
+  })
+});
 
 
 module.exports = router;

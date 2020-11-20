@@ -3,8 +3,8 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
+// Communicates with getUserLogs()
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-  // GET route code here
   console.log('user id to get', req.params.id);
   let userLogToGet = req.params.id;
   console.log('user log to get', userLogToGet);

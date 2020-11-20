@@ -6,7 +6,7 @@ import './EditUserLogs.css';
 import Nav from '../../Nav/Nav.js';
 import swal from 'sweetalert';
 import axios from 'axios';
-import Footer from '../../Footer/Footer.js';
+import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
 import EditUserSteps from './EditUserSteps.js';
 
 class EditUserLogs extends Component {
@@ -161,9 +161,7 @@ class EditUserLogs extends Component {
         <div className='editUserBackandDeleteBtn'>
           <Button variant="contained" color="secondary" onClick={()=> this.deleteTeammate()}>Delete User</Button>
         </div>
-        <div className='footer'>
-          <Footer />
-        </div>
+        <ScrollingFooter/>
       </div>
     );
   }

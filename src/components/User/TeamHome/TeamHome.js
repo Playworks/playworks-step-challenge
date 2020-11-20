@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import './TeamHome.css';
@@ -8,8 +7,8 @@ import TeamStepCount from '../TeamStepCount/TeamStepCount';
 import ChallengeOfTheDay from '../Challenges/Challenges';
 import TeamChallengePhotos from '../TeamChallengePhotos/TeamChallengePhotos';
 import Nav from '../../Nav/Nav.js';
-import Footer from '../../Footer/Footer.js';
 import TeamName from '../../User/TeamName/TeamName.js';
+import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
 
 class TeamHome extends Component {
   componentDidMount() {
@@ -48,9 +47,7 @@ class TeamHome extends Component {
           <ChallengeOfTheDay/>
           <TeamChallengePhotos/>
         </div>
-        <div className='footer'>
-         <Footer />
-        </div>
+        <ScrollingFooter/>
       </div>
     );
   }

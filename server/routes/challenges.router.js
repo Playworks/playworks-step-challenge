@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-// gets challenges ordered by date
+// gets challenges ordered by date, communicates with fetchChallengesSaga
 router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('challenges router get');
   const queryString = `
@@ -19,26 +19,28 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   })
 });
 
+// post route communicates with createChallengesSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('challenges router post', req.body);
   let name = req.body.name;
   let description = req.body.description;
   let date = req.body.date;
   const queryString = `
-        INSERT INTO "challenges" ("name", "description", "date")
-        VALUES ($1, $2, $3);
-  `;
+    INSERT INTO "challenges" ("name", "description", "date")
+    VALUES ($1, $2, $3);
+    `;
   pool.query(queryString, [name, description, date])
   .then(response => {
-      console.log('Added challenge', response);
-      res.send(response.rows)  
+    console.log('Added challenge', response);
+    res.send(response.rows)  
   })
   .catch(error => {
-      console.log('error challenges router post', error);
-      res.sendStatus(500);
+    console.log('error challenges router post', error);
+    res.sendStatus(500);
   })
 });
 
+// put route communicates with updateChallengeSaga
 router.put('/', rejectUnauthenticated, (req, res) => {
   console.log('req', req.body);
   let name = req.body.name;

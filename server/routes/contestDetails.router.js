@@ -6,7 +6,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req', req.params.id);
   let contest_id = req.params.id;
-  
+
   // query gets team captain's full name, team name and company name
   let queryText = `
     SELECT "user"."first_name", "user"."last_name", "teams"."name", "teams"."company_name" FROM "user"

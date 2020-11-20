@@ -51,6 +51,7 @@ router.get('/searchforcaptains', rejectUnauthenticated, (req, res) => {
 
 
 // Post route creates a team then updates users admin level to be captain
+// communicates with createTeamSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('req.body', req.body);
   console.log('req.user', req.user);
@@ -86,7 +87,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   })
 });
 
-// Updates user's team id in jointeam.js
+// Updates user's team id in jointeam.js, communicates with joinTeamSaga
 router.put('/join/:id', rejectUnauthenticated, (req, res) => {
   const selected_team_id = req.body.selected_team_id;
   const user_id = req.params.id;

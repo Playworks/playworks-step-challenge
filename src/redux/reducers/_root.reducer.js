@@ -18,6 +18,7 @@ import currentPerson from './current.person.reducer';
 import teamsOnly from './teamsOnly.reducer';
 import adminContest from './adminContest.reducer';
 import adminPhotos from './adminPhotos.reducer';
+import currentContest from './current.contest.reducer';
 
 
 
@@ -29,25 +30,26 @@ import adminPhotos from './adminPhotos.reducer';
 // Lets make a bigger object for our store, with the objects from our reducers.
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
-  contest, // will contain all contests with id
-  challenges, // will contain all challenges with id
+  contest, // Listens for 'SET_CONTEST'
+  challenges, // Listens for 'SET_CHALLENGES'
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  teams, // currently will contain teams and captains for join team.js
-  teamsOnly, // currently only holds Teams for join team.js
-  photos,
-  dailyChallenges,
-  challengePhotos,
-  leaderBoard,
-  topSteppers,
-  teamDetails,
-  teamPhotos,
-  userLogs,
-  currentPerson,
-  rules,
-  faq,
-  adminContest,
-  adminPhotos
+  teams, // Listens for 'SET_CAPTAINS_SEARCH' or 'SET_TEAMS_SEARCH'
+  teamsOnly, // Listens for 'SET_TEAMS_ONLY'
+  photos, // Listens for 'SET_PHOTOS'
+  dailyChallenges, // Listens for 'SET_DAILY_CHALLENGE'
+  challengePhotos, // Listens for 'SET_CHALLENGE_PHOTOS'
+  leaderBoard, // Listens for 'SET_LEADER_BOARD'
+  topSteppers, // Listens for 'SET_TOP_STEPPERS'
+  teamDetails, // Listens for 'SET_TEAM_DETAILS'
+  teamPhotos, // Listens for 'SET_CAPTAIN_TEAM_PHOTOS' or 'SET_USER_TEAM_PHOTOS'
+  userLogs, // Listens for 'SET_LOGS' or 'RESET_LOGS'
+  currentPerson, // Listens for 'SET_CURRENT_PERSON'
+  rules, // Listens for 'SET_RULES'
+  faq, // Listens for 'SET_FAQ'
+  adminContest, // Listens for 'ADMIN_CONTEST'
+  adminPhotos, // Listens for 'ADMIN_PHOTOS'
+  currentContest, // Listens for SET_CURRENT_CONTEST
 });
 
 export default rootReducer;
