@@ -15,7 +15,6 @@ import rules from './rules.reducer';
 import faq from './faq.reducer';
 import userLogs from './logs.reducer';
 import currentPerson from './current.person.reducer';
-import currentContest from './current.contest.reducer';
 import teamsOnly from './teamsOnly.reducer';
 import adminContest from './adminContest.reducer';
 import adminPhotos from './adminPhotos.reducer';
@@ -45,7 +44,6 @@ const rootReducer = combineReducers({
   teamPhotos,
   userLogs,
   currentPerson,
-  currentContest,
   rules,
   faq,
   adminContest,
