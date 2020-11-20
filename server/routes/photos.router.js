@@ -51,7 +51,7 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     console.log('TodaysPhotos', todaysPhotos.rows);
     
     if (todaysPhotos.rows.length > 0) {
-      res.statusCode(400);
+      res.status(400).send(400);
       await connection.query('ROLLBACK');
       return;
     };
