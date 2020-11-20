@@ -75,7 +75,7 @@ class ContestDescriptionPage extends Component {
 
 
   render() {
-    console.log('current', this.props.store.currentContest);
+    console.log('current', this.props);
     return (
       <div >
         <Nav/>
