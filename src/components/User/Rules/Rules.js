@@ -4,7 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import FAQ from '../../User/FAQ/FAQ';
 import { Grid, Typography } from "@material-ui/core";
 import Nav from '../../Nav/Nav.js';
-import Footer from '../../Footer/Footer';
+import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
 import {Document, Page, pdfjs} from 'react-pdf';
 
 
@@ -40,7 +40,7 @@ class Rules extends Component {
           <FAQ />
         </Grid>
       </div>
-        <Footer />
+        <ScrollingFooter />
     </div>
     );
   }

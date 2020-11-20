@@ -4,8 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { withRouter } from 'react-router-dom';
 import './SubmitSteps.css';
 import Nav from '../../Nav/Nav.js';
-import Footer from '../../Footer/Footer.js';
-// import material ui
+import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
 import { Button, Card, TextField, Typography } from '@material-ui/core';
 import swal from 'sweetalert';
 
@@ -122,9 +121,7 @@ handleCancel = () => {
             </div>
           </center>
         </div>
-        <div className='footer'>
-          <Footer />
-        </div>
+        <ScrollingFooter />
       </div>
     );
   }
