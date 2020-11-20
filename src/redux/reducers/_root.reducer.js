@@ -18,6 +18,7 @@ import currentPerson from './current.person.reducer';
 import teamsOnly from './teamsOnly.reducer';
 import adminContest from './adminContest.reducer';
 import adminPhotos from './adminPhotos.reducer';
+import currentContest from './current.contest.reducer';
 
 
 
@@ -47,7 +48,8 @@ const rootReducer = combineReducers({
   rules, // Listens for 'SET_RULES'
   faq, // Listens for 'SET_FAQ'
   adminContest, // Listens for 'ADMIN_CONTEST'
-  adminPhotos // Listens for 'ADMIN_PHOTOS'
+  adminPhotos, // Listens for 'ADMIN_PHOTOS'
+  currentContest, // Listens for SET_CURRENT_CONTEST
 });
 
 export default rootReducer;
