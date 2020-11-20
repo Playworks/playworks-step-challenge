@@ -51,10 +51,12 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     console.log('TodaysPhotos', todaysPhotos.rows);
     
     if (todaysPhotos.rows.length > 0) {
-      res.status(400).send('This user has already submitted a photo today!');
+      res.sendStatus(400);
+      // res.status(400).send('This user has already submitted a photo today!');
       await connection.query('ROLLBACK');
       return;
     };
+
     // Add photo information to photos table
     await connection.query(`
       INSERT INTO "photos" ("user_id", "challenges_id", "date", "file_url")
