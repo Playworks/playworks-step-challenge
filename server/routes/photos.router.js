@@ -32,7 +32,8 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
           res.sendStatus(500);
       })
 });
-  
+
+// post route communicates with createPhotosSaga
 router.post('/', rejectUnauthenticated, async (req, res) => {
   let connection;
   try {

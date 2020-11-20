@@ -17,7 +17,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // grabs leader board by team for user's contest
 router.get('/teamleaderboard', rejectUnauthenticated, (req, res) => {
-  // GET route code here
   console.log('steps router get user contests id', req.user.contests_id);
   const queryString = `
     SELECT SUM("steps"."steps"), "teams"."name", "teams"."id" FROM "user"
@@ -59,6 +58,7 @@ router.get('/topsteppers', rejectUnauthenticated, (req, res) => {
   })
 });
 
+// post route communicates with createStepsSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
   const queryString = `
     INSERT INTO "steps" ("user_id", "date", "steps") 

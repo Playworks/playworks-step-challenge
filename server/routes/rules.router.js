@@ -3,6 +3,7 @@ const pool = require('../modules/pool');
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
 
+// get route communicates with fetchRulesSaga
 router.get('/', rejectUnauthenticated, (req, res) => {
     
     const queryString = `
@@ -20,6 +21,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
   });
 
+// post route communicates with createRulesSaga
 router.post('/', rejectUnauthenticated, (req, res) => { 
     const queryString = `
     INSERT INTO "rules" ("file_url")
