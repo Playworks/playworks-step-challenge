@@ -9,14 +9,9 @@ import TopSteppers from '../TopSteppers/TopSteppers';
 import AllChallengePhotos from '../AllChallengePhotos/AllChallengePhotos';
 import ChallengeOfTheDay from '../Challenges/Challenges'
 import Nav from '../../Nav/Nav.js';
-import Footer from '../../Footer/Footer.js';
-
+import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
 
 class ContestHome extends Component {
-
-  state = {
-    showBanner: 'true'
-  }
 
   componentDidMount() {
     this.getLeaderBoard()
@@ -64,9 +59,7 @@ class ContestHome extends Component {
           <ChallengeOfTheDay/>
           <AllChallengePhotos/>
         </div>
-        <div className='footer'>
-          <Footer/>
-        </div>
+        <ScrollingFooter/>
       </div>
     );
   }

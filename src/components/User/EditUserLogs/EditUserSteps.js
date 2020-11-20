@@ -29,18 +29,20 @@ function EditUserSteps(props) {
     <tr>
         <td>{props.date}</td>
         <td>
-        <ContentEditable
-        className='editUserStepstd'
-        data={props.data}
-        html={String(props.steps)}
-        onChange={props.edit}
-        disabled={props.status}
-        />
+          <ContentEditable
+          className={status ? null : 'editUserStepstd'}
+          data={props.data}
+          html={String(props.steps)}
+          onChange={props.edit}
+          disabled={props.status}
+          />
         </td>
         <td>
             {status === false && <button onClick={() => saveAndToggle()}>Save</button>}
             {status === true && <button onClick={() => unToggle()}>Edit</button>}
-            <button onClick={() => props.delete(props.data)}>Delete</button>
+        </td>
+        <td>
+          <button onClick={() => props.delete(props.data)}>Delete</button>
         </td>
     </tr>
   );

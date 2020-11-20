@@ -7,7 +7,7 @@ import ImageUpload from './ImageUpload';
 import {Card} from '@material-ui/core';
 import ChallengeOfTheDay from '../Challenges/Challenges'
 import Nav from '../../Nav/Nav.js';
-import Footer from '../../Footer/Footer.js';
+import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
 
 class SubmitPhotos extends Component {
 
@@ -25,9 +25,7 @@ class SubmitPhotos extends Component {
             </div>
           </Card>
         </div>
-        <div className='footer'>
-          <Footer />
-        </div>
+        <ScrollingFooter/>
       </div>
     );
   }
