@@ -25,11 +25,12 @@ function* subtractStepsSaga(action) {
         data: action.payload
     });
     console.log('Response', response);
-    yield all([
-        put({ type: 'FETCH_LEADER_BOARD' }),
-        put({ type: 'FETCH_CHALLENGE_PHOTOS' }),
-        put({ type: 'FETCH_TOP_STEPPERS' }),
-    ]);
+    
+    // yield all([
+    //     put({ type: 'FETCH_LEADER_BOARD' }),
+    //     put({ type: 'FETCH_CHALLENGE_PHOTOS' }),
+    //     put({ type: 'FETCH_TOP_STEPPERS' }),
+    // ]);
   };
 
 function* stepsSaga() {
