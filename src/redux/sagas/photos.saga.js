@@ -25,16 +25,16 @@ function* createPhotosSaga(action) {
         url: '/api/photos',
         data: action.payload
     });
-    console.log('Response', response);
-    if (response.status === 400) {
-        swal({
-            title: `You've already submitted a photo for the daily challenge today!`,
-            text: `Please try again tomorrow!`,
-            buttons: {
-              cancel: "Ok",
-            }
-        })
-    }
+    console.log('CREATE PHOTOS RESPONSE:', response);
+    // if (response.status === 400) {
+    //     swal({
+    //         title: `You've already submitted a photo for the daily challenge today!`,
+    //         text: `Please try again tomorrow!`,
+    //         buttons: {
+    //           cancel: "Ok",
+    //         }
+    //     })
+    // }
   };
 
     // Function runs a delete request with action.payload.photo_id upon success throws back into fetch_captain_team_photos with action.payload.team_id

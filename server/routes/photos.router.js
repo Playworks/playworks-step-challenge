@@ -51,7 +51,7 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     console.log('TodaysPhotos', todaysPhotos.rows);
     
     if (todaysPhotos.rows.length > 0) {
-      res.status(400).send(400);
+      res.status(400).send('This user has already submitted a photo today!');
       await connection.query('ROLLBACK');
       return;
     };
