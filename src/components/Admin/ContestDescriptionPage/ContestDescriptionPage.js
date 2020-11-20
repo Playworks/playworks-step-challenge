@@ -30,7 +30,6 @@ class ContestDescriptionPage extends Component {
     })
   };
 
-
   // Created a function that is a validation function that takes in the argument which is the contests id
   // if willDelete is true will run closeContest and pass contest id as arguement.
   confirmationClose = (id) => {
