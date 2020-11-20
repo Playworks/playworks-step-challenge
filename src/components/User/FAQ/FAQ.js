@@ -22,7 +22,7 @@ class FAQ extends Component {
          <Grid container direction="column" alignItems="center" className="rulesFaq">
              <Grid item>
               <div className='userFaqHeader'>
-                <Typography variant='h4'>FAQ</Typography>
+                <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h4'>FAQ</Typography>
               </div>
              </Grid>
             {this.props.store.faq.map((item, i) => 

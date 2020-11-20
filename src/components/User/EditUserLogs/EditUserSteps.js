@@ -29,7 +29,9 @@ function EditUserSteps(props) {
         <td>
             {!status && <button onClick={() => props.save(props.data)}>Save</button>}
             {status && <button onClick={() => isEditable(!status)}>Edit</button>}
-            <button onClick={() => props.delete(props.data)}>Delete</button>
+        </td>
+        <td>
+          <button onClick={() => props.delete(props.data)}>Delete</button>
         </td>
     </tr>
   );

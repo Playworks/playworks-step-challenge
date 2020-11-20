@@ -120,7 +120,7 @@ class EditUserLogs extends Component {
         <Nav />
           <center>
           <div className='editUserLogHeader'>
-            <Typography variant='h4'>
+            <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h4'>
               {this.props.store.userLogs[0] && this.props.store.userLogs[0].first_name} {this.props.store.userLogs[0] && this.props.store.userLogs[0].last_name}
             </Typography>
           </div>
@@ -129,7 +129,7 @@ class EditUserLogs extends Component {
               <tr>
                 <th><Typography variant='body1'>Time Submitted</Typography></th>
                 <th><Typography variant='body1'>Steps</Typography></th>
-                <th><Typography variant='body1'></Typography></th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>

@@ -1,6 +1,9 @@
+.adminContestDescriptionHeader {
+    margin-top: 2rem;
+}
+
 .adminContestDescriptionHeader, .adminContestDescriptionTable {
     text-align: left;
-    margin-top: 2rem;
     width: 90%;
     border-collapse: collapse;
 }
@@ -23,7 +26,7 @@
 
 .adminDeletePhotoBtn {
     text-align: right;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
 }
 
 .adminContestImageFeedInfo {
@@ -31,4 +34,10 @@
     text-align: left;
     display: inline-block;
     margin-left: 1.5rem;
+}
+
+.adminFeedDescription {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-top: .5rem;
 }
