@@ -51,7 +51,7 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     console.log('TodaysPhotos', todaysPhotos.rows);
     
     if (todaysPhotos.rows.length > 0) {
-      res.status(400).send({ message: 'You may only submit one per day' });
+      res.send({ message: 'You may only submit one per day' });
       await connection.query('ROLLBACK');
       return;
     };
