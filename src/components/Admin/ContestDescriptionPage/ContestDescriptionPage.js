@@ -76,7 +76,6 @@ class ContestDescriptionPage extends Component {
 
   render() {
     console.log('current', this.props.store.currentContest);
-    
     return (
       <div >
         <Nav/>
@@ -92,14 +91,15 @@ class ContestDescriptionPage extends Component {
                 <th><Typography variant='h6'>Company</Typography></th>
               </tr>
             </thead>
-            {this.props.store.adminContest.map(contest => 
-              <tr>
-              <td>{contest.name}</td>
-              <td>{contest.first_name} {contest.last_name}</td>
-              <td>{contest.company_name}</td>
-              </tr>
+            {this.props.store.adminContest.map((contest, i) => 
+              <tbody key={i}>
+                <tr>
+                  <td>{contest.name}</td>
+                  <td>{contest.first_name} {contest.last_name}</td>
+                  <td>{contest.company_name}</td>
+                </tr>
+              </tbody>
               )}
-            
           </table>
 
           <div className='csvDiv'>

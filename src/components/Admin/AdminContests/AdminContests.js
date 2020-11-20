@@ -17,7 +17,6 @@ class AdminContests extends Component {
 
   componentDidMount() {
     this.setContests();
-
   }
 
   setContests = () => {
