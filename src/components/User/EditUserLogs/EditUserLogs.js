@@ -10,11 +10,9 @@ import Footer from '../../Footer/Footer.js';
 import EditUserSteps from './EditUserSteps.js';
 
 class EditUserLogs extends Component {
-
   state = {
     steps: 0
   };
-
   // allows captain to delete teammates
   deleteTeammate = () => {
     console.log('delete teammate button works', this.props.store.currentPerson);
@@ -42,7 +40,6 @@ class EditUserLogs extends Component {
       }
     });
   };
-
   // pulls id and steps from child editUserSteps to update step logs
   saveStepLogChanges = (logId) => {
     console.log('data', logId);
@@ -105,7 +102,6 @@ class EditUserLogs extends Component {
     // })
     this.props.history.push('/team');
   }
-
   // sets local state to changed step log
   edit = (event) => {
     console.log('is', event.target.value);
@@ -113,6 +109,14 @@ class EditUserLogs extends Component {
       steps: event.target.value
     })
   }
+
+  reload = () => {
+    this.props.dispatch({
+      type: 'FETCH_LOGS',
+      payload: this.props.store.currentPerson
+    })
+  }
+
   
   render() {
     return (
@@ -143,6 +147,7 @@ class EditUserLogs extends Component {
                   edit={this.edit}
                   delete={this.deleteLog}
                   save={this.saveStepLogChanges}
+                  reload={this.reload}
                   />
                   )}
               </tbody>

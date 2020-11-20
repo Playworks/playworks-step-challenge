@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
@@ -6,12 +5,24 @@ import ContentEditable from 'react-contenteditable';
 
 function EditUserSteps(props) {
   const [status, isEditable] = useState(true);
-  const [initialSteps, isSteps] = useState(props.steps);
-  const [steps, changeSteps] = useState(props.steps);
+
   // saves updated step log and toggles back to not editable
-  const saveAndToggle = (logId, logSteps) => {
-      props.save(logId, logSteps);
-      isEditable(!status);
+  const saveAndToggle = () => {
+    console.log('props', props.store.currentPerson);
+    props.save(props.data);
+    props.reload()
+    unToggle();
+  }
+
+  const unToggle = () => {
+    isEditable(!status)
+  }
+
+  const reload = (value) => {
+    props.dispatch({
+      type: 'FETCH_LOGS',
+      payload: value
+    })
   }
   
     return (
@@ -23,15 +34,13 @@ function EditUserSteps(props) {
         data={props.data}
         html={String(props.steps)}
         onChange={props.edit}
-        disabled={status}
+        disabled={props.status}
         />
         </td>
         <td>
-            {!status && <button onClick={() => props.save(props.data)}>Save</button>}
-            {status && <button onClick={() => isEditable(!status)}>Edit</button>}
-        </td>
-        <td>
-          <button onClick={() => props.delete(props.data)}>Delete</button>
+            {status === false && <button onClick={() => saveAndToggle()}>Save</button>}
+            {status === true && <button onClick={() => unToggle()}>Edit</button>}
+            <button onClick={() => props.delete(props.data)}>Delete</button>
         </td>
     </tr>
   );

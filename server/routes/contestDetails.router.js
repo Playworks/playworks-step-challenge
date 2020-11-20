@@ -5,7 +5,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req', req.params.id);
-  let contestToGet = req.params.id;
+  let contest_id = req.params.id;
   
   // query gets team captain's full name, team name and company name
   let queryText = `
@@ -17,7 +17,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     WHERE "user"."contests_id" = $1
     AND "user"."admin" = 'CAPTAIN';
     `;
-  pool.query(queryText, [contestToGet])
+  pool.query(queryText, [contest_id])
   .then(response => {
       console.log('resp', response.rows);
       res.send(response.rows)
