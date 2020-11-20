@@ -47,7 +47,7 @@ class CreateChallenges extends Component {
         </div>
         <div className='adminChallengeNameInput'>
           <TextField id='outlined-basic'
-            style={{width: '80%'}}
+            style={{width: '100%'}}
             type="text"
             label='Challenge Name'
             variant='outlined'
@@ -58,9 +58,12 @@ class CreateChallenges extends Component {
           </TextField>
         </div>
         <div className='adminChallengeDescriptionInput'>
-          <TextField id='outlined-basic'
-            style={{width: '80%'}}
+          <TextField 
+            id="outlined-multiline-static"
+            style={{width: '100%'}}
             type="text"
+            multiline
+            rows={4}
             label='Description'
             variant='outlined'
             value={this.state.description}

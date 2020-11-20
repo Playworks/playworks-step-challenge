@@ -27,7 +27,7 @@ class Rules extends Component {
         <Grid container direction="column" alignItems="center" className="rulesFaq">
           <Grid item>
             <div className='userRulesHeader'>
-              <Typography variant='h4'>Rules</Typography>
+              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h4'>Rules</Typography>
             </div>
           </Grid>
           {this.props.store.rules.map((rule, i) => 

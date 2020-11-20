@@ -48,7 +48,7 @@ class ContestDescriptionPage extends Component {
         this.closeContest(id)
       }
       else {
-        swal("You're in luck, it wasn't deleted!");
+        swal("You're in luck, the contest wasn't deleted!");
       }
     });
   };
@@ -81,7 +81,7 @@ class ContestDescriptionPage extends Component {
         <Nav/>
         <center>
           <div className='adminContestDescriptionHeader'>
-          <Typography variant='h4'>{this.props.store.contest[this.current()] && this.props.store.contest[this.current()].name}</Typography>
+          <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h4'>{this.props.store.contest[this.current()] && this.props.store.contest[this.current()].name}</Typography>
           </div>
           <table className='adminContestDescriptionTable'>
             <thead>

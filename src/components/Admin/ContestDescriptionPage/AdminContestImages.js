@@ -11,7 +11,7 @@ class AdminContestImages extends Component {
     return (
         <div className='adminContestImagesContainer'>
             <div className='adminContestImagesHeader'>
-                <Typography variant='h5'>Contest Images</Typography>
+                <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Contest Images</Typography>
             </div>
             <div className='adminContestImagesFeed'>
               { this.props.store.adminPhotos.map( ( photo, i ) => 

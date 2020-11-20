@@ -28,7 +28,7 @@ class AdminContestImagesInfo extends Component {
                         </div>
                     </Grid>
                     <Grid item xs={9}>
-                        <div className='feedDescription'>
+                        <div className='adminFeedDescription'>
                             <Typography variant='body2'>{this.props.firstName} {this.props.lastName}</Typography>
                             <Typography variant='body2'>{this.props.companyName} </Typography>
                             <Typography variant='body2'>{this.props.challenge}</Typography>
