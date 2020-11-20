@@ -16,7 +16,8 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   });
 });
 
-// Cannot use rejectUnauthenticated here due to on registration uses this end point to get all contests. 
+// Cannot use rejectUnauthenticated here due to on registration uses this end point to get all contests.
+// get route communicates with fetchContestSaga
 router.get('/', (req, res) => {
   const queryText = `SELECT "contests"."id", "contests"."name", "contests"."start_date", "contests"."end_date" FROM "contests";`;
   pool.query(queryText)
@@ -29,22 +30,22 @@ router.get('/', (req, res) => {
   });
 });
 
-// POST route for adding contest
+// post route for adding contest, communicates with createContestSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('REQ.BODY', req.body);
   
   const queryString = `
-      INSERT INTO "contests" ("name", "start_date", "end_date")
-      VALUES ($1, $2, $3);
+    INSERT INTO "contests" ("name", "start_date", "end_date")
+    VALUES ($1, $2, $3);
   `;
   pool.query(queryString, [req.body.name, req.body.start_date, req.body.end_date,])
-      .then((results) => {
-          res.sendStatus(201);
-      })
-      .catch(err => {
-          console.error(`POST /songs failed`, err);
-          res.sendStatus(500);
-      });
+    .then((results) => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.error(`Error in /api/contest POST`, err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

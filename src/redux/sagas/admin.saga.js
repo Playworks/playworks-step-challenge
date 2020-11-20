@@ -1,8 +1,7 @@
 import { all, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-// saga listens for ADMIN_DELETE_PHOTO action.payload is an object with two properties
-// photo_id for which we send via delete request and a contest_id to refetch contest details and photos
+// Function sends delete request with photo_id then yield all with contest_id
 function* adminDeletePhotoSaga(action){
   console.log('in admin Delete Photo Saga this is our action.payload', action.payload);
   let contest_id = action.payload.contest_id;
@@ -18,6 +17,7 @@ function* adminDeletePhotoSaga(action){
   ]);
 };
 
+// Function sends get request with contest id and puts that data into reducer listening for ADMIN_CONTEST
 function* fetchContestDetailsSaga(action) {
   console.log('fetchContestDetailsSaga action payload', action.payload);
   let contest_id = action.payload;
@@ -32,6 +32,7 @@ function* fetchContestDetailsSaga(action) {
   })
   }
 
+// Function gets all photos for admin and puts them into reducer listening for ADMIN_PHOTOS
 function* fetchContestPhotosSaga(action) {
   console.log('fetchContestPhotosSaga', action.payload);
   let contest_id = action.payload;

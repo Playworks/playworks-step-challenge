@@ -7,6 +7,7 @@ import moment from 'moment';
 class AdminContestsItem extends Component {
   editContestAndSetCurrentContest = (value) => {
     this.editContest(value);
+    this.setCurrent(value);
     this.setContestsPhotos(value);
   }
 
@@ -29,6 +30,13 @@ class AdminContestsItem extends Component {
       payload: contestToEdit
     })
     this.props.history.push('/contestdescription')
+  }
+
+  setCurrent = (value) => {
+    this.props.dispatch({
+      type: "SET_CURRENT_CONTEST",
+      payload: value
+    })
   }
 
   render() {

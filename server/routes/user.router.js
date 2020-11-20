@@ -53,8 +53,9 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
-router.delete('/delete', rejectUnauthenticated, async(req, res) => {
-  console.log('req delete', req.body.id);
+// delete route communicates with deleteUserSaga
+router.delete('/:id', rejectUnauthenticated, async(req, res) => {
+  console.log('in user delete route req.params.id', req.params.id);
   let connection;
   try{
     connection = await pool.connect();
@@ -63,15 +64,15 @@ router.delete('/delete', rejectUnauthenticated, async(req, res) => {
     await connection.query(`
       DELETE FROM "photos"
       WHERE "user_id" = $1;
-    `, [req.body.id]);
+    `, [req.params.id]);
     await connection.query(`
       DELETE FROM "steps"
       WHERE "user_id" = $1;
-    `, [req.body.id]);
+    `, [req.params.id]);
     await connection.query(`
       DELETE FROM "user"
       WHERE "id" = $1;
-  `, [req.body.id]);
+  `, [req.params.id]);
     await connection.query('COMMIT');
 
     res.sendStatus(201);

@@ -3,6 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
+// Get route that communicates with fetchContestPhotosSaga
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req photos admin', req.params.id);
   let contest_id = req.params.id;
