@@ -55,7 +55,6 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
       await connection.query('ROLLBACK');
       return;
     };
-
     // Add photo information to photos table
     await connection.query(`
       INSERT INTO "photos" ("user_id", "challenges_id", "date", "file_url")
