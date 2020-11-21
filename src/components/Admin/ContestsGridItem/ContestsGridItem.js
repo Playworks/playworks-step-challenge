@@ -10,15 +10,14 @@ class ContestsGridItem extends Component {
 
   render() {
     return (
-        <div>
-            <Grid item xs={4}>
-                <Typography variant='h5'>Oops</Typography>
-                <Typography variant='subtitle1'>messed</Typography>
-                <Typography variant='body2'>this up</Typography>
-                <Button>Edit Contest</Button>
-            </Grid>
-        </div>
-
+      <div>
+        <Grid item xs={4}>
+          <Typography variant='h5'>Oops</Typography>
+          <Typography variant='subtitle1'>messed</Typography>
+          <Typography variant='body2'>this up</Typography>
+          <Button>Edit Contest</Button>
+        </Grid>
+      </div>
     );
   }
 }

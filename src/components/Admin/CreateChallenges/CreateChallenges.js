@@ -12,18 +12,14 @@ class CreateChallenges extends Component {
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
-    console.log('inputs', [propertyName], event.target.value);
-    
     this.setState({
       [propertyName]: event.target.value,
     });                
   };
 
-  createChallenges = (event) => {
-    console.log('challenge to create', this.state.name, this.state.description, this.state.date);
-    
+  // function creates challenge, sends name, description and date as an object to saga.
+  createChallenges = (event) => {    
     event.preventDefault();
-
     this.props.dispatch({
       type: 'CREATE_CHALLENGES',
       payload: {
@@ -33,10 +29,10 @@ class CreateChallenges extends Component {
       },
     });
     this.setState({
-            name: '',
-            description: '',
-            date: ''
-        });
+      name: '',
+      description: '',
+      date: ''
+    });
   }; // end createContest
 
   render() {
@@ -78,12 +74,12 @@ class CreateChallenges extends Component {
             <label htmlFor="challenge_date">
               Challenge Date:
               <input
-                  style={{display: 'block', color: 'rgb(118, 118, 118)', padding: '10px', marginLeft: 'auto',
-                  marginRight: 'auto'}} 
-                  type="date"
-                  name="challenge_date"
-                  value={this.state.date}
-                  onChange={this.handleInputChangeFor('date')}
+                style={{display: 'block', color: 'rgb(118, 118, 118)', padding: '10px', marginLeft: 'auto',
+                marginRight: 'auto'}} 
+                type="date"
+                name="challenge_date"
+                value={this.state.date}
+                onChange={this.handleInputChangeFor('date')}
               />
             </label>
           </div>
@@ -93,7 +89,8 @@ class CreateChallenges extends Component {
             style={{marginTop: '5px', margin: '.5rem', color: 'white', background: '#054f95'}}
             variant='contained' 
             color='default'
-            onClick={this.createChallenges}>Add Challenge
+            onClick={this.createChallenges}>
+              Add Challenge
           </Button>
         </div>
     </div>

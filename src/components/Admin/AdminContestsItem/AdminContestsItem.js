@@ -9,7 +9,7 @@ class AdminContestsItem extends Component {
     this.editContest(value);
     this.setCurrent(value);
     this.setContestsPhotos(value);
-  }
+  };
 
   // This function will be called with the Edit button
   // and will set the reduxState for editing this contest
@@ -20,27 +20,25 @@ class AdminContestsItem extends Component {
       type: 'FETCH_CONTEST_PHOTOS',
       payload: contestPhotos
     });
-  }
+  };
 
   editContest = (value) => {
-    console.log('edit contest button', value);
-    let contestToEdit = value
+    let contestToEdit = value;
     this.props.dispatch({
       type: 'FETCH_CONTEST_DETAILS',
       payload: contestToEdit
-    })
-    this.props.history.push('/contestdescription')
-  }
+    });
+    this.props.history.push('/contestdescription');
+  };
 
   setCurrent = (value) => {
     this.props.dispatch({
       type: "SET_CURRENT_CONTEST",
       payload: value
-    })
-  }
+    });
+  };
 
   render() {
-    console.log('This Contest', this.props);
     return (
       <tr>
         <td>
@@ -53,9 +51,9 @@ class AdminContestsItem extends Component {
             {moment(this.props.contest.end_date).format('MMMM Do YYYY')} 
         </td>
         <td>
-            <button onClick={() => this.editContestAndSetCurrentContest(this.props.contest.id)}>
-              Edit Contest
-            </button>
+          <button onClick={() => this.editContestAndSetCurrentContest(this.props.contest.id)}>
+            Edit Contest
+          </button>
         </td>
       </tr>
     );

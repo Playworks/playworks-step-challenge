@@ -14,7 +14,7 @@ const AdminNav = (props) => {
   if (props.store.user.id != null) {
     loginLinkData.path = '/home';
     loginLinkData.text = 'Home';
-  }
+  };
 
   return (
     <div className="nav">

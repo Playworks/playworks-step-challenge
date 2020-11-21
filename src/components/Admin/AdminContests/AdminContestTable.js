@@ -5,11 +5,9 @@ import AdminContestsItem from '../AdminContestsItem/AdminContestsItem';
 import { Typography } from '@material-ui/core';
 
 class AdminContestTable extends Component {
-
   render() {
     return (
-        <div>
-          
+      <div>  
         <table className='adminContestTable'>
           <thead>
               <tr>
@@ -20,10 +18,10 @@ class AdminContestTable extends Component {
               </tr>
           </thead>
           <tbody>
-            {this.props.store.contest.map((item, i) => 
+            {this.props.store.contest.map((item) => 
               <AdminContestsItem
-                  key={item.id}
-                  contest={item}
+                key={item.id}
+                contest={item}
               />
             )}
           </tbody>

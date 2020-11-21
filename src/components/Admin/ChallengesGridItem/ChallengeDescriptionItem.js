@@ -7,16 +7,15 @@ import ContentEditable from 'react-contenteditable';
 function ChallengeDescriptionItem(props) {
 // handles change of challenge description
   const edit = (event) => {
-      console.log('event', event.target.value);
-      props.isDescription(event.target.value)
+    props.isDescription(event.target.value)
   }
     return (
     <>
-        <ContentEditable
+      <ContentEditable
         html={props.description}
         onChange={edit}
         disabled={props.status}
-        />
+      />
     </>
   );
 }

@@ -7,7 +7,6 @@ import AdminContestTable from './AdminContestTable';
 import Nav from '../../Nav/Nav.js';
 import { Typography } from '@material-ui/core';
 
-
 class AdminContests extends Component {
   state = {
     heading: 'Contests',
@@ -15,18 +14,18 @@ class AdminContests extends Component {
     date: ''
   };
 
+  // on page load runs setContests
   componentDidMount() {
     this.setContests();
   }
 
+  // function dispatches FETCH_CONTEST
   setContests = () => {
     this.props.dispatch({
       type: 'FETCH_CONTEST'
     });
   }
-
-
-
+  
   render() {
     return (
         <div>

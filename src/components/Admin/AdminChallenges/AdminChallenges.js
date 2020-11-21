@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './AdminChallenges.css';
 import ChallengesGrid from '../ChallengesGrid/ChallengesGrid';
 import CreateChallenges from '../CreateChallenges/CreateChallenges';
 import Nav from '../../Nav/Nav.js';
 import { Typography } from '@material-ui/core';
+import './AdminChallenges.css';
 
 class AdminChallenges extends Component {
   state = {
@@ -14,15 +14,17 @@ class AdminChallenges extends Component {
     date: ''
   };
 
+  // on page load runs setChallenges
   componentDidMount() {
     this.setChallenges();
-  }
+  };
 
+  // function dispatches 'FETCH_CHALLENGES'
   setChallenges = () => {
     this.props.dispatch({
       type: 'FETCH_CHALLENGES'
     });
-  }
+  };
 
   render() {
     return (

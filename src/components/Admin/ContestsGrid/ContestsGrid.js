@@ -14,12 +14,12 @@ class ContestsGrid extends Component {
     return (
       <div className='ContestsGrid'>
         <Grid container spacing={1}>
-            <Grid container item xs={12} spacing={3}>
-                <ContestsGridItem
-                key={this.props.contest.id}
-                contest={this.props.contest}
-                />
-            </Grid>
+          <Grid container item xs={12} spacing={3}>
+            <ContestsGridItem
+              key={this.props.contest.id}
+              contest={this.props.contest}
+            />
+          </Grid>
         </Grid>
       </div>
     );
