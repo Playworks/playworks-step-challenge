@@ -19,14 +19,16 @@ function* fetchChallengePhotosSaga(action){
 
   // Function sends photo creation data
 function* createPhotosSaga(action) {
-    console.log('ACTION PAYLOAD', action.payload);    
-    let response = yield axios({
-        method: 'POST',
-        url: '/api/photos',
-        data: action.payload
-    });
+    try{
+        console.log('ACTION PAYLOAD', action.payload);    
+        let response = yield axios({
+            method: 'POST',
+            url: '/api/photos',
+            data: action.payload
+        });
+    }
+    catch {
     console.log('CREATE PHOTOS RESPONSE:', response);
-
     if (response.status === 400) {
         alert('AHHHHHHHHHHH!')
         // swal({
@@ -37,7 +39,8 @@ function* createPhotosSaga(action) {
         //     }
         // })
     }
-  };
+    }
+};
 
     // Function runs a delete request with action.payload.photo_id upon success throws back into fetch_captain_team_photos with action.payload.team_id
 function* denyPhotosSaga(action){  
