@@ -5,6 +5,7 @@ import { Grid, Typography } from '@material-ui/core';
 
 class AllChallengeFeedInfo extends Component {
 
+    
   render() {
     console.log('this is props in allchallengefeedinfo', this.props);
     return (
