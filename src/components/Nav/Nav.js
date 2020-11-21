@@ -16,7 +16,7 @@ const Nav = (props) => {
   if (props.store.user.id != null) {
     loginLinkData.path = '/home';
     loginLinkData.text = 'Home';
-  }
+  };
 
   const [ anchorEl, setAnchorEl ] = React.useState( null );
 
@@ -27,7 +27,6 @@ const Nav = (props) => {
   const handleClose = () => {
     setAnchorEl( null );
   };
-
 
   return (
     <div className="nav">
@@ -48,15 +47,19 @@ const Nav = (props) => {
               keepMounted
               open={ Boolean( anchorEl )}
               onClose={ handleClose }>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/adminhome">Contests</Link></MenuItem>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/adminchallenges">Challenges</Link></MenuItem>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/adminrules">Rules</Link></MenuItem>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/adminfaq">FAQ</Link></MenuItem>
-              <MenuItem onClick={() => props.dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/adminhome">Contests</Link>
+                </MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/adminchallenges">Challenges</Link>
+                </MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/adminrules">Rules</Link>
+                </MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/adminfaq">FAQ</Link>
+                </MenuItem>
+                <MenuItem onClick={() => props.dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
             </Menu>
           </div>
           : props.store.user.id == null ? ( null ) : (  
@@ -69,17 +72,22 @@ const Nav = (props) => {
               keepMounted
               open={ Boolean( anchorEl )}
               onClose={ handleClose }>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/home">Home</Link></MenuItem>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/addphoto">Add Photo</Link></MenuItem>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/addsteps">Add Steps</Link></MenuItem>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/team">Team Page</Link></MenuItem>
-              <MenuItem onClick={ handleClose }>
-              <Link className='nav-link' to="/rules">Rules</Link></MenuItem>
-              <MenuItem onClick={() => props.dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/home">Home</Link>
+                </MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/addphoto">Add Photo</Link>
+                </MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/addsteps">Add Steps</Link>
+                </MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/team">Team Page</Link>
+                </MenuItem>
+                <MenuItem onClick={ handleClose }>
+                  <Link className='nav-link' to="/rules">Rules</Link>
+                </MenuItem>
+                <MenuItem onClick={() => props.dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
             </Menu>
           </div>
          )} 

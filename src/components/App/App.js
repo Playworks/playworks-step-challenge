@@ -1,45 +1,45 @@
 import React, { Component } from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
-
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import moment from 'moment';
+
+// import components
+import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
+import AdminContests from '../Admin/AdminContests/AdminContests';
+import AdminFAQ from '../Admin/AdminFAQ/AdminFAQ';
 import AdminRoute from '../AdminRoute/AdminRoute';
+import AdminRules from '../Admin/AdminRules/AdminRules';
+import Challenges from '../User/Challenges/Challenges';
+import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
 import ContestHome from '../User/ContestHome/ContestHome';
-import TeamHome from '../User/TeamHome/TeamHome';
-import SubmitPhotos from '../User/SubmitPhotos/SubmitPhotos';
-import SubmitSteps from '../User/SubmitSteps/SubmitSteps';
-import Rules from '../User/Rules/Rules';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../User/RegisterPage/RegisterPage';
-import './App.css';
+import CreateContest from '../Admin/CreateContest/CreateContest';
 import CreateOrJoinTeam from '../User/CreateOrJoinTeam/CreateOrJoinTeam';
 import CreateTeam from '../User/CreateTeam/CreateTeam';
-import JoinTeam from '../User/JoinTeam/JoinTeam';
-import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
-import Challenges from '../User/Challenges/Challenges';
-import CreateContest from '../Admin/CreateContest/CreateContest';
-import AdminContests from '../Admin/AdminContests/AdminContests';
-import AdminChallenges from '../Admin/AdminChallenges/AdminChallenges';
-import EditRules from '../Admin/EditRules/EditRules';
 import EditFAQ from '../Admin/EditFAQ/EditFAQ';
-import AdminRules from '../Admin/AdminRules/AdminRules';
-import AdminFAQ from '../Admin/AdminFAQ/AdminFAQ';
-import ContestDescriptionPage from '../Admin/ContestDescriptionPage/ContestDescriptionPage';
-import moment from 'moment';
+import EditRules from '../Admin/EditRules/EditRules';
+import EditUserLogs from '../User/EditUserLogs/EditUserLogs';
 import ImageUpload from '../User/SubmitPhotos/ImageUpload';
+import JoinTeam from '../User/JoinTeam/JoinTeam';
+import LoginPage from '../LoginPage/LoginPage';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import RegisterPage from '../User/RegisterPage/RegisterPage';
+import Rules from '../User/Rules/Rules';
+import SubmitPhotos from '../User/SubmitPhotos/SubmitPhotos';
+import SubmitSteps from '../User/SubmitSteps/SubmitSteps';
+import TeamHome from '../User/TeamHome/TeamHome';
+
+// import css
+import './App.css';
 
 
 class App extends Component {
+  // On page load runs dispatch to fetch user and set dailychallenge
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
     this.setDailyChallenge();
   }
 
+  // Function sends dispatch to get challenge of the day by date
   setDailyChallenge = () => {
     this.props.dispatch({
       type: 'FETCH_DAILY_CHALLENGE',

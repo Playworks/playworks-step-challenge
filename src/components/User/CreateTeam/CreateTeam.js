@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './CreateTeam.css';
-import Logo from '../../../images/PW-hor-logo.png';
 // import material ui
 import { Button, TextField, Typography } from '@material-ui/core';
 // import sweetalert
 import swal from 'sweetalert';
+// import s3 dropzone
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
+// import css
+import './CreateTeam.css';
+// import logo
+import Logo from '../../../images/PW-hor-logo.png';
 
 class CreateTeam extends Component {
-
   state = {
     team_name: '',
     team_photo: '',
@@ -23,9 +25,8 @@ class CreateTeam extends Component {
     });
   };
 
+  // Function runs on finish of file upload for s3 dropzone
   handleFinishedUpload = info => {
-    console.log('File uploaded with filename', info.filename)
-    console.log('Access it on s3 at', info.fileUrl)
     this.setState({
       team_photo: info.fileUrl
     });
@@ -75,9 +76,8 @@ class CreateTeam extends Component {
         team_photo: this.state.team_photo,
         company_name: this.state.company_name,
       }
-  });
+    });
   }
-
 
   render() {
     const uploadOptions = {
@@ -127,7 +127,7 @@ class CreateTeam extends Component {
               color='primary'
               style={{marginTop: '2rem'}} 
               onClick={this.confirmationCreate}>
-              Submit
+                Submit
             </Button>
           </center>
         </div>
@@ -137,19 +137,19 @@ class CreateTeam extends Component {
             type="button"
             className="btn btn_asLink"
             onClick={() => {this.props.history.push('/createorjointeam')}}>
-            Go Back
+              Go Back
           </button>
           <button
             type="button"
             className="btn btn_asLink"
             onClick={() => {this.props.history.push('/jointeam')}}>
-            Join Team
+              Join Team
           </button>
           <button
             type="button"
             className="btn btn_asLink"
             onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
-            Log Out
+              Log Out
           </button>
         </div>
       </div>

@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './CreateOrJoinTeam.css';
-import Logo from '../../../images/PW-Square-logo.png';
-
+// import components
 import CreateTeamLink from './CreateTeamLink';
 import JoinTeamLink from './JoinTeamLink';
+// import css
+import './CreateOrJoinTeam.css';
+// import image
+import Logo from '../../../images/PW-Square-logo.png';
 
 class CreateOrJoinTeam extends Component {
-
+  // Function pushes newly registered user to create team
   createTeam = () => {
     this.props.history.push('/createteam');
-  }
+  };
 
+  // Function pushes newly registered user to join team
   joinTeam = () => {
     this.props.history.push('/jointeam');
-  }
+  };
 
   render() {
     return (

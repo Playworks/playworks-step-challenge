@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-// CUSTOM COMPONENTS
+// import component
 import RegisterForm from '../RegisterForm/RegisterForm';
-import Logo from '../../../images/PW-hor-logo.png';
+// import css
 import '../RegisterPage/RegisterPage.css';
+// import logo
+import Logo from '../../../images/PW-hor-logo.png';
 
 class RegisterPage extends Component {
   state = {

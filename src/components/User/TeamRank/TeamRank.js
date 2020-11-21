@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+// import material ui
 import { Typography } from '@material-ui/core';
 
 class TeamRank extends Component {
-
   render() {
     return (
       <div className='teamRankDiv'>
@@ -15,7 +15,7 @@ class TeamRank extends Component {
               <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h6'>Rank: {i +1}</Typography> 
             </div> 
           )
-          )}
+        )}
       </div>
     );
   }
