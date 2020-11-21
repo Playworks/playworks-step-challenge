@@ -12,12 +12,14 @@ class EditRules extends Component {
     fileUrl: '',
   };
 
+  // Function runs upon finish of file upload
   handleFinishedUpload = info => {
     this.setState({
       fileUrl: info.fileUrl,
     });
   };
 
+  // function sends uploaded file to saga listening for 'CREATE_RULES' then sends user to adminrules
   submitRules = (event) => {
     event.preventDefault();
     this.props.dispatch({

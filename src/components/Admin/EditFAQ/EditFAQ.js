@@ -12,13 +12,14 @@ class EditFAQ extends Component {
     fileUrl: '',
   };
 
+  // Function runs upon finish of file upload
   handleFinishedUpload = info => {
     this.setState({
       fileUrl: info.fileUrl,
     });
   }
 
-  
+  // function sends uploaded file to saga listening for 'CREATE_FAQ' then sends user to adminfaq
   submitFAQ = (event) => {
     event.preventDefault();
     this.props.dispatch({
@@ -30,6 +31,7 @@ class EditFAQ extends Component {
     this.props.history.push('/adminfaq');
   };
 
+  // Function sets file url to empty string and sends user back to previous page
   handleCancel = () => {
     this.setState({
       fileUrl: '',
