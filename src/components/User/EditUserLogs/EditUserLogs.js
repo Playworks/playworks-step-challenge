@@ -40,20 +40,17 @@ class EditUserLogs extends Component {
       }
     });
   };
+
   // pulls id and steps from child editUserSteps to update step logs
   saveStepLogChanges = (logId) => {
-    console.log('data', logId);
-    console.log('state steps', this.state.steps);
     let newSteps = this.state.steps;
-      axios({
+    axios({
       method: 'PUT',
-      url: '/api/logs/',
-      data: {
-        id: logId,
-        steps: newSteps
-      }
-    })
-  }
+      url: `/api/logs/${logId}`,
+      data: {steps: newSteps}
+    });
+  };
+
   // delete log sweet alert
   // allows captain to cancel the log deletion
   deleteLog = (value) => {

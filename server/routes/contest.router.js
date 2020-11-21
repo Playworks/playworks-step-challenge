@@ -1,13 +1,14 @@
 const express = require('express');
-const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
 
+// deletes specific contest from contest table by contest id. 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   console.log('made it to delete this is params', req.params.id);
   const queryText = `DELETE FROM "contests" WHERE "id" = $1;`;
   pool.query(queryText, [req.params.id])
-  .then(result => {
+  .then(() => {
     res.sendStatus(200);
   })
   .catch(error => {
@@ -32,20 +33,17 @@ router.get('/', (req, res) => {
 
 // post route for adding contest, communicates with createContestSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
-  console.log('REQ.BODY', req.body);
-  
   const queryString = `
     INSERT INTO "contests" ("name", "start_date", "end_date")
-    VALUES ($1, $2, $3);
-  `;
+    VALUES ($1, $2, $3);`;
   pool.query(queryString, [req.body.name, req.body.start_date, req.body.end_date,])
-    .then((results) => {
-      res.sendStatus(201);
-    })
-    .catch(err => {
-      console.error(`Error in /api/contest POST`, err);
-      res.sendStatus(500);
-    });
+  .then(() => {
+    res.sendStatus(201);
+  })
+  .catch(err => {
+    console.error(`Error in /api/contest POST`, err);
+    res.sendStatus(500);
+  });
 });
 
 module.exports = router;

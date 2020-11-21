@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
-const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
+const router = express.Router();
 
 // get route communicates with fetchChallengePhotosSaga
 router.get('/', rejectUnauthenticated, (req, res) => {    
@@ -19,16 +19,15 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
     JOIN "teams" ON "teams"."id" = "user"."teams_id"
     WHERE "user"."contests_id" = $1 AND "photos"."approved" = 'TRUE'
-    ORDER BY "photos"."id" DESC;
-    `;
+    ORDER BY "photos"."id" DESC;`;
   pool.query(queryString, [req.user.contests_id])
   .then(response => {  
-    console.log('RESPONSE', response.rows);
     res.send(response.rows);
   })
   .catch(error => {
+    console.log('we have an error in challengephotos.router.js GET', error);
     res.status(500);
-  })
   });
+});
 
   module.exports = router;

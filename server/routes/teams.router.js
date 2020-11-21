@@ -1,23 +1,25 @@
 const express = require('express');
-const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
 
-router.get('/', rejectUnauthenticated, (req, res) => {
-  console.log('teams router get');
-  const queryString = `SELECT * FROM "teams";`;
-  pool.query(queryString)
-  .then(response => {
-    res.send(response.rows);
+// communicates with fetchCaptainsForJoinSaga returns captains name, image and team id by contest id
+router.get('/searchforcaptains', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+    SELECT "user"."teams_id", CONCAT("first_name", ' ', "last_name") AS "name", "user"."image_path" FROM "user"
+    WHERE "user"."contests_id" = $1 AND "admin" = 'CAPTAIN' ORDER BY "name" ASC;`;
+  pool.query(queryText, [req.user.contests_id])
+  .then(result => {
+    res.send(result.rows);
   })
   .catch(error => {
-    res.status(500);
-  })
+    console.log('We have an error in teams.router.js /searchforcaptains GET', error);
+    res.sendStatus(500);
+  });
 });
 
+// communicates with fetchTeamsForJoinSaga sends team name, id and image path by contest id
 router.get('/searchforteams', rejectUnauthenticated, (req, res) => {
-  console.log('in router.get api/teams/searchforteams');
-  console.log('this is req.user.contests_id', req.user.contests_id);
   const queryText = `
     SELECT "teams"."id" AS "teams_id", "teams"."name", "team_logo" AS "image_path" FROM "teams"
     JOIN "user"
@@ -28,38 +30,18 @@ router.get('/searchforteams', rejectUnauthenticated, (req, res) => {
     res.send(result.rows);
   })
   .catch(error => {
-    console.log('We have an error in GET /searchforteams', error);
+    console.log('We have an error in teams.router /searchforteams GET', error);
     res.sendStatus(500);
   });
 });
 
-router.get('/searchforcaptains', rejectUnauthenticated, (req, res) => {
-  console.log('in router.get api/teams/searchforcaptains');
-  console.log('this is req.user.contests_id', req.user.contests_id);
-  const queryText = `
-    SELECT "user"."teams_id", CONCAT("first_name", ' ', "last_name") AS "name", "user"."image_path" FROM "user"
-    WHERE "user"."contests_id" = $1 AND "admin" = 'CAPTAIN' ORDER BY "name" ASC;`;
-  pool.query(queryText, [req.user.contests_id])
-  .then(result => {
-    res.send(result.rows);
-  })
-  .catch(error => {
-    console.log('We have an error in GET /searchforcaptains', error);
-    res.sendStatus(500);
-  });
-})
-
-
 // Post route creates a team then updates users admin level to be captain
 // communicates with createTeamSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
-  console.log('req.body', req.body);
-  console.log('req.user', req.user);
   const team_name = req.body.team_name;
   const team_photo = req.body.team_photo;
   const user_id = req.user.id;
   const company_name = req.body.company_name;
-
   let queryText = `
     INSERT INTO "teams" ("name", "team_logo", "company_name") 
     VALUES ($1, $2, $3) RETURNING "id";`;
@@ -76,15 +58,15 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     })
     // Catch for second query
     .catch(error => {
-      console.log('We have an error in second catch /api/teams', error);
+      console.log('We have an error in second catch /api/teams POST', error);
       res.sendStatus(500);
     })
   })
   // Catch for first query
   .catch(error => {
-    console.log('We have an error in first catch /api/teams', error);
+    console.log('We have an error in first catch /api/teams POST', error);
     res.sendStatus(500);
-  })
+  });
 });
 
 // Updates user's team id in jointeam.js, communicates with joinTeamSaga
@@ -93,11 +75,11 @@ router.put('/join/:id', rejectUnauthenticated, (req, res) => {
   const user_id = req.params.id;
   const queryText = `UPDATE "user" SET "teams_id" = $1, "admin" = 'USER' WHERE "id" = $2;`
   pool.query(queryText, [selected_team_id, user_id])
-  .then(result => {
+  .then(() => {
     res.sendStatus(201);
   })
   .catch(error => {
-    console.log('We have an error in /api/teams/join/:id', error);
+    console.log('We have an error in teams.router.js /api/teams/join/:id PUT', error);
     res.sendStatus(500);
   });
 });

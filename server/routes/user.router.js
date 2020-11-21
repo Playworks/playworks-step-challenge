@@ -1,10 +1,9 @@
-const express = require('express');
-const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const encryptLib = require('../modules/encryption');
+const express = require('express');
 const pool = require('../modules/pool');
-const userStrategy = require('../strategies/user.strategy');
-
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
+const userStrategy = require('../strategies/user.strategy');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', rejectUnauthenticated, (req, res) => {
@@ -24,18 +23,16 @@ router.post('/register', (req, res, next) => {
   const password = encryptLib.encryptPassword(req.body.password);
   const image = req.body.photo;
   const contests_id = req.body.contests_id;
-
-
-  // Hard coding in image path as have not uploaded image file to aws yet.
   const queryText = `INSERT INTO "user" (first_name, last_name, email, username, password, image_path, contests_id)
     VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`;
-  pool
-    .query(queryText, [first_name, last_name, email, username, password, image, contests_id])
-    .then(() => res.sendStatus(201))
-    .catch((error) => {
-      console.log(error);
-      res.sendStatus(501);
-    })
+  pool.query(queryText, [first_name, last_name, email, username, password, image, contests_id])
+  .then(() => {
+    res.sendStatus(201);
+  })
+  .catch((error) => {
+    console.log('we have an error in user.router /register POST', error);
+    res.sendStatus(501);
+  });
 });
 
 // Handles login form authenticate/login POST
@@ -55,7 +52,6 @@ router.post('/logout', (req, res) => {
 
 // delete route communicates with deleteUserSaga
 router.delete('/:id', rejectUnauthenticated, async(req, res) => {
-  console.log('in user delete route req.params.id', req.params.id);
   let connection;
   try{
     connection = await pool.connect();
@@ -74,18 +70,17 @@ router.delete('/:id', rejectUnauthenticated, async(req, res) => {
       WHERE "id" = $1;
   `, [req.params.id]);
     await connection.query('COMMIT');
-
     res.sendStatus(201);
   }
-  catch(err) {
+  catch(error) {
     await connection.query('ROLLBACK');
-    console.log('err', err);
+    console.log('we have an error in user.router.js DELETE', error);
     res.sendStatus(500);
   }
   finally {
     // release connection no matter what
     connection.release();
   }
-})
+});
 
 module.exports = router;

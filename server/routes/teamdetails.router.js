@@ -1,35 +1,31 @@
 const express = require('express');
 const pool = require('../modules/pool');
-const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
+const router = express.Router();
 
 // gets users in order of steps taken
 // by using the provided team :id int
 // communicates with fetchTeamDetailsSaga
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in router.get api/teams/teamDetails');
-    console.log('req.user.id', req.params.id);
-    let teamId = req.params.id;
-    console.log('team id', teamId);
-    const queryText = `
-      SELECT SUM("steps"."steps"), "user"."username", "user"."first_name", "user"."last_name", "user"."id", "teams"."name" FROM "user"
-      JOIN "steps"
-      ON "user"."id" = "steps"."user_id"
-      JOIN "teams"
-      ON "user"."teams_id" = "teams"."id"
-      WHERE "user"."teams_id" = $1
-      GROUP BY "user"."username", "user"."id", "teams"."name"
-      ORDER BY "sum" DESC;`;
-    pool.query(queryText, [teamId])
-    .then(result => {
-      console.log('result team details', result.rows);
-      res.send(result.rows);
-    })
-    .catch(error => {
-      console.log('We have an error in GET /searchforcaptains', error);
-      res.sendStatus(501);
-    });
+  let teamId = req.params.id;
+  const queryText = `
+    SELECT SUM("steps"."steps"), "user"."username", "user"."first_name", "user"."last_name", "user"."id", "teams"."name" FROM "user"
+    JOIN "steps"
+    ON "user"."id" = "steps"."user_id"
+    JOIN "teams"
+    ON "user"."teams_id" = "teams"."id"
+    WHERE "user"."teams_id" = $1
+    GROUP BY "user"."username", "user"."id", "teams"."name"
+    ORDER BY "sum" DESC;`;
+  pool.query(queryText, [teamId])
+  .then(result => {
+    res.send(result.rows);
   })
+  .catch(error => {
+    console.log('We have an error in teamdetails.router /searchforcaptains GET', error);
+    res.sendStatus(501);
+  });
+});
 
 // get route communicates with fetchTeamCaptainPhotosSaga
 // main filter here is shows both false/true for approved column
@@ -55,12 +51,12 @@ router.get('/captain/photos/:id', rejectUnauthenticated, (req, res) => {
     ORDER BY "photos"."approved" = 'TRUE' , "photos"."date" DESC;`;
   pool.query(queryString, [teamId])
   .then(response => {
-    console.log('TEAM PHOTOS', response.rows);
     res.send(response.rows);
   })
   .catch(error => {
+    console.log('we have an error in teamdetails.router.js /captain/photos/:id', error);
     res.status(500);
-  })
+  });
 });
 
 // get route gets photos for user levels that only shows approved photos
@@ -85,13 +81,12 @@ router.get('/user/photos/:id', rejectUnauthenticated, (req, res) => {
     ORDER BY "photos"."approved" = 'TRUE', "photos"."date" DESC;`;
   pool.query(queryString, [teamId])
   .then(response => {
-    console.log('TEAM PHOTOS', response.rows);
     res.send(response.rows);
   })
   .catch(error => {
+    console.log('we have an error in teamdetails.router.js /user/photos/:id', error);
     res.status(500);
-  })
+  });
 });
-
 
 module.exports = router;

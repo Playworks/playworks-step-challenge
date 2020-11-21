@@ -1,14 +1,12 @@
 const express = require('express');
-const {rejectUnauthenticated} = require('../modules/authentication-middleware');
-
-const pool = require('../modules/pool');
-const router = express.Router();
 const Papa = require('papaparse');
+const pool = require('../modules/pool');
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
+const router = express.Router();
 
-
+// route sends back data in a csv format
 router.post('/', rejectUnauthenticated, (req, res) => {
   const contests_id = req.body.contests_id;
-  console.log('this is contests_id', contests_id)
   const queryText = `
     SELECT 
     "user"."first_name" AS "First Name", 
@@ -24,7 +22,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     WHERE "user"."contests_id" = $1;`;
   pool.query(queryText, [contests_id])
   .then(result => {
-    let csv = Papa.unparse(result.rows)
+    let csv = Papa.unparse(result.rows);
     res.send(csv);
   })
   .catch(error => {
