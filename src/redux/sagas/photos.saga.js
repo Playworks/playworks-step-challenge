@@ -27,9 +27,9 @@ function* createPhotosSaga(action) {
             data: action.payload
         });
     }
-    catch {
-    console.log('CREATE PHOTOS RESPONSE:', response);
-    if (response.status === 400) {
+    catch (error) {
+    console.log('CREATE PHOTOS RESPONSE:', error);
+    if (error.response.status === 400) {
         alert('AHHHHHHHHHHH!')
         // swal({
         //     title: `You've already submitted a photo for the daily challenge today!`,
