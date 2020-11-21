@@ -28,17 +28,16 @@ function* createPhotosSaga(action) {
         });
     }
     catch (error) {
-    console.log('CREATE PHOTOS RESPONSE:', error);
-    if (error.response.status === 400) {
-        alert('AHHHHHHHHHHH!')
-        // swal({
-        //     title: `You've already submitted a photo for the daily challenge today!`,
-        //     text: `Please try again tomorrow!`,
-        //     buttons: {
-        //       cancel: "Ok",
-        //     }
-        // })
-    }
+        console.log('CREATE PHOTOS RESPONSE:', error);
+        if (error.response.status === 400) {
+            swal({
+                title: `You've already submitted a photo for the daily challenge today!`,
+                text: `Please try again tomorrow!`,
+                buttons: {
+                cancel: "Ok",
+                }
+            })
+        }
     }
 };
 
