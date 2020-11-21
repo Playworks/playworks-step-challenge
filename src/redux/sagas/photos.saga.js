@@ -1,5 +1,7 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 import axios from 'axios';
+import swal from 'sweetalert';
+
 
 // Function sends get request to get all challenge photos and puts in reducer listening for 'SET_CHALLENGE_PHOTOS'
 function* fetchChallengePhotosSaga(action){    
@@ -17,14 +19,27 @@ function* fetchChallengePhotosSaga(action){
 
   // Function sends photo creation data
 function* createPhotosSaga(action) {
-    console.log('ACTION PAYLOAD', action.payload);    
-    let response = yield axios({
-        method: 'POST',
-        url: '/api/photos',
-        data: action.payload
-    });
-    console.log('Response', response);
-  };
+    try{
+        console.log('ACTION PAYLOAD', action.payload);    
+        let response = yield axios({
+            method: 'POST',
+            url: '/api/photos',
+            data: action.payload
+        });
+    }
+    catch (error) {
+        console.log('CREATE PHOTOS RESPONSE:', error);
+        if (error.response.status === 400) {
+            swal({
+                title: `You've already submitted a photo for the daily challenge today!`,
+                text: `Please try again tomorrow!`,
+                buttons: {
+                cancel: "Ok",
+                }
+            })
+        }
+    }
+};
 
     // Function runs a delete request with action.payload.photo_id upon success throws back into fetch_captain_team_photos with action.payload.team_id
 function* denyPhotosSaga(action){  
