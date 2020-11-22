@@ -83,11 +83,11 @@ VALUES
 ('Dont stop Ukkonen', 'https://playworks-step-challenge.s3.us-east-2.amazonaws.com/9c60e7ec-e699-460c-b189-d97cec860470_1200px-A-Team-Logo.svg.png', 'Ukkonians'),
 ('U Ukkonen U U Ukkonen', 'https://playworks-step-challenge.s3.us-east-2.amazonaws.com/9c60e7ec-e699-460c-b189-d97cec860470_1200px-A-Team-Logo.svg.png', 'Ukkonians'),
 ('The Staff Of Power', 'https://playworks-step-challenge.s3.us-east-2.amazonaws.com/9c60e7ec-e699-460c-b189-d97cec860470_1200px-A-Team-Logo.svg.png', 'Staff'),
+('Vatti Vidi Vici', 'https://playworks-step-challenge.s3.us-east-2.amazonaws.com/9c60e7ec-e699-460c-b189-d97cec860470_1200px-A-Team-Logo.svg.png', 'Vattis');
 -- passwords for all users including admin is 123
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin", "contests_id", "teams_id")
 VALUES
 ('davidgould', 'davidgould@gmail.com', 'David', 'Gould', '$2a$10$3gqpioSzewoKOvSJhKh86O6am4X.H/T0isyOzU8/l6yTG7iZcHLAK', 'http://playworks-step-challenge.s3.amazonaws.com/48370ad3-7e80-4ddf-8b11-02a4fe7cd2bf_carjake.png', 'USER', 1, 1),
-('ashleyberry', 'ashleyberry@gmail.com', 'Ashley', 'Berry', '$2a$10$0ayUwmcgsm.u/Lvktqg7POIu2R1Lp7mX2eKxgAPQdrzsjU3b928nq', 'http://playworks-step-challenge.s3.amazonaws.com/0f32d253-3ef1-4235-8f6d-16a6b873f130_AshleyBerry.jpeg', 'USER', 1, 1),
 ('arthurcarson', 'arthurcarson@gmail.com', 'Arthur', 'Carson', '$2a$10$5tHU.Tcyv/PMJIVtmOPxWO3kuw6mPShIHR.iOQOuT2iq4T8LgJiY2', 'http://playworks-step-challenge.s3.amazonaws.com/8effa722-7b82-41ae-b2b5-3575fa0a5f98_ArthurCarson.jpeg', 'USER', 1, 1),
 ('bradytrudeau', 'bradytrudeau@gmail.com', 'Brady', 'Trudeau', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/492cfd0d-2803-4f5c-afa0-498319bee09d_BradyTrudeau.jpeg', 'CAPTAIN', 1, 1),
 ('emmawestbrook', 'emma@gmail.com', 'Emma', 'Westbrook', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/340b2edc-a81c-4302-9454-806074620cc9_emmaw.jpg', 'CAPTAIN', 1, 2),
@@ -138,7 +138,11 @@ VALUES
 ('emily', 'emilyprime@gmail.com', 'Emily', 'Prime', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'USER', 1, 12),
 ('genia', 'genia@gmail.com', 'Genia', 'Prime', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'USER', 1, 12),
 ('kris', 'kris@gmail.com', 'Kris', 'Prime', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'USER', 1, 12),
-('mark', 'mark@gmail.com', 'Mark', 'Prime', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'USER', 1, 12);
+('mark', 'mark@gmail.com', 'Mark', 'Prime', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'USER', 1, 12),
+('josiefredericksen', 'josief@gmail.com', 'Josie', 'Fredericksen', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'CAPTAIN', 1, 13),
+('julianbooher', 'julianb@gmail.com', 'Julian', 'Booher', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'USER', 1, 13),
+('cassengerber', 'cassen@gmail.com', 'Cassen', 'Gerber', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'USER', 1, 13),
+('jeffhoggard', 'jeffhoggard@gmail.com', 'Jeff', 'Hoggard', '$2a$10$CPuQi17HbK/2HdXkeEFWmuBFemaMj5mpsT.VnFsHTgMIByzFnVZtW', 'http://playworks-step-challenge.s3.amazonaws.com/6bc21ba9-665e-4083-9c66-8a6e54c4ea01_prime.jpeg', 'USER', 1, 13);
 -----------------------------------------------------------------------------------------
 -- ADMIN
 INSERT INTO "user" ("username", "email", "first_name", "last_name", "password", "image_path", "admin")
@@ -153,7 +157,27 @@ VALUES
 ('Water Selfie', 'Take a photo of yourself drinking some water', '2020-11-24');
 
 INSERT INTO "steps" ("user_id", "date", "steps")
-VALUES 
+VALUES
+(1, '2020-11-22', 5322),
+(2, '2020-11-22', 6533),
+(3, '2020-11-22', 5234),
+(4, '2020-11-22', 6111),
+(5, '2020-11-22', 4322),
+(6, '2020-11-22', 3135),
+(7, '2020-11-22', 5332),
+(8, '2020-11-22', 5324),
+(9, '2020-11-22', 5278),
+(10, '2020-11-22', 2422),
+(11, '2020-11-22', 3211),
+(12, '2020-11-22', 3732),
+(13, '2020-11-22', 2955),
+(14, '2020-11-22', 4234),
+(15, '2020-11-22', 3245),
+(16, '2020-11-22', 5333),
+(17, '2020-11-22', 3222),
+(18, '2020-11-22', 4555),
+(19, '2020-11-22', 4322),
+(20, '2020-11-22', 4551), 
 (1, '2020-11-23', 5444),
 (2, '2020-11-23', 7866),
 (3, '2020-11-23', 6211),
@@ -161,8 +185,8 @@ VALUES
 (5, '2020-11-23', 2144),
 (6, '2020-11-23', 1532),
 (7, '2020-11-23', 6422),
-(8, '2020-11-23', 4322),
-(9, '2020-11-23', 1222),
+(8, '2020-11-23', 5622),
+(9, '2020-11-23', 5222),
 (10, '2020-11-23', 1539),
 (11, '2020-11-23', 3213),
 (12, '2020-11-23', 3211),
@@ -171,9 +195,9 @@ VALUES
 (15, '2020-11-23', 2143),
 (16, '2020-11-23', 4324),
 (17, '2020-11-23', 1312),
-(18, '2020-11-23', 4555),
+(18, '2020-11-23', 6555),
 (19, '2020-11-23', 2156),
-(20, '2020-11-23', 5433),
+(20, '2020-11-23', 2433),
 (1, '2020-11-24', 8800),
 (2, '2020-11-24', 54320),
 (3, '2020-11-24', 6534),
@@ -181,11 +205,10 @@ VALUES
 (5, '2020-11-24', 4322),
 (6, '2020-11-24', 4211),
 (7, '2020-11-24', 1433),
-(8, '2020-11-24', 2433),
-(9, '2020-11-24', 4555),
+(8, '2020-11-24', 7433),
+(9, '2020-11-24', 5555),
 (10, '2020-11-24', 3466),
 (11, '2020-11-24', 3788),
-(11, '2020-11-24', 3988),
 (12, '2020-11-24', 3976),
 (13, '2020-11-24', 6400),
 (14, '2020-11-24', 3211),
@@ -194,18 +217,18 @@ VALUES
 (17, '2020-11-24', 5322),
 (18, '2020-11-24', 4988),
 (19, '2020-11-24', 4948),
-(20, '2020-11-24', 4948),
+(20, '2020-11-24', 2948),
 (21, '2020-11-24', 3222),
 (22, '2020-11-24', 3222),
 (23, '2020-11-24', 3222),
 (24, '2020-11-24', 3222),
-(23, '2020-11-24', 3222),
+(23, '2020-11-24', 2222),
 (22, '2020-11-24', 3222),
 (2, '2020-11-24', 3222),
 (25, '2020-11-24', 3222),
 (26, '2020-11-24', 3222),
 (27, '2020-11-24', 3222),
-(23, '2020-11-24', 3222),
+(23, '2020-11-24', 1222),
 (25, '2020-11-24', 3222),
 (23, '2020-11-24', 3222),
 (27, '2020-11-24', 3222),
@@ -241,11 +264,14 @@ VALUES
 (49, '2020-11-24', 3222),
 (23, '2020-11-24', 3222),
 (20, '2020-11-24', 3222),
-(19, '2020-11-24', 3222),
-(17, '2020-11-24', 3222),
+(19, '2020-11-24', 1222),
+(17, '2020-11-24', 8222),
 (16, '2020-11-24', 3222),
 (13, '2020-11-24', 3222),
-(15, '2020-11-24', 3222);
+(15, '2020-11-24', 3222),
+(1, '2020-11-22', 4322),
+(2, '2020-11-22', 3533),
+(3, '2020-11-22', 6234);
 
 
 
