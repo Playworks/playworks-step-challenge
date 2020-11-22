@@ -50,10 +50,6 @@ class ContestHome extends Component {
     });
   };
   
-  onLogin = (event) => {
-    this.props.history.push('/login');
-  };
-
   render() {    
     return (
       <div >

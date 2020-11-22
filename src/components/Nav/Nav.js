@@ -91,37 +91,7 @@ const Nav = (props) => {
             </Menu>
           </div>
          )} 
-
-      {/* <div className="nav-right">
-
-        <Link className="nav-link" to={loginLinkData.path}> */}
-
-          {/* Show this link if they are logged in or not,
-          but call this link 'Home' if they are logged in,
-          and call this link 'Login / Register' if they are not */}
-          
-          {/* {loginLinkData.text} */}
-          {/* </Link>  */}
-
-        {/* Show the link to the info page and the logout button if the user is logged in */}
-        {/* {props.store.user.id && (
-          <>
-  
-            <Link className="nav-link" to="/addphoto">
-              Add Photo
-            </Link>
-            <Link className="nav-link" to="/addsteps">
-              Add Steps
-            </Link>
-            <Link className="nav-link" to="/team">
-              Team Page
-            </Link>
-            <LogOutButton className="nav-link" />
-          </>
-        )} */}
       </div>
-    // </div>
-
   );
 };
 
