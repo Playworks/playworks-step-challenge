@@ -18,7 +18,7 @@ class AdminContestImagesInfo extends Component {
     })
     .then(willDelete => {
       if(willDelete){
-        swal("Contest Successfully deleted!",{
+        swal("Photo Successfully deleted!",{
           icon: "success",
         });
         this.deleteItem();
