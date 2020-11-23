@@ -2,19 +2,43 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Button, Grid, Typography } from '@material-ui/core';
-
+// import sweet alert
+import swal from 'sweetalert';
 
 class AdminContestImagesInfo extends Component {
-    deleteItem = () => {
-        console.log('in deleteItem, this is our contest id', this.props.contest_id, 'this is our photo id', this.props.photo_id);
-        this.props.dispatch({
-            type: 'ADMIN_DELETE_PHOTO',
-            payload:{
-                photo_id: this.props.photo_id,
-                contest_id: this.props.contest_id
-            }
+  // Created a function that is a validation function that takes in the argument which is the contests id
+  // if willDelete is true will run closeContest and pass contest id as arguement.
+  confirmationClose = () => {
+    swal({
+      title: "Are you sure you want to delete this photo?",
+      text: "Once deleted it cannot be recovered.",
+      icons: "warning",
+      buttons: true,
+      dangerMode: true
+    })
+    .then(willDelete => {
+      if(willDelete){
+        swal("Photo Successfully deleted!",{
+          icon: "success",
         });
-    }
+        this.deleteItem();
+      }
+      else {
+        swal("You're in luck, the photo wasn't deleted!");
+      }
+    });
+  };
+
+  deleteItem = () => {
+    console.log('in deleteItem, this is our contest id', this.props.contest_id, 'this is our photo id', this.props.photo_id);
+    this.props.dispatch({
+        type: 'ADMIN_DELETE_PHOTO',
+        payload:{
+          photo_id: this.props.photo_id,
+          contest_id: this.props.contest_id
+        }
+    });
+  }
 
   render() {
     console.log('in AdminContestImagesInfo.js this is props', this.props);
@@ -38,7 +62,7 @@ class AdminContestImagesInfo extends Component {
                 <Grid container item xs={12} spacing={3}>
                     <Grid item xs={12}>
                     <div className='adminDeletePhotoBtn'>
-                            <Button variant="contained" color="secondary" onClick={this.deleteItem}>Delete</Button>
+                            <Button variant="contained" color="secondary" onClick={this.confirmationClose}>Delete</Button>
                         </div>
                     </Grid>
                 </Grid>

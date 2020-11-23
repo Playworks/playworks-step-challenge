@@ -56,7 +56,6 @@ class TopSteppers extends Component {
        
             )}
           </Carousel>
-
         </div>
       </div>
     );
