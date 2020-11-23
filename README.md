@@ -6,9 +6,7 @@ _Duration: 2 Weeks_
 
 The Playworks Step Challenge App is a full stack mobile-first application that allows users to create or join a team, log steps, and view team and user statistics. Application allows users to upload images based on challenges that are assigned by the Playworks admins. These images will be displayed in multiple image feeds to encourage user interaction. When a team is created by a user, that user is a “captain” giving that user the ability to remove users from the team and approve or deny photos that are uploaded by the team members.
 
-![Contest Home](./src/images/homepage.png)
-![Team Home](./src/images/teampage.png)
-![Add Steps](./src/images/submitsteps.png)
+![Contest Home](./src/images/contesthome.png)
 
 ### Prerequisites
 
