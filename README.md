@@ -19,7 +19,7 @@ To run this app, make sure you have the following installed on your computer:
 
 ## Database Setup
 
-- Create a new database called `click-app`
+- Create a new database called `playworks_step_challenge`
 - Run the SQL Query outlined in the database.sql file
 - Note: If you would like to use a different database name, update the database name in `server/modules/pool.js`
 - Note: Project is setup to run on Heroku (see instructions below)
@@ -59,3 +59,6 @@ HUGE thanks to Edan, dEv, and Casie for all of their fantastic instruction, wisd
 
 ## Support
 If you have suggestions or issues, please email the team [tarjanplayworks@gmail.com](www.google.com)
+
+![demo](./src/images/addsteps.gif)
+![demo](./src/images/addphoto.gif)
