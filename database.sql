@@ -258,7 +258,6 @@ VALUES
 (3, 6, '2020-11-23', 'http://playworks-step-challenge.s3.amazonaws.com/492cfd0d-2803-4f5c-afa0-498319bee09d_BradyTrudeau.jpeg'),
 (2, 6, '2020-11-23', 'http://playworks-step-challenge.s3.amazonaws.com/8effa722-7b82-41ae-b2b5-3575fa0a5f98_ArthurCarson.jpeg'),
 (1, 6, '2020-11-23', 'http://playworks-step-challenge.s3.amazonaws.com/89fb066f-3d26-43ed-b6c4-3fbd409fc60f_davidgould.jpeg'),
-
 (1, 4, '2020-11-24', 'http://playworks-step-challenge.s3.amazonaws.com/954e352d-4345-4ad0-8b5f-899630bb88f8_daviddoggo.jpg'),
 (2, 4, '2020-11-24', 'http://playworks-step-challenge.s3.amazonaws.com/1a592c47-0dcf-4a42-90b7-f854e2158388_arthurdoggo.jpg'),
 (29, 4, '2020-11-24', 'http://playworks-step-challenge.s3.amazonaws.com/9b7a1eaa-3321-4aee-970a-befbac7885f1_christydoggo.jpg'),
