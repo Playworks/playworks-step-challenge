@@ -8,6 +8,7 @@ The Playworks Step Challenge App is a full stack mobile-first application that a
 
 ![Contest Home](./src/images/contesthome.png)
 
+
 ### Prerequisites
 
 To run this app, make sure you have the following installed on your computer:
@@ -18,6 +19,7 @@ To run this app, make sure you have the following installed on your computer:
 - Heroku
 
 ## Database Setup
+
 
 - Create a new database called `playworks_step_challenge`
 - Run the SQL Query outlined in the database.sql file
