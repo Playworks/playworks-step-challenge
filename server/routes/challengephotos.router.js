@@ -19,12 +19,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     JOIN "challenges" ON "challenges"."id" = "photos"."challenges_id"
     JOIN "teams" ON "teams"."id" = "user"."teams_id"
     WHERE "user"."contests_id" = $1 AND "photos"."approved" = 'TRUE'
-<<<<<<< HEAD
-    ORDER BY "photos"."id" DESC;`;
-=======
-    ORDER BY "photos"."date" DESC;
-    `;
->>>>>>> 18e57da7218d77aa70621f7c13de87581e054e57
+    ORDER BY "photos"."date" DESC;`;
   pool.query(queryString, [req.user.contests_id])
   .then(response => {  
     res.send(response.rows);
