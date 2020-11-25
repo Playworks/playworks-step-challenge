@@ -8,16 +8,17 @@ class TeamStepCount extends Component {
   editLogsAndSetCurrentTeammate = (value) => {
     this.editLogs(value);
     this.setCurrent(value);
-  }
+  };
+
   editLogs = (value) => {
-    console.log('this button works', value);
     let userLogsToGet = value
     this.props.dispatch({
       type: 'FETCH_LOGS',
       payload: userLogsToGet
-    })
-    this.props.history.push('/editlogs')
-  }
+    });
+    this.props.history.push('/editlogs');
+  };
+
   // when the captain clicks a team member,
   // their user id is saved to redux for later use
   // on editUserLogs page
@@ -29,27 +30,24 @@ class TeamStepCount extends Component {
   }
 
   render() {
-    console.log('this.props', this.props);
-    
     return (
       <div className='teamStepCount'>
-          <center>
-            <div className='teamStepCountHeader'>
-              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Team Step Count</Typography>
-            </div>
-            <table id='leaderboardTable'>
-              <thead>
-                <tr>
-                  <th><Typography variant='body1'>Name</Typography></th>
-                  <th><Typography variant='body1'>Steps</Typography></th>
-                  {this.props.store.user.admin === "CAPTAIN" &&
-                  <th><Typography variant='body1'>Edit</Typography></th>
+        <center>
+          <div className='teamStepCountHeader'>
+            <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Team Step Count</Typography>
+          </div>
+          <table id='leaderboardTable'>
+            <thead>
+              <tr>
+                <th><Typography variant='body1'>Name</Typography></th>
+                <th><Typography variant='body1'>Steps</Typography></th>
+                {this.props.store.user.admin === "CAPTAIN" &&
+                <th><Typography variant='body1'>Edit</Typography></th>
                 }
-                </tr>
-              </thead>
-              <tbody>
-                
-                {this.props.store.teamDetails.map((user, i) =>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.store.teamDetails.map((user, i) =>
                 <tr key={i}>
                   <td>{user.first_name} {user.last_name}</td>
                   <td>{user.sum}</td>
@@ -57,11 +55,11 @@ class TeamStepCount extends Component {
                   <th><button onClick={() => this.editLogsAndSetCurrentTeammate(user.id)}>Edit Logs</button></th>
                   }
                 </tr>
-                )}
-              </tbody>
-            </table>
-          </center>
-        </div>
+              )}
+            </tbody>
+          </table>
+        </center>
+      </div>
     );
   }
 }

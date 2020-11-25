@@ -3,34 +3,17 @@ const pool = require('../modules/pool');
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 const router = express.Router();
 
-  // DELETE route for removing a photo
-  router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('Delete photo with url of', req.params.id);
-    const queryString = 'DELETE FROM "photos" WHERE "id" = $1;'
-    pool.query(queryString, [req.params.id])
-        .then(response => {
-            console.log("Deleted!");
-            res.sendStatus(200);
-        })
-        .catch(err => {
-            console.log("Error in DELETE", err);
-            res.sendStatus(500);
-        })
+// DELETE route for removing a photo
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  const queryString = 'DELETE FROM "photos" WHERE "id" = $1;'
+  pool.query(queryString, [req.params.id])
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.log('we have an error in photos.router.js DELETE', error);
+    res.sendStatus(500);
   });
-
-  // PUT route for approving photo
-router.put('/:id', rejectUnauthenticated, (req, res) => {
-  console.log('EDITING photo with id of', req.params.id);
-  const queryString = 'UPDATE "photos" SET "approved" = ($1) WHERE "id" = $2;'
-  pool.query(queryString, ['TRUE', req.params.id])
-      .then(response => {
-          console.log("Updated!");
-          res.sendStatus(200);
-      })
-      .catch(err => {
-          console.log("Error in PUT", err);
-          res.sendStatus(500);
-      })
 });
 
 // post route communicates with createPhotosSaga
@@ -67,25 +50,36 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
       INSERT INTO "steps" ("user_id", "date", "steps")
       VALUES ($1, $2, $3)
     `, [req.user.id, req.body.date, 1000]);
-
-    console.log('this is working');
     
     // Complete the transaction
     await connection.query('COMMIT');
-
+  
     res.sendStatus(201);
   }
-  catch (err) {
+  catch (error) {
     // Cancel the transaction, if it fails.
     await connection.query('ROLLBACK');
 
-    console.log(err);
+    console.log('we have an error in photos.router.js POST', error);
     res.statusCode(500);
   }
   finally {
     // release the connection NO MATTER WHAT
     connection.release();
   }
+});
+
+// PUT route for approving photo
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  const queryString = 'UPDATE "photos" SET "approved" = ($1) WHERE "id" = $2;';
+  pool.query(queryString, ['TRUE', req.params.id])
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.log('we have an error in photo.router.js PUT', error);
+    res.sendStatus(500);
+  });
 });
 
 module.exports = router;

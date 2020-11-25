@@ -1,40 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './TeamHome.css';
+// import components
+import ChallengeOfTheDay from '../Challenges/Challenges';
+import Nav from '../../Nav/Nav.js';
+import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
+import TeamChallengePhotos from '../TeamChallengePhotos/TeamChallengePhotos';
+import TeamName from '../../User/TeamName/TeamName.js';
 import TeamRank from '../TeamRank/TeamRank';
 import TeamStepCount from '../TeamStepCount/TeamStepCount';
-import ChallengeOfTheDay from '../Challenges/Challenges';
-import TeamChallengePhotos from '../TeamChallengePhotos/TeamChallengePhotos';
-import Nav from '../../Nav/Nav.js';
-import TeamName from '../../User/TeamName/TeamName.js';
-import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
+// import css 
+import './TeamHome.css';
 
 class TeamHome extends Component {
+  // runs both functions on page load
   componentDidMount() {
     this.getTeamDetails();
     this.getLeaderBoard();
   }
 
-
-  getTeamDetails = () => {
-    console.log('team number', this.props.store.user.teams_id);
-    this.props.dispatch({
-      type: 'FETCH_TEAM_DETAILS',
-      payload: this.props.store.user.teams_id
-    })
-  }
-
+  // function sends dispatch to get leader board info
   getLeaderBoard = () => {
     this.props.dispatch({
       type: 'FETCH_LEADER_BOARD',
       payload: this.props.store.user.teams_id
-    })
-  }
+    });
+  };
+
+  // function sends dispatch to get team details
+  getTeamDetails = () => {
+    this.props.dispatch({
+      type: 'FETCH_TEAM_DETAILS',
+      payload: this.props.store.user.teams_id
+    });
+  };
 
   render() {
-    console.log('team home', this.props.history);
-    
     return (
       <div>
         <Nav />
@@ -53,5 +54,4 @@ class TeamHome extends Component {
   }
 }
 
-// this allows us to use <App /> in index.js
 export default connect(mapStoreToProps)(TeamHome);

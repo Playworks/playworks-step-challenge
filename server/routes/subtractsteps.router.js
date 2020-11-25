@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
-const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
+const router = express.Router();
 
 // post route communicates with subtractStepsSaga
 router.post('/', rejectUnauthenticated, (req, res) => {
@@ -13,8 +13,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     res.send(response.rows);
   })
   .catch(error => {
+    console.log('we have an error in subtractsteps.router.js', error);
     res.status(500);
-  })
+  });
 });
 
 module.exports = router;

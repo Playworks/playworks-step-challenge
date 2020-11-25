@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import {Document, Page, pdfjs} from 'react-pdf';
+// import components
 import FAQ from '../../User/FAQ/FAQ';
-import { Grid, Typography } from "@material-ui/core";
 import Nav from '../../Nav/Nav.js';
 import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
-import {Document, Page, pdfjs} from 'react-pdf';
-
-
+// import material ui
+import { Grid, Typography } from "@material-ui/core";
 
 class Rules extends Component {
   state = {
@@ -23,23 +23,22 @@ class Rules extends Component {
     return (
       <div>
         <Nav />
-      <div>
-        <Grid container direction="column" alignItems="center" className="rulesFaq">
-          <Grid item>
-            <div className='userRulesHeader'>
-              <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h4'>Rules</Typography>
-            </div>
+        <div>
+          <Grid container direction="column" alignItems="center" className="rulesFaq">
+            <Grid item>
+              <div className='userRulesHeader'>
+                <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h4'>Rules</Typography>
+              </div>
+            </Grid>
+            {this.props.store.rules.map((rule, i) => 
+              <Document file={rule.file_url} key={i}> 
+                <Page pageNumber={1}> 
+                </Page>
+              </Document>
+            )}
+            <FAQ />
           </Grid>
-          {this.props.store.rules.map((rule, i) => 
-                <Document file={rule.file_url} key={i}> 
-                  <Page pageNumber={1}> 
-
-                  </Page>
-                </Document>
-                  )}
-          <FAQ />
-        </Grid>
-      </div>
+        </div>
         <ScrollingFooter />
     </div>
     );

@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import {AddAPhotoIcon, DirectionsWalkIcon, HomeIcon, SupervisedUserCircleIcon} from '@material-ui/icons';
+import { Typography } from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Footer.css';
-import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
-import HomeIcon from '@material-ui/icons/Home';
-import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
-import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
-import { Typography } from '@material-ui/core';
 
 class Footer extends Component {
-  
   render() {
     return (
-
       <div className='footerContainer'>
         <center>
           <div className='footerIconGroup' onClick={() => {this.props.history.push('/home')}}>
@@ -42,7 +37,6 @@ class Footer extends Component {
           </div>
         </center>
       </div>
-      
     );
   }
 }

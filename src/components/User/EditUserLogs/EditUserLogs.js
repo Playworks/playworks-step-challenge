@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { Button, Typography } from "@material-ui/core";
-import './EditUserLogs.css';
-import Nav from '../../Nav/Nav.js';
-import swal from 'sweetalert';
+// import axios
 import axios from 'axios';
-import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
+// import components
 import EditUserSteps from './EditUserSteps.js';
+import Nav from '../../Nav/Nav.js';
+import ScrollingFooter from '../../ScrollingFooter/ScrollingFooter';
+// import sweet alert
+import swal from 'sweetalert';
+// import material ui
+import { Button, Typography } from "@material-ui/core";
+// import css 
+import './EditUserLogs.css';
 
 class EditUserLogs extends Component {
   state = {
     steps: 0
   };
+
   // allows captain to delete teammates
   deleteTeammate = () => {
-    console.log('delete teammate button works', this.props.store.currentPerson);
     swal('this button', {
       title: 'Would you like to delete the user?',
       text: 'This cannot be undone',
@@ -40,24 +45,20 @@ class EditUserLogs extends Component {
       }
     });
   };
+
   // pulls id and steps from child editUserSteps to update step logs
   saveStepLogChanges = (logId) => {
-    console.log('data', logId);
-    console.log('state steps', this.state.steps);
     let newSteps = this.state.steps;
-      axios({
+    axios({
       method: 'PUT',
-      url: '/api/logs/',
-      data: {
-        id: logId,
-        steps: newSteps
-      }
-    })
-  }
+      url: `/api/logs/${logId}`,
+      data: {steps: newSteps}
+    });
+  };
+
   // delete log sweet alert
   // allows captain to cancel the log deletion
   deleteLog = (value) => {
-    console.log('step log id', value);
     swal('this button', {
       title: 'Would you like to delete this log?',
       text: 'This cannot be undone',
@@ -89,35 +90,27 @@ class EditUserLogs extends Component {
         swal("Keep on stepping!");
       }
     })
-  }
+  };
+
   // Function pushes user back to previous page.
   goBack = () => {
-    // this.props.dispatch({
-    //   type: 'FETCH_TEAM_DETAILS',
-    //   payload: this.props.store.user.teams_id
-    // })
-    // this.props.dispatch({
-    //   type: 'FETCH_LEADER_BOARD',
-    //   payload: this.props.store.user.teams_id
-    // })
     this.props.history.push('/team');
-  }
+  };
+
   // sets local state to changed step log
   edit = (event) => {
-    console.log('is', event.target.value);
     this.setState({
       steps: event.target.value
-    })
-  }
+    });
+  };
 
   reload = () => {
     this.props.dispatch({
       type: 'FETCH_LOGS',
       payload: this.props.store.currentPerson
     })
-  }
+  };
 
-  
   render() {
     return (
       <div className='editUserLogsContainer'>
@@ -138,8 +131,8 @@ class EditUserLogs extends Component {
               </tr>
             </thead>
             <tbody>
-            {this.props.store.userLogs.map(log =>
-                  <EditUserSteps
+              {this.props.store.userLogs.map(log =>
+                <EditUserSteps
                   date={log.date.split( 'T' )[0]}
                   data={log.id}
                   steps={log.steps}
@@ -148,9 +141,9 @@ class EditUserLogs extends Component {
                   delete={this.deleteLog}
                   save={this.saveStepLogChanges}
                   reload={this.reload}
-                  />
-                  )}
-              </tbody>
+                />
+              )}
+            </tbody>
           </table>
         </center>
         <div className='editUserBackandDeleteBtn'>

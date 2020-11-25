@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
-import './RegisterForm.css';
+// import s3 dropzone
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
-
+// import material ui
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+// import css 
+import './RegisterForm.css';
 
 class RegisterForm extends Component {
   state = {
@@ -47,20 +49,17 @@ class RegisterForm extends Component {
     });
   };
 
+  // function runs upon finishing file upload
   handleFinishedUpload = info => {
-    console.log('File uploaded with filename', info.filename)
-    console.log('Access it on s3 at', info.fileUrl)
     this.setState({
       photo: info.fileUrl
     });
   };
 
   render() {
-    console.log('this is props', this.props);
-
     const uploadOptions = {
       // signingUrlQueryParams: {uploadType: 'avatar'},
-  }
+    }
 
     const s3Url = `http://${process.env.REACT_APP_S3_BUCKET}.s3.amazonaws.com`;
 
@@ -129,17 +128,17 @@ class RegisterForm extends Component {
         </div>
         <div className='registerItem registerPassword'>
           <TextField 
-          id="outlined-basic" 
-          name="password" 
-          required 
-          style={{width: '90%'}}
-          htmlFor="password" 
-          value={this.state.password} 
-          label="Password" 
-          variant="outlined"
-          type="password"
-          onChange={this.handleInputChangeFor('password')}>
-        </TextField>
+            id="outlined-basic" 
+            name="password" 
+            required 
+            style={{width: '90%'}}
+            htmlFor="password" 
+            value={this.state.password} 
+            label="Password" 
+            variant="outlined"
+            type="password"
+            onChange={this.handleInputChangeFor('password')}>
+          </TextField>
         </div>
         <div className='registerItem'>
           <FormControl style={{width: '90%'}}>
@@ -149,9 +148,10 @@ class RegisterForm extends Component {
             <Select 
               value={this.state.contests_id} 
               variant='outlined' 
-              onChange={this.handleInputChangeFor('contests_id')}>
+              onChange={this.handleInputChangeFor('contests_id')}
+            >
               {this.props.store.contest.map(contest => 
-              <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
+                <MenuItem key={contest.id} value={contest.id}>{contest.name}</MenuItem>
               )}
             </Select>
           </FormControl>
@@ -160,11 +160,11 @@ class RegisterForm extends Component {
           <label htmlFor="photo">
             Photo:
             <DropzoneS3Uploader
-                onFinish={this.handleFinishedUpload}
-                s3Url={s3Url}
-                maxSize={1024 * 1024 * 5}
-                upload={uploadOptions}
-                className="previewImage"
+              onFinish={this.handleFinishedUpload}
+              s3Url={s3Url}
+              maxSize={1024 * 1024 * 5}
+              upload={uploadOptions}
+              className="previewImage"
             />
           </label>
         </div>
@@ -177,7 +177,7 @@ class RegisterForm extends Component {
             type="submit" 
             name="submit" 
             value="Register">
-            Register
+              Register
           </Button>
         </div>
       </form>

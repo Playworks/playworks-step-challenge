@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import { Paper, Typography } from '@material-ui/core';
-import './TopSteppers.css';
 // react multi carousel
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+// import material ui
+import { Paper, Typography } from '@material-ui/core';
+// import css
+import './TopSteppers.css';
 
 const responsive = {
   superLargeDesktop: {
@@ -31,7 +33,6 @@ const responsive = {
 };
 
 class TopSteppers extends Component {
-
   render() {
     return (
       <div>
@@ -53,7 +54,6 @@ class TopSteppers extends Component {
                 <Typography variant='body2'>{user.sum} steps</Typography>
                 <Typography variant='body2'>{user.name}</Typography>
               </Paper>
-       
             )}
           </Carousel>
         </div>

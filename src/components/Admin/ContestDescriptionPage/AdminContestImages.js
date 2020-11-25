@@ -5,38 +5,35 @@ import { Card, Typography } from '@material-ui/core';
 import AdminContestImagesInfo from './AdminContestImagesInfo';
 
 class AdminContestImages extends Component {
- 
   render() {
-    console.log('in AdminContestImages.js', this.props);
     return (
-        <div className='adminContestImagesContainer'>
-            <div className='adminContestImagesHeader'>
-                <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Contest Images</Typography>
-            </div>
-            <div className='adminContestImagesFeed'>
-              { this.props.store.adminPhotos.map( ( photo, i ) => 
-                <div className='imageFeedCard' key={i}>
-                <Card style={{width: '300px'}}>
-                    <div className='dailyChallengeImageContainer'>
-                        <img className='dailyChallengeImage' src={photo.file_url} alt="" />
-                    </div>
-                     <Card>
-                        <AdminContestImagesInfo
-                        contest_id={photo.contest_id}
-                        photo_id={photo.id}
-                        challenge={photo.name}
-                        avatar={photo.image_path} 
-                        firstName={photo.first_name}
-                        lastName={photo.last_name} 
-                        companyName={photo.company_name}/> 
-                    </Card> 
-                </Card>
+      <div className='adminContestImagesContainer'>
+        <div className='adminContestImagesHeader'>
+            <Typography style={{color: '#4d4d4f', fontFamily: 'Poppins'}} variant='h5'>Contest Images</Typography>
+        </div>
+        <div className='adminContestImagesFeed'>
+          { this.props.store.adminPhotos.map( ( photo, i ) => 
+            <div className='imageFeedCard' key={i}>
+              <Card style={{width: '300px'}}>
+                <div className='dailyChallengeImageContainer'>
+                    <img className='dailyChallengeImage' src={photo.file_url} alt="" />
                 </div>
-                )}
+                <Card>
+                  <AdminContestImagesInfo
+                    contest_id={photo.contest_id}
+                    photo_id={photo.id}
+                    challenge={photo.name}
+                    avatar={photo.image_path} 
+                    firstName={photo.first_name}
+                    lastName={photo.last_name} 
+                    companyName={photo.company_name}
+                  /> 
+                </Card> 
+              </Card>
             </div>
-          </div>
-        
-
+            )}
+        </div>
+      </div>
     );
   }
 }

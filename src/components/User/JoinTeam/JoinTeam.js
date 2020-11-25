@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './JoinTeam.css';
-import Logo from '../../../images/PW-hor-logo.png';
-
 // import material ui
-import { Button, Typography, InputLabel, MenuItem, Select, FormControl } from '@material-ui/core';
+import { Button, FormControl, InputLabel, MenuItem, Select, Typography } from '@material-ui/core';
 // import sweetalert
 import swal from 'sweetalert';
-
+// import css
+import './JoinTeam.css';
+// import logo
+import Logo from '../../../images/PW-hor-logo.png';
 
 class JoinTeam extends Component {
   state = {
@@ -23,6 +23,23 @@ class JoinTeam extends Component {
   componentDidMount(){
     this.fetchData();
   }
+
+  // Function is a confirmation function mainly for validation if everything is met and isCorrect then will run joinTeam function
+  confirmationJoin = () => {
+    if(this.state.selected_team_id === ''){
+      swal(`Please select a team to join`);
+    }
+    else{
+      this.joinTeam();
+      swal({
+        title: "Let's get stepping!",
+        icon: "success"
+      })
+        .then(() => {
+        this.props.history.push('/home');
+      });
+    }
+  };
 
   // function sends two dispatches with async await to fetch captains and teams for join to 
   // list all teams and captains to select from
@@ -39,7 +56,18 @@ class JoinTeam extends Component {
       selected_team_id: event.target.value
     })
     await this.setPhoto();
-  }
+  };
+
+  // Function sends dispatch to saga and communicates with server for a PUT / Join team.
+  joinTeam = () => {
+    this.props.dispatch({
+      type: 'JOIN_TEAM',
+      payload: {
+        selected_team_id: this.state.selected_team_id,
+        user_id: this.props.store.user.id
+      }
+    });
+  };
 
   // scoped locally sets teamsOnlyArray to array from store and iterates through the loop
   // if the id is === to selected_team_id state then it sets state of selected_team_image to image path at that index
@@ -53,50 +81,7 @@ class JoinTeam extends Component {
         return;
       }
     }
-  }
-
-  // Function is a confirmation function mainly for validation if everything is met and isCorrect then will run joinTeam function
-  confirmationJoin = () => {
-    if(this.state.selected_team_id === ''){
-      swal(`Please select a team to join`);
-    }
-    else{
-      // swal({
-      //   title: "Is the selected team correct?",
-      //   icon: "info",
-      //   buttons: {
-      //     cancel: "No",
-      //     yes: true,
-      //   }
-      // }).then(isCorrect => {
-      //   if(isCorrect){
-          this.joinTeam();
-          swal({
-            title: "Let's get stepping!",
-            icon: "success"
-          })
-            .then(() => {
-            this.props.history.push('/home');
-          })
-        }
-        // else{
-        //   swal(`Pick a team to start steppin'!`)
-        // }
-      }
-  //     );
-  //   };
-  // };
-
-  // Function sends dispatch to saga and communicates with server for a PUT / Join team.
-  joinTeam = () => {
-    this.props.dispatch({
-      type: 'JOIN_TEAM',
-      payload: {
-        selected_team_id: this.state.selected_team_id,
-        user_id: this.props.store.user.id
-      }
-    });
-  }
+  };
 
   render() {
     return (
@@ -104,60 +89,59 @@ class JoinTeam extends Component {
         <div className='createPageLogoDiv'>
           <img className='createPageLogo' alt='playWorksLogo' src= {Logo}/>
         </div>
-
         <div className='teamForm'>
-
         <center>
           <Typography variant='h5'>Join a Team</Typography>
-            <div className='createTeamName'>
-              <FormControl>
-                <InputLabel style={{paddingLeft:14}}>
-                  Select team by name or captain
-                </InputLabel> 
-                <Select value={this.state.selected_team_id} 
-                  variant='outlined' 
-                  style={{width:300}} 
-                  onChange={this.handleInputChangeForTeamSelect}>
+          <div className='createTeamName'>
+            <FormControl>
+              <InputLabel style={{paddingLeft:14}}>
+                Select team by name or captain
+              </InputLabel> 
+              <Select 
+                value={this.state.selected_team_id} 
+                variant='outlined' 
+                style={{width:300}} 
+                onChange={this.handleInputChangeForTeamSelect}>
                   {this.props.store.teams.map((team, i) => 
-                  <MenuItem key={i} value={team.teams_id}>{team.name}</MenuItem>
+                    <MenuItem key={i} value={team.teams_id}>{team.name}</MenuItem>
                   )}
-                </Select>
-              </FormControl>
-            </div>
+              </Select>
+            </FormControl>
+          </div>
           <div className='joinTeamImageDiv'>
-                  {this.state.selected_team_image === '' ? ('') : (
-                    <img className='joinTeamImage' alt='joinTeamImage' src= {this.state.selected_team_image} />) }
-            
+            {this.state.selected_team_image === '' ? 
+              ('') : 
+              (<img className='joinTeamImage' alt='joinTeamImage' src= {this.state.selected_team_image} />) }
           </div>
             <Button variant='contained' 
               color='primary'
               style={{marginTop: '2rem'}} 
               size= 'large'
               onClick={this.confirmationJoin}>
-              Join Team
+                Join Team
             </Button>
           </center>
         </div>
         <div className='createTeamfooter'>
-            <button
-              type="button"
-              className="btn btn_asLink"
-              onClick={() => {this.props.history.push('/createorjointeam')}}>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {this.props.history.push('/createorjointeam')}}>
               Go Back
-            </button>
-            <button
-              type="button"
-              className="btn btn_asLink"
-              onClick={() => {this.props.history.push('/createteam')}}>
+          </button>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {this.props.history.push('/createteam')}}>
               Create Team
-            </button>
-            <button
-              type="button"
-              className="btn btn_asLink"
-              onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
+          </button>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
               Log Out
-            </button>
-          </div>
+          </button>
+        </div>
       </div>
     );
   }

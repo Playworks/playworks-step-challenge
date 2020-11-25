@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './TeamChallengePhotos.css';
-import { Card } from '@material-ui/core';
+// import component
 import TeamFeedInfo from './TeamFeedInfo';
-class TeamChallengePhotos extends Component {
+// import material ui
+import { Card } from '@material-ui/core';
+// import css
+import './TeamChallengePhotos.css';
 
+class TeamChallengePhotos extends Component {
+  // checks if user is captain or user level depending on that will run a specific function.
   componentDidMount() {
     if(this.props.store.user.admin === 'CAPTAIN'){
       this.getCaptainTeamPhotos();
@@ -13,41 +17,40 @@ class TeamChallengePhotos extends Component {
     else if(this.props.store.user.admin === 'USER'){
       this.getUserTeamPhotos();
     }
-  }
+  };
 
   // Makes get request for all photos that are have a status of TRUE || FALSE in approved column by teams id
   getCaptainTeamPhotos = () => {
     this.props.dispatch({
       type: 'FETCH_CAPTAIN_TEAM_PHOTOS',
       payload: this.props.store.user.teams_id
-    })
-  }
+    });
+  };
 
   // Makes get request for photos that have been approved by teams id
   getUserTeamPhotos = () => {
     this.props.dispatch({
       type: 'FETCH_USER_TEAM_PHOTOS',
       payload: this.props.store.user.teams_id
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <div className='imageFeed'>
-        { this.props.store.teamPhotos.map( ( photo, i ) => 
+        {this.props.store.teamPhotos.map((photo, i) => 
           <div key={i} className='imageFeedCard'>
             <Card style={{width: '300px'}}>
               <div className='dailyChallengeImageContainer'>
-                <img className='dailyChallengeImage' key={i} src={photo.file_url} alt=""/>
-
+                <img className='dailyChallengeImage' src={photo.file_url} alt=""/>
               </div>
               <Card>
                 <TeamFeedInfo photo={photo}/>
               </Card>
             </Card>
           </div>
-          )}
-        </div>
+        )}
+      </div>
     );
   }
 }

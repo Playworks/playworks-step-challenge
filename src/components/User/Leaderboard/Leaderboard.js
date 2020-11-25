@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import './Leaderboard.css';
+// import material ui
 import { Typography } from '@material-ui/core';
+// import css
+import './Leaderboard.css';
 
 class Leaderboard extends Component {
   state = {
