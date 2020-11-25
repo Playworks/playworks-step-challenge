@@ -1,5 +1,6 @@
-import { put, takeLatest, all } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 // Function runs a put request with action.payload.photo_id upon success throws back into fetch_captain_team_photos with action.payload.team_id
 function* approvePhotosSaga(action){
@@ -15,11 +16,24 @@ function* approvePhotosSaga(action){
 
 // Function sends photo creation data
 function* createPhotosSaga(action) {
-  yield axios({
-    method: 'POST',
-    url: '/api/photos',
-    data: action.payload
-  });
+  try{
+    yield axios({
+      method: 'POST',
+      url: '/api/photos',
+      data: action.payload
+    });
+  }
+  catch (error) {
+    if (error.response.status === 400) {
+      swal({
+        title: `You've already submitted a photo for the daily challenge today!`,
+        text: `Please try again tomorrow!`,
+        buttons: {
+        cancel: "Ok",
+        }
+      })
+    }
+  }
 };
 
 // Function runs a delete request with action.payload.photo_id upon success throws back into fetch_captain_team_photos with action.payload.team_id

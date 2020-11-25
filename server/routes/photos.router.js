@@ -25,6 +25,20 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     // Begin the transaction
     await connection.query('BEGIN');
 
+      // Check if user has uploaded a photo yet today
+      let todaysPhotos = await connection.query(`
+      SELECT FROM "photos"
+      WHERE "user_id" = $1
+      AND "date" > $2 AND "date" < $3
+    `, [req.user.id, req.body.start_of_today, req.body.end_of_today]);
+    console.log('TodaysPhotos', todaysPhotos.rows);
+    
+    if (todaysPhotos.rows.length > 0) {
+      res.status(400).send('You may only do one per day');
+      await connection.query('ROLLBACK');
+      return;
+    };
+
     // Add photo information to photos table
     await connection.query(`
       INSERT INTO "photos" ("user_id", "challenges_id", "date", "file_url")

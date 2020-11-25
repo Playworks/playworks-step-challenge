@@ -52,7 +52,9 @@ class ImageUpload extends Component {
         payload: {
           fileUrl: this.state.fileUrl,
           date: this.state.date,
-          challenges_id: this.state.challenges_id
+          challenges_id: this.state.challenges_id,
+          start_of_today: moment().startOf('day').format(),
+          end_of_today: moment().endOf('day').format()
         },
       });
     this.props.history.push('/home');

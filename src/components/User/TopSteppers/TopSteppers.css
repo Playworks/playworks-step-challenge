@@ -6,6 +6,7 @@
 
 .stepperPaper {
     width: 90%;
+    height: 100%
 }
 
 .topSteppersAvatar{
@@ -18,6 +19,6 @@
   }
 
 .react-multi-carousel-track, ul {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     margin-top: 5px;
 }
